@@ -27,7 +27,6 @@ class Database
         }
     }
 
-
     public function sanitize($var)
     {
         $return = mysqli_real_escape_string($this->con, $var);
@@ -213,7 +212,7 @@ class Database
         $sql = "SELECT `usuario`.`nombreC`, `alumno`.`idUsuario`, `grupo`.`idGrupo`
             FROM `usuario` 
                 INNER JOIN `alumno` ON `alumno`.`idUsuario` = `usuario`.`idUsuario`
-                INNER JOIN `grupo` ON `alumno`.`idGrupo` = `grupo`.`idGrupo`";        //nombre tabla, es la misma q en el insert intoooo
+                INNER JOIN `grupo` ON `alumno`.`idGrupo` = `grupo`.`idGrupo` where uActivo=1";        //nombre tabla, es la misma q en el insert intoooo
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
@@ -241,7 +240,7 @@ class Database
     //Consulta Maestro
     public function readMaestro()
     {
-        $sql = "SELECT * from vwUsuarioMaestro";     //nombre tabla, es la misma q en el insert into
+        $sql = "SELECT * from vwUsuarioMaestro";     
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
@@ -359,9 +358,9 @@ class Database
     }
 
     //Función para editar
-    public function editarGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, $idGrupo)
+    public function editarGrupo( $idUsuario, $idGrupo)
     {
-        $sql = "UPDATE grupo SET nombreGrupo='$nombreGrupo',cantidadAlumnos='$cantidadAlumnos', idUsuario='$idUsuario' WHERE idGrupo='$idGrupo'";
+        $sql = "UPDATE grupo SET idUsuario='$idUsuario' WHERE idGrupo='$idGrupo'";
         $res = mysqli_query($this->con, $sql);
 
         if ($res) {
@@ -429,7 +428,7 @@ class Database
     //////////////////EQUIPOS ASIGNADOS//////////
     public function equiposA()
     { //Función para consulta
-        $sql = "SELECT `usuario`.`nombreC`, `grupo`.`nombreGrupo`, `equiposIOT`.`numSerieEquipo` AS `equipoIOT`, `equiposDesarrollo`.`numSerieEquipo` AS `equipoDesarrollo`, `equiposSoporte`.`numSerieEquipo` AS `equipoSoporte` FROM `alumno` INNER JOIN `usuario` ON `alumno`.`idUsuario` = `usuario`.`idUsuario` INNER JOIN `grupo` ON `alumno`.`idGrupo` = `grupo`.`idGrupo` INNER JOIN `equipo` AS `equiposIOT` ON `alumno`.`idEquipoIOT` = `equiposIOT`.`idEquipo` INNER JOIN `equipo` AS `equiposDesarrollo` ON `alumno`.`idEquipoDesarrollo` = `equiposDesarrollo`.`idEquipo` INNER JOIN `equipo` AS `equiposSoporte` ON `alumno`.`idEquipoSoporte` = `equiposSoporte`.`idEquipo`";
+        $sql = "SELECT * from vwEquiposAsignados";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }

@@ -26,7 +26,7 @@ $pagNom = 'USUARIOS';
     if ($res === true) {
       $message = "Datos insertados con éxito";
       $class = "alert alert-success";
-    } else if($res == "duplicado") {
+    } else if ($res == "duplicado") {
       $message = "Datos duplicados, no se pudo completar el registro...";
       $class = "alert alert-danger";
     } else {
@@ -45,10 +45,10 @@ $pagNom = 'USUARIOS';
     <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
       Alumnos</button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="../modUsuarios/usuarioAdministrador.php">Administradores</a></li>
-      <li><a class="dropdown-item" href="../modUsuarios/usuarioMaestro.php">Maestros</a></li>
-      <li><a class="dropdown-item" href="../modUsuarios/usuarioAlumno.php">Alumnos</a></li>
-      <li><a class="dropdown-item" href="../modUsuarios/grupos.php">Grupos</a></li>
+      <li><a class="dropdown-item" href="usuarioAdministrador.php">Administradores</a></li>
+      <li><a class="dropdown-item" href="usuarioMaestro.php">Maestros</a></li>
+      <li><a class="dropdown-item" href="usuarioAlumno.php">Alumnos</a></li>
+      <li><a class="dropdown-item" href="grupos.php">Grupos</a></li>
     </ul>
 
     <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#RegistroUsuarioAl">Registrar</a><br>
@@ -58,7 +58,7 @@ $pagNom = 'USUARIOS';
     <!-- Mostrar tabla-->
     <div class="container">
 
-      <table  class="table table-bordered " cellspacing="0" width="100%"  id="alumnoTable" style="background-color: #04aa89;  ">
+      <table class="table table-bordered " cellspacing="0" width="100%" id="alumnoTable" style="background-color: #04aa89;  ">
         <thead>
           <!-- Secciones o cabeceros -->
           <tr>
@@ -79,7 +79,7 @@ $pagNom = 'USUARIOS';
           $alumnos = new Database(); //
           $listaAlumnos = $alumnos->readAlumno(); //se crea la variable listaAdministradores
           ?>
- 
+
           <?php
           while ($row = mysqli_fetch_object($listaAlumnos)) { //antes del = es la variable del form, después es la de BDD
             $idUsuario = $row->idUsuario;
@@ -94,14 +94,21 @@ $pagNom = 'USUARIOS';
             $idEquipoSoporte = $row->equipoSoporte;
             $tipoUsuario = $row->tipoUsuario;
             $uActivo = $row->uActivo;
-
-
+            $estadoIOT = $row->estadoIOT;
+            $estadoDesarrollo = $row->estadoDesarrollo;
+            $estadoSoporte = $row->estadoSoporte;
+            $estadoGrupo = $row->estadoGrupo;
           ?>
             <tr>
               <td><?php echo $numConAlum; ?></td> <!-- Muestra-->
               <td><?php echo $nombreC; ?></td>
               <td><?php echo $correo; ?></td>
-              <td><?php echo $idGrupo; ?></td>
+              <td><?php if ($estadoGrupo == 1) {
+                    echo $idGrupo;
+                  } else {
+                    echo 'Pendiente';
+                  } ?></td>
+
               <td><?php if ($uActivo == 1) {
                     echo 'Activo';
                   } else {
@@ -158,9 +165,9 @@ $pagNom = 'USUARIOS';
                       </div>
 
                       <div class="form-group">
-                      <?php
-                    $datos_alumno = $alumnos->single_recordusuarioContraAl($idUsuario);
-                    ?>
+                        <?php
+                        $datos_alumno = $alumnos->single_recordusuarioContraAl($idUsuario);
+                        ?>
                         <label for="recipient-name" class="col-form-label">Contraseña:</label>
                         <input type="text" name="contrasenaAl" id="contrasenaAl" class="form-control" onkeypress="return ValidarContrasena(event)" value="<?php echo $datos_alumno->contrasena; ?>" required="true">
                       </div>
@@ -188,7 +195,11 @@ $pagNom = 'USUARIOS';
                           <?php
                           $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
                           ?>
-                          <option selected value="<?php echo $datos_alumno->idEquipoIOT; ?>"><?php if($idEquipoIOT==0){ echo 'Pendiente';} else{echo $idEquipoIOT; } ?></option>
+                          <option selected value="<?php echo $datos_alumno->idEquipoIOT; ?>"><?php if ($idEquipoIOT == 0) {
+                                                                                                echo 'No aplica';
+                                                                                              } else {
+                                                                                                echo $idEquipoIOT;
+                                                                                              } ?></option>
                           <option value="1">No aplica</option>
                           <?php
                           $listaEIOTEdit = $alumnos->equiposIOT('numSerieEquipo');
@@ -206,7 +217,11 @@ $pagNom = 'USUARIOS';
                           <?php
                           $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
                           ?>
-                          <option selected value="<?php echo $datos_alumno->idEquipoDesarrollo; ?>"><?php if($idEquipoDesarrollo==0){ echo 'Pendiente';} else{echo $idEquipoDesarrollo; } ?></option>
+                          <option selected value="<?php echo $datos_alumno->idEquipoDesarrollo; ?>"><?php if ($idEquipoDesarrollo == 0) {
+                                                                                                      echo 'No aplica';
+                                                                                                    } else {
+                                                                                                      echo $idEquipoDesarrollo;
+                                                                                                    } ?></option>
                           <option value="1">No aplica</option>
                           <?php
                           $listaEDitarED = $alumnos->equiposDESARROLLO('numSerieEquipo');
@@ -224,7 +239,11 @@ $pagNom = 'USUARIOS';
                           <?php
                           $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
                           ?>
-                          <option selected value="<?php echo $datos_alumno->idEquipoSoporte; ?>"><?php if($idEquipoSoporte==0){ echo 'Pendiente';} else{echo $idEquipoSoporte; } ?></option>
+                          <option selected value="<?php echo $datos_alumno->idEquipoSoporte; ?>"><?php if ($idEquipoSoporte == 0) {
+                                                                                                    echo 'No aplica';
+                                                                                                  } else {
+                                                                                                    echo $idEquipoSoporte;
+                                                                                                  } ?></option>
                           <option value="1">No aplica</option>
                           <?php
                           $listaESEdit = $alumnos->equiposSOPORTE('numSerieEquipo');
@@ -246,7 +265,7 @@ $pagNom = 'USUARIOS';
                 </div>
               </div>
             </div>
-            <!---fin ventana actualizar admin--->
+            <!---fin ventana actualizar alumno--->
 
             <!-- modal para detalles -->
             <div class="modal fade" id="detallesAlumno<?php echo $idUsuario; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -266,21 +285,30 @@ $pagNom = 'USUARIOS';
 
                     </br><label>Equipo asignado IoT: <strong><?php if ($idEquipoIOT == 0) {
                                                                 echo 'No aplica';
-                                                              } else {
+                                                              } else if ($estadoIOT == 1 && $idEquipoIOT > 0) {
                                                                 echo $idEquipoIOT;
+                                                              } else {
+                                                                echo 'Pendiente';
                                                               } ?></strong></label></br>
 
                     </br><label>Equipo asignado Desarrollo: <strong><?php if ($idEquipoDesarrollo == 0) {
                                                                       echo 'No aplica';
-                                                                    } else {
+                                                                    } else if ($estadoDesarrollo == 1 && $idEquipoDesarrollo > 0) {
                                                                       echo $idEquipoDesarrollo;
+                                                                    } else {
+                                                                      echo 'Pendiente';
                                                                     } ?></strong></label></br>
 
                     </br><label>Equipo asignado soporte: <strong><?php if ($idEquipoSoporte == 0) {
                                                                     echo 'No aplica';
-                                                                  } else {
+                                                                  } else if ($estadoSoporte == 1 && $idEquipoSoporte > 0) {
                                                                     echo $idEquipoSoporte;
+                                                                  } else {
+                                                                    echo 'Pendiente';
                                                                   } ?></strong></label></br>
+
+
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -394,7 +422,6 @@ $pagNom = 'USUARIOS';
       </div>
     </div>
   </div>
-
 
   <?php include("../public/footer.php");
   ?><?php } else { ?>
