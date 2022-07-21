@@ -1,6 +1,6 @@
 <?php
 
-include('../conn.php');
+include('conn.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombrepdf = $conn->real_escape_string(htmlentities($_POST['nombrepdf']));

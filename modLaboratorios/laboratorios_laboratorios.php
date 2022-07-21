@@ -2,7 +2,9 @@
 $pagNom = 'LABORATORIOS';
 ?>
 
+
 <?php include("../public/header.php"); ?>
+
 <?php if ($idTipoUsuario == 1) { ?>
 
 	<?php
@@ -61,7 +63,7 @@ $pagNom = 'LABORATORIOS';
 
 	<br />
 	<div class="container">
-		<table class="table table-bordered " cellspacing="0" width="100%"  id="laboratorios_laboratoriosTable" style="background-color: #04aa89;  ">
+		<table class="table table-bordered" cellspacing="0" width="100%"  id="laboratorios_laboratoriosTable" style="background-color: #04aa89;">
 			<thead>
 				<tr>
 					<th>Nombres de laboratorio</th>
@@ -161,12 +163,18 @@ $pagNom = 'LABORATORIOS';
 					</div>
 					<!---fin modal editar --->
 
+
+
 				<?php
 				}
 				?>
 			</tbody>
 		</table>
 	</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script> 
 
 
 
