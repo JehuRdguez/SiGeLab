@@ -2,7 +2,6 @@
 $pagNom = 'LABORATORIOS';
 ?>
 
-
 <?php include("../public/header.php"); ?>
 
 <?php if ($idTipoUsuario == 1) { ?>
@@ -10,7 +9,6 @@ $pagNom = 'LABORATORIOS';
 	<?php
 	include("../database.php");
 	$laboratoriosR = new Database(); //Instanciar el objeto
-
 
 	if (isset($_POST) && !empty($_POST)) {
 		$nombreLaboratorio = $laboratoriosR->sanitize($_POST['labNom']);
@@ -59,8 +57,6 @@ $pagNom = 'LABORATORIOS';
 	<br /> <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#laboratorio">Realizar registro</a>
 	<br>
 
-
-
 	<br />
 	<div class="container">
 		<table class="table table-bordered" cellspacing="0" width="100%"  id="laboratorios_laboratoriosTable" style="background-color: #04aa89;">
@@ -79,7 +75,6 @@ $pagNom = 'LABORATORIOS';
 				$laboratoriosR = new Database(); //
 				$listaLabs = $laboratoriosR->readLab(); //se crea la variable listaAdministradores
 				?>
-
 				<?php
 				while ($row = mysqli_fetch_object($listaLabs)) { //antes del = es la variable del form, después es la de BDD
 
@@ -163,19 +158,12 @@ $pagNom = 'LABORATORIOS';
 					</div>
 					<!---fin modal editar --->
 
-
-
 				<?php
 				}
 				?>
 			</tbody>
 		</table>
 	</div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script> 
-
 
 
 	<!--Modal laboratorio-->
