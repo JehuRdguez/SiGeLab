@@ -37,7 +37,7 @@ $idUsuario = $_SESSION['idUsuario'];
                 <div>
                     <button type="button" class="btn btn-outline-light" data-bs-toggle="dropdown"><i class="fa-solid fa-right-from-bracket"></i></button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="../cerrar.php">Cerrar sesión</a></li>
+                        <li><a class="dropdown-item" href="../public/cerrar.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
                 <div class="active"></div>

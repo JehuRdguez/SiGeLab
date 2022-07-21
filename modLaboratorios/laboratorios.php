@@ -5,7 +5,7 @@ $pagNom = 'LABORATORIOS';
 <?php include("../public/header.php"); ?>
 
 <?php
-include "../conn.php";
+include "conn.php";
 include "../database.php";
 ?>
 
