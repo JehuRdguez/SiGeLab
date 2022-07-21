@@ -10,7 +10,7 @@ $pagNom = 'GRUPOS';
   <?php
   include("../database.php");  //se incluye el otro archivo 
   $gruposR = new Database();  //generamos la variable cliente pq eso es lo que vamos a generar, con esto instanciamos
-
+  
   if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
     $nombreGrupo = $gruposR->sanitize($_POST['nombreGrupo']);  //se va a limpiar y recibir lo del formulario
     $cantidadAlumnos = $gruposR->sanitize($_POST['cantidadAlumnos']);
@@ -20,7 +20,7 @@ $pagNom = 'GRUPOS';
     if ($res === true) {
       $message = "Datos insertados con éxito";
       $class = "alert alert-success";
-    } else if($res == "duplicado") {
+    } else if ($res == "duplicado") {
       $message = "Datos duplicados, no se pudo completar el registro...";
       $class = "alert alert-danger";
     } else {
@@ -39,10 +39,10 @@ $pagNom = 'GRUPOS';
     <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
       Grupos</button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="../modUsuarios/usuarioAdministrador.php">Administradores</a></li>
-      <li><a class="dropdown-item" href="../modUsuarios/usuarioMaestro.php">Maestros</a></li>
-      <li><a class="dropdown-item" href="../modUsuarios/usuarioAlumno.php">Alumnos</a></li>
-      <li><a class="dropdown-item" href="../modUsuarios/grupos.php">Grupos</a></li>
+      <li><a class="dropdown-item" href="usuarioAdministrador.php">Administradores</a></li>
+      <li><a class="dropdown-item" href="usuarioMaestro.php">Maestros</a></li>
+      <li><a class="dropdown-item" href="usuarioAlumno.php">Alumnos</a></li>
+      <li><a class="dropdown-item" href="grupos.php">Grupos</a></li>
     </ul>
     <!--Botón de registro -->
     <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#RegistroGrupo">Registrar</a><br>
@@ -51,7 +51,7 @@ $pagNom = 'GRUPOS';
 
     <!-- Mostrar tabla-->
     <div class="container">
-      <table  class="table table-bordered " cellspacing="0" width="100%"  id="gruposTable" style="background-color: #04aa89;  ">
+      <table class="table table-bordered " cellspacing="0" width="100%" id="gruposTable" style="background-color: #04aa89;  ">
         <thead>
           <!-- Secciones o cabeceros -->
           <tr>
@@ -76,12 +76,18 @@ $pagNom = 'GRUPOS';
             $nombreGrupo = $row->nombreGrupo;
             $cantidadAlumnos = $row->cantidadAlumnos;
             $nombreM = $row->nombreC;
+            $uActivo = $row->uActivo;
             $estado = $row->estado;
           ?>
             <tr>
               <td><?php echo $nombreGrupo; ?></td> <!-- Muestra-->
               <td><?php echo $cantidadAlumnos; ?></td>
-              <td><?php echo $nombreM; ?></td>
+              <td><?php if ($uActivo == 1) {
+                    echo $nombreM;
+                  } else {
+                    echo 'Pendiente';
+                  } ?></td>
+
               <td><?php if ($estado == 1) {
                     echo 'Activo';
                   } else {
@@ -94,15 +100,58 @@ $pagNom = 'GRUPOS';
                 <?php } else { ?>
                   <abbr title="Habilitar"> <a type="button" class="btn btn-outline-dark" href="updateGrupo.php?idGrupo=<?php echo $idGrupo; ?>"><i class="fa fa-eye"></i></a></abbr>
                 <?php } ?>
+                <abbr title="Cambiar tutor"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarTutor<?php echo $idGrupo; ?>"><i class="fa-solid fa-chalkboard-user"></i></button></abbr>
                 <abbr title="Ver detalles"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#detallesGrupo<?php echo $idGrupo; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
-                <!--<a class="btn btn-outline-primary" href="EditarGrupo.php?idGrupo=<?php echo $idGrupo; ?>"><i class="fa-regular fa-pen-to-square"></i></a><br>
--->
+
+                
               </td>
             </tr>
             <?php
             include("modGrupo.php");
             ?>
+    <!--ventana para Update--->
+    <div class="modal fade" id="editarTutor<?php echo $idGrupo; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cambiar tutor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
 
+          <form method="POST" action="EditarGrupo.php">
+            <input type="hidden" name="idGrupo" value="<?php echo $idGrupo; ?>">
+
+            <div class="modal-body">
+
+              <div class="form-group">
+                <label for="" class="col-form-label">Tutor</label>
+                <select class="form-select" aria-label="Default select example" id="idUsuario" name="idUsuario">
+
+                          <?php
+                          $datos_grupo = $gruposR->single_recordgrupo($idGrupo);
+                          ?>
+                  <option selected value="<?php echo $datos_grupo->idUsuario; ?>"><?php echo $nombreM; ?></option>
+                  <?php
+                  $listaTutores = $gruposR->readListaTutores('nombreC');
+                  while ($row = mysqli_fetch_object($listaTutores)) {
+                    $idUsuario = $row->idUsuario;
+                    $nombreC = $row->nombreC; ?>
+                    <option value="<?php echo $idUsuario ?>"><?php echo $nombreC ?></option>
+                  <?php } ?>
+                </select>
+              </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary" onclick="return alertaEditar()">Actualizar</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
 
 
           <?php
@@ -157,6 +206,7 @@ $pagNom = 'GRUPOS';
         </div>
       </div>
     </div>
+
 
 
     <?php include("../public/footer.php"); ?>
