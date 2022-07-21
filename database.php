@@ -450,11 +450,11 @@ class Database
 
     /////////////////////////////////////////////////////////////////JEHU/////////////////////////////////////////////////////////////////////     
 
-    public function createEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieGabinete, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $estado)
+    public function createEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $estado)
     {
         $sql = "INSERT INTO `equipo` (
-        idLaboratorio, numInvEscolar, numSerieEquipo, numSerieMonitor, numSerieTeclado, numSerieGabinete, numSerieMouse, ubicacionEnMesa, procesador, discoDuro, ram, estado)
-        VALUES ('$idLaboratorio', '$numInvEscolar', '$numSerieEquipo', '$numSerieMonitor', '$numSerieTeclado', '$numSerieGabinete', '$numSerieMouse', '$ubicacionEnMesa', '$procesador', '$discoDuro', '$ram', '$estado')";
+        idLaboratorio, numInvEscolar, numSerieEquipo, numSerieMonitor, numSerieTeclado, numSerieMouse, ubicacionEnMesa, procesador, discoDuro, ram, estado)
+        VALUES ('$idLaboratorio', '$numInvEscolar', '$numSerieEquipo', '$numSerieMonitor', '$numSerieTeclado', '$numSerieMouse', '$ubicacionEnMesa', '$procesador', '$discoDuro', '$ram', '$estado')";
         try {
             $res = mysqli_query($this->con, $sql);
         } catch (\Throwable) {
@@ -502,9 +502,9 @@ class Database
         }
     }
 
-    public function updateEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieGabinete, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $idEquipo)
+    public function updateEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $idEquipo)
     {
-        $sql = "UPDATE equipo SET idLaboratorio='$idLaboratorio', numInvEscolar='$numInvEscolar', numSerieEquipo='$numSerieEquipo', numSerieMonitor='$numSerieMonitor', numSerieTeclado='$numSerieTeclado', numSerieGabinete='$numSerieGabinete', numSerieMouse='$numSerieMouse', ubicacionEnMesa='$ubicacionEnMesa', procesador='$procesador', discoDuro='$discoDuro',ram='$ram'
+        $sql = "UPDATE equipo SET idLaboratorio='$idLaboratorio', numInvEscolar='$numInvEscolar', numSerieEquipo='$numSerieEquipo', numSerieMonitor='$numSerieMonitor', numSerieTeclado='$numSerieTeclado', numSerieMouse='$numSerieMouse', ubicacionEnMesa='$ubicacionEnMesa', procesador='$procesador', discoDuro='$discoDuro',ram='$ram'
     WHERE idEquipo='$idEquipo'";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
