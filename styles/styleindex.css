@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif ;
+}
+
+
+body {
+    padding-left: 10%;
+ }
+
+#logoutem1{
+    margin-top: 0%;
+}
+
+#fondoblanco{
+    margin-top: 10%;
+}
+
+#titsigelab{
+    margin-top: 0%;
+}
+
+#imglogin{
+    margin-top: 8%;
+}
+
+
+@media only screen and (max-width: 1000px){
+
+    #nombres{
+        display: none;
+    }
+
+    #logoutem1{
+        display: none;
+    }
+
+    #titsigelab{
+        display: none;
+    }
+
+    #cosablanca{
+        margin-left: 10%;
+        margin-top: -10%;
+
+    }
+
+    #imglogin{
+        margin-top: -15%;
+    }
+
+
+
+
+
+}
