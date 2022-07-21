@@ -35,12 +35,10 @@ $pagNom = 'SOLICITUDES';
       } else {
         echo '<div class="alert alert-success">Datos insertados con exito</div>';
       }
-    } 
+    }
   ?>
-    
   <?php
   }
-
   ?>
 
   <div class="dropdown">
@@ -52,7 +50,6 @@ $pagNom = 'SOLICITUDES';
       
     </ul>
   </div>
-  <br>
   </br>
 
   <!--Botón de registro -->
@@ -162,13 +159,8 @@ $pagNom = 'SOLICITUDES';
 
                     <!-- Botón para enviar datos-->
                     <center>
-
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                       <button type="submit" class="btn btn-warning" onclick="return alertaRechazar()"><a style="text-decoration: none;"  href="updateS2.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>">Rechazar</a></button>
-                      
-
-
-
                     </center>
                     <br>
                     <!-- Botón -->
@@ -322,13 +314,9 @@ $pagNom = 'SOLICITUDES';
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="submit" id="registrar" class="btn btn-dark" onclick="return alertaRegistrarS()">Registrar</button>
               </div>
-
-
             </form>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>
@@ -602,18 +590,12 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
 
             </form>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>
-
-
-
-
-
-  <?php include("../public/footer.php");
-    ?><?php } else { ?>
-    <?php header("Location: ../index.php"); ?>
-  <?php } ?>
+  
+  <?php include("../public/footer.php"); ?>
+<?php } else if ($_SESSION['idTipoUsuario'] != 1 && $_SESSION['idTipoUsuario'] != 2) { ?>
+  <?php header("Location: ../index.php"); ?>
+<?php } ?>
