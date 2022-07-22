@@ -97,7 +97,7 @@ class Database
     //Función para obtener toda la info de un sólo registro
     public function single_recordadministrador($idUsuario)
     {
-        $sql = "SELECT * FROM contrasenadescifrada WHERE idUsuario='$idUsuario'";
+        $sql = "SELECT * FROM contrasenaDescifrada WHERE idUsuario='$idUsuario'";
         $res = mysqli_query($this->con, $sql);
         $return = mysqli_fetch_object($res);
         return $return;
@@ -315,7 +315,7 @@ class Database
     //ConsultaGrupo
     public function readGrupo()
     { //Función para consulta
-        $sql = "SELECT * from vwgrupos";
+        $sql = "SELECT * from vwGrupos";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
