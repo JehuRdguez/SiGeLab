@@ -892,10 +892,10 @@ class Database
 
 
     //registrar Horario
-    public function createHorarios($idUsuario, $materia, $idGrupo, $cantidad, $dia, $horaEntrada, $horaSalida, $idLaboratorio, $horasPorCuatri, $estado)
+    public function createHorarios($idUsuario, $materia, $idGrupo, $dia, $horaEntrada, $horaSalida, $idLaboratorio, $horasPorCuatri, $estado)
     {
-        $sql = "INSERT INTO `horarios` (idUsuario, materia, idGrupo, cantidad, dia, horaEntrada, horaSalida, idLaboratorio, horasPorCuatri, estado)
-          VALUES ('$idUsuario', '$materia', '$idGrupo', '$cantidad', '$dia', '$horaEntrada', '$horaSalida', '$idLaboratorio', '$horasPorCuatri', '$estado')";
+        $sql = "INSERT INTO `horarios` (idUsuario, materia, idGrupo, dia, horaEntrada, horaSalida, idLaboratorio, horasPorCuatri, estado)
+          VALUES ('$idUsuario', '$materia', '$idGrupo', '$dia', '$horaEntrada', '$horaSalida', '$idLaboratorio', '$horasPorCuatri', '$estado')";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;

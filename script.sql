@@ -455,7 +455,7 @@ SELECT `equipo`.* FROM `equipo` where idLaboratorio=3  and estado=1;
 
 
 CREATE VIEW vwhorarios AS
-SELECT `horarios`.`idHorarios`,`usuario`.`nombreC`, `horarios`.`materia`, `grupo`.`nombreGrupo`, `horarios`.`cantidad`, `horarios`.`dia`, `horarios`.`horaEntrada`, `horarios`.`horaSalida`, `laboratorio`.`nombreLaboratorio`, `horarios`.`horasPorCuatri`, `horarios`.`estado`
+SELECT `horarios`.`idHorarios`,`usuario`.`nombreC`, `horarios`.`materia`, `grupo`.`nombreGrupo`, `grupo`.`cantidadAlumnos`, `horarios`.`dia`, `horarios`.`horaEntrada`, `horarios`.`horaSalida`, `laboratorio`.`nombreLaboratorio`, `horarios`.`horasPorCuatri`, `horarios`.`estado`
 FROM `usuario` 
 	INNER JOIN `horarios` ON `horarios`.`idUsuario` = `usuario`.`idUsuario` 
 	INNER JOIN `grupo` ON `grupo`.`idUsuario` = `usuario`.`idUsuario` 

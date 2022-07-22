@@ -4,7 +4,7 @@ $pagNom = 'LABORATORIOS';
 
 
 <?php
-include "../conn.php";
+include "conn.php";
 include "../database.php";
 ?>
 
@@ -23,7 +23,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
             <li><a class="dropdown-item" value="2" href="#">Laboratorio de desarrollo</a></li>
             <li><a class="dropdown-item" value="3" href="#">Laboratorio de soporte</a></li>
         </ul>
-        <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratoriosprueba.php">Detalles</a>
+        <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratoriosprueba.php"><i class="fa-solid fa-list"></i></a>
     </div>
 
     <br>
@@ -57,8 +57,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
             var selectedValue = document.getElementById("list").value;
             document.getElementById("horarios").href="laboratorios.php?id="+ selectedValue;
             alert( document.getElementById("horarios").href);
-            console.log(selectedValue);
-            selectedValue
         }
     </script>
     <!--PRUEBA-->
@@ -66,8 +64,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
     <br>
     </br>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="labHor" id="labHor" autocomplete="off" >
-    
+        <input type="radio" class="btn-check" name="labHor" id="labHor" autocomplete="off" checked>
         <a class="btn btn-outline-dark" href="" for="labHor" id="horarios">Horarios</a>
 
         <input type="radio" class="btn-check" name="labEqu" id="labEqu" autocomplete="off">
@@ -83,7 +80,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
     <br>
     <br />
     <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#archivos">Subir horario</button>
-    <a class="btn btn-outline-dark" href="laboratorios_horarios.php">Detalles</a>
+    <a class="btn btn-outline-dark" href="laboratorios_horarios.php"><i class="fa-solid fa-list"></i></a>
     <br>
 
     <div class="container">
