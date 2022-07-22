@@ -18,6 +18,8 @@ function Header()
     $this->cell(10, 2,' utem@utem.edu.mx  ', 4, 3, 'c', 0);
     $this->setXY(181,32);
     $this->cell(10, 2,utf8_decode(' 01 (314) 33 14450 '), 4, 3, 'c', 0);
+    $this->Image('../styles/logoUTEM1.png',1,13,80); //imagen(archivo, png/jpg || x,y,tamaño)
+    $this->Image('../styles/12.png',5,40,200); //imagen(archivo, png/jpg || x,y,tamaño)
 
     // Movernos a la derecha
     $this->SetFont('Arial','B',20);
@@ -64,8 +66,9 @@ $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
-$pdf->Image('../styles/logoUTEM1.png',1,13,80); //imagen(archivo, png/jpg || x,y,tamaño)
-$pdf->Image('../styles/12.png',5,40,200); //imagen(archivo, png/jpg || x,y,tamaño)
+$pdf->Image('../styles/12.png',55,265,100); //imagen(archivo, png/jpg || x,y,tamaño)
+
+
 
 
 while($row = $resultado->fetch_assoc()){
@@ -81,6 +84,8 @@ while($row = $resultado->fetch_assoc()){
     //$pdf->cell(80, 10,utf8_decode($row['numInvEscolar']), 1, 0, 'c', 0);
 
 }
+$pdf->setXY(100,270);
+$pdf->cell(10, 2,'Firma', 4, 3, 'c', 0);
 
 $pdf->Output();
 ?>
