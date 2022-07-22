@@ -118,11 +118,121 @@ $pagNom = 'LABORATORIOS';
 							<?php } else { ?>
 								<a type="button" class="btn btn-outline-dark" href="updateHorarios.php?idHorarios=<?php echo $idHorarios; ?>"><i class="fa fa-eye"></i></a>
 							<?php } ?>
-							<a type="button" class="btn btn-outline-dark" href="editarHorarios.php?idHorarios=<?php echo $idHorarios; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+							<abbr title="Editar"><button type="button" style="border-color:#0c1a30;" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarHorarios<?php echo $idHorarios; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
 							<abbr title="Detalles"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#detallesHorarios<?php echo $idHorarios; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
 
 						</td>
 					</tr>
+
+
+					<!--modal para editar--->
+					<div class="modal fade" id="editarHorarios<?php echo $idHorarios; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+
+								<form method="POST" action="editarHorarios.php">
+									<input type="hidden" name="idHorarios" value="<?php echo $idHorarios; ?>">
+
+									<div class="modal-body">
+
+										<div class="form-group">
+											<label for="">Maestro</label>
+											<select class="form-select" aria-label="Default select example" id="nomMae" name="nomMae">
+												<?php
+												$datos_horarios = $horariosR->single_recordHorarios($idHorarios);
+												?>
+												<option selected hidden value="<?php echo $datos_horarios->idUsuario; ?>"><?php echo $nombreC; ?></option>
+												<?php
+												$listaHorariosEdit = $horariosR->readListaTutores('nombreC');
+												while ($row = mysqli_fetch_object($listaHorariosEdit)) {
+													$idUsuario = $row->idUsuario;
+													$nombreC = $row->nombreC; ?>
+													<option value="<?php echo $idUsuario; ?>"><?php echo $nombreC; ?></option>
+												<?php } ?>
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label>Materia</label>
+											<input type="text" name="materia" id="materia" class="form-control" value="<?php echo $materia; ?>" required>
+										</div>
+
+										<div class="form-group">
+											<label for="">Grupo</label>
+											<select class="form-select" aria-label="Default select example" id="grupo" name="grupo">
+												<?php
+												$datos_horarios = $horariosR->single_recordHorarios($idHorarios);
+												?>
+												<option selected hidden value="<?php echo $datos_horarios->idGrupo; ?>"><?php echo $nombreGrupo; ?></option>
+												<?php
+												$listaHorariosEdit = $horariosR->readGrupos('nombreGrupo');
+												while ($row = mysqli_fetch_object($listaHorariosEdit)) {
+													$idGrupo = $row->idGrupo;
+													$nombreGrupo = $row->nombreGrupo; ?>
+													<option value="<?php echo $idGrupo; ?>"><?php echo $nombreGrupo; ?></option>
+												<?php } ?>
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label>Día</label>
+											<select class="form-select" aria-label="Default select example" name="dia" id="dia" required>
+												<option selected hidden><?php echo $dia; ?></option>
+												<option value="Lunes">Lunes</option>
+												<option value="Martes">Martes</option>
+												<option value="Miércoles">Miércoles</option>
+												<option value="Jueves">Jueves</option>
+												<option value="Viernes">Viernes</option>
+											</select>
+										</div>
+
+
+										<div class="form-group">
+											<label>Hora entrada</label><abbr title="Los horarios son de 7:30am a 2:35pm"><sup>&#128712;</sup></abbr>
+											<input type="time" name="horaE" id="horaEntrada" min="07:30" max="19:00" class="form-control" value="<?php echo $horaEntrada; ?>" required>
+										</div>
+
+										<div class="form-group">
+											<label>Hora salida</label><abbr title="Los horarios son de 7:30am a 2:35pm"><sup>&#128712;</sup></abbr>
+											<input type="time" name="horaS" id="horaSalida" min="08:20" max="20:35" class="form-control" value="<?php echo $horaSalida; ?>" required>
+										</div>
+
+										<div class="form-group">
+											<label for="">Laboratorio</label>
+											<select class="form-select" aria-label="Default select example" id="lab" name="lab">
+												<?php
+												$datos_horarios = $horariosR->single_recordHorarios($idHorarios);
+												?>
+												<option selected hidden value="<?php echo $datos_horarios->idLaboratorio; ?>"><?php echo $nombreLaboratorio; ?></option>
+												<?php
+												$listaHorariosEdit = $horariosR->readLabAct('nombreLaboratorio');
+												while ($row = mysqli_fetch_object($listaHorariosEdit)) {
+													$idLaboratorio = $row->idLaboratorio;
+													$nombreLaboratorio = $row->nombreLaboratorio; ?>
+													<option value="<?php echo $idLaboratorio; ?>"><?php echo $nombreLaboratorio; ?></option>
+												<?php } ?>
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label>Horas por cuatrimestre</label>
+											<input type="text" name="horasCuatri" id="horasCuatri" class="form-control" value="<?php echo $horasPorCuatri; ?>" required>
+										</div>
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+										<button type="submit" class="btn btn-primary" onclick="return alertaRegistrar()">Guardar cambios</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!---fin modal editar --->
 
 
 					<!-- modal para detalles -->
@@ -208,7 +318,7 @@ $pagNom = 'LABORATORIOS';
 											$listaHorarios = $horariosR->readGrupos('nombreGrupo');
 											while ($row = mysqli_fetch_object($listaHorarios)) {
 												$idGrupo = $row->idGrupo;
-												$nombreGrupo = $row->nombreGrupo; 
+												$nombreGrupo = $row->nombreGrupo;
 												$cantidadAlumnos = $row->cantidadAlumnos; ?>
 												<option value="<?php echo $idGrupo ?>"><?php echo $nombreGrupo ?> (No. Alumnos: <?php echo $cantidadAlumnos ?>)</option>
 											<?php } ?>
@@ -226,55 +336,55 @@ $pagNom = 'LABORATORIOS';
 											<option value="Viernes">Viernes</option>
 									</div>
 									</select>
+
+									<div class="col-sm-10">
+										<label>Hora entrada</label><abbr title="Los horarios son de 7:30am a 2:35pm"><sup>&#128712;</sup></abbr>
+										<input type="time" name="horaE" id="horaEntrada" min="07:30" max="19:00" class="form-control" required>
+									</div>
+
+									<div class="col-sm-10">
+										<label>Hora salida</label><abbr title="Los horarios son de 7:30am a 2:35pm"><sup>&#128712;</sup></abbr>
+										<input type="time" name="horaS" id="horaSalida" min="08:20" max="20:35" class="form-control" required>
+									</div>
+
+
+									<div class="col-sm-10">
+										<label for="">Laboratorio</label>
+										<select class="form-select" aria-label="Default select example" id="lab" name="lab">
+											<option selected disabled>Selecciona un laboratorio:</option>
+											<?php
+											$listaHorarios = $horariosR->readLabAct('idLaboratorio');
+											while ($row = mysqli_fetch_object($listaHorarios)) {
+												$idLaboratorio = $row->idLaboratorio;
+												$nombreLaboratorio = $row->nombreLaboratorio; ?>
+												<option value="<?php echo $idLaboratorio ?>"><?php echo $nombreLaboratorio ?></option>
+											<?php } ?>
+										</select>
+
+
+
+									</div>
+									<div class="col-sm-10">
+										<label>Horas por cuatrimestre</label>
+										<input type="number" name="horasCuatri" id="horasCuatri" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+									</div>
+									<div class="col-sm-10">
+										<label hidden>Estado</label>
+										<select class="form-select" aria-label="Default select example" name="estado" id="estado" hidden>
+											<option selected disabled>Selecciona el estado:</option>
+											<option value="1">Activo</option>
+											<option value="0">Inactivo</option>
+										</select>
+									</div>
+
+								</center>
 							</div>
-
-							<div class="col-sm-10">
-								<label>Hora entrada</label><abbr title="Los horarios son de 7:30am a 2:35pm"><sup>&#128712;</sup></abbr>
-								<input type="time" name="horaE" id="horaEntrada" min="07:30" max="19:00" class="form-control" required>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+								<button type="submit" class="btn btn-primary">Registrar</button>
 							</div>
-
-							<div class="col-sm-10">
-								<label>Hora salida</label><abbr title="Los horarios son de 7:30am a 2:35pm"><sup>&#128712;</sup></abbr>
-								<input type="time" name="horaS" id="horaSalida" min="08:20" max="20:35" class="form-control" required>
-							</div>
-
-
-							<div class="col-sm-10">
-								<label for="">Laboratorio</label>
-								<select class="form-select" aria-label="Default select example" id="lab" name="lab">
-									<option selected disabled>Selecciona un laboratorio:</option>
-									<?php
-									$listaHorarios = $horariosR->readLabAct('idLaboratorio');
-									while ($row = mysqli_fetch_object($listaHorarios)) {
-										$idLaboratorio = $row->idLaboratorio;
-										$nombreLaboratorio = $row->nombreLaboratorio; ?>
-										<option value="<?php echo $idLaboratorio ?>"><?php echo $nombreLaboratorio ?></option>
-									<?php } ?>
-								</select>
-
-
-
-							</div>
-							<div class="col-sm-10">
-								<label>Horas por cuatrimestre</label>
-								<input type="number" name="horasCuatri" id="horasCuatri" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-							</div>
-							<div class="col-sm-10">
-								<label hidden>Estado</label>
-								<select class="form-select" aria-label="Default select example" name="estado" id="estado" hidden>
-									<option selected disabled>Selecciona el estado:</option>
-									<option value="1">Activo</option>
-									<option value="0">Inactivo</option>
-								</select>
-							</div>
-
-							</center>
+						</form>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-						<button type="submit" class="btn btn-primary">Registrar</button>
-					</div>
-					</form>
 				</div>
 			</div>
 		</div>

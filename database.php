@@ -935,15 +935,15 @@ class Database
 
     public function single_recordHorarios($idHorarios)
     {
-        $sql = "SELECT * FROM vwhorarios WHERE idHorarios='$idHorarios'";
+        $sql = "SELECT * FROM horarios WHERE idHorarios='$idHorarios'";
         $res = mysqli_query($this->con, $sql);
         $return = mysqli_fetch_object($res);
         return $return;
     }
 
-    public function editarHorarios($idUsuario, $materia, $idGrupo, $cantidad, $dia, $horaEntrada, $horaSalida, $idLaboratorio, $horasPorCuatri, $idHorarios)
+    public function editarHorarios($idUsuario, $materia, $idGrupo, $dia, $horaEntrada, $horaSalida, $idLaboratorio, $horasPorCuatri, $idHorarios)
     {
-        $sql = "UPDATE horarios SET idUsuario='$idUsuario',materia='$materia',idGrupo='$idGrupo',cantidad='$cantidad',dia='$dia',horaEntrada='$horaEntrada',horaSalida='$horaSalida',idLaboratorio='$idLaboratorio',horasPorCuatri='$horasPorCuatri' WHERE idHorarios='$idHorarios'";
+        $sql = "UPDATE horarios SET idUsuario='$idUsuario',materia='$materia',idGrupo='$idGrupo',dia='$dia',horaEntrada='$horaEntrada',horaSalida='$horaSalida',idLaboratorio='$idLaboratorio',horasPorCuatri='$horasPorCuatri' WHERE idHorarios='$idHorarios'";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
