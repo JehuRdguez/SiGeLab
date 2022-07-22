@@ -245,7 +245,7 @@ $pagNom = 'LABORATORIOS';
 
 								<div class="modal-body">
 									<?php
-									$datos_horarios = $horariosR->single_recordHorarios($idHorarios);
+									$datos_horarios = $horariosR->single_recordHorariosDet($idHorarios);
 									?>
 
 									</br><label>Cantidad de alumnos en <?php echo $datos_horarios->nombreGrupo; ?>: <strong><?php echo $datos_horarios->cantidadAlumnos; ?></strong></label></br>

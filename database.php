@@ -941,6 +941,14 @@ class Database
         return $return;
     }
 
+    public function single_recordHorariosDet($idHorarios)
+    {
+        $sql = "SELECT * FROM vwhorarios WHERE idHorarios='$idHorarios'";
+        $res = mysqli_query($this->con, $sql);
+        $return = mysqli_fetch_object($res);
+        return $return;
+    }
+
     public function editarHorarios($idUsuario, $materia, $idGrupo, $dia, $horaEntrada, $horaSalida, $idLaboratorio, $horasPorCuatri, $idHorarios)
     {
         $sql = "UPDATE horarios SET idUsuario='$idUsuario',materia='$materia',idGrupo='$idGrupo',dia='$dia',horaEntrada='$horaEntrada',horaSalida='$horaSalida',idLaboratorio='$idLaboratorio',horasPorCuatri='$horasPorCuatri' WHERE idHorarios='$idHorarios'";
