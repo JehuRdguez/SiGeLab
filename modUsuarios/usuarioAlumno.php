@@ -180,7 +180,7 @@ $pagNom = 'USUARIOS';
                           ?>
                           <option selected value="<?php echo $datos_alumno->idGrupo; ?>"><?php echo $idGrupo; ?></option>
                           <?php
-                          $listaEGrupos = $alumnos->readGrupo('nombreGrupo');
+                          $listaEGrupos = $alumnos->readListaGrupo('nombreGrupo');
                           while ($row = mysqli_fetch_object($listaEGrupos)) {
                             $idGrupo = $row->idGrupo;
                             $nombreGrupo = $row->nombreGrupo; ?>
@@ -398,7 +398,7 @@ $pagNom = 'USUARIOS';
                   <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
                     <option value="">Selecciona un grupo</option>
                     <?php
-                    $listaEGrupos = $alumnos->readGrupo('nombreGrupo');
+                    $listaEGrupos = $alumnos->readListaGrupo('nombreGrupo');
                     while ($row = mysqli_fetch_object($listaEGrupos)) {
                       $idGrupo = $row->idGrupo;
                       $nombreGrupo = $row->nombreGrupo; ?>
