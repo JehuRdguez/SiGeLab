@@ -320,7 +320,7 @@ $pagNom = 'LABORATORIOS';
 												$idGrupo = $row->idGrupo;
 												$nombreGrupo = $row->nombreGrupo;
 												$cantidadAlumnos = $row->cantidadAlumnos; ?>
-												<option value="<?php echo $idGrupo ?>"><?php echo $nombreGrupo ?> (No. Alumnos: <?php echo $cantidadAlumnos ?>)</option>
+												<option value="<?php echo $idGrupo ?>"><?php echo $nombreGrupo ?></option>
 											<?php } ?>
 										</select>
 									</div>
@@ -334,8 +334,8 @@ $pagNom = 'LABORATORIOS';
 											<option value="Miércoles">Miércoles</option>
 											<option value="Jueves">Jueves</option>
 											<option value="Viernes">Viernes</option>
+										</select>
 									</div>
-									</select>
 
 									<div class="col-sm-10">
 										<label>Hora entrada</label><abbr title="Los horarios son de 7:30am a 2:35pm"><sup>&#128712;</sup></abbr>
@@ -360,9 +360,6 @@ $pagNom = 'LABORATORIOS';
 												<option value="<?php echo $idLaboratorio ?>"><?php echo $nombreLaboratorio ?></option>
 											<?php } ?>
 										</select>
-
-
-
 									</div>
 									<div class="col-sm-10">
 										<label>Horas por cuatrimestre</label>
