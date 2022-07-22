@@ -283,23 +283,14 @@ $pagNom = 'LABORATORIOS';
                   <?php
                   $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                   ?>
-                  <label>N.º de serie monitor: <strong><?php if ($datos_equipos->numSerieMonitor == 0) {
-                                                          echo 'Pendiente';
-                                                        } else {
-                                                          echo $datos_equipos->numSerieMonitor;
-                                                        } ?></strong></label></br>
+                  <label>N.º de serie monitor: <strong><?php echo $datos_equipos->numSerieMonitor;
+                                                         ?></strong></label></br>
 
-                  </br><label>N.º de serie teclado: <strong><?php if ($datos_equipos->numSerieTeclado == 0) {
-                                                              echo 'Pendiente';
-                                                            } else {
-                                                              echo $datos_equipos->numSerieTeclado;
-                                                            } ?></strong></label></br>
+                  </br><label>N.º de serie teclado: <strong><?php echo $datos_equipos->numSerieTeclado;
+                                                             ?></strong></label></br>
 
-                  </br><label>N.º de serie mouse: <strong><?php if ($datos_equipos->numSerieMouse == 0) {
-                                                            echo 'Pendiente';
-                                                          } else {
-                                                            echo $datos_equipos->numSerieMouse;
-                                                          } ?></strong></label></br>
+                  </br><label>N.º de serie mouse: <strong><?php echo $datos_equipos->numSerieMouse;
+                                                           ?></strong></label></br>
 
                   </br><label>Ubicación en mesa: <strong><?php echo $datos_equipos->ubicacionEnMesa; ?></strong></label></br>
 
@@ -364,7 +355,7 @@ $pagNom = 'LABORATORIOS';
                     <label for="">N.º de serie monitor</label>
                     <select class="form-select" aria-label="Default select example" id="numMon" name="numMon" required>
                       <option selected disabled hidden>Selecciona un monitor:</option>
-                      <option value="0">Pendiente</option>
+                      <option value="Pendiente">Pendiente</option>
                       <?php
                       $listaEquipos = $equiposR->readMonitorAct('numSerieMonitor');
                       while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -377,7 +368,7 @@ $pagNom = 'LABORATORIOS';
                     <label for="">N.º de serie teclado</label>
                     <select class="form-select" aria-label="Default select example" id="numTec" name="numTec" required>
                       <option selected disabled hidden>Selecciona un teclado:</option>
-                      <option value="0">Pendiente</option>
+                      <option value="Pendiente">Pendiente</option>
                       <?php
                       $listaEquipos = $equiposR->readTecladoAct('numSerieTeclado');
                       while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -389,7 +380,7 @@ $pagNom = 'LABORATORIOS';
                   <div class="col-sm-10">
                     <label for="">N.º de serie mouse</label>
                     <select class="form-select" aria-label="Default select example" id="numMou" name="numMou" required>
-                      <option value="0">Pendiente</option>
+                      <option value="Pendiente">Pendiente</option>
                       <option selected disabled hidden>Selecciona un mouse:</option>
                       <?php
                       $listaEquipos = $equiposR->readMouseAct('numSerieMouse');
