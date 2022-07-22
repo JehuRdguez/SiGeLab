@@ -1,5 +1,5 @@
 <?php
-$pagNom = 'EQUIPOS';
+$pagNom = 'CAMBIO EQUIPO';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -139,15 +139,15 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
   
     <div class="dropdown">
       <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
-        Cambio de equipo</button>
+        Solicitudes</button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item"  href="../modSolicitudes/solicitudes.php">Solcitudes</a></li>
-        <li><a class="dropdown-item"  href="../modSolicitudes/solicitudAL.php">Cambio de equipo</a></li>
-        
+        <li><a class="dropdown-item"  href="../modSolicitudes/solicitudes.php">Solcitudes de acceso</a></li>
+        <li><a class="dropdown-item"  href="../modSolicitudes/solicitudEquipo.php">Cambio de equipo</a></li>
+
       </ul>
     </div>
     
-
+    </br>
     <?php
     include("../database.php"); ?>
     <div class="container">
@@ -294,6 +294,6 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
       </table>
     </div>
     <?php include("../public/footer.php");
-    ?><?php } else { ?>
+    ?><?php } else if($_SESSION['idTipoUsuario']!=1 && $_SESSION['idTipoUsuario']!=3){ ?>
     <?php header("Location: ../index.php"); ?>
   <?php } ?>

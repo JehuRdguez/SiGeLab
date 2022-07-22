@@ -1,5 +1,5 @@
 <?php
-$pagNom = 'SOLICITUDES';
+$pagNom = 'SOLICITUDES DE ACCESO';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -45,16 +45,17 @@ $pagNom = 'SOLICITUDES';
     <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
       Solicitudes</button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item"  href="../modSolicitudes/solicitudes.php">Solcitudes</a></li>
+      <li><a class="dropdown-item"  href="../modSolicitudes/solicitudes.php">Solcitudes de acceso</a></li>
       <li><a class="dropdown-item"  href="../modSolicitudes/solicitudEquipo.php">Cambio de equipo</a></li>
       
     </ul>
+      <!--Botón de registro -->
+  <a type="button" class="btn btn-outline-dark" href="#RegistroSolicitud" data-bs-toggle="modal">Registrar Solicitud</a> <br />
+
   </div>
   </br>
 
-  <!--Botón de registro -->
-  <a type="button" class="btn btn-outline-dark" href="#RegistroSolicitud" data-bs-toggle="modal">Registrar Solicitud</a> <br />
-  <br>
+
   <!-- Mostrar tabla-->
   <div class="container">
     <table class="table table-bordered " cellspacing="0" width="100%" id="solicitudesTable" style="background-color: #04aa89;  ">
