@@ -74,7 +74,6 @@ if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericos.php">Monitor</a></li>
     <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosT.php">Teclado</a></li>
-    <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosG.php">Gabinete</a></li>
 	<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosM.php">Mouse</a></li>
   </ul>
   <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#perifericomonitor">Registrar</a>

@@ -16,7 +16,6 @@ if (isset($_POST) && !empty($_POST)) {
   $numSerieEquipo = $equiposR->sanitize($_POST['numSerieEquipo']);
   $numSerieMonitor = $equiposR->sanitize($_POST['numMon']);
   $numSerieTeclado = $equiposR->sanitize($_POST['numTec']);
-  $numSerieGabinete = $equiposR->sanitize($_POST['numGab']);
   $numSerieMouse = $equiposR->sanitize($_POST['numMou']);
   $ubicacionEnMesa = $equiposR->sanitize($_POST['ubiMesa']);
   $procesador = $equiposR->sanitize($_POST['procesador']);
@@ -25,7 +24,7 @@ if (isset($_POST) && !empty($_POST)) {
 
   $idEquipo = intval($_POST['idEquipo']);
 
-  $res = $equiposR->updateEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieGabinete, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $idEquipo);
+  $res = $equiposR->updateEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $idEquipo);
 
   if ($res) {
     $message = "Datos actualizados con éxito";

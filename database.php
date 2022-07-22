@@ -450,11 +450,11 @@ class Database
 
     /////////////////////////////////////////////////////////////////JEHU/////////////////////////////////////////////////////////////////////     
 
-    public function createEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieGabinete, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $estado)
+    public function createEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $estado)
     {
         $sql = "INSERT INTO `equipo` (
-        idLaboratorio, numInvEscolar, numSerieEquipo, numSerieMonitor, numSerieTeclado, numSerieGabinete, numSerieMouse, ubicacionEnMesa, procesador, discoDuro, ram, estado)
-        VALUES ('$idLaboratorio', '$numInvEscolar', '$numSerieEquipo', '$numSerieMonitor', '$numSerieTeclado', '$numSerieGabinete', '$numSerieMouse', '$ubicacionEnMesa', '$procesador', '$discoDuro', '$ram', '$estado')";
+        idLaboratorio, numInvEscolar, numSerieEquipo, numSerieMonitor, numSerieTeclado, numSerieMouse, ubicacionEnMesa, procesador, discoDuro, ram, estado)
+        VALUES ('$idLaboratorio', '$numInvEscolar', '$numSerieEquipo', '$numSerieMonitor', '$numSerieTeclado', '$numSerieMouse', '$ubicacionEnMesa', '$procesador', '$discoDuro', '$ram', '$estado')";
         try {
             $res = mysqli_query($this->con, $sql);
         } catch (\Throwable) {
@@ -502,9 +502,9 @@ class Database
         }
     }
 
-    public function updateEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieGabinete, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $idEquipo)
+    public function updateEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $idEquipo)
     {
-        $sql = "UPDATE equipo SET idLaboratorio='$idLaboratorio', numInvEscolar='$numInvEscolar', numSerieEquipo='$numSerieEquipo', numSerieMonitor='$numSerieMonitor', numSerieTeclado='$numSerieTeclado', numSerieGabinete='$numSerieGabinete', numSerieMouse='$numSerieMouse', ubicacionEnMesa='$ubicacionEnMesa', procesador='$procesador', discoDuro='$discoDuro',ram='$ram'
+        $sql = "UPDATE equipo SET idLaboratorio='$idLaboratorio', numInvEscolar='$numInvEscolar', numSerieEquipo='$numSerieEquipo', numSerieMonitor='$numSerieMonitor', numSerieTeclado='$numSerieTeclado', numSerieMouse='$numSerieMouse', ubicacionEnMesa='$ubicacionEnMesa', procesador='$procesador', discoDuro='$discoDuro',ram='$ram'
     WHERE idEquipo='$idEquipo'";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
@@ -645,72 +645,6 @@ class Database
         }
     }
 
-    //registro gabinete
-    public function createGabinete($numInvEscolar, $numSerieGabinete, $marca, $modelo, $estado, $idTipoPerifericos)
-    { //variables
-        $sql = "CALL proAddGabinete ('$numInvEscolar','$numSerieGabinete', '$marca', '$modelo', '$estado', '$idTipoPerifericos')";
-        try {
-            $res = mysqli_query($this->con, $sql);
-        } catch (\Throwable) {
-            return 'duplicado';
-        }
-        if ($res) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    //Consulta gabinete
-    public function readGabinete()
-    {
-        $sql = "SELECT * from vwgabinete";
-        $res = mysqli_query($this->con, $sql);
-        return $res;
-    }
-
-
-    //Función para editar estado gabinete
-    public function updateEstadoGabinete($idPerifericos)
-    {
-        $sql = "SELECT * FROM perifericos WHERE idPerifericos='$idPerifericos'";
-        $res = mysqli_query($this->con, $sql);
-        $return = mysqli_fetch_object($res);
-        if ($return->estado) {
-            $sql = "UPDATE perifericos SET estado=0 WHERE idPerifericos='$idPerifericos'";
-        } else {
-            $sql = "UPDATE perifericos SET estado=1 WHERE idPerifericos='$idPerifericos'";
-        }
-
-        $res = mysqli_query($this->con, $sql);
-
-        if ($res) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function single_recordGabinete($idPerifericos)
-    {
-        $sql = "SELECT * FROM perifericos WHERE idPerifericos='$idPerifericos'";
-        $res = mysqli_query($this->con, $sql);
-        $return = mysqli_fetch_object($res);
-        return $return;
-    }
-
-    //Función editar gabinete
-    public function editarGabinete($numInvEscolar, $numSerieGabinete, $marca, $modelo, $idPerifericos)
-    {
-        $sql = "    UPDATE  perifericos,perifericogabinete SET perifericos.numInvEscolar='$numInvEscolar', perifericogabinete.numSerieGabinete='$numSerieGabinete', perifericos.marca='$marca', perifericos.modelo='$modelo'
-         WHERE perifericos.idPerifericos='$idPerifericos' AND perifericogabinete.idPerifericos='$idPerifericos' ";
-        $res = mysqli_query($this->con, $sql);
-        if ($res) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     //registro mouse
     public function createMouse($numInvEscolar, $numSerieMouse, $marca, $modelo, $estado, $idTipoPerifericos)

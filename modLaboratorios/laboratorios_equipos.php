@@ -15,14 +15,13 @@ if (isset($_POST) && !empty($_POST)) {
   $numSerieEquipo = $equiposR->sanitize($_POST['numSerieEquipo']);
   $numSerieMonitor = $equiposR->sanitize($_POST['numMon']);
   $numSerieTeclado = $equiposR->sanitize($_POST['numTec']);
-  $numSerieGabinete = $equiposR->sanitize($_POST['numGab']);
   $numSerieMouse = $equiposR->sanitize($_POST['numMou']);
   $ubicacionEnMesa = $equiposR->sanitize($_POST['ubiMesa']);
   $procesador = $equiposR->sanitize($_POST['procesador']);
   $discoDuro = $equiposR->sanitize($_POST['discoDuro']);
   $ram = $equiposR->sanitize($_POST['ram']);
 
-  $res = $equiposR->createEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieGabinete, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, 1);
+  $res = $equiposR->createEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, 1);
 
   if ($res === true) {
     $message = "Datos insertados con éxito";
@@ -95,7 +94,6 @@ if (isset($_POST) && !empty($_POST)) {
         $numSerieEquipo = $row->numSerieEquipo;
         $numSerieMonitor = $row->numSerieMonitor;
         $numSerieTeclado = $row->numSerieTeclado;
-        $numSerieGabinete = $row->numSerieGabinete;
         $numSerieMouse = $row->numSerieMouse;
         $ubicacionEnMesa = $row->ubicacionEnMesa;
         $procesador = $row->procesador;
@@ -214,28 +212,6 @@ if (isset($_POST) && !empty($_POST)) {
                   </div>
 
                   <div class="form-group">
-                    <label for="" class="col-form-label">N.º de serie gabinete: </label>
-                    <select class="form-select" aria-label="Default select example" id="numGab" name="numGab">
-                      <option value="0">Pendiente</option>
-                      <?php
-                      $datos_equipos = $equiposR->single_recordequipo($idEquipo);
-                      ?>
-                      <option selected hidden value="<?php echo $datos_equipos->numSerieGabinete; ?>"><?php if ($numSerieGabinete == 0) {
-                                                                                                        echo 'Pendiente';
-                                                                                                      } else {
-                                                                                                        echo $numSerieGabinete;
-                                                                                                      } ?></option>
-                      <?php
-                      $listaGabineteEdit = $equiposR->readGabineteAct('numSerieGabinete');
-                      while ($row = mysqli_fetch_object($listaGabineteEdit)) {
-                        $idPerifericos = $row->idPerifericos;
-                        $numSerieGabinete = $row->numSerieGabinete; ?>
-                        <option value="<?php echo $numSerieGabinete; ?>"><?php echo $numSerieGabinete; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
                     <label for="" class="col-form-label">N.º de serie mouse: </label>
                     <select class="form-select" aria-label="Default select example" id="numMou" name="numMou">
                       <option value="0">Pendiente</option>
@@ -319,12 +295,6 @@ if (isset($_POST) && !empty($_POST)) {
                                                           } else {
                                                             echo $datos_equipos->numSerieTeclado;
                                                           } ?></strong></label></br>
-
-                </br><label>N.º de serie gabinete: <strong><?php if ($datos_equipos->numSerieGabinete == 0) {
-                                                              echo 'Pendiente';
-                                                            } else {
-                                                              echo $datos_equipos->numSerieGabinete;
-                                                            } ?></strong></label></br>
 
                 </br><label>N.º de serie mouse: <strong><?php if ($datos_equipos->numSerieMouse == 0) {
                                                           echo 'Pendiente';
@@ -414,19 +384,6 @@ if (isset($_POST) && !empty($_POST)) {
                     while ($row = mysqli_fetch_object($listaEquipos)) {
                       $numSerieTeclado = $row->numSerieTeclado; ?>
                       <option value="<?php echo $numSerieTeclado ?>"><?php echo $numSerieTeclado ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-                <div class="col-sm-10">
-                  <label for="">N.º de serie gabinete</label>
-                  <select class="form-select" aria-label="Default select example" id="numGab" name="numGab" required>
-                  <option value="0">Pendiente</option>
-                    <option selected disabled hidden>Selecciona un gabinete:</option>
-                    <?php
-                    $listaEquipos = $equiposR->readGabineteAct('numSerieGabinete');
-                    while ($row = mysqli_fetch_object($listaEquipos)) {
-                      $numSerieGabinete = $row->numSerieGabinete; ?>
-                      <option value="<?php echo $numSerieGabinete ?>"><?php echo $numSerieGabinete ?></option>
                     <?php } ?>
                   </select>
                 </div>
