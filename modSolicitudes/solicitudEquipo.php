@@ -160,6 +160,7 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
             <th>Laboratorio</th>
             <th>Grupo</th>
             <th>Motivo</th>
+            <th>Fecha</th>
             <th>Estado</th>
             <th>Acciones</th>
           </tr>
@@ -178,6 +179,7 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
             $nombreLaboratorio = $row->nombreLaboratorio;
             $idGrupo = $row->idGrupo;
             $razon = $row->razon;
+            $fecha = $row->fecha; 
             $estado = $row->estado;
    
   
@@ -191,6 +193,7 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
               <td><?php echo $nombreLaboratorio; ?></td>
               <td><?php echo $idGrupo; ?></td>
               <td><?php echo $razon; ?></td>
+              <td><?php echo $fecha; ?></td>
               <td><?php if ($estado == 2) {
                     echo 'Pendiente';
                   } else if ($estado == 1) {
