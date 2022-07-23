@@ -27,11 +27,11 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
 	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equipos.php" for="btnradio3">Equipos</a>
 
-	<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
-
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
 	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericos.php" for="btnradio5">Periféricos</a>
+
+	<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
 </div>
 
 <br>

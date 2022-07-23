@@ -52,11 +52,11 @@ $pagNom = 'LABORATORIOS';
     <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
     <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equipos.php" for="btnradio3">Equipos</a>
 
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
-
     <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
     <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericos.php" for="btnradio5">Periféricos</a>
+
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
   </div>
   </br>
   <br>
@@ -271,13 +271,13 @@ $pagNom = 'LABORATORIOS';
                   <?php
                   $datos_equipos = $equiposR->single_recordequipoDet($idEquipo);
                   ?>
-                  <label>N.º de serie monitor: <strong><?php echo $datos_equipos->numInvEscMon;
+                  <label>N.º Inv. Escolar de monitor: <strong><?php echo $datos_equipos->numInvEscMon;
                                                          ?></strong></label></br>
 
-                  </br><label>N.º de serie teclado: <strong><?php echo $datos_equipos->numInvEscTec;
+                  </br><label>N.º Inv. Escolar de teclado: <strong><?php echo $datos_equipos->numInvEscTec;
                                                              ?></strong></label></br>
 
-                  </br><label>N.º de serie mouse: <strong><?php echo $datos_equipos->numInvEscMou;
+                  </br><label>N.º Inv. Escolar de mouse: <strong><?php echo $datos_equipos->numInvEscMou;
                                                            ?></strong></label></br>
 
                   </br><label>Ubicación en mesa: <strong><?php echo $datos_equipos->ubicacionEnMesa; ?></strong></label></br>
