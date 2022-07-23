@@ -12,13 +12,13 @@ if (isset($_GET['idPerifericos'])){
 
     if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
         $numInvEscolar = $perifericoT->sanitize($_POST['escolarteclado']);
-        $numSerieTeclado = $perifericoT->sanitize($_POST['numSerieteclado']);
+        $numSerie = $perifericoT->sanitize($_POST['numSerieteclado']);
         $marca = $perifericoT->sanitize($_POST['marcateclado']);
         $modelo = $perifericoT->sanitize($_POST['modeloteclado']);      
 
         $idPerifericos = intval($_POST['idPerifericos']);
 
-        $res = $perifericoT->editarTeclado($numInvEscolar, $numSerieTeclado, $marca, $modelo, $idPerifericos);
+        $res = $perifericoT->editarPerifericos($numInvEscolar, $numSerie, $marca, $modelo, $idPerifericos);
       
         if ($res) {
           $message = "Datos actualizados con éxito";

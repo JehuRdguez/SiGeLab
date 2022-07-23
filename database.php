@@ -439,11 +439,11 @@ class Database
 
     /////////////////////////////////////////////////////////////////JEHU/////////////////////////////////////////////////////////////////////     
 
-    public function createEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $estado)
+    public function createEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numMonitor, $numTeclado, $numMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $estado)
     {
         $sql = "INSERT INTO `equipo` (
-        idLaboratorio, numInvEscolar, numSerieEquipo, numSerieMonitor, numSerieTeclado, numSerieMouse, ubicacionEnMesa, procesador, discoDuro, ram, estado)
-        VALUES ('$idLaboratorio', '$numInvEscolar', '$numSerieEquipo', '$numSerieMonitor', '$numSerieTeclado', '$numSerieMouse', '$ubicacionEnMesa', '$procesador', '$discoDuro', '$ram', '$estado')";
+        idLaboratorio, numInvEscolar, numSerieEquipo, numMonitor, numTeclado, numMouse, ubicacionEnMesa, procesador, discoDuro, ram, estado)
+        VALUES ('$idLaboratorio', '$numInvEscolar', '$numSerieEquipo', '$numMonitor', '$numTeclado', '$numMouse', '$ubicacionEnMesa', '$procesador', '$discoDuro', '$ram', '$estado')";
         try {
             $res = mysqli_query($this->con, $sql);
         } catch (\Throwable) {
@@ -455,6 +455,7 @@ class Database
             return false;
         }
     }
+
     public function readEquipo()
     {
         $sql = "SELECT * FROM vwequipo";
@@ -466,6 +467,14 @@ class Database
     public function single_recordequipo($idEquipo)
     {
         $sql = "SELECT * FROM equipo WHERE idEquipo='$idEquipo'";
+        $res = mysqli_query($this->con, $sql);
+        $return = mysqli_fetch_object($res);
+        return $return;
+    }
+
+    public function single_recordequipoDet($idEquipo)
+    {
+        $sql = "SELECT * FROM vwequipo WHERE idEquipo='$idEquipo'";
         $res = mysqli_query($this->con, $sql);
         $return = mysqli_fetch_object($res);
         return $return;
@@ -491,9 +500,9 @@ class Database
         }
     }
 
-    public function updateEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $idEquipo)
+    public function updateEquipo($idLaboratorio, $numInvEscolar, $numSerieEquipo, $numMonitor, $numTeclado, $numMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, $idEquipo)
     {
-        $sql = "UPDATE equipo SET idLaboratorio='$idLaboratorio', numInvEscolar='$numInvEscolar', numSerieEquipo='$numSerieEquipo', numSerieMonitor='$numSerieMonitor', numSerieTeclado='$numSerieTeclado', numSerieMouse='$numSerieMouse', ubicacionEnMesa='$ubicacionEnMesa', procesador='$procesador', discoDuro='$discoDuro',ram='$ram'
+        $sql = "UPDATE equipo SET idLaboratorio='$idLaboratorio', numInvEscolar='$numInvEscolar', numSerieEquipo='$numSerieEquipo', numMonitor='$numMonitor', numTeclado='$numTeclado', numMouse='$numMouse', ubicacionEnMesa='$ubicacionEnMesa', procesador='$procesador', discoDuro='$discoDuro',ram='$ram'
     WHERE idEquipo='$idEquipo'";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
@@ -506,9 +515,10 @@ class Database
 
 
     //registro monitor
-    public function createMonitor($numInvEscolar, $numSerieMonitor, $marca, $modelo, $estado, $idTipoPerifericos)
-    { //variables
-        $sql = "CALL proAddMonitor ('$numInvEscolar','$numSerieMonitor', '$marca', '$modelo', '$estado', '$idTipoPerifericos')";
+    public function createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, $estado, $idTipoPerifericos)
+    {
+        $sql = "INSERT INTO `perifericos` (numInvEscolar, numSerie, marca, modelo, estado, idTipoPerifericos)
+        VALUES ('$numInvEscolar','$numSerie','$marca','$modelo' ,'$estado', '$idTipoPerifericos')";
         try {
             $res = mysqli_query($this->con, $sql);
         } catch (\Throwable) {
@@ -561,10 +571,10 @@ class Database
 
 
     //Función editar monitor
-    public function editarMonitor($numInvEscolar, $numSerieMonitor, $marca, $modelo, $idPerifericos)
+    public function editarPerifericos($numInvEscolar, $numSerie, $marca, $modelo, $idPerifericos)
     {
-        $sql = "UPDATE  perifericos,perifericomonitor SET perifericos.numInvEscolar='$numInvEscolar', perifericomonitor.numSerieMonitor='$numSerieMonitor', perifericos.marca='$marca', perifericos.modelo='$modelo'
-         WHERE perifericos.idPerifericos='$idPerifericos' AND perifericomonitor.idPerifericos='$idPerifericos' ";
+        $sql = "UPDATE  perifericos SET perifericos.numInvEscolar='$numInvEscolar', perifericos.numSerie='$numSerie', perifericos.marca='$marca', perifericos.modelo='$modelo'
+         WHERE perifericos.idPerifericos='$idPerifericos'";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;

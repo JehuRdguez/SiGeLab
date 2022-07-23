@@ -13,15 +13,15 @@ $pagNom = 'LABORATORIOS';
     $nombreLaboratorio = $equiposR->sanitize($_POST['lab']);
     $numInvEscolar = $equiposR->sanitize($_POST['numInvEscolar']);
     $numSerieEquipo = $equiposR->sanitize($_POST['numSerieEquipo']);
-    $numSerieMonitor = $equiposR->sanitize($_POST['numMon']);
-    $numSerieTeclado = $equiposR->sanitize($_POST['numTec']);
-    $numSerieMouse = $equiposR->sanitize($_POST['numMou']);
+    $numMonitor = $equiposR->sanitize($_POST['numMon']);
+    $numTeclado = $equiposR->sanitize($_POST['numTec']);
+    $numMouse = $equiposR->sanitize($_POST['numMou']);
     $ubicacionEnMesa = $equiposR->sanitize($_POST['ubiMesa']);
     $procesador = $equiposR->sanitize($_POST['procesador']);
     $discoDuro = $equiposR->sanitize($_POST['discoDuro']);
     $ram = $equiposR->sanitize($_POST['ram']);
 
-    $res = $equiposR->createEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numSerieMonitor, $numSerieTeclado, $numSerieMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, 1);
+    $res = $equiposR->createEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numMonitor, $numTeclado, $numMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, 1);
 
     if ($res === true) {
       $message = "Datos insertados con éxito";
@@ -92,9 +92,9 @@ $pagNom = 'LABORATORIOS';
           $nombreLaboratorio = $row->nombreLaboratorio;
           $numInvEscolar = $row->numInvEscolar;
           $numSerieEquipo = $row->numSerieEquipo;
-          $numSerieMonitor = $row->numSerieMonitor;
-          $numSerieTeclado = $row->numSerieTeclado;
-          $numSerieMouse = $row->numSerieMouse;
+          $numInvEscMon = $row->numInvEscMon;
+          $numInvEscTec = $row->numInvEscTec;
+          $numInvEscMou = $row->numInvEscMou;
           $ubicacionEnMesa = $row->ubicacionEnMesa;
           $procesador = $row->procesador;
           $discoDuro = $row->discoDuro;
@@ -174,17 +174,13 @@ $pagNom = 'LABORATORIOS';
                         <?php
                         $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                         ?>
-                        <option selected hidden value="<?php echo $datos_equipos->numSerieMonitor; ?>"><?php if ($numSerieMonitor == 0) {
-                                                                                                          echo 'Pendiente';
-                                                                                                        } else {
-                                                                                                          echo $numSerieMonitor;
-                                                                                                        } ?></option>
+                        <option selected hidden value="<?php echo $datos_equipos->numMonitor; ?>"><?php echo $numInvEscMon; ?></option>
                         <?php
-                        $listaMonitorEdit = $equiposR->readMonitorAct('numSerieMonitor');
+                        $listaMonitorEdit = $equiposR->readMonitorAct('numInvEscolar');
                         while ($row = mysqli_fetch_object($listaMonitorEdit)) {
                           $idPerifericos = $row->idPerifericos;
-                          $numSerieMonitor = $row->numSerieMonitor; ?>
-                          <option value="<?php echo $numSerieMonitor; ?>"><?php echo $numSerieMonitor; ?></option>
+                          $numInvEscolar = $row->numInvEscolar; ?>
+                          <option value="<?php echo $idPerifericos; ?>"><?php echo $numInvEscolar; ?></option>
                         <?php } ?>
                       </select>
                     </div>
@@ -196,17 +192,13 @@ $pagNom = 'LABORATORIOS';
                         <?php
                         $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                         ?>
-                        <option selected hidden value="<?php echo $datos_equipos->numSerieTeclado; ?>"><?php if ($numSerieTeclado == 0) {
-                                                                                                          echo 'Pendiente';
-                                                                                                        } else {
-                                                                                                          echo $numSerieTeclado;
-                                                                                                        } ?></option>
+                        <option selected hidden value="<?php echo $datos_equipos->numTeclado; ?>"><?php echo $numInvEscTec; ?></option>
                         <?php
-                        $listaTecladoEdit = $equiposR->readTecladoAct('numSerieTeclado');
+                        $listaTecladoEdit = $equiposR->readTecladoAct('numInvEscolar');
                         while ($row = mysqli_fetch_object($listaTecladoEdit)) {
                           $idPerifericos = $row->idPerifericos;
-                          $numSerieTeclado = $row->numSerieTeclado; ?>
-                          <option value="<?php echo $numSerieTeclado; ?>"><?php echo $numSerieTeclado; ?></option>
+                          $numInvEscolar = $row->numInvEscolar; ?>
+                          <option value="<?php echo $idPerifericos; ?>"><?php echo $numInvEscolar; ?></option>
                         <?php } ?>
                       </select>
                     </div>
@@ -218,17 +210,13 @@ $pagNom = 'LABORATORIOS';
                         <?php
                         $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                         ?>
-                        <option selected hidden value="<?php echo $datos_equipos->numSerieMouse; ?>"><?php if ($numSerieMouse == 0) {
-                                                                                                        echo 'Pendiente';
-                                                                                                      } else {
-                                                                                                        echo $numSerieMouse;
-                                                                                                      } ?></option>
+                        <option selected hidden value="<?php echo $datos_equipos->numMouse; ?>"><?php echo $numInvEscMou; ?></option>
                         <?php
-                        $listaMouseEdit = $equiposR->readMouseAct('numSerieMouse');
+                        $listaMouseEdit = $equiposR->readMouseAct('numInvEscolar');
                         while ($row = mysqli_fetch_object($listaMouseEdit)) {
                           $idPerifericos = $row->idPerifericos;
-                          $numSerieMouse = $row->numSerieMouse; ?>
-                          <option value="<?php echo $numSerieMouse; ?>"><?php echo $numSerieMouse; ?></option>
+                          $numInvEscolar = $row->numInvEscolar; ?>
+                          <option value="<?php echo $idPerifericos; ?>"><?php echo $numInvEscolar; ?></option>
                         <?php } ?>
                       </select>
                     </div>
@@ -281,15 +269,15 @@ $pagNom = 'LABORATORIOS';
 
                 <div class="modal-body">
                   <?php
-                  $datos_equipos = $equiposR->single_recordequipo($idEquipo);
+                  $datos_equipos = $equiposR->single_recordequipoDet($idEquipo);
                   ?>
-                  <label>N.º de serie monitor: <strong><?php echo $datos_equipos->numSerieMonitor;
+                  <label>N.º de serie monitor: <strong><?php echo $datos_equipos->numInvEscMon;
                                                          ?></strong></label></br>
 
-                  </br><label>N.º de serie teclado: <strong><?php echo $datos_equipos->numSerieTeclado;
+                  </br><label>N.º de serie teclado: <strong><?php echo $datos_equipos->numInvEscTec;
                                                              ?></strong></label></br>
 
-                  </br><label>N.º de serie mouse: <strong><?php echo $datos_equipos->numSerieMouse;
+                  </br><label>N.º de serie mouse: <strong><?php echo $datos_equipos->numInvEscMou;
                                                            ?></strong></label></br>
 
                   </br><label>Ubicación en mesa: <strong><?php echo $datos_equipos->ubicacionEnMesa; ?></strong></label></br>
@@ -355,12 +343,13 @@ $pagNom = 'LABORATORIOS';
                     <label for="">N.º de serie monitor</label>
                     <select class="form-select" aria-label="Default select example" id="numMon" name="numMon" required>
                       <option selected disabled hidden>Selecciona un monitor:</option>
-                      <option value="Pendiente">Pendiente</option>
+                      <option value="0">Pendiente</option>
                       <?php
-                      $listaEquipos = $equiposR->readMonitorAct('numSerieMonitor');
+                      $listaEquipos = $equiposR->readMonitorAct('numInvEscolar');
                       while ($row = mysqli_fetch_object($listaEquipos)) {
-                        $numSerieMonitor = $row->numSerieMonitor; ?>
-                        <option value="<?php echo $numSerieMonitor ?>"><?php echo $numSerieMonitor ?></option>
+                        $idPerifericos = $row->idPerifericos;
+                        $numInvEscolar = $row->numInvEscolar; ?>
+                        <option value="<?php echo $idPerifericos ?>"><?php echo $numInvEscolar ?></option>
                       <?php } ?>
                     </select>
                   </div>
@@ -368,25 +357,27 @@ $pagNom = 'LABORATORIOS';
                     <label for="">N.º de serie teclado</label>
                     <select class="form-select" aria-label="Default select example" id="numTec" name="numTec" required>
                       <option selected disabled hidden>Selecciona un teclado:</option>
-                      <option value="Pendiente">Pendiente</option>
+                      <option value="0">Pendiente</option>
                       <?php
-                      $listaEquipos = $equiposR->readTecladoAct('numSerieTeclado');
+                      $listaEquipos = $equiposR->readTecladoAct('numInvEscolar');
                       while ($row = mysqli_fetch_object($listaEquipos)) {
-                        $numSerieTeclado = $row->numSerieTeclado; ?>
-                        <option value="<?php echo $numSerieTeclado ?>"><?php echo $numSerieTeclado ?></option>
+                        $idPerifericos = $row->idPerifericos;
+                        $numInvEscolar = $row->numInvEscolar; ?>
+                        <option value="<?php echo $idPerifericos ?>"><?php echo $numInvEscolar ?></option>
                       <?php } ?>
                     </select>
                   </div>
                   <div class="col-sm-10">
                     <label for="">N.º de serie mouse</label>
                     <select class="form-select" aria-label="Default select example" id="numMou" name="numMou" required>
-                      <option value="Pendiente">Pendiente</option>
+                      <option value="0">Pendiente</option>
                       <option selected disabled hidden>Selecciona un mouse:</option>
                       <?php
-                      $listaEquipos = $equiposR->readMouseAct('numSerieMouse');
+                      $listaEquipos = $equiposR->readMouseAct('numInvEscolar');
                       while ($row = mysqli_fetch_object($listaEquipos)) {
-                        $numSerieMouse = $row->numSerieMouse; ?>
-                        <option value="<?php echo $numSerieMouse ?>"><?php echo $numSerieMouse ?></option>
+                        $idPerifericos = $row->idPerifericos;
+                        $numInvEscolar = $row->numInvEscolar; ?>
+                        <option value="<?php echo $idPerifericos ?>"><?php echo $numInvEscolar ?></option>
                       <?php } ?>
                     </select>
                   </div>

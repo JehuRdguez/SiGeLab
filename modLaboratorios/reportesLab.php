@@ -80,10 +80,10 @@ while($row = $resultado->fetch_assoc()){
     $pdf->SetFont('Times','',10);
     $pdf->setX(23);
     $pdf->cell(40, 10, $row['nombreLaboratorio'], 1, 0, 'c', 0);
-    $pdf->cell(30, 10, $row['numSerieEquipo'], 1, 0, 'c', 0);
-    $pdf->cell(30, 10, $row['numSerieMonitor'], 1, 0, 'c', 0);
-    $pdf->cell(30, 10, $row['numSerieTeclado'], 1, 0, 'c', 0);
-    $pdf->cell(30, 10, $row['numSerieMouse'], 1, 1, 'c', 0);
+    $pdf->cell(30, 10, $row['numInvEscolar'], 1, 0, 'c', 0);
+    $pdf->cell(30, 10, $row['numInvEscMon'], 1, 0, 'c', 0);
+    $pdf->cell(30, 10, $row['numInvEscTec'], 1, 0, 'c', 0);
+    $pdf->cell(30, 10, $row['numInvEscMou'], 1, 1, 'c', 0);
 
     //$pdf->cell(80, 10,utf8_decode($row['numInvEscolar']), 1, 0, 'c', 0);
 
