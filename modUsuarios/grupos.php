@@ -1,22 +1,20 @@
-<?php 
+<?php
 $pagNom = 'GRUPOS';
 ?>
 
 <?php include("../public/header.php"); ?>
-<?php if ($idTipoUsuario == 1) { ?>
-
-
+<?php if ($_SESSION['idTipoUsuario'] == 1) { ?>
+  <!--Condiciones para tipo usuario -->
 
   <?php
-  include("../database.php");  //se incluye el otro archivo 
+  include("../database.php");  //se incluye el otro archivo con la conexión a la bdd
   $gruposR = new Database();  //generamos la variable cliente pq eso es lo que vamos a generar, con esto instanciamos
-  
+
   if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
     $nombreGrupo = $gruposR->sanitize($_POST['nombreGrupo']);  //se va a limpiar y recibir lo del formulario
     $cantidadAlumnos = $gruposR->sanitize($_POST['cantidadAlumnos']);
     $idUsuario = $gruposR->sanitize($_POST['idUsuario']);
-    $res = $gruposR->createGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, 1);
-
+    $res = $gruposR->createGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, 1); //Función para crear un nuevo grupo
     if ($res === true) {
       $message = "Datos insertados con éxito";
       $class = "alert alert-success";
@@ -35,6 +33,7 @@ $pagNom = 'GRUPOS';
   }
   ?>
 
+  <!--opciones desplegable -->
   <div class="dropdown">
     <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
       Grupos</button>
@@ -44,19 +43,19 @@ $pagNom = 'GRUPOS';
       <li><a class="dropdown-item" href="usuarioAlumno.php">Alumnos</a></li>
       <li><a class="dropdown-item" href="grupos.php">Grupos</a></li>
     </ul>
+
     <!--Botón de registro -->
     <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#RegistroGrupo">Registrar</a><br>
     <br />
-
 
     <!-- Mostrar tabla-->
     <div class="container">
       <table class="table table-bordered " cellspacing="0" width="100%" id="gruposTable" style="background-color: #04aa89;  ">
         <thead>
-          <!-- Secciones o cabeceros -->
           <tr>
-            <!-- filas -->
-            <th>Nombre grupo</th> <!-- ENcabezados de las tablas-->
+            <!-- Secciones o cabeceros -->
+            <th>Nombre grupo</th> <!-- filas -->
+            <!-- ENcabezados de las tablas-->
             <th>Cantidad alumnos</th>
             <th>Tutor</th>
             <th>Estado</th>
@@ -67,11 +66,11 @@ $pagNom = 'GRUPOS';
         <tbody>
           <!-- Cuerpo de la tabla, se llena con la BDD-->
           <?php
-          $gruposR = new Database(); //
+          $gruposR = new Database(); //instanciamos
           $listaGrupos = $gruposR->readGrupo(); //se crea la variable listaAdministradores
           ?>
           <?php
-          while ($row = mysqli_fetch_object($listaGrupos)) { //antes del = es la variable del form, después es la de BDD
+          while ($row = mysqli_fetch_object($listaGrupos)) {
             $idGrupo = $row->idGrupo;
             $nombreGrupo = $row->nombreGrupo;
             $cantidadAlumnos = $row->cantidadAlumnos;
@@ -80,80 +79,113 @@ $pagNom = 'GRUPOS';
             $estado = $row->estado;
           ?>
             <tr>
-              <td><?php echo $nombreGrupo; ?></td> <!-- Muestra-->
+              <td><?php echo $nombreGrupo; ?></td> <!-- Muestra los datos-->
               <td><?php echo $cantidadAlumnos; ?></td>
-              <td><?php if ($uActivo == 1) {
+              <td><?php if ($uActivo == 1) { //Condicionamos el tutor, si está incactivo se pondrá "pendiente", en caso contrario se muestra el nombre
                     echo $nombreM;
                   } else {
                     echo 'Pendiente';
                   } ?></td>
 
-              <td><?php if ($estado == 1) {
+              <td><?php if ($estado == 1) { //Condicionamos el estado del grupo, 0=inactivo 1=activo
                     echo 'Activo';
                   } else {
                     echo 'Inactivo';
                   } ?></td>
               <td>
+                <!--Botones de "Acciones"-->
                 <?php
                 if ($estado == 1) { ?>
                   <abbr title="Deshabilitar"><a type="button" class="btn btn-outline-dark" href="updateGrupo.php?idGrupo=<?php echo $idGrupo; ?>"><i class="fa fa-eye-slash"></i></a></abbr>
                 <?php } else { ?>
                   <abbr title="Habilitar"> <a type="button" class="btn btn-outline-dark" href="updateGrupo.php?idGrupo=<?php echo $idGrupo; ?>"><i class="fa fa-eye"></i></a></abbr>
                 <?php } ?>
+
                 <abbr title="Cambiar tutor"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarTutor<?php echo $idGrupo; ?>"><i class="fa-solid fa-chalkboard-user"></i></button></abbr>
                 <abbr title="Ver detalles"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#detallesGrupo<?php echo $idGrupo; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
 
-                
+
               </td>
             </tr>
-            <?php
-            include("modGrupo.php");
-            ?>
-    <!--ventana para Update--->
-    <div class="modal fade" id="editarTutor<?php echo $idGrupo; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Cambiar tutor</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
 
-          <form method="POST" action="EditarGrupo.php">
-            <input type="hidden" name="idGrupo" value="<?php echo $idGrupo; ?>">
 
-            <div class="modal-body">
 
-              <div class="form-group">
-                <label for="" class="col-form-label">Tutor</label>
-                <select class="form-select" aria-label="Default select example" id="idUsuario" name="idUsuario">
+            <!--ventana para mostrar alumnos que pertenecen a ese grupo (modal de detalles)--->
+            <div class="modal fade" id="detallesGrupo<?php echo $idGrupo; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles grupo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
 
+                  <form method="POST">
+                    <input type="hidden" name="idGrupo" value="<?php echo $idGrupo; ?>">
+
+                    <div class="modal-body" id="cont_modal">
+                      <h5>Alumnos del grupo: <?php echo $nombreGrupo; ?> </h5>
+                      <!--Imprimimos el nombre del grupo-->
+                      <?php
+                      $gruposALumnos = new Database();
+                      $listaAlumnos = $gruposALumnos->listaAl(); //se crea la variable listaAdministradores
+                      while ($row = mysqli_fetch_object($listaAlumnos)) {
+                        $nombreC = $row->nombreC;
+                        $grupo = $row->idGrupo;
+                        if ($idGrupo == $grupo) { ?>
+                          <!-- Condicionamos para que sólo muestre los alumnos de ese grupo-->
+                          <label><strong><?php echo $nombreC; ?></strong></label></br>
+                      <?php }
+                      } ?>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!---fin ventana detalles--->
+
+
+            <!--ventana para cambiar el tutor de un grupo--->
+            <div class="modal fade" id="editarTutor<?php echo $idGrupo; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar tutor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <form method="POST" action="EditarGrupo.php">
+                    <input type="hidden" name="idGrupo" value="<?php echo $idGrupo; ?>">
+
+                    <div class="modal-body">
+
+                      <div class="form-group">
+                        <label for="" class="col-form-label">Tutor</label>
+                        <select class="form-select" aria-label="Default select example" id="idUsuario" name="idUsuario">
                           <?php
                           $datos_grupo = $gruposR->single_recordgrupo($idGrupo);
                           ?>
-                  <option selected value="<?php echo $datos_grupo->idUsuario; ?>"><?php echo $nombreM; ?></option>
-                  <?php
-                  $listaTutores = $gruposR->readListaTutores('nombreC');
-                  while ($row = mysqli_fetch_object($listaTutores)) {
-                    $idUsuario = $row->idUsuario;
-                    $nombreC = $row->nombreC; ?>
-                    <option value="<?php echo $idUsuario ?>"><?php echo $nombreC ?></option>
-                  <?php } ?>
-                </select>
+                          <option selected value="<?php echo $datos_grupo->idUsuario; ?>"><?php echo $nombreM; ?></option>
+                          <?php
+                          $listaTutores = $gruposR->readListaTutores('nombreC');
+                          while ($row = mysqli_fetch_object($listaTutores)) {
+                            $idUsuario = $row->idUsuario;
+                            $nombreC = $row->nombreC; ?>
+                            <option value="<?php echo $idUsuario ?>"><?php echo $nombreC ?></option>
+                          <?php } ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-primary" onclick="return alertaEditar()">Actualizar</button>
+                    </div>
+                  </form>
+                </div>
               </div>
-
-
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary" onclick="return alertaEditar()">Actualizar</button>
-            </div>
-          </form>
-
-        </div>
-      </div>
-    </div>
-
-
           <?php
           }
           ?>
@@ -161,8 +193,9 @@ $pagNom = 'GRUPOS';
       </table>
     </div>
 
-    <!--Modal-Hoja de registro de grupo-->
 
+
+    <!--Modal-Hoja de registro de grupo-->
     <div class="modal fade" id="RegistroGrupo" tabindex="-1" aria-labelledby="RegistroGrupo" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -171,7 +204,6 @@ $pagNom = 'GRUPOS';
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             <div class="container-fluid">
               <form method="post">
                 <div class="row">
@@ -195,7 +227,6 @@ $pagNom = 'GRUPOS';
                     </select>
                   </center>
                 </div>
-                <!-- Botón para enviar datos-->
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                   <button type="submit" class="btn btn-dark" onclick="return alertaRegistrar()">Registrar</button>
@@ -207,9 +238,8 @@ $pagNom = 'GRUPOS';
       </div>
     </div>
 
+    <?php include("../public/footer.php"); ?>   <!--Se incluye el footer-->
 
-
-    <?php include("../public/footer.php"); ?>
-    <?php } else { ?>
+  <?php } else if ($_SESSION['idTipoUsuario'] != 1) { ?> <!--Condiciones de acceso-->
     <?php header("Location: ../index.php"); ?>
   <?php } ?>

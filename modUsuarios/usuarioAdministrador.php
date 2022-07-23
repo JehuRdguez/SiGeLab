@@ -3,8 +3,7 @@ $pagNom = 'USUARIOS';
 ?>
 
 <?php include("../public/header.php"); ?>
-<?php if ($idTipoUsuario == 1) { ?>
-
+<?php if ($_SESSION['idTipoUsuario'] == 1) { ?>
   <?php
   include("../database.php");  //se incluye el  archivo
   $administradoresR = new Database();  //generamos la variable pq eso es lo que vamos a generar, con esto instanciamos
@@ -239,7 +238,8 @@ $pagNom = 'USUARIOS';
       </div>
     </div>
 
-    <?php include("../public/footer.php");
-    ?><?php } else { ?>
+    <?php include("../public/footer.php"); ?>  <!--Se incluye el footer-->
+    
+    <?php } else if ($_SESSION['idTipoUsuario'] != 1 ) { ?> <!--Condiciones de acceso-->
     <?php header("Location: ../index.php"); ?>
   <?php } ?>

@@ -3,7 +3,7 @@ $pagNom = 'USUARIOS';
 ?>
 
 <?php include("../public/header.php"); ?>
-<?php if ($idTipoUsuario == 1) { ?>
+<?php if ($_SESSION['idTipoUsuario'] == 1) { ?>
 
       <?php
       include("../database.php");  //se incluye el otro archivo
@@ -16,7 +16,7 @@ $pagNom = 'USUARIOS';
         $telefono = $maestros->sanitize($_POST['telefonoM']);
         $contrasena = $maestros->sanitize($_POST['contrasenaM']);
 
-        $res = $maestros->createMaestro($nombreC, $correo, $telefono, $contrasena, 2, 1, $numConMaes);
+        $res = $maestros->createMaestro($nombreC, $correo, $telefono, $contrasena, 2, 1, $numConMaes);//Para crear un nuevo maestro
 
         if ($res === true) {
           $message = "Datos insertados con éxito";
@@ -71,7 +71,6 @@ $pagNom = 'USUARIOS';
             <tbody>
               <!-- Cuerpo de la tabla, se llena con la BDD-->
               <?php
-              $maestros = new Database(); //
               $listaMaestros = $maestros->readMaestro(); //se crea la variable listaAdministradores
               ?>
 
@@ -227,7 +226,6 @@ $pagNom = 'USUARIOS';
                         <input type="text" name="contrasenaM" id="contrasenaM" class="form-control" onkeypress="return ValidarContrasena(event)"  required>
                       </center>
                     </div>
-                    <!-- Botón para enviar datos-->
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                       <button type="submit" class="btn btn-dark" onclick="return alertaRegistrar()">Registrar</button>
@@ -239,6 +237,8 @@ $pagNom = 'USUARIOS';
           </div>
         </div>
 
-        <?php include("../public/footer.php"); ?><?php } else { ?>
+        <?php include("../public/footer.php"); ?><!--Se incluye el footer-->
+        
+        <?php } else if ($_SESSION['idTipoUsuario'] != 1 ) { ?><!--Condiciones de acceso-->
           <?php header("Location: ../index.php"); ?>
       <?php } ?>

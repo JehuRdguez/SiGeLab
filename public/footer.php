@@ -1,5 +1,7 @@
 </body>
+<!--///////////////////////////////////// Funciones de Diana///////////////////////////////////////////////-->
 
+<!-- Para las tablas -->
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 </script>
 
@@ -7,12 +9,10 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
-<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script><!-- Para hacerlas responsivas-->
 
 
-
-
-
+<!-- Scripts de las tablas con su ID y la responsividad activa-->
 <script>
     $(document).ready(function() {
         $('#maestroTable').DataTable({
@@ -119,6 +119,108 @@
 </script>
 
 
+
+
+<!-- Alerta para confirmar registro -->
+<script type="text/javascript">
+    function alertaRegistrar() {
+        var mensaje;
+        var opcion = confirm("¿Desea guardar el registro?");
+        if (opcion == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+
+
+<!-- Alerta para confirmar edición -->
+<script type="text/javascript">
+    function alertaEditar() {
+        var mensaje;
+        var opcion = confirm("¿Desea guardar los cambios?");
+        if (opcion == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+
+<!-- Alerta para confirmar eliminacion -->
+<script type="text/javascript">
+    function eliminar() {
+        var mensaje;
+        var opcion = confirm("¿Desea eliminar el registro?");
+        if (opcion == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+<!--Sólo permite números -->
+<script>
+    function verificaNumeros(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        return !(charCode > 31 && (charCode < 48 || charCode > 57));
+    }
+</script>
+
+<!--Sólo permite letras -->
+<script>
+    function ValidarLestrasC(e) {
+        var key = e.keyCode || e.which,
+            tecla = String.fromCharCode(key).toLowerCase(),
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+            especiales = [8],
+            tecla_especial = false;
+
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+            return false;
+        }
+    }
+</script>
+
+<!--Función para validar las contraseñas -->
+<script>
+    function ValidarContrasena(e) {
+        var key = e.keyCode || e.which,
+            tecla = String.fromCharCode(key).toLowerCase(),
+            letras = "abcdefghijklmnñopqrstuvwxyz1234567890",
+            especiales = [8],
+            tecla_especial = false;
+
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+            return false;
+        }
+    }
+</script>
+
+<!--Termina apartado de Diana-->
+
+
+
+
+
+
+<!--REVISAR-->
 <script type="text/javascript">
     function funcionMonitor() {
         var x = document.getElementById("vistamonitor");
@@ -204,57 +306,7 @@
 
 
 
-<!-- Alerta para confirmar registro -->
-<script type="text/javascript">
-    function alertaRegistrar() {
-        var mensaje;
-        var opcion = confirm("¿Desea guardar el registro?");
-        if (opcion == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-</script>
-
-
-
-<!-- Alerta para confirmar edición -->
-<script type="text/javascript">
-    function alertaEditar() {
-        var mensaje;
-        var opcion = confirm("¿Desea guardar los cambios?");
-        if (opcion == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-</script>
-
-
-<!-- Alerta para confirmar eliminacion -->
-<script type="text/javascript">
-    function eliminar() {
-        var mensaje;
-        var opcion = confirm("¿Desea eliminar el registro?");
-        if (opcion == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-</script>
-
-
-<script>
-    function verificaNumeros(evt) {
-        var charCode = (evt.which) ? evt.which : evt.keyCode
-        return !(charCode > 31 && (charCode < 48 || charCode > 57));
-    }
-</script>
-
-
+<!--REVISAR-->
 
 
 <script>
@@ -305,66 +357,8 @@
     }
 </script>
 
-<script>
-    function ValidarLestrasC(e) {
-        var key = e.keyCode || e.which,
-            tecla = String.fromCharCode(key).toLowerCase(),
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
-            especiales = [8],
-            tecla_especial = false;
+<!-- ////////////////////////GABI//////////////////////////// -->
 
-        for (var i in especiales) {
-            if (key == especiales[i]) {
-                tecla_especial = true;
-                break;
-            }
-        }
-        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-            return false;
-        }
-    }
-</script>
-
-<script>
-    function ValidarContrasena(e) {
-        var key = e.keyCode || e.which,
-            tecla = String.fromCharCode(key).toLowerCase(),
-            letras = "abcdefghijklmnñopqrstuvwxyz1234567890",
-            especiales = [8],
-            tecla_especial = false;
-
-        for (var i in especiales) {
-            if (key == especiales[i]) {
-                tecla_especial = true;
-                break;
-            }
-        }
-        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-            return false;
-        }
-    }
-</script>
-<!-- GABIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII -->
-
-<script>
-    function ValidarContrasena(e) {
-        var key = e.keyCode || e.which,
-            tecla = String.fromCharCode(key).toLowerCase(),
-            letras = "abcdefghijklmnñopqrstuvwxyz1234567890",
-            especiales = [8],
-            tecla_especial = false;
-
-        for (var i in especiales) {
-            if (key == especiales[i]) {
-                tecla_especial = true;
-                break;
-            }
-        }
-        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-            return false;
-        }
-    }
-</script>
 
 <script type="text/javascript">
 let input = document.getElementById("input")
@@ -538,6 +532,7 @@ salida.addEventListener("change", comparaHoras);
     }
 </script>
 
+<!-- TERMINA PARTE DE GABI-->
 
 
 

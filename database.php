@@ -33,8 +33,10 @@ class Database
         return $return;
     }
 
+////////////////////////////////////////////////////////////INICIA PARTE DE DIANA/////////////////////////////////////////////////
+   
+/////////////////////////////ADMINISTRADOR/////////////////////////////////////////////////
 
-    ///////////////////////////ADMINISTRADOR////////////////
     //registro administrador
     public function createAdministrador($nombreC, $correo, $telefono,  $contrasena, $uActivo, $idTipoUsuario, $numConAdmin,)
     {
@@ -51,25 +53,21 @@ class Database
         }
     }
 
-
-
     //Consulta Administrador
     public function readAdministrador()
-    { //Función para consulta
+    { 
         $sql = "SELECT * from  vwusuarioadministrador ";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
-
+    
+//Vista usuarios activos opción de selección
     public function readAdministradorAct()
-    { //Función para consulta
+    {
         $sql = "SELECT * from  usuario WHERE idTipoUsuario = '1' AND uActivo = '1' ";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
-
-
-
 
     //Función para editar estado Administrador
     public function updateusuarioAdministrador($idUsuario)
@@ -94,7 +92,7 @@ class Database
 
 
 
-    //Función para obtener toda la info de un sólo registro
+        //Función para obtener la contraseña
     public function single_recordadministrador($idUsuario)
     {
         $sql = "SELECT * FROM contrasenaDescifrada WHERE idUsuario='$idUsuario'";
@@ -104,7 +102,7 @@ class Database
     }
 
 
-    //Función para editar
+    //Función para editar los datos de un administrador
     public function editarAdministrador($numConAdmin, $nombreC, $correo, $telefono,  $contrasena, $idTipoUsuario)
     {
         $sql = "CALL proEditAdministrador('$numConAdmin','$nombreC','$correo','$telefono','$contrasena','$idTipoUsuario')  ";
@@ -118,8 +116,6 @@ class Database
     }
 
     /////////////////////////////////////////ALUMNO/////////////////////////////////////////////////////
-
-
 
     //registro alumno/////////
     public function createAlumno($nombreC, $correo, $telefono, $contrasena, $uActivo, $idTipoUsuario, $numConAlum, $idGrupo, $idEquipoIOT, $idEquipoDesarrollo, $idEquipoSoporte)
@@ -171,7 +167,7 @@ class Database
 
 
 
-    //Función para obtener toda la info de un sólo registro
+    //Función para obtener la contraseña
     public function single_recordusuarioContraAl($idUsuario)
     {
         $sql = "SELECT * FROM contrasenadescifrada WHERE idUsuario='$idUsuario'";
@@ -179,6 +175,8 @@ class Database
         $return = mysqli_fetch_object($res);
         return $return;
     }
+
+       //Función para obtener toda la info de un sólo registro
     public function single_recordusuarioAl($idUsuario)
     {
         $sql = "SELECT * from vwEditAlumno WHERE idUsuario='$idUsuario'";
@@ -206,9 +204,9 @@ class Database
         }
     }
 
-
+//Función para el listado de alumnos que se muestra en modal detalles de grupo
     public function listaAl()
-    { //Función para consulta
+    { 
         $sql = "SELECT `usuario`.`nombreC`, `alumno`.`idUsuario`, `grupo`.`idGrupo`
             FROM `usuario` 
                 INNER JOIN `alumno` ON `alumno`.`idUsuario` = `usuario`.`idUsuario`
@@ -219,7 +217,6 @@ class Database
 
 
     ///////////////////////////////MAESTRO/////////////////////////////////////////////////////////
-
 
     //registro maestro
     public function createMaestro($numConMaes, $nombreC, $correo, $telefono, $contrasena, $tipoUsuario, $uActivo)
@@ -268,7 +265,7 @@ class Database
     }
 
 
-    //Función para obtener toda la info de un sólo registro
+      //Función para obtener la contraseña
     public function single_recordmaestro($idUsuario)
     {
         $sql = "SELECT * FROM contrasenadescifrada WHERE idUsuario='$idUsuario'";
@@ -293,11 +290,9 @@ class Database
 
     /////////////////////////GRUPO/////////////////////////////////////
 
-
-
     //registro grupo
     public function createGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, $estado)
-    { //variables
+    { 
         $sql = "CALL proAddGrupo('$nombreGrupo','$cantidadAlumnos','$idUsuario','$estado')  ";
 
         try {
@@ -314,15 +309,11 @@ class Database
 
     //ConsultaGrupo
     public function readGrupo()
-    { //Función para consulta
+    { 
         $sql = "SELECT * from vwGrupos";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
-
-    
-
-
 
 
     //Función para editar estado grupo
@@ -347,9 +338,6 @@ class Database
     }
 
 
-
-
-
     //Función para obtener toda la info de un sólo registro
     public function single_recordgrupo($idGrupo)
     {
@@ -359,7 +347,7 @@ class Database
         return $return;
     }
 
-    //Función para editar
+    //Función para editar tutor
     public function editarGrupo( $idUsuario, $idGrupo)
     {
         $sql = "UPDATE grupo SET idUsuario='$idUsuario' WHERE idGrupo='$idGrupo'";
@@ -373,17 +361,11 @@ class Database
     }
 
 
-
-
-
-
-
-
-    ////////////////////////////////CONSULTAS/////////////////////////////////////////////////////
+    ////////////////////////////////CONSULTAS PARA OPCIONES/////////////////////////////////////////////////////
 
     //Consulta de equipos por laboratorios
     public function equiposIOT()
-    { //Función para consulta
+    {
         $sql = "SELECT * from vwEquiposIOT";
         $res = mysqli_query($this->con, $sql);
         return $res;
@@ -391,14 +373,14 @@ class Database
 
 
     public function equiposDESARROLLO()
-    { //Función para consulta
+    { 
         $sql = "SELECT * from vwEquiposDesarrollo";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
 
     public function equiposSOPORTE()
-    { //Función para consulta
+    { 
         $sql = "SELECT * from vwEquiposSoporte";
         $res = mysqli_query($this->con, $sql);
         return $res;
@@ -412,14 +394,17 @@ class Database
         return $res;
     }
 
+    //Listado de grupos activos
     public function readListaGrupo()
-    { //Función para consulta
+    { 
         $sql = "SELECT * from vwListaGrupos";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
+
+        //Listado de maestros activos
     public function readListaTutores()
-    { //Función para consulta
+    {
         $sql = "SELECT * from vwListaMaestros";
         $res = mysqli_query($this->con, $sql);
         return $res;
@@ -427,14 +412,16 @@ class Database
 
 
 
-    //////////////////EQUIPOS ASIGNADOS//////////
+    //////////////////////////////EQUIPOS ASIGNADOS////////////////////////
+    ///Para mostrar los equipos asignados a los alumnos
     public function equiposA()
-    { //Función para consulta
+    {
         $sql = "SELECT * from vwEquiposAsignados";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
-//////SOLICITUD ALUMNOS/////
+
+//////REGISTRAR SOLICITUD CAMBIO EQUIPO ALUMNOS/////
     public function createSolicitudAL($idGrupo, $estado, $alumnoN, $razon, $idLaboratorio, $respuesta)
     {
 

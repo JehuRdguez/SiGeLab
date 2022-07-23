@@ -15,10 +15,7 @@ $gruposR = new Database();  //generamos la variable cliente pq eso es lo que vam
 if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
 	$idUsuario = $gruposR->sanitize($_POST['idUsuario']);
 	$idGrupo = intval($_POST['idGrupo']); //Se agrega la variable para recibir el id
-
-
-
-	$res = $gruposR->editarGrupo($idUsuario, $idGrupo); //se cambia la función y se agrega la variable creada arriba
+	$res = $gruposR->editarGrupo($idUsuario, $idGrupo); //Con esto editamos
 
 	if ($res) {
 		$message = "Datos actualizados con éxito";
