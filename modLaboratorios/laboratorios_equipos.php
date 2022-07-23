@@ -170,7 +170,7 @@ $pagNom = 'LABORATORIOS';
                     <div class="form-group">
                       <label for="" class="col-form-label">N.º de serie monitor: </label>
                       <select class="form-select" aria-label="Default select example" id="numMon" name="numMon">
-                        <option value="0">Pendiente</option>
+                        <option value="1">Pendiente</option>
                         <?php
                         $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                         ?>
@@ -188,7 +188,7 @@ $pagNom = 'LABORATORIOS';
                     <div class="form-group">
                       <label for="" class="col-form-label">N.º de serie teclado: </label>
                       <select class="form-select" aria-label="Default select example" id="numTec" name="numTec">
-                        <option value="0">Pendiente</option>
+                        <option value="1">Pendiente</option>
                         <?php
                         $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                         ?>
@@ -206,7 +206,7 @@ $pagNom = 'LABORATORIOS';
                     <div class="form-group">
                       <label for="" class="col-form-label">N.º de serie mouse: </label>
                       <select class="form-select" aria-label="Default select example" id="numMou" name="numMou">
-                        <option value="0">Pendiente</option>
+                        <option value="1">Pendiente</option>
                         <?php
                         $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                         ?>
@@ -343,7 +343,7 @@ $pagNom = 'LABORATORIOS';
                     <label for="">N.º de serie monitor</label>
                     <select class="form-select" aria-label="Default select example" id="numMon" name="numMon" required>
                       <option selected disabled hidden>Selecciona un monitor:</option>
-                      <option value="0">Pendiente</option>
+                      <option value="1">Pendiente</option>
                       <?php
                       $listaEquipos = $equiposR->readMonitorAct('numInvEscolar');
                       while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -357,7 +357,7 @@ $pagNom = 'LABORATORIOS';
                     <label for="">N.º de serie teclado</label>
                     <select class="form-select" aria-label="Default select example" id="numTec" name="numTec" required>
                       <option selected disabled hidden>Selecciona un teclado:</option>
-                      <option value="0">Pendiente</option>
+                      <option value="1">Pendiente</option>
                       <?php
                       $listaEquipos = $equiposR->readTecladoAct('numInvEscolar');
                       while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -370,7 +370,7 @@ $pagNom = 'LABORATORIOS';
                   <div class="col-sm-10">
                     <label for="">N.º de serie mouse</label>
                     <select class="form-select" aria-label="Default select example" id="numMou" name="numMou" required>
-                      <option value="0">Pendiente</option>
+                      <option value="1">Pendiente</option>
                       <option selected disabled hidden>Selecciona un mouse:</option>
                       <?php
                       $listaEquipos = $equiposR->readMouseAct('numInvEscolar');
