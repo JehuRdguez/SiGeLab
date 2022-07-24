@@ -23,6 +23,17 @@ $idEquipoIOT= $alumnos->sanitize($_POST['idEquipoIOT']);
 $idEquipoDesarrollo= $alumnos->sanitize($_POST['idEquipoDesarrollo']);
 $idEquipoSoporte= $alumnos->sanitize($_POST['idEquipoSoporte']);
 $idUsuario=intval($_POST['idUsuario']); //Se agrega la variable para recibir el id
+$sname = "localhost";
+$uname = "root";
+$password = "";
+$bd_name = "sigelab";
+
+$conn = mysqli_connect($sname, $uname, $password, $bd_name);
+if(!$conn){
+	echo "Error!";
+	exit();
+}
+
 
 
 $validar="SELECT* FROM vwValidaEquipos where idEquipoIOT>1 and idEquipoIOT='$idEquipoIOT' and idGrupo='$idGrupo'";
@@ -33,10 +44,11 @@ $validar3="SELECT* FROM vwValidaEquipos where idEquipoSoporte>1 and idEquipoSopo
 $validando3=$conn->query($validar3);
 
 if($validando->num_rows>0 || $validando2->num_rows>0 || $validando3->num_rows>0 ){
-  $message = "El equipo o equipos ya fueron asignados";
-  $class = "alert alert-danger";
+$message = "El equipo o equipos ya fueron asignados";
+$class = "alert alert-danger";
 }
 else{
+
 $res = $alumnos->editarUAlumno($nombreC,$correo,$telefono,$contrasena,$numConAlum,$idGrupo,$idEquipoIOT,$idEquipoDesarrollo,$idEquipoSoporte,$idUsuario);
 		if($res){
 			$message = "Datos actualizados con éxito";
