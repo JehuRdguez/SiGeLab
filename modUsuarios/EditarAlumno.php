@@ -23,6 +23,20 @@ $idEquipoIOT= $alumnos->sanitize($_POST['idEquipoIOT']);
 $idEquipoDesarrollo= $alumnos->sanitize($_POST['idEquipoDesarrollo']);
 $idEquipoSoporte= $alumnos->sanitize($_POST['idEquipoSoporte']);
 $idUsuario=intval($_POST['idUsuario']); //Se agrega la variable para recibir el id
+
+
+$validar="SELECT* FROM vwValidaEquipos where idEquipoIOT>1 and idEquipoIOT='$idEquipoIOT' and idGrupo='$idGrupo'";
+$validando=$conn->query($validar);
+$validar2="SELECT* FROM vwValidaEquipos where idEquipoDesarrollo>1 and idEquipoDesarrollo='$idEquipoDesarrollo' and idGrupo='$idGrupo'";
+$validando2=$conn->query($validar2);
+$validar3="SELECT* FROM vwValidaEquipos where idEquipoSoporte>1 and idEquipoSoporte='$idEquipoSoporte' and idGrupo='$idGrupo'";
+$validando3=$conn->query($validar3);
+
+if($validando->num_rows>0 || $validando2->num_rows>0 || $validando3->num_rows>0 ){
+  $message = "El equipo o equipos ya fueron asignados";
+  $class = "alert alert-danger";
+}
+else{
 $res = $alumnos->editarUAlumno($nombreC,$correo,$telefono,$contrasena,$numConAlum,$idGrupo,$idEquipoIOT,$idEquipoDesarrollo,$idEquipoSoporte,$idUsuario);
 		if($res){
 			$message = "Datos actualizados con éxito";
@@ -30,12 +44,12 @@ $res = $alumnos->editarUAlumno($nombreC,$correo,$telefono,$contrasena,$numConAlu
 		}else{
 			$message = "No se pudieron actualizar los datos...";
 			$class = "alert alert-danger";
-		}
+		}}
 		?>
       <div class="<?php echo $class ?>"> 
  		<?php echo $message;?>
 	  </div>
 	  <?php
 	  }
-
+	
  ?>
