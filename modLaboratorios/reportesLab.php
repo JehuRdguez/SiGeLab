@@ -37,10 +37,10 @@ function Header()
     $this->SetFont('Times','',10);
     $this->setX(23);
     $this->cell(40, 10, utf8_decode('Laboratorio'), 1, 0, 'c', 0);
-    $this->cell(30, 10, utf8_decode('N.º de serie equipo'), 1, 0, 'c', 0);
-    $this->cell(30, 10, utf8_decode('N.º de serie monitor'), 1, 0, 'c', 0);
-    $this->cell(30, 10, utf8_decode('N.º de serie teclado'), 1, 0, 'c', 0);
-    $this->cell(30, 10, utf8_decode('N.º de serie mouse'), 1, 1, 'c', 0);
+    $this->cell(31, 10, utf8_decode('N.º Inv. Esc. Equipo'), 1, 0, 'c', 0);
+    $this->cell(32, 10, utf8_decode('N.º Inv. Esc. Monitor'), 1, 0, 'c', 0);
+    $this->cell(32, 10, utf8_decode('N.º Inv. Esc. Teclado'), 1, 0, 'c', 0);
+    $this->cell(32, 10, utf8_decode('N.º Inv. Esc. Mouse'), 1, 1, 'c', 0);
 
   
    
@@ -80,10 +80,10 @@ while($row = $resultado->fetch_assoc()){
     $pdf->SetFont('Times','',10);
     $pdf->setX(23);
     $pdf->cell(40, 10, $row['nombreLaboratorio'], 1, 0, 'c', 0);
-    $pdf->cell(30, 10, $row['numSerieEquipo'], 1, 0, 'c', 0);
-    $pdf->cell(30, 10, $row['numSerieMonitor'], 1, 0, 'c', 0);
-    $pdf->cell(30, 10, $row['numSerieTeclado'], 1, 0, 'c', 0);
-    $pdf->cell(30, 10, $row['numSerieMouse'], 1, 1, 'c', 0);
+    $pdf->cell(31, 10, $row['numInvEscolar'], 1, 0, 'c', 0);
+    $pdf->cell(32, 10, $row['numInvEscMon'], 1, 0, 'c', 0);
+    $pdf->cell(32, 10, $row['numInvEscTec'], 1, 0, 'c', 0);
+    $pdf->cell(32, 10, $row['numInvEscMou'], 1, 1, 'c', 0);
 
     //$pdf->cell(80, 10,utf8_decode($row['numInvEscolar']), 1, 0, 'c', 0);
 

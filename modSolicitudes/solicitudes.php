@@ -7,6 +7,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
   <?php
   include("../database.php");
+  
 
   $solicitud = new database();   //instanciar el objeto
 
@@ -23,23 +24,17 @@ $pagNom = 'SOLICITUDES DE ACCESO';
     $res = $solicitud->createSolicitud($maestro, $idLaboratorio, $idGrupo, $materia, $fecha, $fechaSalida, $horaEntrada, $horaSalida, 2, 0, '');
 
     if ($res) {
-      function checkThePast($fecha)
-      {
-        $convertToUNIXtime = strtotime($fecha);
-
-        return $convertToUNIXtime < time();
-      }
-
-      if (checkThePast($fechaSalida)) {
-        echo '<div class="alert alert-danger">Fecha de salida menor a la de entrada</div>';
-      } else {
-        echo '<div class="alert alert-success">Datos insertados con exito</div>';
-      }
+      $message = "Datos insertados con exito";
+      $class = "alert alert-success";
+    } else {
+      $message = "No se pudieron insertar los datos... ";
+      $class = "alert alert-danger";
     }
   ?>
   <?php
   }
   ?>
+
 
   <div class="dropdown">
     <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -290,20 +285,16 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                     <label>Materia</label>
                     <input type="text" name="materia" id="materia" class="form-control" required>
 
-                    <label>Fecha</label>
-                    <input type="date" name="fecha" id="fecha" class="form-control" min=<?php $hoy = date("Y-m-d");
-                                                                                        echo $hoy; ?> required>
+                    <label>Dias que solicita el laboratorio:</label>
+                    <input type="text" name="fecha" id="fecha" class="form-control pull-right"   required>
 
-                    <label>Fecha de Termino</label>
-                    <input type="date" name="fechaSalida" id="fechaSalida" class="form-control" min=<?php $hoy = date("Y-m-d");
-                                                                                                    echo $hoy; ?>>
-                    <h6 style="color:red ;">*Solo llene este si lo utilizara mas de un dia</h6>
+                  
 
                     <label>Hora entrada</label>
-                    <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" required>
+                    <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00"required>
 
                     <label>Hora salida</label>
-                    <input type="time" name="horaSalida" id="horaSalida" class="form-control" required>
+                    <input type="time" name="horaSalida" id="horaSalida" class="form-control"min="07:30" max="19:00" required>
 
 
                 </center>
@@ -485,12 +476,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   ?>
                   <br><label>Materia: <strong><?php echo $datos_Solicitud->materia; ?></strong></label><br><br>
                   <label for=""><strong> USO DE LABORATORIO</strong></label><br>
-                  <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
-                  <br><label>Fecha de termino: <strong><?php if ($datos_Solicitud->fechaSalida == '') {
-                                                          echo 'No aplica';
-                                                        } else {
-                                                          echo $datos_Solicitud->fechaSalida;
-                                                        } ?></strong></label></br>
+                  <br><label>Dias de uso:  <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
                   <br><label>Hora de entrada: <strong><?php echo $datos_Solicitud->horaEntrada; ?></strong></label></br>
                   <br><label>Hora de salida: <strong><?php echo $datos_Solicitud->horaSalida; ?></strong></label></br>
                 </div>
@@ -563,20 +549,14 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                       <label>Materia</label>
                       <input type="text" name="materia" id="materia" class="form-control" required>
 
-                      <label>Fecha</label>
-                      <input type="date" name="fecha" id="fecha" class="form-control" min=<?php $hoy = date("Y-m-d");
-                                                                                          echo $hoy; ?> required>
-
-                      <label>Fecha de Termino</label>
-                      <input type="date" name="fechaSalida" id="fechaSalida" class="form-control" min=<?php $hoy = date("Y-m-d");
-                                                                                                      echo $hoy; ?>>
-                      <h6 style="color:red ;">*Solo llene esté si lo utilizará más de un dia</h6>
+                      <label>Dias que solicita el laboratorio:</label>
+                    <input type="text" name="fecha" id="fecha" class="form-control pull-right"   required>
 
                       <label>Hora entrada</label>
-                      <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" required>
+                      <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
 
                       <label>Hora salida</label>
-                      <input type="time" name="horaSalida" id="horaSalida" class="form-control" required>
+                      <input type="time" name="horaSalida" id="horaSalida" class="form-control" min="07:30" max="19:00" required>
 
                 </center>
               </div>

@@ -12,13 +12,13 @@ $perifericoMo = new Database();  //generamos la variable cliente pq eso es lo qu
 
 if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
   $numInvEscolar = $perifericoMo->sanitize($_POST['escolarmouse']);
-  $numSerieMouse = $perifericoMo->sanitize($_POST['numSeriemouse']);
+  $numSerie = $perifericoMo->sanitize($_POST['numSeriemouse']);
   $marca = $perifericoMo->sanitize($_POST['marcamouse']);
   $modelo = $perifericoMo->sanitize($_POST['modelomouse']);
 
   $idPerifericos = intval($_POST['idPerifericos']);
 
-  $res = $perifericoMo->editarMouse($numInvEscolar, $numSerieMouse, $marca, $modelo, $idPerifericos);
+  $res = $perifericoMo->editarPerifericos($numInvEscolar, $numSerie, $marca, $modelo, $idPerifericos);
 
   if ($res) {
     $message = "Datos actualizados con éxito";

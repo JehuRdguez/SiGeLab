@@ -14,13 +14,13 @@ $perifericoM = new Database();  //generamos la variable cliente pq eso es lo que
 
 if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
 	$numInvEscolar = $perifericoM->sanitize($_POST['escolarmonitor']);
-	$numSerieMonitor = $perifericoM->sanitize($_POST['numSerieMonitor']);
+	$numSerie = $perifericoM->sanitize($_POST['numSerieMonitor']);
 	$marca = $perifericoM->sanitize($_POST['marcamonitor']);
 	$modelo = $perifericoM->sanitize($_POST['modelomonitor']);
 	$estado = $perifericoM->sanitize($_POST['estadomonitor']);
 	$idTipoPerifericos = $perifericoM->sanitize($_POST['perifmonitor']);
 
-	$res = $perifericoM->createMonitor($numInvEscolar, $numSerieMonitor, $marca, $modelo, 1, 1);
+	$res = $perifericoM->createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, 1, 1);
 
     if ($res === true) {
 		$message = "Datos insertados con éxito";
@@ -54,11 +54,11 @@ if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
 	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equipos.php" for="btnradio3">Equipos</a>
 
-	<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
-
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked>
 	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericos.php" for="btnradio5">Periféricos</a>
+
+	<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
 </div>
 </div>
 
@@ -104,14 +104,14 @@ if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para
 
 				$idPerifericos = $row->idPerifericos;
 				$numInvEscolar = $row->numInvEscolar;
-				$numSerieMonitor = $row->numSerieMonitor;
+				$numSerie = $row->numSerie;
 				$marca = $row->marca;
 				$modelo = $row->modelo;
 				$estado = $row->estado;
 			?>
 				<tr>
 					<td><?php echo $numInvEscolar; ?></td>
-					<td><?php echo $numSerieMonitor; ?></td>
+					<td><?php echo $numSerie; ?></td>
 					<td><?php echo $marca; ?></td>
 					<td><?php echo $modelo; ?></td>
 					<td><?php if ($estado == 1) {
@@ -153,7 +153,7 @@ if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para
 
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">N.º de serie monitor: </label>
-                    <input type="text" name="numSerieMonitor" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerieMonitor; ?>" required="true">
+                    <input type="text" name="numSerieMonitor" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerie; ?>" required="true">
                   </div>
 
 				  <div class="form-group">

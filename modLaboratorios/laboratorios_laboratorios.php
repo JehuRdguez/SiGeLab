@@ -46,11 +46,11 @@ $pagNom = 'LABORATORIOS';
 		<input type="radio" class="btn-check" name="labEqu" id="labEqu" autocomplete="off">
 		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equipos.php" for="labEqu">Equipos</a>
 
-		<input type="radio" class="btn-check" name="labMob" id="labMob" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="labMob">Mobiliario</a>
-
 		<input type="radio" class="btn-check" name="labPer" id="LabPer" autocomplete="off">
 		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericos.php" for="labPer">Periféricos</a>
+
+		<input type="radio" class="btn-check" name="labMob" id="labMob" autocomplete="off">
+		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="labMob">Mobiliario</a>
 	</div>
 
 	<br>
