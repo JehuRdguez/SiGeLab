@@ -491,6 +491,6 @@ $pagNom = 'INCIDENCIAS';
   </div>
 
   <?php include("../public/footer.php");
-    ?><?php } else { ?>
-    <?php header("Location: ../index.php"); ?>
-  <?php } ?>
+    ?><?php }else if ($_SESSION['idTipoUsuario'] != 1 && $_SESSION['idTipoUsuario'] != 2  && $_SESSION['idTipoUsuario'] != 3) { ?>
+      <?php header("Location: ../index.php"); ?>
+    <?php } ?>
