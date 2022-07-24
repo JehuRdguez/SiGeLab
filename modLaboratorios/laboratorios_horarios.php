@@ -295,8 +295,8 @@ $pagNom = 'LABORATORIOS';
 
 									<div class="col-sm-10">
 										<label for="">Maestro</label>
-										<select class="form-select" aria-label="Default select example" id="nomMae" name="nomMae">
-											<option selected disabled>Selecciona una tutor:</option>
+										<select class="form-select" aria-label="Default select example" id="nomMae" name="nomMae" required>
+											<option selected disabled value="">Selecciona una tutor:</option>
 											<?php
 											$listaHorarios = $horariosR->readListaTutores('nombreC');
 											while ($row = mysqli_fetch_object($listaHorarios)) {
@@ -308,12 +308,12 @@ $pagNom = 'LABORATORIOS';
 									</div>
 									<div class="col-sm-10">
 										<label>Materia</label>
-										<input type="text" name="materia" id="materia" class="form-control">
+										<input type="text" name="materia" id="materia" class="form-control" required>
 									</div>
 									<div class="col-sm-10">
 										<label for="">Grupo</label>
-										<select class="form-select" aria-label="Default select example" id="grupo" name="grupo">
-											<option selected disabled>Seleccionar un grupo:</option>
+										<select class="form-select" aria-label="Default select example" id="grupo" name="grupo" required>
+											<option selected disabled value="">Seleccionar un grupo:</option>
 											<?php
 											$listaHorarios = $horariosR->readGrupos('nombreGrupo');
 											while ($row = mysqli_fetch_object($listaHorarios)) {
@@ -328,7 +328,7 @@ $pagNom = 'LABORATORIOS';
 									<div class="col-sm-10">
 										<label>Día</label>
 										<select class="form-select" aria-label="Default select example" name="dia" id="dia" required>
-											<option selected disabled>Selecciona el día:</option>
+											<option selected disabled value="">Selecciona el día:</option>
 											<option value="Lunes">Lunes</option>
 											<option value="Martes">Martes</option>
 											<option value="Miércoles">Miércoles</option>
@@ -350,8 +350,8 @@ $pagNom = 'LABORATORIOS';
 
 									<div class="col-sm-10">
 										<label for="">Laboratorio</label>
-										<select class="form-select" aria-label="Default select example" id="lab" name="lab">
-											<option selected disabled>Selecciona un laboratorio:</option>
+										<select class="form-select" aria-label="Default select example" id="lab" name="lab" requiered>
+											<option selected disabled value="">Selecciona un laboratorio:</option>
 											<?php
 											$listaHorarios = $horariosR->readLabAct('idLaboratorio');
 											while ($row = mysqli_fetch_object($listaHorarios)) {
@@ -363,7 +363,7 @@ $pagNom = 'LABORATORIOS';
 									</div>
 									<div class="col-sm-10">
 										<label>Horas por cuatrimestre</label>
-										<input type="number" name="horasCuatri" id="horasCuatri" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+										<input type="number" name="horasCuatri" id="horasCuatri" class="form-control" required min="1" onkeypress="return verificaNumeros(event);" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 									</div>
 									<div class="col-sm-10">
 										<label hidden>Estado</label>
