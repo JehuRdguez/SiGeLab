@@ -14,6 +14,29 @@ $pagNom = 'GRUPOS';
     $nombreGrupo = $gruposR->sanitize($_POST['nombreGrupo']);  //se va a limpiar y recibir lo del formulario
     $cantidadAlumnos = $gruposR->sanitize($_POST['cantidadAlumnos']);
     $idUsuario = $gruposR->sanitize($_POST['idUsuario']);
+  
+    $sname = "localhost";
+    $uname = "root";
+    $password = "";
+    $bd_name = "sigelab";
+    
+    $conn = mysqli_connect($sname, $uname, $password, $bd_name);
+    if(!$conn){
+        echo "Error!";
+        exit();
+    }
+
+
+
+$validar="SELECT* FROM vwValidaTutor where  idUsuario='$idUsuario'";
+$validando=$conn->query($validar);
+
+if($validando->num_rows>0 ){
+  $message = "El tutor ya está asignado a un grupo";
+  $class = "alert alert-danger";
+}
+else{
+    
     $res = $gruposR->createGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, 1); //Función para crear un nuevo grupo
     if ($res === true) {
       $message = "Datos insertados con éxito";
@@ -25,6 +48,7 @@ $pagNom = 'GRUPOS';
       $message = "No se pudieron insertar los datos...";
       $class = "alert alert-danger";
     }
+  }
   ?>
     <div class="<?php echo $class ?>">
       <?php echo $message; ?>

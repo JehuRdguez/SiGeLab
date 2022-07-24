@@ -20,6 +20,34 @@ $pagNom = 'USUARIOS';
     $idEquipoDesarrollo = $alumnos->sanitize($_POST['idEquipoDesarrollo']);
     $idEquipoSoporte = $alumnos->sanitize($_POST['idEquipoSoporte']);
     $contrasena = $alumnos->sanitize($_POST['contrasenaAl']);
+
+
+    $sname = "localhost";
+    $uname = "root";
+    $password = "";
+    $bd_name = "sigelab";
+    
+    $conn = mysqli_connect($sname, $uname, $password, $bd_name);
+    if(!$conn){
+        echo "Error!";
+        exit();
+    }
+
+
+
+$validar="SELECT* FROM vwValidaEquipos where idEquipoIOT>1 and idEquipoIOT='$idEquipoIOT' and idGrupo='$idGrupo'";
+$validando=$conn->query($validar);
+$validar2="SELECT* FROM vwValidaEquipos where idEquipoDesarrollo>1 and idEquipoDesarrollo='$idEquipoDesarrollo' and idGrupo='$idGrupo'";
+$validando2=$conn->query($validar2);
+$validar3="SELECT* FROM vwValidaEquipos where idEquipoSoporte>1 and idEquipoSoporte='$idEquipoSoporte' and idGrupo='$idGrupo'";
+$validando3=$conn->query($validar3);
+
+if($validando->num_rows>0 || $validando2->num_rows>0 || $validando3->num_rows>0 ){
+  $message = "El equipo o equipos ya fueron asignados";
+  $class = "alert alert-danger";
+}
+else{
+
     $res = $alumnos->createAlumno($nombreC, $correo, $telefono, $contrasena, 3, 1, $numConAlum, $idGrupo, $idEquipoIOT, $idEquipoDesarrollo, $idEquipoSoporte);
 
 
@@ -33,6 +61,7 @@ $pagNom = 'USUARIOS';
       $message = "No se pudieron insertar los datos...";
       $class = "alert alert-danger";
     }
+  }
   ?>
     <div class="<?php echo $class ?>">
       <?php echo $message; ?>
