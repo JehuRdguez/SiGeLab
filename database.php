@@ -801,7 +801,7 @@ class Database
 
     public function single_recordLaboratorio($idLaboratorio)
     {
-        $sql = "SELECT * FROM vwlaboratorio WHERE idLaboratorio='$idLaboratorio'";
+        $sql = "SELECT * FROM laboratorio WHERE idLaboratorio='$idLaboratorio'";
         $res = mysqli_query($this->con, $sql);
         $return = mysqli_fetch_object($res);
         return $return;
