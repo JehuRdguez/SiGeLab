@@ -234,8 +234,8 @@ else{
                           $listaEIOTEdit = $alumnos->equiposIOT('numSerieEquipo');
                           while ($row = mysqli_fetch_object($listaEIOTEdit)) {
                             $idEquipo = $row->idEquipo;
-                            $numSerieEquipo = $row->numSerieEquipo; ?>
-                            <option value="<?php echo $idEquipo; ?>"><?php echo $numSerieEquipo; ?></option>
+                            $numInvEscolar = $row->numInvEscolar; ?>
+                            <option value="<?php echo $idEquipo; ?>"><?php echo $numInvEscolar; ?></option>
                           <?php } ?>
                         </select>
                       </div>
@@ -256,8 +256,8 @@ else{
                           $listaEDitarED = $alumnos->equiposDESARROLLO('numSerieEquipo');
                           while ($row = mysqli_fetch_object($listaEDitarED)) {
                             $idEquipo = $row->idEquipo;
-                            $numSerieEquipo = $row->numSerieEquipo; ?>
-                            <option value="<?php echo $idEquipo; ?>"><?php echo $numSerieEquipo; ?></option>
+                            $numInvEscolar = $row->numInvEscolar; ?>
+                            <option value="<?php echo $idEquipo; ?>"><?php echo $numInvEscolar; ?></option>
                           <?php } ?>
                         </select>
                       </div>
@@ -278,8 +278,8 @@ else{
                           $listaESEdit = $alumnos->equiposSOPORTE('numSerieEquipo');
                           while ($row = mysqli_fetch_object($listaESEdit)) {
                             $idEquipo = $row->idEquipo;
-                            $numSerieEquipo = $row->numSerieEquipo; ?>
-                            <option value="<?php echo $idEquipo; ?>"><?php echo $numSerieEquipo; ?></option>
+                            $numInvEscolar = $row->numInvEscolar; ?>
+                            <option value="<?php echo $idEquipo; ?>"><?php echo $numInvEscolar; ?></option>
                           <?php } ?>
                         </select>
                       </div>
@@ -392,8 +392,8 @@ else{
                     $listaEIOT = $alumnos->equiposIOT('numSerieEquipo');
                     while ($row = mysqli_fetch_object($listaEIOT)) {
                       $idEquipo = $row->idEquipo;
-                      $numSerieEquipo = $row->numSerieEquipo; ?>
-                      <option value="<?php echo $idEquipo; ?>"><?php echo $numSerieEquipo; ?></option>
+                      $numInvEscolar = $row->numInvEscolar; ?>
+                      <option value="<?php echo $idEquipo; ?>"><?php echo $numInvEscolar; ?></option>
                     <?php } ?>
                   </select>
 
@@ -405,8 +405,8 @@ else{
                     $listaED = $alumnos->equiposDESARROLLO('numSerieEquipo');
                     while ($row = mysqli_fetch_object($listaED)) {
                       $idEquipo = $row->idEquipo;
-                      $numSerieEquipo = $row->numSerieEquipo; ?>
-                      <option value="<?php echo $idEquipo; ?>"><?php echo $numSerieEquipo; ?></option>
+                      $numInvEscolar = $row->numInvEscolar; ?>
+                      <option value="<?php echo $idEquipo; ?>"><?php echo $numInvEscolar; ?></option>
                     <?php } ?>
                   </select>
 
@@ -418,8 +418,8 @@ else{
                     $listaES = $alumnos->equiposSOPORTE('numSerieEquipo');
                     while ($row = mysqli_fetch_object($listaES)) {
                       $idEquipo = $row->idEquipo;
-                      $numSerieEquipo = $row->numSerieEquipo; ?>
-                      <option value="<?php echo $idEquipo; ?>"><?php echo $numSerieEquipo; ?></option>
+                      $numInvEscolar = $row->numInvEscolar; ?>
+                      <option value="<?php echo $idEquipo; ?>"><?php echo $numInvEscolar; ?></option>
                     <?php } ?>
                   </select>
 

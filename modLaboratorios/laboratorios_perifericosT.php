@@ -210,19 +210,19 @@ $pagNom = 'LABORATORIOS';
 										</div>
 										<div class="col-sm-10">
 											<label>Número de inventario escolar</label>
-											<input type="number" name="escolarteclado" id="escolarteclado" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+											<input type="number" name="escolarteclado" id="escolarteclado" class="form-control" required min="1" onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 										</div>
 										<div class="col-sm-10">
 											<label>Número de serie del periférico</label>
-											<input type="text" name="numSerieteclado" id="numSerieteclado" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+											<input type="text" name="numSerieteclado" id="numSerieteclado" class="form-control" required min="1" onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 										</div>
 										<div class="col-sm-10">
 											<label>Marca</label>
-											<input type="text" name="marcateclado" id="marcateclado" class="form-control">
+											<input type="text" name="marcateclado" id="marcateclado" class="form-control" required>
 										</div>
 										<div class="col-sm-10">
 											<label>Modelo</label>
-											<input type="text" name="modeloteclado" id="modeloteclado" class="form-control">
+											<input type="text" name="modeloteclado" id="modeloteclado" class="form-control" required>
 										</div>
 										<div class="col-sm-10">
 											<label hidden>estado</label>

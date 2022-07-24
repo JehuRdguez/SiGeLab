@@ -291,9 +291,9 @@ class Database
     /////////////////////////GRUPO/////////////////////////////////////
 
     //registro grupo
-    public function createGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, $estado)
+    public function createGrupo($nombreGrupo, $idUsuario, $estado)
     { 
-        $sql = "CALL proAddGrupo('$nombreGrupo','$cantidadAlumnos','$idUsuario','$estado')  ";
+        $sql = "CALL proAddGrupo('$nombreGrupo','$idUsuario','$estado')  ";
 
         try {
             $res = mysqli_query($this->con, $sql);
@@ -801,7 +801,7 @@ class Database
 
     public function single_recordLaboratorio($idLaboratorio)
     {
-        $sql = "SELECT * FROM vwlaboratorio WHERE idLaboratorio='$idLaboratorio'";
+        $sql = "SELECT * FROM laboratorio WHERE idLaboratorio='$idLaboratorio'";
         $res = mysqli_query($this->con, $sql);
         $return = mysqli_fetch_object($res);
         return $return;
