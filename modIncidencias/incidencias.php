@@ -368,13 +368,13 @@ $pagNom = 'INCIDENCIAS';
               <td><?php echo date($fecha); ?></td>
               <td><?php echo $descripcion; ?></td>
               <td><?php echo $nombreC; ?></td>
-              <td><?php if ($nombreC != "Pendiente") {
-                    echo 'En proceso';
-                  } else if ($estado == 0 || $nombreC == "Pendiente") {
-                    echo 'Pendiente';
-                  } else {
-                    echo 'Concluida';
-                  } ?></td>
+              <td><?php if ($estado == 1) {
+                  echo 'Concluida';
+                } else if ($nombreC != "Pendiente") {
+                  echo 'En proceso';
+                } else {
+                  echo 'Pendiente';
+                } ?></td>
               <td>
                 <abbr title="Ver mas"><a type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
               </td>
