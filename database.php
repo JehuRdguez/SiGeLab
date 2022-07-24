@@ -993,7 +993,7 @@ class Database
     //ConsultaReporte
     public function readIncidencia()
     { //Función para consulta
-        $sql = "SELECT DISTINCT * FROM vwincidencias ";
+        $sql = "SELECT DISTINCT * FROM vwincidencia ";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
