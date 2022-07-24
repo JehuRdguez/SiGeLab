@@ -291,9 +291,9 @@ class Database
     /////////////////////////GRUPO/////////////////////////////////////
 
     //registro grupo
-    public function createGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, $estado)
+    public function createGrupo($nombreGrupo, $idUsuario, $estado)
     { 
-        $sql = "CALL proAddGrupo('$nombreGrupo','$cantidadAlumnos','$idUsuario','$estado')  ";
+        $sql = "CALL proAddGrupo('$nombreGrupo','$idUsuario','$estado')  ";
 
         try {
             $res = mysqli_query($this->con, $sql);
