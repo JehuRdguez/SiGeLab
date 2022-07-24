@@ -291,9 +291,9 @@ class Database
     /////////////////////////GRUPO/////////////////////////////////////
 
     //registro grupo
-    public function createGrupo($nombreGrupo, $idUsuario, $estado)
+    public function createGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, $estado)
     { 
-        $sql = "CALL proAddGrupo('$nombreGrupo','$idUsuario','$estado')  ";
+        $sql = "CALL proAddGrupo('$nombreGrupo','$cantidadAlumnos','$idUsuario','$estado')  ";
 
         try {
             $res = mysqli_query($this->con, $sql);
@@ -765,7 +765,7 @@ class Database
     //consultar laboratorio
     public function readLab()
     {
-        $sql = "SELECT * FROM laboratorio";
+        $sql = "SELECT * FROM vwlaboratorio";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
@@ -801,7 +801,7 @@ class Database
 
     public function single_recordLaboratorio($idLaboratorio)
     {
-        $sql = "SELECT * FROM laboratorio WHERE idLaboratorio='$idLaboratorio'";
+        $sql = "SELECT * FROM vwlaboratorio WHERE idLaboratorio='$idLaboratorio'";
         $res = mysqli_query($this->con, $sql);
         $return = mysqli_fetch_object($res);
         return $return;
@@ -993,7 +993,7 @@ class Database
     //ConsultaReporte
     public function readIncidencia()
     { //Función para consulta
-        $sql = "SELECT * FROM vwincidencia ";
+        $sql = "SELECT DISTINCT * FROM vwincidencias ";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
@@ -1041,13 +1041,13 @@ class Database
     //ESCOGER NUMERO DE SERIE DE EQUIPO
     public function readEquipos()
     {
-        $sql = "SELECT * from equipo WHERE estado = '1'";     //nombre tabla, es la misma q en el insert intoooo
+        $sql = "SELECT * from Equipo WHERE estado = '1'";     //nombre tabla, es la misma q en el insert intoooo
 
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
 
-    //Cambiar encargado para resolver la incidencia
+    //Cambiar encargado
     public function single_recordIncidencia($idIncidencia)
     {
         $sql = "SELECT * FROM incidencia WHERE idIncidencia='$idIncidencia'";
@@ -1107,7 +1107,7 @@ VALUES('$maestro','$idLaboratorio','$idGrupo','$materia','$fecha','$fechaSalida'
     //Funcion para listar opciones de grupos
     public function readGrupos()
     {
-        $sql = "SELECT *FROM vwgrupos WHERE estado = '1'";
+        $sql = "SELECT *FROM grupo WHERE estado = '1'";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
