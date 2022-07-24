@@ -3,7 +3,20 @@ $pagNom = 'LABORATORIOS';
 ?>
 
 <?php include("../public/header.php"); ?>
-<?php if ($idTipoUsuario == 1) { ?>
+<?php if ($_SESSION['idTipoUsuario'] == 1) { ?>
+	  <!--Condiciones para tipo usuario -->
+	  <?php
+  $sname = "localhost";
+  $uname = "root";
+  $password = "";
+  $bd_name = "sigelab";
+
+  $conn = mysqli_connect($sname, $uname, $password, $bd_name);
+  if (!$conn) {
+    echo "Error!";
+    exit();
+  }
+  ?>
 
 	<?php
 	include("../database.php");
@@ -89,10 +102,10 @@ $pagNom = 'LABORATORIOS';
 				while ($row = mysqli_fetch_object($listaHorarios)) { //antes del = es la variable del form, después es la de BDD
 
 					$idHorarios = $row->idHorarios;
+					$idGrupo = $row->idGrupo;
 					$nombreC = $row->nombreC;
 					$materia = $row->materia;
 					$nombreGrupo = $row->nombreGrupo;
-					$cantidadAlumnos = $row->cantidadAlumnos;
 					$dia = $row->dia;
 					$horaEntrada = $row->horaEntrada;
 					$horaSalida = $row->horaSalida;
@@ -122,8 +135,7 @@ $pagNom = 'LABORATORIOS';
 							<abbr title="Detalles"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#detallesHorarios<?php echo $idHorarios; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
 
 						</td>
-					</tr>
-
+					</tr>	
 
 					<!--modal para editar--->
 					<div class="modal fade" id="editarHorarios<?php echo $idHorarios; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -248,7 +260,9 @@ $pagNom = 'LABORATORIOS';
 									$datos_horarios = $horariosR->single_recordHorariosDet($idHorarios);
 									?>
 
-									</br><label>Cantidad de alumnos en <?php echo $datos_horarios->nombreGrupo; ?>: <strong><?php echo $datos_horarios->cantidadAlumnos; ?></strong></label></br>
+									</br><label>Cantidad de alumnos en <?php echo $datos_horarios->nombreGrupo; ?>: <strong><?php
+									$contar = ($conn->query("SELECT COUNT(*)  FROM cantidadAlumnos where idGrupo='$idGrupo'")); //Contar la cantidad de alumnos registrados con ese grupo
+									echo $contar->fetch_column(); ?></strong></label></br>
 
 									</br><label>Hora de entrada: <strong><?php echo $datos_horarios->horaEntrada; ?></strong></label></br>
 
@@ -387,8 +401,10 @@ $pagNom = 'LABORATORIOS';
 		</div>
 	</div>
 
+	<?php include("../public/footer.php"); ?>
+    <!--Se incluye el footer-->
 
-	<?php include("../public/footer.php");
-	?><?php } else { ?>
-	<?php header("Location: ../index.php"); ?>
-<?php } ?>
+	<?php } else if ($_SESSION['idTipoUsuario'] != 1) { ?>
+    <!--Condiciones de acceso-->
+    <?php header("Location: ../index.php"); ?>
+  <?php } ?>
