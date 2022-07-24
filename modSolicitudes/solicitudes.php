@@ -286,9 +286,8 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                     <input type="text" name="materia" id="materia" class="form-control" required>
 
                     <label>Dias que solicita el laboratorio:</label>
-                    <input type="text" name="fecha" id="fecha" class="form-control pull-right"   required>
-
-                  
+                    <input type="text" name="fecha" id="fecha" class="form-control "  value=" <?php $hoy = date("Y-m-d"); echo $hoy; ?>"  required>
+                
 
                     <label>Hora entrada</label>
                     <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00"required>
