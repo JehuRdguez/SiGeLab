@@ -5,50 +5,52 @@ $pagNom = 'GRUPOS';
 <?php include("../public/header.php"); ?>
 <?php if ($_SESSION['idTipoUsuario'] == 1) { ?>
   <!--Condiciones para tipo usuario -->
+  <?php
+  $sname = "localhost";
+  $uname = "root";
+  $password = "";
+  $bd_name = "sigelab";
 
+  $conn = mysqli_connect($sname, $uname, $password, $bd_name);
+  if (!$conn) {
+    echo "Error!";
+    exit();
+  }
+
+
+  ?>
   <?php
   include("../database.php");  //se incluye el otro archivo con la conexión a la bdd
   $gruposR = new Database();  //generamos la variable cliente pq eso es lo que vamos a generar, con esto instanciamos
 
   if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
     $nombreGrupo = $gruposR->sanitize($_POST['nombreGrupo']);  //se va a limpiar y recibir lo del formulario
-    $cantidadAlumnos = $gruposR->sanitize($_POST['cantidadAlumnos']);
     $idUsuario = $gruposR->sanitize($_POST['idUsuario']);
-  
-    $sname = "localhost";
-    $uname = "root";
-    $password = "";
-    $bd_name = "sigelab";
-    
-    $conn = mysqli_connect($sname, $uname, $password, $bd_name);
-    if(!$conn){
-        echo "Error!";
-        exit();
-    }
 
 
 
-$validar="SELECT* FROM vwValidaTutor where  idUsuario='$idUsuario'";
-$validando=$conn->query($validar);
 
-if($validando->num_rows>0 ){
-  $message = "El tutor ya está asignado a un grupo";
-  $class = "alert alert-danger";
-}
-else{
-    
-    $res = $gruposR->createGrupo($nombreGrupo, $cantidadAlumnos, $idUsuario, 1); //Función para crear un nuevo grupo
-    if ($res === true) {
-      $message = "Datos insertados con éxito";
-      $class = "alert alert-success";
-    } else if ($res == "duplicado") {
-      $message = "Datos duplicados, no se pudo completar el registro...";
+
+    $validar = "SELECT* FROM vwValidaTutor where  idUsuario='$idUsuario'";
+    $validando = $conn->query($validar);
+
+    if ($validando->num_rows > 0) {
+      $message = "El tutor ya está asignado a un grupo";
       $class = "alert alert-danger";
     } else {
-      $message = "No se pudieron insertar los datos...";
-      $class = "alert alert-danger";
+
+      $res = $gruposR->createGrupo($nombreGrupo, $idUsuario, 1); //Función para crear un nuevo grupo
+      if ($res === true) {
+        $message = "Datos insertados con éxito";
+        $class = "alert alert-success";
+      } else if ($res == "duplicado") {
+        $message = "Datos duplicados, no se pudo completar el registro...";
+        $class = "alert alert-danger";
+      } else {
+        $message = "No se pudieron insertar los datos...";
+        $class = "alert alert-danger";
+      }
     }
-  }
   ?>
     <div class="<?php echo $class ?>">
       <?php echo $message; ?>
@@ -90,21 +92,28 @@ else{
         <tbody>
           <!-- Cuerpo de la tabla, se llena con la BDD-->
           <?php
-          $gruposR = new Database(); //instanciamos
           $listaGrupos = $gruposR->readGrupo(); //se crea la variable listaAdministradores
           ?>
+
           <?php
           while ($row = mysqli_fetch_object($listaGrupos)) {
             $idGrupo = $row->idGrupo;
             $nombreGrupo = $row->nombreGrupo;
-            $cantidadAlumnos = $row->cantidadAlumnos;
             $nombreM = $row->nombreC;
             $uActivo = $row->uActivo;
             $estado = $row->estado;
           ?>
+
             <tr>
               <td><?php echo $nombreGrupo; ?></td> <!-- Muestra los datos-->
-              <td><?php echo $cantidadAlumnos; ?></td>
+              <td>
+                <?php
+                $contar = ($conn->query("SELECT COUNT(*)  FROM cantidadAlumnos where idGrupo='$idGrupo'")); //Contar la cantidad de alumnos registrados con ese grupo
+                echo $contar->fetch_column();
+
+                ?>
+              </td>
+              </td>
               <td><?php if ($uActivo == 1) { //Condicionamos el tutor, si está incactivo se pondrá "pendiente", en caso contrario se muestra el nombre
                     echo $nombreM;
                   } else {
@@ -235,9 +244,6 @@ else{
                     <label> Nombre del grupo:</label>
                     <input type="text" name="nombreGrupo" id="nombreGrupo" class="form-control" required>
 
-                    <label> Cantidad de alumnos: </label>
-                    <input type="number" name="cantidadAlumnos" id="cantidadAlumnos" class="form-control" min="1" max="60" onkeypress="return verificaNumeros(event);" maxlength="2" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
-
                     <label for="">Tutor</label>
                     <select class="form-select" aria-label="Default select example" id="idUsuario" name="idUsuario" required>
                       <option value="">Selecciona un tutor:</option>
@@ -262,8 +268,10 @@ else{
       </div>
     </div>
 
-    <?php include("../public/footer.php"); ?>   <!--Se incluye el footer-->
+    <?php include("../public/footer.php"); ?>
+    <!--Se incluye el footer-->
 
-  <?php } else if ($_SESSION['idTipoUsuario'] != 1) { ?> <!--Condiciones de acceso-->
+  <?php } else if ($_SESSION['idTipoUsuario'] != 1) { ?>
+    <!--Condiciones de acceso-->
     <?php header("Location: ../index.php"); ?>
   <?php } ?>
