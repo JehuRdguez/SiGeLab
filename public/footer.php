@@ -3,10 +3,8 @@
 
 <!-- Para las tablas -->
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
-<!-- estilo para la tabla del calendario -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-  
-</script>
+
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -14,9 +12,14 @@
 
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script><!-- Para hacerlas responsivas-->
 <!-- Para el calendario daterangepicker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="../assets/vendor/daterangepicker/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+
 
 
 
@@ -459,26 +462,14 @@ salida.addEventListener("change", comparaHoras);
     }
 </script>
 
-<!-- Función para rango de fechas valido -->
+<!-- Función para rango de fechas valido  -->
 
-<script  type="text/javascript">
-  
-$(function() {
-  $('input[name="fecha"]').daterangepicker({
-    opens: 'left',
-    minDate: new Date(),
-    isInvalidDate: function(date) {
-      if (date.day() == 0 || date.day() == 6){
-        return true;
-      }
-    
-        return false;
-    }
-    
-  }, function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+
+<script>
+  $(document).on('ready', function () {
+    // initialization of daterangepicker
+    $('.js-daterangepicker').daterangepicker();
   });
-});
 </script>
 
 <!-- TERMINA PARTE DE GABI-->
