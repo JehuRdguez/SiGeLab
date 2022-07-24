@@ -209,19 +209,19 @@ if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para
 								</div>
 								<div class="col-sm-10">
 									<label>Número de inventario escolar</label>
-									<input type="number" name="escolarmonitor" id="escolarmonitor" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+									<input type="number" name="escolarmonitor" id="escolarmonitor" required class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 								</div>
 								<div class="col-sm-10">
 									<label>Número de serie del periférico</label>
-									<input type="number" name="numSerieMonitor" id="numSerieMonitor" class="form-control" min="1"  onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+									<input type="number" name="numSerieMonitor" id="numSerieMonitor" required class="form-control" min="1"  onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 								</div>
 								<div class="col-sm-10">
 									<label>Marca</label>
-									<input type="text" name="marcamonitor" id="marcamonitor" class="form-control">
+									<input type="text" name="marcamonitor" id="marcamonitor" class="form-control" required>
 								</div>
 								<div class="col-sm-10">
 									<label>Modelo</label>
-									<input type="text" name="modelomonitor" id="modelomonitor" class="form-control">
+									<input type="text" name="modelomonitor" id="modelomonitor" class="form-control" required>
 								</div>
 								<div class="col-sm-10">
 									<label hidden>estado</label>
