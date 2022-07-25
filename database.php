@@ -993,7 +993,7 @@ class Database
     //ConsultaReporte
     public function readIncidencia()
     { //Función para consulta
-        $sql = "SELECT DISTINCT * FROM vwincidencias ";
+        $sql = "SELECT DISTINCT * FROM vwincidencia ";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
@@ -1041,7 +1041,7 @@ class Database
     //ESCOGER NUMERO DE SERIE DE EQUIPO
     public function readEquipos()
     {
-        $sql = "SELECT * from vwEquipo WHERE estado = '1'";     //nombre tabla, es la misma q en el insert intoooo
+        $sql = "SELECT * from Equipo WHERE estado = '1'";     //nombre tabla, es la misma q en el insert intoooo
 
         $res = mysqli_query($this->con, $sql);
         return $res;
@@ -1107,7 +1107,7 @@ VALUES('$maestro','$idLaboratorio','$idGrupo','$materia','$fecha','$fechaSalida'
     //Funcion para listar opciones de grupos
     public function readGrupos()
     {
-        $sql = "SELECT *FROM vwgrupos WHERE estado = '1'";
+        $sql = "SELECT *FROM grupo WHERE estado = '1'";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
@@ -1115,7 +1115,7 @@ VALUES('$maestro','$idLaboratorio','$idGrupo','$materia','$fecha','$fechaSalida'
     //Funcion para listar opciones de grupos
     public function readLaboratorioS()
     {
-        $sql = "SELECT * FROM vwlaboratorio WHERE estado= '1'";
+        $sql = "SELECT * FROM laboratorio WHERE estado= '1'";
 
         $res = mysqli_query($this->con, $sql);
         return $res;
