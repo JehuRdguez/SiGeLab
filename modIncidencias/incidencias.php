@@ -36,8 +36,11 @@ $reportes = new Database();   //instanciar el objeto
   ?>
 
   <!-- Botón de registro-->
-  <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a> <br />
-  <br>
+  <div class="dropdown">
+    <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a>
+    <br><br>
+   
+  </div>
   <!-- Mostrar tabla-->
   <div class="container">
 
@@ -101,18 +104,20 @@ $reportes = new Database();   //instanciar el objeto
 
 
               <?php
-              if ($nombreC != 'Pendiente') {
+              
                 if ($estado == 1) { ?>
                   <a type="button" class="btn btn-outline-dark" href="updateI.php?idIncidencia=<?php echo $idIncidencia; ?>"><i class="fa-solid fa-check"></i></a>
 
-                <?php } else { ?>
+                <?php } else if($estado == 0) { ?>
+                  <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
                   <abbr title="Concluir incidencia"><a type="button" class="btn btn-outline-dark" href="updateI.php?idIncidencia=<?php echo $idIncidencia; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
-              <?php }
-              } ?>
+                <?php }else { ?>
               <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
+             <?php }   ?>
               <abbr title="Borrar"><a type="button" class="btn btn-outline-dark" onclick="return eliminar()" href="deleteI.php?idIncidencia=<?php echo $idIncidencia ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
               <abbr title="Ver mas"><a type="button" class="btn btn-outline-darsk" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
-
+              <abbr title="Editar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a></abbr>
+            
             </td>
 
           </tr>
