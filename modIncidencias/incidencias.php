@@ -4,12 +4,13 @@ $pagNom = 'INCIDENCIAS';
 
 <?php include("../public/header.php"); ?>
 
+<?php 
+include("../database.php");  //se incluye el otro archivo
+$reportes = new Database();   //instanciar el objeto
+  ?>
+
 <?php if ($_SESSION['idTipoUsuario'] == 1) { ?>
-
   <?php
-  include("../database.php");  //se incluye el otro archivo
-  $reportes = new Database();   //instanciar el objeto
-
   if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la && (y) EMpty si se encuentra o no vacio
     $usuarioRegistra = $reportes->sanitize($_POST['usuarioRegistra']);
     $idLaboratorio = $reportes->sanitize($_POST['idLaboratorio']);
@@ -50,7 +51,7 @@ $pagNom = 'INCIDENCIAS';
           <!-- filas -->
           <th>Nombre completo</th> <!-- Encabezados de las tablas-->
           <th>Laboratorio</th>
-          <th>Tipo de reporte</th>
+          <th>Tipo de incidencia</th>
           <th>Numero de Inventario Escolar</th>
           <th>Fecha</th>
           <th>Descripción</th>
@@ -188,7 +189,10 @@ $pagNom = 'INCIDENCIAS';
                   <?php
                   $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
                   ?>
-                  <label>Descripción de la incidencia: <strong><?php echo $datos_Incidencia->descripcionIncidencia; ?></strong></label></br>
+                  <label>Descripción de la incidencia: <strong><?php
+                                                                    if ($datos_Incidencia->descripcionIncidencia == 0) {
+                                                                      echo 'Sin respuesta';
+                                                                    }else{ echo $datos_Incidencia->descripcionIncidencia;} ?></strong></label></br>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -219,7 +223,7 @@ $pagNom = 'INCIDENCIAS';
 
 
           <center>
-            <h5 class="modal-title" id="RegistroReporte">Hoja de registro de reporte</h5>
+            <h5 class="modal-title" id="RegistroReporte">Hoja de registro de incidencia</h5>
           </center>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -232,8 +236,8 @@ $pagNom = 'INCIDENCIAS';
                   <input type="hidden" name="usuarioRegistra" id="usuarioRegistra" class="form-control" required value="<?php echo  $_SESSION['nombreC']; ?>">
 
                   <label> Elige el laboratorio </label>
-                  <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio">
-                    <option selected disabled>Selecciona una Laboratorio</option>
+                  <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
+                    <option value="" selected disabled>Selecciona una Laboratorio</option>
                     <?php
                     $listaIncidencias = $reportes->readLaboratorioS('nombreLaboratorio');
                     while ($row = mysqli_fetch_object($listaIncidencias)) {
@@ -243,16 +247,17 @@ $pagNom = 'INCIDENCIAS';
                     <?php } ?>
                   </select>
 
-                  <label>Elige el tipo de reporte </label>
-                  <select class="form-select" aria-label="Default select example" id="idTipoIncidencia" name="idTipoIncidencia">
+                  <label>Tipo de incidencia</label>
+                  <select class="form-select" aria-label="Default select example" id="idTipoIncidencia" name="idTipoIncidencia" required>
+                  <option value="" selected disabled>Selecciona el tipo de incidencia</option>
                     <option value="1">Actualización</option>
                     <option value="2">Falla</option>
                     <option value="3">Otro</option>
                   </select>
 
                   <label>Numero de Inventario Escolar</label>
-                  <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo">
-                    <option selected disabled>Selecciona un numero de serie:</option>
+                  <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
+                    <option value="" selected disabled>Selecciona un numero de serie:</option>
                     <?php
                     $listaEquipos = $reportes->readEquipos('numInvEscolar');
                     while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -263,7 +268,7 @@ $pagNom = 'INCIDENCIAS';
                   </select>
 
                   <label>Descripcion</label>
-                  <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
+                  <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
                 </center>
               </div>
 
@@ -282,26 +287,17 @@ $pagNom = 'INCIDENCIAS';
     </div>
   </div>
 
-  <?php include("../public/footer.php"); ?>
+
 <?php }
 if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
-
-
   <?php
-  include("../database.php");  //se incluye el otro archivo
-  $reportes = new Database();   //instanciar el objeto
-
   if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la && (y) EMpty si se encuentra o no vacio
     $usuarioRegistra = $reportes->sanitize($_POST['usuarioRegistra']);
     $idLaboratorio = $reportes->sanitize($_POST['idLaboratorio']);
     $idTipoIncidencia =  $reportes->sanitize($_POST['idTipoIncidencia']);
     $idEquipo = $reportes->sanitize($_POST['idEquipo']);
-
     $descripcion = $reportes->sanitize($_POST['descripcion']);
-
-
-    $res = $reportes->createIncidencia($usuarioRegistra, $idLaboratorio, $idTipoIncidencia, $idEquipo, $descripcion, 0, 0, '');
-
+    $res = $reportes->createIncidencia($usuarioRegistra, $idLaboratorio, $idTipoIncidencia, $idEquipo, $descripcion, 0, ''); //CAMBIO
 
     if ($res) {
       $message = "Datos insertados con exito";
@@ -332,7 +328,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
           <!-- filas -->
           <th>Nombre completo</th> <!-- Encabezados de las tablas-->
           <th>Laboratorio</th>
-          <th>Tipo de reporte</th>
+          <th>Tipo de incidencia</th>
           <th>Numero de Inventario Escolar</th>
           <th>Fecha</th>
           <th>Descripción</th>
@@ -374,15 +370,19 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
               <td><?php echo $numInvEscolar; ?></td>
               <td><?php echo date($fecha); ?></td>
               <td><?php echo $descripcion; ?></td>
-              <td><?php echo $nombreC; ?></td>
-              <td><?php if ($estado == 1) {
-                    echo 'Concluida';
-                  } else if ($nombreC != "Pendiente") {
-                    echo 'En proceso';
-                  } else {
-                    echo 'Pendiente';
-                  } ?></td>
-              <td>
+              <td><?php if (is_null($nombreC)) {
+                  echo 'Pendiente';
+                } else {
+                  echo $nombreC;
+                } ?></td>
+            <td><?php if ($estado == 1) {
+                  echo 'Concluida';
+                } else if (is_null($nombreC)) {
+                  echo 'Pendiente';
+                } else {
+                  echo 'En proceso';
+                } ?></td>
+            <td>
                 <abbr title="Ver mas"><a type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
               </td>
 
@@ -400,10 +400,10 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                   <?php
                   $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
                   ?>
-                  <br><label>Descripción de la incidencia: <strong><?php echo $datos_Incidencia->descripcionIncidencia;
-                                                                    if ($datos_Incidencia->descripcionIncidencia == '') {
+                  <br><label>Descripción de la incidencia: <strong><?php
+                                                                    if ($datos_Incidencia->descripcionIncidencia == 0) {
                                                                       echo 'Sin respuesta';
-                                                                    } ?></strong></label></br>
+                                                                    }else{ echo $datos_Incidencia->descripcionIncidencia;} ?></strong></label></br>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -434,7 +434,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
 
 
           <center>
-            <h5 class="modal-title" id="RegistroReporte">Hoja de registro de reporte</h5>
+            <h5 class="modal-title" id="RegistroReporte">Hoja de registro de incidencia</h5>
           </center>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -446,9 +446,9 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
 
                   <input type="hidden" name="usuarioRegistra" id="usuarioRegistra" class="form-control" required value="<?php echo  $_SESSION['nombreC']; ?>">
 
-                  <label> Elige el laboratorio </label>
-                  <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio">
-                    <option selected disabled>Selecciona una Laboratorio</option>
+                  <label> Laboratorio </label>
+                  <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
+                  <option value="" selected disabled>Selecciona una Laboratorio</option>
                     <?php
                     $listaIncidencias = $reportes->readLaboratorioS('nombreLaboratorio');
                     while ($row = mysqli_fetch_object($listaIncidencias)) {
@@ -458,16 +458,17 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                     <?php } ?>
                   </select>
 
-                  <label>Elige el tipo de reporte </label>
-                  <select class="form-select" aria-label="Default select example" id="idTipoIncidencia" name="idTipoIncidencia">
-                    <option value="1">Actualización</option>
+                  <label>Tipo de incidencia </label>
+                  <select class="form-select" aria-label="Default select example" id="idTipoIncidencia" name="idTipoIncidencia" required>
+                  <option value="" selected disabled>Elige el tipo de incidencia</option>
+                  <option value="1">Actualización</option>
                     <option value="2">Falla</option>
                     <option value="3">Otro</option>
                   </select>
 
                   <label>Numero de Inventario Escolar</label>
-                  <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo">
-                    <option selected disabled>Selecciona un numero de serie:</option>
+                  <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
+                    <option value="" selected disabled>Selecciona un numero de serie:</option>
                     <?php
                     $listaEquipos = $reportes->readEquipos('numInvEscolar');
                     while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -478,7 +479,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                   </select>
 
                   <label>Descripcion</label>
-                  <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
+                  <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
                 </center>
               </div>
 
@@ -496,8 +497,11 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
       </div>
     </div>
   </div>
+  <?php }?>
 
   <?php include("../public/footer.php");
-  ?><?php } else if ($_SESSION['idTipoUsuario'] != 1 && $_SESSION['idTipoUsuario'] != 2  && $_SESSION['idTipoUsuario'] != 3) { ?>
+  ?>
+
+  <?php if ($_SESSION['idTipoUsuario'] != 1 && $_SESSION['idTipoUsuario'] != 2  && $_SESSION['idTipoUsuario'] != 3) { ?>
   <?php header("Location: ../index.php"); ?>
 <?php } ?>

@@ -210,9 +210,9 @@ else{
                           <option selected value="<?php echo $datos_alumno->idGrupo; ?>"><?php echo $idGrupo; ?></option>
                           <?php
                           $listaEGrupos = $alumnos->readListaGrupo('nombreGrupo');
-                          while ($row = mysqli_fetch_object($listaEGrupos)) {
+                          while ($row = mysqli_fetch_object($listaEGrupos) ) {
                             $idGrupo = $row->idGrupo;
-                            $nombreGrupo = $row->nombreGrupo; ?>
+                            $nombreGrupo = $row->nombreGrupo; ?>  
                             <option value="<?php echo $idGrupo; ?>"><?php echo $nombreGrupo; ?></option>
                           <?php } ?>
                         </select>
@@ -386,7 +386,7 @@ else{
 
                   <label for="">Equipo asignado IOT:</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipoIOT" name="idEquipoIOT" required>
-                    <option value="">Selecciona un equipo</option>
+                    <option value="" selected disabled>Selecciona un equipo</option>
                     <option value="1">No aplica</option>
                     <?php
                     $listaEIOT = $alumnos->equiposIOT('numSerieEquipo');
@@ -399,7 +399,7 @@ else{
 
                   <label for="">Equipo asignado desarrollo:</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipoDesarrollo" name="idEquipoDesarrollo" required>
-                    <option value="">Selecciona un equipo</option>
+                    <option value="" selected disabled>Selecciona un equipo</option>
                     <option value="1">No aplica</option>
                     <?php
                     $listaED = $alumnos->equiposDESARROLLO('numSerieEquipo');
@@ -412,7 +412,7 @@ else{
 
                   <label for="">Equipo asignado soporte:</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipoSoporte" name="idEquipoSoporte" required>
-                    <option value="">Selecciona un equipo</option>
+                    <option value="" selected disabled>Selecciona un equipo</option>
                     <option value="1">No aplica</option>
                     <?php
                     $listaES = $alumnos->equiposSOPORTE('numSerieEquipo');
@@ -425,7 +425,7 @@ else{
 
                   <label for="" class="col-form-label">Grupo</label>
                   <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
-                    <option value="">Selecciona un grupo</option>
+                    <option value="" selected disabled>Selecciona un grupo</option>
                     <?php
                     $listaEGrupos = $alumnos->readListaGrupo('nombreGrupo');
                     while ($row = mysqli_fetch_object($listaEGrupos)) {

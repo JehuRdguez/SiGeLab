@@ -27,10 +27,6 @@ $pagNom = 'GRUPOS';
     $nombreGrupo = $gruposR->sanitize($_POST['nombreGrupo']);  //se va a limpiar y recibir lo del formulario
     $idUsuario = $gruposR->sanitize($_POST['idUsuario']);
 
-
-
-
-
     $validar = "SELECT* FROM vwValidaTutor where  idUsuario='$idUsuario'";
     $validando = $conn->query($validar);
 
@@ -200,7 +196,7 @@ $pagNom = 'GRUPOS';
                           <?php
                           $datos_grupo = $gruposR->single_recordgrupo($idGrupo);
                           ?>
-                          <option selected value="<?php echo $datos_grupo->idUsuario; ?>"><?php echo $nombreM; ?></option>
+                          <option selected disabled value="<?php echo $datos_grupo->idUsuario; ?>"><?php echo $nombreM; ?></option>
                           <?php
                           $listaTutores = $gruposR->readListaTutores('nombreC');
                           while ($row = mysqli_fetch_object($listaTutores)) {
@@ -246,7 +242,7 @@ $pagNom = 'GRUPOS';
 
                     <label for="">Tutor</label>
                     <select class="form-select" aria-label="Default select example" id="idUsuario" name="idUsuario" required>
-                      <option value="">Selecciona un tutor:</option>
+                      <option value="" selected disabled>Selecciona un tutor:</option>
                       <?php
                       $listaTutores = $gruposR->readListaTutores('nombreC');
                       while ($row = mysqli_fetch_object($listaTutores)) {
