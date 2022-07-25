@@ -7,7 +7,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
   <?php
   include("../database.php");
-  
+
 
   $solicitud = new database();   //instanciar el objeto
 
@@ -37,15 +37,16 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
 
   <div class="dropdown">
-    <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
+    <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
       Solicitudes</button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item"  href="../modSolicitudes/solicitudes.php">Solcitudes de acceso</a></li>
-      <li><a class="dropdown-item"  href="../modSolicitudes/solicitudEquipo.php">Cambio de equipo</a></li>
-      
+      <li><a class="dropdown-item" href="../modSolicitudes/solicitudes.php">Solcitudes de acceso</a></li>
+      <li><a class="dropdown-item" href="../modSolicitudes/solicitudEquipo.php">Cambio de equipo</a></li>
+
     </ul>
-      <!--Botón de registro -->
-  <a type="button" class="btn btn-outline-dark" href="#RegistroSolicitud" data-bs-toggle="modal">Registrar Solicitud</a> <br />
+    <!--Botón de registro -->
+    <a type="button" class="btn btn-outline-dark" href="#RegistroSolicitud" data-bs-toggle="modal">Registrar Solicitud</a> 
+    <a  type="button" href="reporteSolicitudes.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
 
   </div>
   </br>
@@ -58,7 +59,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
         <!-- Secciones o cabeceros -->
         <tr>
           <!-- filas -->
-          <th>Nombre solicitante</th> <!-- ENcabezados de las tablas-->
+          <th>Nombre del solicitante</th> <!-- ENcabezados de las tablas-->
           <th>Laboratorio</th>
           <th>Grupo</th>
           <th>Fecha</th>
@@ -147,7 +148,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
                       <label for="post" class="col-form-label">Razón de rechazo</label>
                       <textarea name="razon" id="razon" name type="text" class="form-control" placeholder="¿Por qué rechaza esta solicitud?" required><?php echo $datos_Solicitud->razon; ?></textarea>
-                      
+
 
                     </div>
                   </div>
@@ -156,7 +157,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                     <!-- Botón para enviar datos-->
                     <center>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="submit" class="btn btn-warning" onclick="return alertaRechazar()"><a style="text-decoration: none;"  href="updateS2.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>">Rechazar</a></button>
+                      <button type="submit" class="btn btn-warning" onclick="return alertaRechazar()"><a style="text-decoration: none;" href="updateS2.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>">Rechazar</a></button>
                     </center>
                     <br>
                     <!-- Botón -->
@@ -286,14 +287,15 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                     <input type="text" name="materia" id="materia" class="form-control" required>
 
                     <label>Dias que solicita el laboratorio:</label>
-                    <input type="text" name="fecha" id="fecha" class="form-control "  value=" <?php $hoy = date("Y-m-d"); echo $hoy; ?>"  required>
-                
+                    <input type="text" name="fecha" id="fecha" class="form-control " value=" <?php $hoy = date("Y-m-d");
+                                                                                              echo $hoy; ?>" required>
+
 
                     <label>Hora entrada</label>
-                    <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00"required>
+                    <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
 
                     <label>Hora salida</label>
-                    <input type="time" name="horaSalida" id="horaSalida" class="form-control"min="07:30" max="19:00" required>
+                    <input type="time" name="horaSalida" id="horaSalida" class="form-control" min="07:30" max="19:00" required>
 
 
                 </center>
@@ -475,7 +477,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   ?>
                   <br><label>Materia: <strong><?php echo $datos_Solicitud->materia; ?></strong></label><br><br>
                   <label for=""><strong> USO DE LABORATORIO</strong></label><br>
-                  <br><label>Dias de uso:  <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                  <br><label>Dias de uso: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
                   <br><label>Hora de entrada: <strong><?php echo $datos_Solicitud->horaEntrada; ?></strong></label></br>
                   <br><label>Hora de salida: <strong><?php echo $datos_Solicitud->horaSalida; ?></strong></label></br>
                 </div>
@@ -549,7 +551,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                       <input type="text" name="materia" id="materia" class="form-control" required>
 
                       <label>Dias que solicita el laboratorio:</label>
-                    <input type="text" name="fecha" id="fecha" class="form-control pull-right"   required>
+                      <input type="text" name="fecha" id="fecha" class="form-control pull-right" required>
 
                       <label>Hora entrada</label>
                       <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
@@ -574,7 +576,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
       </div>
     </div>
   </div>
-  
+
   <?php include("../public/footer.php"); ?>
 <?php } else if ($_SESSION['idTipoUsuario'] != 1 && $_SESSION['idTipoUsuario'] != 2) { ?>
   <?php header("Location: ../index.php"); ?>
