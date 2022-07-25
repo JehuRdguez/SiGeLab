@@ -387,7 +387,7 @@ else{
                   </div>
                   <div class="col-sm-10">
                     <label>N.º de Inv. Escolar</label>
-                    <input type="text" name="numInvEscolar" id="numInvEscolar" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                    <input type="text" name="numInvEscolar" id="numInvEscolar" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                   </div>
                   <div class="col-sm-10">
                     <label>N.º de serie equipo</label>
