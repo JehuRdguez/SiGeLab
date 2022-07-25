@@ -21,7 +21,33 @@ $pagNom = 'LABORATORIOS';
     $discoDuro = $equiposR->sanitize($_POST['discoDuro']);
     $ram = $equiposR->sanitize($_POST['ram']);
 
-    $res = $equiposR->createEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numMonitor, $numTeclado, $numMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, 1);
+
+    $sname = "localhost";
+    $uname = "root";
+    $password = "";
+    $bd_name = "sigelab";
+    
+    $conn = mysqli_connect($sname, $uname, $password, $bd_name);
+    if(!$conn){
+        echo "Error!";
+        exit();
+    }
+
+    $validar="SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor'";
+$validando=$conn->query($validar);
+$validar2="SELECT* FROM equipo where numTeclado>1 and numTeclado='$numTeclado'";
+$validando2=$conn->query($validar2);
+$validar3="SELECT* FROM equipo where numMouse>1 and numMouse='$numMouse'";
+$validando3=$conn->query($validar3);
+
+if($validando->num_rows>0 || $validando2->num_rows>0 || $validando3->num_rows>0 ){
+  $message = "El periférico o periféricos ya fueron asignados";
+  $class = "alert alert-danger";
+}
+else{
+
+  $res = $equiposR->createEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numMonitor, $numTeclado, $numMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, 1);
+
 
     if ($res === true) {
       $message = "Datos insertados con éxito";
@@ -30,9 +56,10 @@ $pagNom = 'LABORATORIOS';
       $message = "Datos duplicados, no se pudo completar el registro...";
       $class = "alert alert-danger";
     } else {
-      $message = "No se pudieron insertar los datos..";
+      $message = "No se pudieron insertar los datos...";
       $class = "alert alert-danger";
     }
+  }
   ?>
     <div class="<?php echo $class ?>">
       <?php echo $message; ?>
@@ -40,6 +67,7 @@ $pagNom = 'LABORATORIOS';
   <?php
   }
   ?>
+
 
   <br>
   <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
