@@ -82,7 +82,9 @@ $pagNom = 'EQUIPOS ASIGNADOS';
   </div>
 
 <?php include("../public/footer.php"); ?>
-  <?php } ?>
+<?php } else if ($_SESSION['idTipoUsuario'] != 2) { ?> <!--Condiciones de acceso-->
+  <?php header("Location: ../index.php"); ?>
+<?php } ?>
 
 
 
