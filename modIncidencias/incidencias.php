@@ -50,7 +50,7 @@ $pagNom = 'INCIDENCIAS';
           <th>Nombre completo</th> <!-- Encabezados de las tablas-->
           <th>Laboratorio</th>
           <th>Tipo de reporte</th>
-          <th>Número de serie de equipo</th>
+          <th>Numero de Inventario Escolar</th>
           <th>Fecha</th>
           <th>Descripción</th>
           <th>Encargado de resolver</th>
@@ -71,7 +71,7 @@ $pagNom = 'INCIDENCIAS';
           $usuarioRegistra = $row->usuarioRegistra;
           $nombreLaboratorio = $row->nombreLaboratorio;
           $tipoIncidencia = $row->tipoIncidencia;
-          $numSerieEquipo = $row->numSerieEquipo;
+          $numInvEscolar = $row->numInvEscolar;
           $fecha = $row->fecha;
           $descripcion = $row->descripcion;
           $nombreC = $row->nombreC;
@@ -83,7 +83,7 @@ $pagNom = 'INCIDENCIAS';
             <td><?php echo $usuarioRegistra; ?></td>
             <td><?php echo $nombreLaboratorio; ?></td>
             <td><?php echo $tipoIncidencia; ?></td>
-            <td><?php echo $numSerieEquipo; ?></td>
+            <td><?php echo $numInvEscolar; ?></td>
             <td><?php echo date($fecha); ?></td>
             <td><?php echo $descripcion; ?></td>
             <td><?php echo $nombreC; ?></td>
@@ -244,15 +244,15 @@ $pagNom = 'INCIDENCIAS';
                     <option value="3">Otro</option>
                   </select>
 
-                  <label>Número de serie de equipo</label>
+                  <label>Numero de Inventario Escolar</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo">
                     <option selected disabled>Selecciona un numero de serie:</option>
                     <?php
-                    $listaEquipos = $reportes->readEquipos('numSerieEquipo');
+                    $listaEquipos = $reportes->readEquipos('numInvEscolar');
                     while ($row = mysqli_fetch_object($listaEquipos)) {
                       $idEquipo = $row->idEquipo;
-                      $numSerieEquipo = $row->numSerieEquipo; ?>
-                      <option value="<?php echo $idEquipo ?>"><?php echo $numSerieEquipo ?></option>
+                      $numInvEscolar = $row->numInvEscolar; ?>
+                      <option value="<?php echo $idEquipo ?>"><?php echo $numInvEscolar ?></option>
                     <?php } ?>
                   </select>
 
@@ -326,7 +326,7 @@ $pagNom = 'INCIDENCIAS';
           <th>Nombre completo</th> <!-- Encabezados de las tablas-->
           <th>Laboratorio</th>
           <th>Tipo de reporte</th>
-          <th>Número de serie de equipo</th>
+          <th>Numero de Inventario Escolar</th>
           <th>Fecha</th>
           <th>Descripción</th>
           <th>Encargado de resolver</th>
@@ -349,7 +349,7 @@ $pagNom = 'INCIDENCIAS';
           $usuarioRegistra = $row->usuarioRegistra;
           $nombreLaboratorio = $row->nombreLaboratorio;
           $tipoIncidencia = $row->tipoIncidencia;
-          $numSerieEquipo = $row->numSerieEquipo;
+          $numInvEscolar = $row->numInvEscolar;
           $fecha = $row->fecha;
           $descripcion = $row->descripcion;
           $nombreC = $row->nombreC;
@@ -364,17 +364,17 @@ $pagNom = 'INCIDENCIAS';
               <td><?php echo $usuarioRegistra; ?></td>
               <td><?php echo $nombreLaboratorio; ?></td>
               <td><?php echo $tipoIncidencia; ?></td>
-              <td><?php echo $numSerieEquipo; ?></td>
+              <td><?php echo $numInvEscolar; ?></td>
               <td><?php echo date($fecha); ?></td>
               <td><?php echo $descripcion; ?></td>
               <td><?php echo $nombreC; ?></td>
-              <td><?php if ($nombreC != "Pendiente") {
-                    echo 'En proceso';
-                  } else if ($estado == 0 || $nombreC == "Pendiente") {
-                    echo 'Pendiente';
-                  } else {
-                    echo 'Concluida';
-                  } ?></td>
+              <td><?php if ($estado == 1) {
+                  echo 'Concluida';
+                } else if ($nombreC != "Pendiente") {
+                  echo 'En proceso';
+                } else {
+                  echo 'Pendiente';
+                } ?></td>
               <td>
                 <abbr title="Ver mas"><a type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
               </td>
@@ -458,15 +458,15 @@ $pagNom = 'INCIDENCIAS';
                     <option value="3">Otro</option>
                   </select>
 
-                  <label>Número de serie de equipo</label>
+                  <label>Numero de Inventario Escolar</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo">
                     <option selected disabled>Selecciona un numero de serie:</option>
                     <?php
-                    $listaEquipos = $reportes->readEquipos('numSerieEquipo');
+                    $listaEquipos = $reportes->readEquipos('numInvEscolar');
                     while ($row = mysqli_fetch_object($listaEquipos)) {
                       $idEquipo = $row->idEquipo;
-                      $numSerieEquipo = $row->numSerieEquipo; ?>
-                      <option value="<?php echo $idEquipo ?>"><?php echo $numSerieEquipo ?></option>
+                      $numInvEscolar = $row->numInvEscolar; ?>
+                      <option value="<?php echo $idEquipo ?>"><?php echo $numInvEscolar ?></option>
                     <?php } ?>
                   </select>
 
