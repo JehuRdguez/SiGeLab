@@ -1,4 +1,4 @@
-<?php 
+<?php
 $pagNom = 'INCIDENCIAS';
 ?>
 
@@ -16,9 +16,7 @@ $pagNom = 'INCIDENCIAS';
     $idTipoIncidencia =  $reportes->sanitize($_POST['idTipoIncidencia']);
     $idEquipo = $reportes->sanitize($_POST['idEquipo']);
     $descripcion = $reportes->sanitize($_POST['descripcion']);
-
-
-    $res = $reportes->createIncidencia($usuarioRegistra, $idLaboratorio, $idTipoIncidencia, $idEquipo, $descripcion, 0, 0, ''); //CAMBIO
+    $res = $reportes->createIncidencia($usuarioRegistra, $idLaboratorio, $idTipoIncidencia, $idEquipo, $descripcion, 0, ''); //CAMBIO
 
 
     if ($res) {
@@ -42,7 +40,7 @@ $pagNom = 'INCIDENCIAS';
   <!-- Mostrar tabla-->
   <div class="container">
 
-    <table  class="table table-bordered " cellspacing="0" width="100%"  id="incidenciasTable" style="background-color: #04aa89;  ">
+    <table class="table table-bordered " cellspacing="0" width="100%" id="incidenciasTable" style="background-color: #04aa89;  ">
       <thead>
         <!-- Secciones o cabeceros -->
         <tr>
@@ -86,16 +84,19 @@ $pagNom = 'INCIDENCIAS';
             <td><?php echo $numInvEscolar; ?></td>
             <td><?php echo date($fecha); ?></td>
             <td><?php echo $descripcion; ?></td>
-            <td><?php echo $nombreC; ?></td>
+            <td><?php if (is_null($nombreC)) {
+                  echo 'Pendiente';
+                } else {
+                  echo $nombreC;
+                } ?></td>
             <td><?php if ($estado == 1) {
                   echo 'Concluida';
-                } else if ($nombreC != "Pendiente") {
-                  echo 'En proceso';
-                } else {
+                } else if (is_null($nombreC)) {
                   echo 'Pendiente';
+                } else {
+                  echo 'En proceso';
                 } ?></td>
             <td>
-
 
 
               <?php
@@ -277,8 +278,9 @@ $pagNom = 'INCIDENCIAS';
   </div>
 
   <?php include("../public/footer.php"); ?>
-<?php }  if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
-  
+<?php }
+if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
+
 
   <?php
   include("../database.php");  //se incluye el otro archivo
@@ -318,7 +320,7 @@ $pagNom = 'INCIDENCIAS';
   <div class="container">
 
 
-    <table  class="table table-bordered " cellspacing="0" width="100%"  id="incidenciasTable" style="background-color: #04aa89;  ">
+    <table class="table table-bordered " cellspacing="0" width="100%" id="incidenciasTable" style="background-color: #04aa89;  ">
       <thead>
         <!-- Secciones o cabeceros -->
         <tr>
@@ -369,12 +371,12 @@ $pagNom = 'INCIDENCIAS';
               <td><?php echo $descripcion; ?></td>
               <td><?php echo $nombreC; ?></td>
               <td><?php if ($estado == 1) {
-                  echo 'Concluida';
-                } else if ($nombreC != "Pendiente") {
-                  echo 'En proceso';
-                } else {
-                  echo 'Pendiente';
-                } ?></td>
+                    echo 'Concluida';
+                  } else if ($nombreC != "Pendiente") {
+                    echo 'En proceso';
+                  } else {
+                    echo 'Pendiente';
+                  } ?></td>
               <td>
                 <abbr title="Ver mas"><a type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
               </td>
@@ -491,6 +493,6 @@ $pagNom = 'INCIDENCIAS';
   </div>
 
   <?php include("../public/footer.php");
-    ?><?php }else if ($_SESSION['idTipoUsuario'] != 1 && $_SESSION['idTipoUsuario'] != 2  && $_SESSION['idTipoUsuario'] != 3) { ?>
-      <?php header("Location: ../index.php"); ?>
-    <?php } ?>
+  ?><?php } else if ($_SESSION['idTipoUsuario'] != 1 && $_SESSION['idTipoUsuario'] != 2  && $_SESSION['idTipoUsuario'] != 3) { ?>
+  <?php header("Location: ../index.php"); ?>
+<?php } ?>

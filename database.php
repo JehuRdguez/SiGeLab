@@ -977,11 +977,10 @@ class Database
 
 
 
-    public function createIncidencia($usuarioRegistra,$idLaboratorio, $idTipoIncidencia, $idEquipo, $descripcion, $idUsuario, $estado, $descripcionIncidencia)
+    public function createIncidencia($usuarioRegistra,$idLaboratorio, $idTipoIncidencia, $idEquipo, $descripcion,  $estado, $descripcionIncidencia)
     { //variables
-
         $sql = "INSERT INTO `incidencia` (usuarioRegistra,idLaboratorio, idTipoIncidencia,idEquipo,descripcion,idUsuario,estado,descripcionIncidencia)  
-    VALUES('$usuarioRegistra','$idLaboratorio','$idTipoIncidencia', '$idEquipo','$descripcion','$idUsuario','$estado','$descripcionIncidencia')";
+    VALUES('$usuarioRegistra','$idLaboratorio','$idTipoIncidencia', '$idEquipo','$descripcion',NULL,'$estado','$descripcionIncidencia')";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
