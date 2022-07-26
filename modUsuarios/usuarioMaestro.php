@@ -55,7 +55,7 @@ $pagNom = 'USUARIOS';
 
         <!-- Mostrar tabla-->
         <div class="container">
-          <table  class="table table-bordered " cellspacing="0" width="100%"  id="maestroTable" style="background-color: #04aa89;  ">
+          <table  class="table table-bordered " cellspacing="0" width="100%"  id="maestroTable" style="background-color: #04aa89;">
             <thead>
               <!-- Secciones o cabeceros -->
               <tr>

@@ -25,7 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
-    $ins = $conn->query("INSERT INTO horariospdf(nombrepdf,url) VALUES ('$nombrepdf','$new_name_file')");
+    try {
+        $ins = $conn->query("INSERT INTO horariospdf(nombrepdf,url) VALUES ('$nombrepdf','$new_name_file')");
+    } catch (\Throwable) {
+        return 'duplicado';
+    }
 
     if ($ins) {
         echo 'Registrado Correctamente';
