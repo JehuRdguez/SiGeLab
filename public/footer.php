@@ -177,6 +177,17 @@
 </script>
 
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tabla1').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+</script>
+
 <!-- Alerta para confirmar registro -->
 <script type="text/javascript">
     function alertaRegistrar() {
@@ -419,12 +430,6 @@
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 
         $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#tabla1').DataTable();
     });
 </script>
 
