@@ -148,12 +148,12 @@ if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para
                   
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">N.º de Inv. Escolar: </label>
-                    <input type="text" name="escolarmonitor" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
+                    <input type="text" name="escolarmonitor" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
                   </div>
 
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">N.º de serie monitor: </label>
-                    <input type="text" name="numSerieMonitor" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerie; ?>" required="true">
+                    <input type="text" name="numSerieMonitor" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerie; ?>" required="true">
                   </div>
 
 				  <div class="form-group">
@@ -209,11 +209,11 @@ if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para
 								</div>
 								<div class="col-sm-10">
 									<label>Número de inventario escolar</label>
-									<input type="number" name="escolarmonitor" id="escolarmonitor" required class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+									<input type="number" name="escolarmonitor" id="escolarmonitor" required class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 								</div>
 								<div class="col-sm-10">
 									<label>Número de serie del periférico</label>
-									<input type="number" name="numSerieMonitor" id="numSerieMonitor" required class="form-control" min="1"  onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+									<input type="number" name="numSerieMonitor" id="numSerieMonitor" required class="form-control" min="1"  onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 								</div>
 								<div class="col-sm-10">
 									<label>Marca</label>
