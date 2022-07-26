@@ -1,5 +1,5 @@
 <?php 
-$pagNom = 'LABORATORIOS';
+$pagNom = 'LABORATORIO DE IOT';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -21,7 +21,7 @@ $pagNom = 'LABORATORIOS';
 				$idTipoPerifericos = $perifericoT->sanitize($_POST['perifteclado']);
 
 
-				$res = $perifericoT->createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, 1, 2);
+				$res = $perifericoT->createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, 1, 2, 1);
 
 				if ($res === true) {
 					$message = "Datos insertados con éxito";
@@ -42,6 +42,18 @@ $pagNom = 'LABORATORIOS';
 			?>
 		</div>
 
+		<div class="container-fluid">
+			<div class="dropdown">
+				<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					Laboratorio de IoT</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					<li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_perifericosT.php">Laboratorio de IoT</a></li>
+					<li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_perifericosTD.php">Laboratorio de desarrollo</a></li>
+					<li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_perifericosTS.php">Laboratorio de soporte</a></li>
+				</ul>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
+			</div>
+		</div>
 
 		<!--BOTONES DE SECCIONES-->
 		<br>
@@ -49,9 +61,6 @@ $pagNom = 'LABORATORIOS';
 			<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
 				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios.php" for="btnradio1">Horarios</a>
-
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php" for="btnradio2">Laboratorios</a>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
 				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equipos.php" for="btnradio3">Equipos</a>
@@ -96,7 +105,7 @@ $pagNom = 'LABORATORIOS';
 
 						<?php
 						$perifericoT = new Database(); //
-						$listaTeclado = $perifericoT->readTeclado(); //se crea la variable listaAdministradores
+						$listaTeclado = $perifericoT->readTecladoIOT(); //se crea la variable listaAdministradores
 						?>
 
 						<?php

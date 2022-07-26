@@ -1,5 +1,5 @@
 <?php
-$pagNom = 'LABORATORIO DE IOT';
+$pagNom = 'LABORATORIO DE DESARROLLO';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -52,7 +52,7 @@ $pagNom = 'LABORATORIO DE IOT';
 
 <div class="dropdown">
         <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Laboratorio de IoT</button>
+            Laboratorio de desarrollo</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_horarios.php">Laboratorio de IoT</a></li>
             <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_horariosD.php">Laboratorio de desarrollo</a></li>
@@ -64,22 +64,22 @@ $pagNom = 'LABORATORIO DE IOT';
 	<br>
 	<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-		<a class="btn btn-outline-dark" href="laboratorios.php" for="btnradio1">Horarios</a>
+		<a class="btn btn-outline-dark" href="laboratoriosD.php" for="btnradio1">Horarios</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-		<a class="btn btn-outline-dark" href="laboratorios_equipos.php" for="btnradio3">Equipos</a>
+		<a class="btn btn-outline-dark" href="laboratorios_equiposD.php" for="btnradio3">Equipos</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-		<a class="btn btn-outline-dark" href="laboratorios_perifericos.php" for="btnradio5">Periféricos</a>
+		<a class="btn btn-outline-dark" href="laboratorios_perifericosD.php" for="btnradio5">Periféricos</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-		<a class="btn btn-outline-dark" href="laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
+		<a class="btn btn-outline-dark" href="laboratorios_mobiliarioD.php" for="btnradio4">Mobiliario</a>
 	</div>
 
 
 	<br>
 	<br /> <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#horario">Registrar</a>
-	<abbr title="Regresar"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios.php"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></a></abbr>
+	<abbr title="Regresar"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosD.php"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></a></abbr>
 	<br>
 
 
@@ -102,7 +102,7 @@ $pagNom = 'LABORATORIO DE IOT';
 				<!-- Cuerpo de la tabla, se llena con la BDD-->
 				<?php
 				$horariosR = new Database(); //
-				$listaHorarios = $horariosR->readHorariosIOT(); //se crea la variable listaAdministradores
+				$listaHorarios = $horariosR->readHorariosDesarrollo(); //se crea la variable listaAdministradores
 				?>
 
 				<?php
@@ -224,7 +224,7 @@ $pagNom = 'LABORATORIO DE IOT';
 												<?php
 												$datos_horarios = $horariosR->single_recordHorarios($idHorarios);
 												?>
-												<option selected hidden value="<?php echo $datos_horarios->idLaboratorio; ?>"><?php echo $nombreLaboratorio; ?></option>
+												<option selected hidden value="<?php echo $datos_horarios->idLaboratorio; ?>"></option>
 											</select>
 										</div>
 
@@ -363,7 +363,7 @@ $pagNom = 'LABORATORIO DE IOT';
 									<div class="col-sm-10">
 										<label for=""hidden>Laboratorio</label>
 										<select hidden class="form-select" aria-label="Default select example" id="lab" name="lab" requiered>
-											<option selected value="1"></option>
+											<option selected value="2"></option>
 										</select>
 									</div>
 									<div class="col-sm-10">
