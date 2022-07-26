@@ -117,7 +117,6 @@ else{
             $correo = $row->correo;
             $telefono = $row->telefono;
             $idGrupo = $row->nombreGrupo;
-            $contrasena = $row->contrasena;
             $idEquipoIOT = $row->equipoIOT;
             $idEquipoDesarrollo = $row->equipoDesarrollo;
             $idEquipoSoporte = $row->equipoSoporte;
