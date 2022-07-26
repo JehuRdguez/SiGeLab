@@ -489,7 +489,7 @@ if(data[3]=='Inactivo'){
 
     function openModelPDF(url) {
         $('#modalPdf').modal('show');
-        $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/sigelab/'; ?>' + url);
+        $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/sigelab/modLaboratorios/'; ?>' + url);
     }
 </script>
 

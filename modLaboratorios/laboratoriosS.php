@@ -1,5 +1,5 @@
 <?php 
-$pagNom = 'LABORATORIO DE IOT';
+$pagNom = 'LABORATORIO DE SOPORTE';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -18,7 +18,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 
     <div class="dropdown">
         <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Laboratorio de IoT</button>
+            Laboratorio de soporte</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios.php">Laboratorio de IoT</a></li>
             <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratoriosD.php">Laboratorio de desarrollo</a></li>
@@ -30,22 +30,22 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 <br>
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios.php" for="btnradio1">Horarios</a>
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosS.php" for="btnradio1">Horarios</a>
 
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equipos.php" for="btnradio3">Equipos</a>
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposS.php" for="btnradio3">Equipos</a>
 
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericos.php" for="btnradio5">Periféricos</a>
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosS.php" for="btnradio5">Periféricos</a>
 
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioS.php" for="btnradio4">Mobiliario</a>
 </div>
 
 <br>
 <br />
 <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#archivos">Subir horario</button>
-<abbr title="Detalles"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_horarios.php"><i class="fa-solid fa-list"></i></a></abbr>
+<abbr title="Detalles"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_horariosS.php"><i class="fa-solid fa-list"></i></a></abbr>
 <br>
 
 <div class="container">
@@ -61,7 +61,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 			<!-- Cuerpo de la tabla, se llena con la BDD-->
 			<?php
 			$horariospdf = new Database(); //
-			$listaHorariospdf = $horariospdf->PDFReadIOT(); //se crea la variable listaAdministradores
+			$listaHorariospdf = $horariospdf->PDFReadSoporte(); //se crea la variable listaAdministradores
 			?>
 
 			<?php
@@ -99,7 +99,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 			<!-- Cuerpo de la tabla, se llena con la BDD-->
 			<?php
 			$horariospdf = new Database(); //
-			$listaHorariospdf = $horariospdf->PDFReadIOT(); //se crea la variable listaAdministradores
+			$listaHorariospdf = $horariospdf->PDFReadSoporte(); //se crea la variable listaAdministradores
 			?>
 
 			<?php
@@ -173,7 +173,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 								<div class="col-sm-20">
 									<label for="" hidden>Laboratorio</label>
 									<select hidden class="form-select" aria-label="Default select example" id="nombrepdf" name="nombrepdf" required>
-										<option selected value="Laboratorio de IoT"></option>
+										<option selected value="Laboratorio de soporte"></option>
 									</select>
 								</div>
 
