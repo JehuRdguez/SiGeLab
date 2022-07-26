@@ -17,13 +17,14 @@ function Header()
     $this->cell(10, 2,utf8_decode(' Salagua, Manzanillo, Colima, México'), 4, 3, 'c', 0);
     $this->setXY(246,29);
     $this->cell(10, 2,' utem@utem.edu.mx  ', 4, 3, 'c', 0);
-    $this->setXY(220,32);
+    $this->setXY(250,32);
     $this->cell(10, 2,utf8_decode(' 01 (314) 33 14450 '), 4, 3, 'c', 0);
     $this->Image('../styles/logoUTEM1.png',1,13,80); //imagen(archivo, png/jpg || x,y,tamaño)
     $this->Line(5, 50, 290, 50); //x,y,x,y
     $this->setXY(144,200);
     $this->cell(10, 2,'Firma', 4, 3, 'c', 0);
     $this->Line(200, 195, 100, 195); //x,y,x,y
+	
 
     // Movernos a la derecha
     $this->SetFont('Arial','B',20);
@@ -48,7 +49,7 @@ function Header()
 
 		$this->SetFont('Arial', 'B', 10);
 		// Número de página
-		$this->Cell(25, 10, utf8_decode('Página ') . $this->PageNo() . '/{nb}', 0, 0, 'C');
+		$this->Cell(500, 10, utf8_decode('Página ') . $this->PageNo() . '/{nb}', 0, 0, 'C');
 	}
 
 // --------------------METODO PARA ADAPTAR LAS CELDAS------------------------------
@@ -237,11 +238,11 @@ $pdf->cell(30, 10, utf8_decode('Fecha'), 1, 0, 'C', 0);
 $pdf->cell(50, 10, utf8_decode('Descripcion'), 1, 0, 'C', 0);
 $pdf->cell(35, 10, utf8_decode('Encargado de resolver'), 1, 1, 'C', 0);
 
+
 // -------TERMINA----ENCABEZADO------------------
 
 $pdf->SetFillColor(255, 255, 255); //color de fondo rgb
 $pdf->SetDrawColor(61, 61, 61); //color de linea  rgb
-
 $pdf->SetFont('times', '', 10);
 
 //El ancho de las celdas
@@ -252,6 +253,7 @@ $pdf->SetAligns(array('C','C','C','C'));
 for ($i = 0; $i < count($data); $i++) {
 
 	$pdf->Row(array($i, $data[$i]['usuarioRegistra'],utf8_decode($data[$i]['nombreLaboratorio']),utf8_decode($data[$i]['tipoIncidencia']),utf8_decode($data[$i]['numInvEscolar']),utf8_decode($data[$i]['fecha']),utf8_decode($data[$i]['descripcion']),utf8_decode($data[$i]['nombreC'])), 15);
+
 }
 
 // cell(ancho, largo, contenido,borde?, salto de linea?)
