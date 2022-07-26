@@ -21,104 +21,157 @@
 <script>
     $(document).ready(function() {
         $('#maestroTable').DataTable({
-            responsive: true
-        });
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        }
+        
+        );
     });
 
 
     $(document).ready(function() {
         $('#miEquipoTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#administradorTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#alumnoTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#gruposTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_equiposTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_horariosTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_laboratoriosTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_mobiliarioTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosmonitor').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosteclado').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosgabinete').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosmouse').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratoriosTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#incidenciasTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#solicitudesTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#equiposAsignadosTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 </script>
