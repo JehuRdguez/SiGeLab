@@ -21,13 +21,24 @@
 <script>
     $(document).ready(function() {
         $('#maestroTable').DataTable({
+         
             responsive: true,
             language: {
             url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
         }
+        ,"createdRow":function(row,data,index){
+if(data[3]=='Inactivo'){
+    $('td',row).css({
+    'background-color':'#ffb6af',
+
+    'color':'black'
+
+        });
+        }
+
         }
         
-        );
+    });
     });
 
 
@@ -42,30 +53,87 @@
 
     $(document).ready(function() {
         $('#administradorTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
+         
+         responsive: true,
+         language: {
+         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+     }
+     ,"createdRow":function(row,data,index){
+if(data[3]=='Inactivo'){
+ $('td',row).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+    
+     }
+     
+ });
+ });
 
     $(document).ready(function() {
         $('#alumnoTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
+         
+         responsive: true,
+         language: {
+         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+     }
+     ,"createdRow":function(row,data,index){
+if(data[4]=='Inactivo'){
+ $('td',row).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+     if(data[3]=='Pendiente'){
+ $('td',row).eq(3).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+     }
+     
+ });
+ });
 
     $(document).ready(function() {
         $('#gruposTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
+         
+         responsive: true,
+         language: {
+         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+     }
+     ,"createdRow":function(row,data,index){
+if(data[3]=='Inactivo'){
+ $('td',row).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+     if(data[2]=='Pendiente'){
+ $('td',row).eq(2).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+
+
+
+    
+     }
+     
+ });
+ });
 
     $(document).ready(function() {
         $('#laboratorios_equiposTable').DataTable({
