@@ -33,7 +33,7 @@ $pagNom = 'LABORATORIOS';
         exit();
     }
 
-    $validar="SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor'";
+$validar="SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor'";
 $validando=$conn->query($validar);
 $validar2="SELECT* FROM equipo where numTeclado>1 and numTeclado='$numTeclado'";
 $validando2=$conn->query($validar2);
@@ -187,12 +187,12 @@ else{
 
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">N.º de Inv. Escolar: </label>
-                      <input type="number" name="numInvEscolar" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
+                      <input type="number" name="numInvEscolar" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
                     </div>
 
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">N.º de serie equipo: </label>
-                      <input type="number" name="numSerieEquipo" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="13" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerieEquipo; ?>" required="true">
+                      <input type="number" name="numSerieEquipo" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerieEquipo; ?>" required="true">
                     </div>
 
                     <div class="form-group">
@@ -375,7 +375,7 @@ else{
                   <div class="col-sm-10">
                     <label for="">Laboratorio</label>
                     <select class="form-select" aria-label="Default select example" id="lab" name="lab" required>
-                      <option selected disabled value="">Selecciona un laboratorio:</option>
+                      <option selected disabled hidden value="">Selecciona un laboratorio:</option>
                       <?php
                       $listaEquipos = $equiposR->readLabAct('idLaboratorio');
                       while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -391,7 +391,7 @@ else{
                   </div>
                   <div class="col-sm-10">
                     <label>N.º de serie equipo</label>
-                    <input type="text" name="numSerieEquipo" id="numSerieEquipo" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                    <input type="text" name="numSerieEquipo" id="numSerieEquipo" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                   </div>
                   <div class="col-sm-10">
                     <label for="">N.º de serie monitor</label>
@@ -442,7 +442,7 @@ else{
                   <div class="col-sm-10">
                     <label>Ubicación en mesa</label>
                     <select class="form-select" aria-label="Default select example" name="ubiMesa" id="ubiMesa" required>
-                      <option selected disabled value="">Selecciona la ubicación:</option>
+                      <option selected disabled hidden value="">Selecciona la ubicación:</option>
                       <option value="Sección derecha">Sección derecha</option>
                       <option value="Sección izquierda">Sección izquierda</option>
                     </select>
@@ -450,7 +450,7 @@ else{
                   <div class="col-sm-10">
                     <label>Disco duro</label>
                     <select class="form-select" aria-label="Default select example" name="discoDuro" id="discoDuro" required>
-                    <option selected disabled value="">Selecciona la cantidad:</option>
+                    <option selected disabled hidden value="">Selecciona la cantidad:</option>
                       <option value="64 GB">64 GB</option>
                       <option value="90 GB">90 GB</option>
                       <option value="128 GB">128 GB</option>
@@ -464,7 +464,7 @@ else{
                   <div class="col-sm-10">
                     <label>RAM</label>
                     <select class="form-select" aria-label="Default select example" name="ram" id="ram" required>
-                    <option selected disabled value="">Selecciona la cantidad:</option>
+                    <option selected disabled hidden value="">Selecciona la cantidad:</option>
                       <option value="512 MB">512 MB</option>
                       <option value="1 GB">1 GB</option>
                       <option value="2 GB">2 GB</option>
@@ -478,7 +478,7 @@ else{
                   <div class="col-sm-10">
                     <label hidden>Estado</label>
                     <select class="form-select" aria-label="Default select example" name="estado" id="estado" hidden>
-                      <option selected disabled>Selecciona el estado:</option>
+                      <option selected hidden disabled>Selecciona el estado:</option>
                       <option value="1">Activo</option>
                       <option value="0">Inactivo</option>
                     </select>

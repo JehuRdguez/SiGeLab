@@ -146,12 +146,12 @@ $pagNom = 'LABORATORIOS';
 
 												<div class="form-group">
 													<label for="recipient-name" class="col-form-label">N.º de Inv. Escolar: </label>
-													<input type="text" name="escolarmouse" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
+													<input type="text" name="escolarmouse" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
 												</div>
 
 												<div class="form-group">
 													<label for="recipient-name" class="col-form-label">N.º de serie mouse: </label>
-													<input type="text" name="numSeriemouse" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerie; ?>" required="true">
+													<input type="text" name="numSeriemouse" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerie; ?>" required="true">
 												</div>
 
 												<div class="form-group">
@@ -207,11 +207,11 @@ $pagNom = 'LABORATORIOS';
 										</div>
 										<div class="col-sm-10">
 											<label>Número de inventario escolar</label>
-											<input type="number" name="escolarmouse" id="escolarmouse" class="form-control" required min="1" onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+											<input type="number" name="escolarmouse" id="escolarmouse" class="form-control" required min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 										</div>
 										<div class="col-sm-10">
 											<label>Número de serie del periférico</label>
-											<input type="text" name="numSeriemouse" id="numSeriemouse" class="form-control" required min="1" onkeypress="return verificaNumeros(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+											<input type="text" name="numSeriemouse" id="numSeriemouse" class="form-control" required min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 										</div>
 										<div class="col-sm-10">
 											<label>Marca</label>
