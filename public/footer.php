@@ -377,24 +377,6 @@ if(data[3]=='Inactivo'){
  /////////////////////
 
     $(document).ready(function() {
-        $('#laboratorios_equiposTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_horariosTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
         $('#laboratorios_laboratoriosTable').DataTable({
             responsive: true,
             language: {
@@ -403,59 +385,6 @@ if(data[3]=='Inactivo'){
         });
     });
 
-    $(document).ready(function() {
-        $('#laboratorios_mobiliarioTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_perifericosmonitor').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_perifericosteclado').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_perifericosgabinete').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_perifericosmouse').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratoriosTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
 
     $(document).ready(function() {
         $('#incidenciasTable').DataTable({
@@ -626,77 +555,6 @@ if(data[3]=='Inactivo'){
 
 
 
-
-<!--REVISAR-->
-<script type="text/javascript">
-    function funcionMonitor() {
-        var x = document.getElementById("vistamonitor");
-        var y = document.getElementById("vistateclado");
-        var z = document.getElementById("vistagabinete");
-        var m = document.getElementById("vistamouse");
-
-
-        if (x.style.display == "none" || y.style.display == "block" || z.style.display == "none" || m.style.display == "none") {
-            y.style.display = "none";
-            x.style.display = "block";
-            z.style.display = "none";
-            m.style.display = "none";
-        }
-    }
-
-    function funcionTeclado() {
-        var x = document.getElementById("vistamonitor");
-        var y = document.getElementById("vistateclado");
-        var z = document.getElementById("vistagabinete");
-        var m = document.getElementById("vistamouse");
-
-        if (x.style.display == "block" || y.style.display == "none" || z.style.display == "none" || m.style.display == "none") {
-            y.style.display = "block";
-            x.style.display = "none";
-            z.style.display = "none";
-            m.style.display = "none";
-        }
-    }
-
-    function funcionGabinete() {
-        var x = document.getElementById("vistamonitor");
-        var y = document.getElementById("vistateclado");
-        var z = document.getElementById("vistagabinete");
-        var m = document.getElementById("vistamouse");
-
-        if (x.style.display == "none" || y.style.display == "none" || z.style.display == "block" || m.style.display == "none") {
-            y.style.display = "none";
-            x.style.display = "none";
-            z.style.display = "block";
-            m.style.display = "none";
-        }
-    }
-
-    function funcionMouse() {
-        var x = document.getElementById("vistamonitor");
-        var y = document.getElementById("vistateclado");
-        var z = document.getElementById("vistagabinete");
-        var m = document.getElementById("vistamouse");
-
-        if (x.style.display == "none" || y.style.display == "none" || z.style.display == "none" || m.style.display == "block") {
-            y.style.display = "none";
-            x.style.display = "none";
-            z.style.display = "none";
-            m.style.display = "block";
-        }
-    }
-
-
-    element = document.getElementById("vistamonitor");
-    element2 = document.getElementById("vistateclado");
-    element3 = document.getElementById("vistagabinete");
-    element4 = document.getElementById("vistamouse");
-
-    element.style.display = 'block';
-    element2.style.display = 'none';
-    element3.style.display = 'none';
-    element4.style.display = 'none';
-</script>
 
 <script>
     if (window.history.replaceState) {
