@@ -1,4 +1,7 @@
 </body>
+
+
+
 <!--///////////////////////////////////// Funciones de Diana///////////////////////////////////////////////-->
 
 <!-- Para las tablas -->
@@ -10,7 +13,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script><!-- Para hacerlas responsivas-->
-<!-- calendario -->
+
+<!-- Calendario -->
+
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script src="jquery.ui.datepicker-es.js"></script>pt>
+
+
+
 
 
 
@@ -109,9 +119,19 @@
             responsive: true
         });
     });
+    $(document).ready(function() {
+        $('#incidenciasTable2').DataTable({
+            responsive: true
+        });
+    });
 
     $(document).ready(function() {
         $('#solicitudesTable').DataTable({
+            responsive: true
+        });
+    });
+    $(document).ready(function() {
+        $('#solicitudesTable2').DataTable({
             responsive: true
         });
     });
@@ -363,83 +383,6 @@
 <!-- ////////////////////////GABI//////////////////////////// -->
 
 
-<script type="text/javascript">
-    let input = document.getElementById("input")
-    const entrada = document.getElementById("horaEntrada");
-    const salida = document.getElementById("horaSalida");
-
-
-    const comparaHoras = () => {
-
-        const ventrada = entrada.value;
-        const vsalida = salida.value;
-
-        if (!ventrada || !vsalida) {
-            return;
-        }
-
-        const tIni = new Date();
-
-        const pentrada = ventrada.split(":");
-
-        tIni.setHours(pentrada[0], pentrada[1]);
-
-        const tFin = new Date();
-
-        const pFin = vsalida.split(":");
-
-        tFin.setHours(pFin[0], pFin[1]);
-
-
-        if (tFin.getTime() > tIni.getTime()) {
-
-
-            horaSalida.style.border = "1px solid black"
-            acceptData()
-
-        }
-
-        if (tFin.getTime() < tIni.getTime()) {
-
-            alert("Salida menor a entrada");
-
-            horaSalida.style.border = "1px solid red"
-
-        }
-
-        if (tFin.getTime() === tIni.getTime()) {
-
-            alert("Las fechas son iguales");
-
-            horaSalida.style.border = "1px solid red"
-
-        }
-
-
-    }
-
-    entrada.addEventListener("change", comparaHoras);
-    salida.addEventListener("change", comparaHoras);
-</script>
-
-<script type="text/javascript">
-    function alertaRegistrarS() {
-        var mensaje;
-        var opcion = confirm("¿Desea guardar el registro?");
-        if (horaSalida.style.border == "1px solid red") {
-            alert("Hora incorrecta");
-            return false;
-        } else if (opcion == true && horaSalida.style.border != "1px solid red") {
-            return true;
-        } else {
-            return false;
-        }
-    }
-</script>
-
-
-
-</script>
 
 
 <script type="text/javascript">
@@ -509,6 +452,10 @@
             alert("Hora incorrecta");
             return false;
         } else if (opcion == true && horaSalida.style.border != "1px solid red") {
+            if (document.getElementById("fecha").value > document.getElementById("fechaSalida").value) {
+                alert("La fecha de inicio es menor que la final.");
+                return false;
+            }
             return true;
         } else {
             return false;
@@ -527,42 +474,65 @@
         if (!opcion) {
             return false;
         } else {
-            window.location.href = "updateSE2.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE; ?>"
+            <?php header("Location: 'updateSE2.php?idsolicitudCambioE= <?php echo $idsolicitudCambioE; ?>'"); ?>
+            // window.location.href = ""
             return true;
         }
     }
 </script>
+<!-- Validacion de dias de semana  -->
 <!-- <script>
-    $("#fecha").daterangepicker();
+    var elDate = document.getElementById('fecha');
+    var elForm = document.getElementById('RegistroSolicitud');
+    var elSubmit = document.getElementById('registrarS');
+
+    function sinDomingos() {
+        var day = new Date(elDate.value).getUTCDay();
+        // Días 0-6, 0 es Domingo 6 es Sábado
+        elDate.setCustomValidity(''); // limpiarlo para evitar pisar el fecha inválida
+        if (day == 0 && day == 6 ) {
+            elDate.setCustomValidity('Domingos y sabados no disponible, por favor seleccione otro día');
+        } else {
+            elDate.setCustomValidity('');
+        }
+        if (!elForm.checkValidity()) {
+            elSubmit.click()
+        };
+    }
+
+    function obtenerfechafinf1() {
+        sinDomingos();
+    }
 </script> -->
-<!-- <script>
-$(function() {
-  $('input[name="fecha"]').daterangepicker({
-    opens: 'left'
-  }, function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-  });
-});
-</script> -->
-
-
-<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
-
-
-
 <script>
-    $(document).ready(function(){
-        $('input[name="fecha"]').daterangepicker();
-    
+     function noExcursion(date) {
+        
+        var day = date.getDay();
+        // aqui indicamos el numero correspondiente a los dias que ha de bloquearse (el 0 es Domingo, 1 Lunes, etc...) en el ejemplo bloqueo todos menos los lunes y jueves.
+        return [(day != 0 && day != 6), ''];
+    };
+    $(function() {
+        $.datepicker.setDefaults($.datepicker.regional["es"]);
+        $("#fecha").datepicker({
+            minDate: 0,
+            beforeShowDay: noExcursion,
+            firstDay: 0
+        });
     });
-        // $('#fecha').daterangepicker();
-      
-    
-    
 </script>
+<script>
+     
+    $(function() {
+        $.datepicker.setDefaults($.datepicker.regional["es"]);
+        $("#fechaSalida").datepicker({
+            minDate: 0,
+            beforeShowDay: noExcursion,
+            firstDay: 0
+        });
+    });
+</script>
+
+
 
 
 <!-- TERMINA PARTE DE GABI-->

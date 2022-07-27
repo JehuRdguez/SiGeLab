@@ -286,10 +286,14 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                     <label>Materia</label>
                     <input type="text" name="materia" id="materia" class="form-control" required>
 
-                    <label>Dias que solicita el laboratorio:</label>
-                    <input type="text" name="fecha" id="fecha" class="form-control " value=" <?php $hoy = date("Y-m-d");
-                                                                                              echo $hoy; ?>" required>
+                    <label>Fecha</label>
+                    <input type="text" name="fecha" id="fecha" class="form-control" min=<?php $hoy = date("Y-m-d");
+                                                                                        echo $hoy; ?> required>
 
+                    <label>Fecha de Termino</label>
+                    <input type="text" name="fechaSalida" id="fechaSalida" class="form-control" min=<?php $hoy = date("Y-m-d");
+                                                                                                    echo $hoy; ?>>
+                    <h6 style="color:red ;">*Solo llene este si lo utilizara mas de un dia</h6>
 
                     <label>Hora entrada</label>
                     <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
@@ -305,7 +309,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
               <!-- Botón para enviar datos-->
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" id="registrar" class="btn btn-dark" onclick="return alertaRegistrarS()">Registrar</button>
+                <button type="submit" id="registrarS" class="btn btn-dark" onclick="return alertaRegistrarS()">Registrar</button>
               </div>
             </form>
           </div>
@@ -363,7 +367,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
   <br>
   <!-- Mostrar tabla-->
   <div class="container">
-    <table class="table table-bordered " cellspacing="0" width="100%" id="solicitudesTable" style="background-color: #04aa89;  ">
+    <table class="table table-bordered " cellspacing="0" width="100%" id="solicitudesTable2" style="background-color: #04aa89;  ">
       <thead>
         <!-- Secciones o cabeceros -->
         <tr>
@@ -550,8 +554,13 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                       <label>Materia</label>
                       <input type="text" name="materia" id="materia" class="form-control" required>
 
-                      <label>Dias que solicita el laboratorio:</label>
-                      <input type="text" name="fecha" id="fecha" class="form-control pull-right" required>
+                
+                      <label>Fecha</label>
+                    <input type="date" name="fecha" id="fecha" class="form-control" min=<?php $hoy = date("Y-m-d"); echo $hoy; ?> onblur="obtenerfechafinf1();" required>
+
+                    <label>Fecha de Termino</label>
+                    <input type="date" name="fechaSalida" id="fechaSalida" class="form-control" min=<?php $hoy = date("Y-m-d"); echo $hoy; ?> onblur="obtenerfechafinf1();">
+                    <h6 style="color:red ;">*Solo llene este si lo utilizara mas de un dia</h6>
 
                       <label>Hora entrada</label>
                       <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
@@ -566,7 +575,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
               <!-- Botón para enviar datos-->
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" id="registrar" class="btn btn-dark" onclick="return alertaRegistrarS()">Registrar</button>
+                <button type="submit" id="registrarS" class="btn btn-dark" onclick="return alertaRegistrarS()">Registrar</button>
               </div>
 
 
