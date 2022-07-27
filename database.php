@@ -456,9 +456,23 @@ class Database
         }
     }
 
-    public function readEquipo()
+    public function readEquipoIOT()
     {
-        $sql = "SELECT * FROM vwequipo";
+        $sql = "SELECT * FROM vwequipo WHERE idLaboratorio=1";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function readEquipoDesarrollo()
+    {
+        $sql = "SELECT * FROM vwequipo WHERE idLaboratorio=2";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function readEquipoSoporte()
+    {
+        $sql = "SELECT * FROM vwequipo WHERE idLaboratorio=3";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
@@ -515,10 +529,10 @@ class Database
 
 
     //registro monitor
-    public function createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, $estado, $idTipoPerifericos)
+    public function createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, $estado, $idTipoPerifericos, $idLaboratorio)
     {
-        $sql = "INSERT INTO `perifericos` (numInvEscolar, numSerie, marca, modelo, estado, idTipoPerifericos)
-        VALUES ('$numInvEscolar','$numSerie','$marca','$modelo' ,'$estado', '$idTipoPerifericos')";
+        $sql = "INSERT INTO `perifericos` (numInvEscolar, numSerie, marca, modelo, estado, idTipoPerifericos, idLaboratorio)
+        VALUES ('$numInvEscolar','$numSerie','$marca','$modelo' ,'$estado', '$idTipoPerifericos', '$idLaboratorio')";
         try {
             $res = mysqli_query($this->con, $sql);
         } catch (\Throwable) {
@@ -532,13 +546,26 @@ class Database
     }
 
     //Consulta monitor
-    public function readMonitor()
+    public function readMonitorIOT()
     {
-        $sql = "SELECT * from vwmonitor";
+        $sql = "SELECT * from vwmonitor WHERE idLaboratorio=1";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
 
+    public function readMonitorDesarrollo()
+    {
+        $sql = "SELECT * from vwmonitor WHERE idLaboratorio=2";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function readMonitorSoporte()
+    {
+        $sql = "SELECT * from vwmonitor WHERE idLaboratorio=3";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
 
     //Función para editar estado monitor
     public function updateEstadoPeriferico($idPerifericos)
@@ -600,12 +627,27 @@ class Database
     }
 
     //Consulta monitor
-    public function readTeclado()
+    public function readTecladoIOT()
     {
-        $sql = "SELECT * from vwteclado";
+        $sql = "SELECT * from vwteclado WHERE idLaboratorio=1";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
+
+    public function readTecladoDesarrollo()
+    {
+        $sql = "SELECT * from vwteclado WHERE idLaboratorio=2";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function readTecladoSoporte()
+    {
+        $sql = "SELECT * from vwteclado WHERE idLaboratorio=3";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+    
 
 
     //Función para editar estado perifericos
@@ -662,9 +704,23 @@ class Database
     }
 
     //Consulta mouse
-    public function readMouse()
+    public function readMouseIOT()
     {
-        $sql = "SELECT * from vwmouse";
+        $sql = "SELECT * from vwmouse WHERE idLaboratorio=1";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function readMouseDesarrollo()
+    {
+        $sql = "SELECT * from vwmouse WHERE idLaboratorio=2";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function readMouseSoporte()
+    {
+        $sql = "SELECT * from vwmouse WHERE idLaboratorio=3";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
@@ -839,13 +895,31 @@ class Database
 
 
     //ConsultaMobiliario
-    public function readMobiliario()
+    public function readMobiliarioIOT()
     { //Función para consulta
-        $sql = "SELECT * from vwmobiliario";
+        $sql = "SELECT * from vwmobiliario WHERE idLaboratorio=1";
 
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
+
+    //ConsultaMobiliario
+    public function readMobiliarioDesarrollo()
+    { //Función para consulta
+        $sql = "SELECT * from vwmobiliario WHERE idLaboratorio=2";
+
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+        //ConsultaMobiliario
+        public function readMobiliarioSoporte()
+        { //Función para consulta
+            $sql = "SELECT * from vwmobiliario WHERE idLaboratorio=3";
+    
+            $res = mysqli_query($this->con, $sql);
+            return $res;
+        }
 
     public function updateMobiliario($idMobiliario)
     {
@@ -900,12 +974,28 @@ class Database
             return false;
         }
     }
-    public function readHorarios()
+
+    public function readHorariosIOT()
     {
-        $sql = "SELECT * FROM vwhorarios";
+        $sql = "SELECT * FROM vwhorarios WHERE idLaboratorio=1";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
+
+    public function readHorariosDesarrollo()
+    {
+        $sql = "SELECT * FROM vwhorarios WHERE idLaboratorio=2";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function readHorariosSoporte()
+    {
+        $sql = "SELECT * FROM vwhorarios WHERE idLaboratorio=3";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+    
 
 
     public function updateHorarios($idHorarios)
@@ -1190,9 +1280,23 @@ VALUES('$maestro','$idLaboratorio','$idGrupo','$materia','$fecha','$fechaSalida'
     }
 
 
-    public function PDFRead()
+    public function PDFReadIOT()
     {
-        $sql = "SELECT * FROM horariospdf";
+        $sql = "SELECT * FROM horariospdf WHERE nombrepdf='Laboratorio de IoT'";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function PDFReadSoporte()
+    {
+        $sql = "SELECT * FROM horariospdf WHERE nombrepdf='Laboratorio de soporte'";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
+    public function PDFReadDesarrollo()
+    {
+        $sql = "SELECT * FROM horariospdf WHERE nombrepdf='Laboratorio de desarrollo'";
         $res = mysqli_query($this->con, $sql);
         return $res;
     }

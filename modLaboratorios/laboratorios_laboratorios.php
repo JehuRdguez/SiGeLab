@@ -1,4 +1,4 @@
-<?php 
+<?php
 $pagNom = 'LABORATORIOS';
 ?>
 
@@ -20,10 +20,10 @@ $pagNom = 'LABORATORIOS';
 		if ($res === true) {
 			$message = "Datos insertados con éxito";
 			$class = "alert alert-success";
-		} else if($res == "duplicado") {
+		} else if ($res == "duplicado") {
 			$message = "Datos duplicados, no se pudo completar el registro...";
 			$class = "alert alert-danger";
-		  } else {
+		} else {
 			$message = "No se pudieron insertar los datos..";
 			$class = "alert alert-danger";
 		}
@@ -35,31 +35,22 @@ $pagNom = 'LABORATORIOS';
 	}
 	?>
 
-<br>
-	<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-		<input type="radio" class="btn-check" name="labHor" id="labHor" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios.php" for="labHor">Horarios</a>
+<div class="dropdown">
+        <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Laboratorios</button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratoriosIOT.php">Laboratorio de IoT</a></li>
+            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratoriosDesarrollo.php">Laboratorio de desarrollo</a></li>
+            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratoriosSoporte.php">Laboratorio de soporte</a></li>
+        </ul>
+    </div>
 
-		<input type="radio" class="btn-check" name="labLab" id="labLab" autocomplete="off" checked>
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php" for="labLab">Laboratorios</a>
-
-		<input type="radio" class="btn-check" name="labEqu" id="labEqu" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equipos.php" for="labEqu">Equipos</a>
-
-		<input type="radio" class="btn-check" name="labPer" id="LabPer" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericos.php" for="labPer">Periféricos</a>
-
-		<input type="radio" class="btn-check" name="labMob" id="labMob" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="labMob">Mobiliario</a>
-	</div>
-
-	<br>
 	<br /> <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#laboratorio">Realizar registro</a>
 	<br>
 
 	<br />
 	<div class="container">
-		<table class="table table-bordered" cellspacing="0" width="100%"  id="laboratorios_laboratoriosTable" style="background-color: #04aa89;">
+		<table class="table table-bordered" cellspacing="0" width="100%" id="laboratorios_laboratoriosTable" style="background-color: #04aa89;">
 			<thead>
 				<tr>
 					<th>Nombres de laboratorio</th>
@@ -87,7 +78,11 @@ $pagNom = 'LABORATORIOS';
 				?>
 					<tr>
 						<td><?php echo $nombreLaboratorio; ?></td> <!-- Muestra-->
-						<td><?php echo $nombreC; ?></td>
+						<td><?php if ($nombreC == "") { //Condicionamos el tutor, si está incactivo se pondrá "pendiente", en caso contrario se muestra el nombre
+								echo 'Pendiente';
+							} else {
+								echo $nombreC;
+							} ?></td>
 						<td><?php echo $capacidad; ?></td>
 						<td><?php if ($estado == 1) {
 								echo 'Activo';
@@ -130,7 +125,12 @@ $pagNom = 'LABORATORIOS';
 												<?php
 												$datos_laboratorio = $laboratoriosR->single_recordLaboratorio($idLaboratorio);
 												?>
-												<option selected hidden value="<?php echo $datos_laboratorio->idUsuario; ?>"><?php echo $nombreC; ?></option>
+												<option selected hidden value="<?php echo $datos_laboratorio->idUsuario; ?>"><?php if ($nombreC == "") {
+																																	echo 'Pendiente';
+																																} else {
+																																	echo $nombreC;
+																																} ?>
+												</option>
 												<?php
 												$listaEncargadosEdit = $laboratoriosR->readAdministradorAct('nombreC');
 												while ($row = mysqli_fetch_object($listaEncargadosEdit)) {

@@ -196,7 +196,7 @@ $pagNom = 'GRUPOS';
                           <?php
                           $datos_grupo = $gruposR->single_recordgrupo($idGrupo);
                           ?>
-                          <option selected disabled value="<?php echo $datos_grupo->idUsuario; ?>"><?php echo $nombreM; ?></option>
+                          <option selected hidden value="<?php echo $datos_grupo->idUsuario; ?>"><?php echo $nombreM; ?></option>
                           <?php
                           $listaTutores = $gruposR->readListaTutores('nombreC');
                           while ($row = mysqli_fetch_object($listaTutores)) {

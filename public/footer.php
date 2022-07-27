@@ -31,92 +31,207 @@
 <script>
     $(document).ready(function() {
         $('#maestroTable').DataTable({
-            responsive: true
+         
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        ,"createdRow":function(row,data,index){
+if(data[3]=='Inactivo'){
+    $('td',row).css({
+    'background-color':'#ffb6af',
+
+    'color':'black'
+
         });
+        }
+
+        }
+        
+    });
     });
 
 
     $(document).ready(function() {
         $('#miEquipoTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#administradorTable').DataTable({
-            responsive: true
-        });
-    });
+         
+         responsive: true,
+         language: {
+         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+     }
+     ,"createdRow":function(row,data,index){
+if(data[3]=='Inactivo'){
+ $('td',row).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+    
+     }
+     
+ });
+ });
 
     $(document).ready(function() {
         $('#alumnoTable').DataTable({
-            responsive: true
-        });
-    });
+         
+         responsive: true,
+         language: {
+         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+     }
+     ,"createdRow":function(row,data,index){
+if(data[4]=='Inactivo'){
+ $('td',row).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+     if(data[3]=='Pendiente'){
+ $('td',row).eq(3).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+     }
+     
+ });
+ });
 
     $(document).ready(function() {
         $('#gruposTable').DataTable({
-            responsive: true
-        });
-    });
+         
+         responsive: true,
+         language: {
+         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+     }
+     ,"createdRow":function(row,data,index){
+if(data[3]=='Inactivo'){
+ $('td',row).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+     if(data[2]=='Pendiente'){
+ $('td',row).eq(2).css({
+ 'background-color':'#ffb6af',
+
+ 'color':'black'
+
+     });
+     }
+
+
+
+    
+     }
+     
+ });
+ });
 
     $(document).ready(function() {
         $('#laboratorios_equiposTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_horariosTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_laboratoriosTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_mobiliarioTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosmonitor').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosteclado').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosgabinete').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosmouse').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#laboratoriosTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 
     $(document).ready(function() {
         $('#incidenciasTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
     $(document).ready(function() {
@@ -127,7 +242,10 @@
 
     $(document).ready(function() {
         $('#solicitudesTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
     $(document).ready(function() {
@@ -138,11 +256,25 @@
 
     $(document).ready(function() {
         $('#equiposAsignadosTable').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
         });
     });
 </script>
 
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tabla1').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+</script>
 
 <!-- Alerta para confirmar registro -->
 <script type="text/javascript">
@@ -194,6 +326,27 @@
     }
 </script>
 
+
+<!--Sólo permite números y guiones-->
+<script>
+    function verificaNumInv(e) {
+        var key = e.keyCode || e.which,
+            tecla = String.fromCharCode(key).toLowerCase(),
+            letras = "-0123456789",
+            especiales = [8],
+            tecla_especial = false;
+
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+            return false;
+        }
+    }
+</script>
 <!--Sólo permite letras -->
 <script>
     function ValidarLestrasC(e) {
@@ -356,7 +509,7 @@
 
     function openModelPDF(url) {
         $('#modalPdf').modal('show');
-        $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/sigelab/'; ?>' + url);
+        $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/sigelab/modLaboratorios/'; ?>' + url);
     }
 </script>
 
@@ -365,12 +518,6 @@
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 
         $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#tabla1').DataTable();
     });
 </script>
 

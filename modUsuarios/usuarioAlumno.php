@@ -117,7 +117,6 @@ else{
             $correo = $row->correo;
             $telefono = $row->telefono;
             $idGrupo = $row->nombreGrupo;
-            $contrasena = $row->contrasena;
             $idEquipoIOT = $row->equipoIOT;
             $idEquipoDesarrollo = $row->equipoDesarrollo;
             $idEquipoSoporte = $row->equipoSoporte;
@@ -207,7 +206,7 @@ else{
                           <?php
                           $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
                           ?>
-                          <option selected value="<?php echo $datos_alumno->idGrupo; ?>"><?php echo $idGrupo; ?></option>
+                          <option selected hidden value="<?php echo $datos_alumno->idGrupo; ?>"><?php echo $idGrupo; ?></option>
                           <?php
                           $listaEGrupos = $alumnos->readListaGrupo('nombreGrupo');
                           while ($row = mysqli_fetch_object($listaEGrupos) ) {
@@ -224,7 +223,7 @@ else{
                           <?php
                           $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
                           ?>
-                          <option selected value="<?php echo $datos_alumno->idEquipoIOT; ?>"><?php if ($idEquipoIOT == 0) {
+                          <option selected hidden value="<?php echo $datos_alumno->idEquipoIOT; ?>"><?php if ($idEquipoIOT == 0) {
                                                                                                 echo 'No aplica';
                                                                                               } else {
                                                                                                 echo $idEquipoIOT;
@@ -246,7 +245,7 @@ else{
                           <?php
                           $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
                           ?>
-                          <option selected value="<?php echo $datos_alumno->idEquipoDesarrollo; ?>"><?php if ($idEquipoDesarrollo == 0) {
+                          <option selected hidden  value="<?php echo $datos_alumno->idEquipoDesarrollo; ?>"><?php if ($idEquipoDesarrollo == 0) {
                                                                                                       echo 'No aplica';
                                                                                                     } else {
                                                                                                       echo $idEquipoDesarrollo;
@@ -268,7 +267,7 @@ else{
                           <?php
                           $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
                           ?>
-                          <option selected value="<?php echo $datos_alumno->idEquipoSoporte; ?>"><?php if ($idEquipoSoporte == 0) {
+                          <option selected hidden value="<?php echo $datos_alumno->idEquipoSoporte; ?>"><?php if ($idEquipoSoporte == 0) {
                                                                                                     echo 'No aplica';
                                                                                                   } else {
                                                                                                     echo $idEquipoSoporte;
