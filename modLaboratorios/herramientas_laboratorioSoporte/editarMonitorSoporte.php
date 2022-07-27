@@ -2,12 +2,12 @@
 if (isset($_GET['idPerifericos'])) {
   $idPerifericos = intval($_GET['idPerifericos']);
 } else {
-  header("location: ../modLaboratorios/laboratorios_perifericos.php");
+  header("location: ../../modLaboratorios/laboratorios_perifericosMonitorSoporte.php");
 }
 ?>
 
 <?php
-include("../database.php");  //se incluye el otro archivo
+include("../../database.php");  //se incluye el otro archivo
 $perifericoM = new Database();  //generamos la variable cliente pq eso es lo que vamos a generar, con esto instanciamos
 
 if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio

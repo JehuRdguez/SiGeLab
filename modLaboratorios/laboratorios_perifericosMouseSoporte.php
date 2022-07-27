@@ -124,10 +124,10 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 								<td>
 									<?php
 									if ($estado == 1) { ?>
-										<a type="button" class="btn btn-outline-dark" href="updateMouse.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye-slash"></i></a>
+										<a type="button" class="btn btn-outline-dark" href="herramientas_laboratorioSoporte/updateMouseSoporte.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye-slash"></i></a>
 
 									<?php } else { ?>
-										<a type="button" class="btn btn-outline-dark" href="updateMouse.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye"></i></a>
+										<a type="button" class="btn btn-outline-dark" href="herramientas_laboratorioSoporte/updateMouseSoporte.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye"></i></a>
 									<?php } ?>
 									<abbr title="Editar"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarMouse<?php echo $idPerifericos; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
 								</td>
@@ -143,7 +143,7 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 
-										<form method="POST" action="editarMouse.php">
+										<form method="POST" action="herramientas_laboratorioSoporte/editarMouseSoporte.php">
 											<input type="hidden" name="idPerifericos" value="<?php echo $idPerifericos; ?>">
 
 											<div class="modal-body">

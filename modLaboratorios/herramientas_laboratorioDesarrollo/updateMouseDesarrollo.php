@@ -1,12 +1,12 @@
 
 <?php
 if(isset($_GET['idPerifericos'])){ 
-include ("../database.php");
+include ("../../database.php");
 $periferico= new Database();
 $idPerifericos=intval($_GET['idPerifericos']);
 $res= $periferico->updateEstadoPeriferico($idPerifericos);
 if($res){
-    header("location: ../modLaboratorios/laboratorios_perifericosT.php");
+    header("location: ../../modLaboratorios/laboratorios_perifericosMouseDesarrollo.php");
 }
 else{
     echo "Error al actualizar registro";

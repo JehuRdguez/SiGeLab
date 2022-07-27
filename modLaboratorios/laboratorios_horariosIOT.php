@@ -151,7 +151,7 @@ $pagNom = 'LABORATORIO DE IOT';
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
 
-								<form method="POST" action="editarHorarios.php">
+								<form method="POST" action="herramientas_laboratorioIOT/editarHorariosIOT.php">
 									<input type="hidden" name="idHorarios" value="<?php echo $idHorarios; ?>">
 
 									<div class="modal-body">

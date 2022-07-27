@@ -106,10 +106,10 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 							} ?></td>
 						<td>
 							<?php if ($estado == 1) { ?>
-								<a type="button" class="btn btn-outline-dark" href="updateMob.php?idMobiliario=<?php echo $idMobiliario; ?>"><i class="fa fa-eye-slash"></i></a>
+								<a type="button" class="btn btn-outline-dark" href="herramientas_laboratorioDesarrollo/updateMobDesarrollo.php?idMobiliario=<?php echo $idMobiliario; ?>"><i class="fa fa-eye-slash"></i></a>
 
 							<?php } else { ?>
-								<a type="button" class="btn btn-outline-dark" href="updateMob.php?idMobiliario=<?php echo $idMobiliario; ?>"><i class="fa fa-eye"></i></a>
+								<a type="button" class="btn btn-outline-dark" href="herramientas_laboratorioDesarrollo/updateMobDesarrollo.php?idMobiliario=<?php echo $idMobiliario; ?>"><i class="fa fa-eye"></i></a>
 							<?php } ?>
 							<a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarMobiliario<?php echo $idMobiliario; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
 
@@ -125,7 +125,7 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
 
-								<form method="POST" action="editarMobiliario.php">
+								<form method="POST" action="herramientas_laboratorioDesarrollo/editarMobiliarioDesarrollo.php">
 									<input type="hidden" name="idMobiliario" value="<?php echo $idMobiliario; ?>">
 
 									<div class="modal-body">

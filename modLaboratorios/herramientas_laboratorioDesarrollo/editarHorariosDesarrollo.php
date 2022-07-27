@@ -2,11 +2,11 @@
 if (isset($_GET['idHorarios'])) {
   $idHorarios = intval($_GET['idHorarios']);
 } else {
-  header("location: ../modLaboratorios/laboratorios_horarios.php");
+  header("location: ../../modLaboratorios/laboratorios_horariosDesarrollo.php");
 }
 ?>
 <?php
-include("../database.php");  //se incluye el otro archivo
+include("../../database.php");  //se incluye el otro archivo
 $horariosR = new Database(); //Instanciar el objeto
 
 if (isset($_POST) && !empty($_POST)) {
