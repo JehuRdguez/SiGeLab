@@ -24,7 +24,7 @@ if ($_POST) { //va a guardar lo que lleve el método post
             $_SESSION['nombreC'] = $row['nombreC'];
             $_SESSION['correo'] = $row['correo'];
             $_SESSION['idTipoUsuario'] = $row['idTipoUsuario'];
-            header("Location: modLaboratorios/laboratorios.php"); //si puedes iniciar sesión te manda a esto
+            header("Location: modLaboratorios/laboratoriosIOT.php"); //si puedes iniciar sesión te manda a esto
 
         } else {
             echo '<script>alert("Contraseña incorrecta")</script>';

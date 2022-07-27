@@ -4,19 +4,19 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 
 <?php include("../public/header.php"); ?>
 <?php if ($_SESSION['idTipoUsuario'] == 1) { ?>
-	  <!--Condiciones para tipo usuario -->
-	  <?php
-  $sname = "localhost";
-  $uname = "root";
-  $password = "";
-  $bd_name = "sigelab";
+	<!--Condiciones para tipo usuario -->
+	<?php
+	$sname = "localhost";
+	$uname = "root";
+	$password = "";
+	$bd_name = "sigelab";
 
-  $conn = mysqli_connect($sname, $uname, $password, $bd_name);
-  if (!$conn) {
-    echo "Error!";
-    exit();
-  }
-  ?>
+	$conn = mysqli_connect($sname, $uname, $password, $bd_name);
+	if (!$conn) {
+		echo "Error!";
+		exit();
+	}
+	?>
 
 	<?php
 	include("../database.php");
@@ -50,36 +50,36 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 	}
 	?>
 
-<div class="dropdown">
-        <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Laboratorio de desarrollo</button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_horarios.php">Laboratorio de IoT</a></li>
-            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_horariosD.php">Laboratorio de desarrollo</a></li>
-            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_horariosS.php">Laboratorio de soporte</a></li>
-        </ul>
-        <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
-    </div>
+	<div class="dropdown">
+		<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			Laboratorio de desarrollo</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			<li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_horariosIOT.php">Laboratorio de IoT</a></li>
+			<li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_horariosDesarrollo.php">Laboratorio de desarrollo</a></li>
+			<li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_horariosSoporte.php">Laboratorio de soporte</a></li>
+		</ul>
+		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
+	</div>
 
 	<br>
 	<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-		<a class="btn btn-outline-dark" href="laboratoriosD.php" for="btnradio1">Horarios</a>
+		<a class="btn btn-outline-dark" href="laboratoriosDesarrollo.php" for="btnradio1">Horarios</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-		<a class="btn btn-outline-dark" href="laboratorios_equiposD.php" for="btnradio3">Equipos</a>
+		<a class="btn btn-outline-dark" href="laboratorios_equiposDesarrollo.php" for="btnradio3">Equipos</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-		<a class="btn btn-outline-dark" href="laboratorios_perifericosD.php" for="btnradio5">Periféricos</a>
+		<a class="btn btn-outline-dark" href="laboratorios_perifericosMonitorDesarrollo.php" for="btnradio5">Periféricos</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-		<a class="btn btn-outline-dark" href="laboratorios_mobiliarioD.php" for="btnradio4">Mobiliario</a>
+		<a class="btn btn-outline-dark" href="laboratorios_mobiliarioDesarrollo.php" for="btnradio4">Mobiliario</a>
 	</div>
 
 
 	<br>
 	<br /> <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#horario">Registrar</a>
-	<abbr title="Regresar"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosD.php"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></a></abbr>
+	<abbr title="Regresar"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosDesarrollo.php"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></a></abbr>
 	<br>
 
 
@@ -140,7 +140,7 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 							<abbr title="Detalles"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#detallesHorarios<?php echo $idHorarios; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
 
 						</td>
-					</tr>	
+					</tr>
 
 					<!--modal para editar--->
 					<div class="modal fade" id="editarHorarios<?php echo $idHorarios; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -259,8 +259,8 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 									?>
 
 									</br><label>Cantidad de alumnos en <?php echo $datos_horarios->nombreGrupo; ?>: <strong><?php
-									$contar = ($conn->query("SELECT COUNT(*)  FROM cantidadAlumnos where idGrupo='$idGrupo'")); //Contar la cantidad de alumnos registrados con ese grupo
-									echo $contar->fetch_column(); ?></strong></label></br>
+																															$contar = ($conn->query("SELECT COUNT(*)  FROM cantidadAlumnos where idGrupo='$idGrupo'")); //Contar la cantidad de alumnos registrados con ese grupo
+																															echo $contar->fetch_column(); ?></strong></label></br>
 
 									</br><label>Hora de entrada: <strong><?php echo $datos_horarios->horaEntrada; ?></strong></label></br>
 
@@ -361,7 +361,7 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 
 
 									<div class="col-sm-10">
-										<label for=""hidden>Laboratorio</label>
+										<label for="" hidden>Laboratorio</label>
 										<select hidden class="form-select" aria-label="Default select example" id="lab" name="lab" requiered>
 											<option selected value="2"></option>
 										</select>
@@ -393,9 +393,9 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 	</div>
 
 	<?php include("../public/footer.php"); ?>
-    <!--Se incluye el footer-->
+	<!--Se incluye el footer-->
 
-	<?php } else if ($_SESSION['idTipoUsuario'] != 1) { ?>
-    <!--Condiciones de acceso-->
-    <?php header("Location: ../index.php"); ?>
-  <?php } ?>
+<?php } else if ($_SESSION['idTipoUsuario'] != 1) { ?>
+	<!--Condiciones de acceso-->
+	<?php header("Location: ../index.php"); ?>
+<?php } ?>

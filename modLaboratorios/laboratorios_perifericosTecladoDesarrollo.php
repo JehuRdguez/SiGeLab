@@ -1,5 +1,5 @@
 <?php 
-$pagNom = 'LABORATORIO DE SOPORTE';
+$pagNom = 'LABORATORIO DE DESARROLLO';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -7,21 +7,21 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 	<div class="container-fluid" styles="position:relative; z-index: -1;">
 
 		<div class="container-fluid">
-			<!--REGISTRAR MOUSE-->
+			<!--REGISTRAR TECLADO-->
 			<?php
 			include("../database.php");  //se incluye el otro archivo
-			$perifericoMo = new Database();  //generamos la variable cliente pq eso es lo que vamos a generar, con esto instanciamos
+			$perifericoT = new Database();  //generamos la variable cliente pq eso es lo que vamos a generar, con esto instanciamos
 
 			if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
-				$numInvEscolar = $perifericoMo->sanitize($_POST['escolarmouse']);
-				$numSerie = $perifericoMo->sanitize($_POST['numSeriemouse']);
-				$marca = $perifericoMo->sanitize($_POST['marcamouse']);
-				$modelo = $perifericoMo->sanitize($_POST['modelomouse']);
-				$estado = $perifericoMo->sanitize($_POST['estadomouse']);
-				$idTipoPerifericos = $perifericoMo->sanitize($_POST['perifmouse']);
+				$numInvEscolar = $perifericoT->sanitize($_POST['escolarteclado']);
+				$numSerie = $perifericoT->sanitize($_POST['numSerieteclado']);
+				$marca = $perifericoT->sanitize($_POST['marcateclado']);
+				$modelo = $perifericoT->sanitize($_POST['modeloteclado']);
+				$estado = $perifericoT->sanitize($_POST['estadoteclado']);
+				$idTipoPerifericos = $perifericoT->sanitize($_POST['perifteclado']);
 
 
-				$res = $perifericoMo->createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, 1, 3, 3);
+				$res = $perifericoT->createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, 1, 2, 2);
 
 				if ($res === true) {
 					$message = "Datos insertados con éxito";
@@ -42,55 +42,50 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 			?>
 		</div>
 
-		<div class="container-fluid">
 			<div class="dropdown">
 				<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-					Laboratorio de soporte</button>
+					Laboratorio de desarrollo</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-					<li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_perifericosM.php">Laboratorio de IoT</a></li>
-					<li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_perifericosMD.php">Laboratorio de desarrollo</a></li>
-					<li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_perifericosMS.php">Laboratorio de soporte</a></li>
+					<li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_perifericosTecladoIOT.php">Laboratorio de IoT</a></li>
+					<li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_perifericosTecladoDesarrollo.php">Laboratorio de desarrollo</a></li>
+					<li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_perifericosTecladoSoporte.php">Laboratorio de soporte</a></li>
 				</ul>
 				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
 			</div>
-		</div>
 
 		<!--BOTONES DE SECCIONES-->
 		<br>
-		<div class="container-fluid">
 			<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosS.php" for="btnradio1">Horarios</a>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosDesarrollo.php" for="btnradio1">Horarios</a>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposS.php" for="btnradio3">Equipos</a>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposDesarrollo.php" for="btnradio3">Equipos</a>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked>
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosS.php" for="btnradio5">Periféricos</a>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosMonitorDesarrollo.php" for="btnradio5">Periféricos</a>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioS.php" for="btnradio4">Mobiliario</a>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioDesarrollo.php" for="btnradio4">Mobiliario</a>
 			</div>
-		</div>
 
 
-		<!--LISTA DE MOUSE-->
-		<div id="vistamouse" class="container-fluid">
-			<br>
+		<!--LISTA DE TECLADO-->
+			<br></br>
 			<div class="dropdown">
 				<button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-					Mouse</button>
+					Teclado</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosS.php">Monitor</a></li>
-					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosTS.php">Teclado</a></li>
-					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMS.php">Mouse</a></li>
+					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMonitorDesarrollo.php">Monitor</a></li>
+					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosTecladoDesarrollo.php">Teclado</a></li>
+					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMouseDesarrollo.php">Mouse</a></li>
 				</ul>
-				<a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#perifericomouse">Registrar</a>
+				<a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#perifericoteclado">Registrar</a>
 			</div>
 
 			<div class="container">
 				<br>
-				<table  class="table table-bordered " cellspacing="0" width="100%"  id="laboratorios_perifericosmouse" style="background-color: #04aa89;  ">
+				<table  class="table table-bordered " cellspacing="0" width="100%"  id="laboratorios_perifericosteclado" style="background-color: #04aa89;  ">
 					<thead>
 						<tr>
 							<th>N.º de Inv. Escolar</th>
@@ -102,13 +97,14 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 						</tr>
 					</thead>
 					<tbody>
+
 						<?php
-						$perifericoMo = new Database(); //
-						$listaMouse = $perifericoMo->readMouseSoporte(); //se crea la variable listaAdministradores
+						$perifericoT = new Database(); //
+						$listaTeclado = $perifericoT->readTecladoDesarrollo(); //se crea la variable listaAdministradores
 						?>
 
 						<?php
-						while ($row = mysqli_fetch_object($listaMouse)) { //antes del = es la variable del form, después es la de BDD
+						while ($row = mysqli_fetch_object($listaTeclado)) { //antes del = es la variable del form, después es la de BDD
 
 							$idPerifericos = $row->idPerifericos;
 							$numInvEscolar = $row->numInvEscolar;
@@ -130,18 +126,17 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 								<td>
 									<?php
 									if ($estado == 1) { ?>
-										<a type="button" class="btn btn-outline-dark" href="updateMouse.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye-slash"></i></a>
+										<a type="button" class="btn btn-outline-dark" href="updateTeclado.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye-slash"></i></a>
 
 									<?php } else { ?>
-										<a type="button" class="btn btn-outline-dark" href="updateMouse.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye"></i></a>
+										<a type="button" class="btn btn-outline-dark" href="updateTeclado.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye"></i></a>
 									<?php } ?>
-									<abbr title="Editar"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarMouse<?php echo $idPerifericos; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
+									<abbr title="Editar"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarTeclado<?php echo $idPerifericos; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
 								</td>
 							</tr>
 
-
 							<!--modal para editar--->
-							<div class="modal fade" id="editarMouse<?php echo $idPerifericos; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal fade" id="editarTeclado<?php echo $idPerifericos; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -149,29 +144,29 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 
-										<form method="POST" action="editarMouse.php">
+										<form method="POST" action="editarTeclado.php">
 											<input type="hidden" name="idPerifericos" value="<?php echo $idPerifericos; ?>">
 
 											<div class="modal-body">
 
 												<div class="form-group">
 													<label for="recipient-name" class="col-form-label">N.º de Inv. Escolar: </label>
-													<input type="text" name="escolarmouse" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
+													<input type="text" name="escolarteclado" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
 												</div>
 
 												<div class="form-group">
-													<label for="recipient-name" class="col-form-label">N.º de serie mouse: </label>
-													<input type="text" name="numSeriemouse" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerie; ?>" required="true">
+													<label for="recipient-name" class="col-form-label">N.º de serie teclado: </label>
+													<input type="text" name="numSerieteclado" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerie; ?>" required="true">
 												</div>
 
 												<div class="form-group">
 													<label for="recipient-name" class="col-form-label">Marca: </label>
-													<input type="text" name="marcamouse" class="form-control" value="<?php echo $marca; ?>" required="true">
+													<input type="text" name="marcateclado" class="form-control" value="<?php echo $marca; ?>" required="true">
 												</div>
 
 												<div class="form-group">
 													<label for="recipient-name" class="col-form-label">Modelo: </label>
-													<input type="text" name="modelomouse" class="form-control" value="<?php echo $modelo; ?>" required="true">
+													<input type="text" name="modeloteclado" class="form-control" value="<?php echo $modelo; ?>" required="true">
 												</div>
 
 											</div>
@@ -186,6 +181,7 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 							</div>
 							<!---fin modal editar --->
 
+
 						<?php
 						}
 						?>
@@ -194,12 +190,12 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 			</div>
 		</div>
 
-		<!--Modal Mouse-->
-		<div class="modal fade" id="perifericomouse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<!--Modal Teclado-->
+		<div class="modal fade" id="perifericoteclado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Registro de Mouse</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Registro de teclado</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
@@ -213,27 +209,27 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 									<center>
 										<div class="col-sm-10">
 											<label hidden>Tipo de periférico</label>
-											<input type="number" name="perifmouse" id="perifmouse" class="form-control" hidden>
+											<input type="number" name="perifteclado" id="perifteclado" class="form-control" hidden>
 										</div>
 										<div class="col-sm-10">
 											<label>Número de inventario escolar</label>
-											<input type="number" name="escolarmouse" id="escolarmouse" class="form-control" required min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+											<input type="number" name="escolarteclado" id="escolarteclado" class="form-control" required min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 										</div>
 										<div class="col-sm-10">
 											<label>Número de serie del periférico</label>
-											<input type="text" name="numSeriemouse" id="numSeriemouse" class="form-control" required min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+											<input type="text" name="numSerieteclado" id="numSerieteclado" class="form-control" required min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 										</div>
 										<div class="col-sm-10">
 											<label>Marca</label>
-											<input type="text" name="marcamouse" id="marcamouse" class="form-control" required>
+											<input type="text" name="marcateclado" id="marcateclado" class="form-control" required>
 										</div>
 										<div class="col-sm-10">
 											<label>Modelo</label>
-											<input type="text" name="modelomouse" id="modelomouse" class="form-control" required>
+											<input type="text" name="modeloteclado" id="modeloteclado" class="form-control" required>
 										</div>
 										<div class="col-sm-10">
 											<label hidden>estado</label>
-											<input type="text" name="estadomouse" id="estadomouse" class="form-control" hidden>
+											<input type="text" name="estadoteclado" id="estadoteclado" class="form-control" hidden>
 										</div>
 									</center>
 
@@ -248,8 +244,9 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<?php include("../public/footer.php");
-		?><?php } else { ?>
-		<?php header("Location: ../index.php"); ?>
-	<?php } ?>
+	<?php include("../public/footer.php");
+	?><?php } else { ?>
+	<?php header("Location: ../index.php"); ?>
+<?php } ?>

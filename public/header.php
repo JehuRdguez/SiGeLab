@@ -57,7 +57,7 @@ $idUsuario = $_SESSION['idUsuario'];
             <div class="side-nav">
                 <h6 id="bienvenida">Bienvenid@:  </br><?php echo $nombreC ?></h6>
                 <ul class="nav-links">
-                    <li><a href="../modLaboratorios/laboratorios.php"><i class="fa-solid fa-computer"></i>
+                    <li><a href="../modLaboratorios/laboratoriosIOT.php"><i class="fa-solid fa-computer"></i>
                             <p>Laboratorios</p>
                         </a></li>
                     <li><a href="../modUsuarios/usuarioAdministrador.php"><i class="fa-solid fa-users"></i>
@@ -82,7 +82,7 @@ $idUsuario = $_SESSION['idUsuario'];
             <div class="side-nav">
             <h6 id="bienvenida">Bienvenid@:  </br><?php echo $nombreC ?></h6>
                 <ul class="nav-links">
-                    <li><a href="../modLaboratorios/laboratorios.php"><i class="fa-solid fa-calendar"></i>
+                    <li><a href="../modLaboratorios/laboratoriosIOT.php"><i class="fa-solid fa-calendar"></i>
                             <p>Horarios</p>
                         </a></li>
                     <li><a href="../modSolicitudes/solicitudes.php"><i class="fa-solid fa-person-circle-check"></i>
@@ -107,7 +107,7 @@ $idUsuario = $_SESSION['idUsuario'];
             <div class="side-navalum">
             <h6 id="bienvenidaalum">Bienvenid@:  </br><?php echo $nombreC ?></h6>
                 <ul class="nav-links">
-                    <li><a href="../modLaboratorios/laboratorios.php"><i class="fa-solid fa-calendar"></i><p>Horarios</p></a></li>
+                    <li><a href="../modLaboratorios/laboratoriosIOT.php"><i class="fa-solid fa-calendar"></i><p>Horarios</p></a></li>
                     <li><a href="../modIncidencias/incidencias.php"><i class="fa-solid fa-file-signature"></i><p>Incidencias</p></a></li>
                     <li><a href="../modSolicitudes/solicitudEquipo.php"><i class="fa-solid fa-computer"></i><p>Mi equipo</p></a></li>
                     <li style="visibility: hidden;"><a href="#">

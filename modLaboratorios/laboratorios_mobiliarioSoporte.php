@@ -1,5 +1,5 @@
 <?php
-$pagNom = 'LABORATORIOS';
+$pagNom = 'LABORATORIO DE SOPORTE';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -37,11 +37,11 @@ $pagNom = 'LABORATORIOS';
 
 <div class="dropdown">
         <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Laboratorio de IoT</button>
+            Laboratorio de soporte</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_mobiliario.php">Laboratorio de IoT</a></li>
-            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_mobiliarioD.php">Laboratorio de desarrollo</a></li>
-            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_mobiliarioS.php">Laboratorio de soporte</a></li>
+            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php">Laboratorio de IoT</a></li>
+            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_mobiliarioDesarrollo.php">Laboratorio de desarrollo</a></li>
+            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php">Laboratorio de soporte</a></li>
         </ul>
         <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
     </div>
@@ -50,16 +50,16 @@ $pagNom = 'LABORATORIOS';
 	<br>
 	<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios.php" for="btnradio1">Horarios</a>
+		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosSoporte.php" for="btnradio1">Horarios</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equipos.php" for="btnradio3">Equipos</a>
+		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposSoporte.php" for="btnradio3">Equipos</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericos.php" for="btnradio5">Periféricos</a>
+		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosMonitorSoporte.php" for="btnradio5">Periféricos</a>
 
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" checked>
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliario.php" for="btnradio4">Mobiliario</a>
+		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php" for="btnradio4">Mobiliario</a>
 	</div>
 	<!-- Botón de registro-->
 	<br />
@@ -82,7 +82,7 @@ $pagNom = 'LABORATORIOS';
 
 				<?php
 				$mobiliarioR = new Database(); //
-				$listaMobiliario = $mobiliarioR->readMobiliarioIOT(); //se crea la variable listaAdministradores
+				$listaMobiliario = $mobiliarioR->readMobiliarioSoporte(); //se crea la variable listaAdministradores
 				?>
 
 				<?php
@@ -206,7 +206,7 @@ $pagNom = 'LABORATORIOS';
 									<div class="col-sm-10">
 										<label for="" hidden >Laboratorio</label>
 										<select hidden class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio">
-											<option selected value="1"></option>
+											<option selected value="3"></option>
 										</select>
 									</div>
 									<div class="col-sm-10">

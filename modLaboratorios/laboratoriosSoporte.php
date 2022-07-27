@@ -20,9 +20,9 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
         <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Laboratorio de soporte</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios.php">Laboratorio de IoT</a></li>
-            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratoriosD.php">Laboratorio de desarrollo</a></li>
-            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratoriosS.php">Laboratorio de soporte</a></li>
+            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratoriosIOT.php">Laboratorio de IoT</a></li>
+            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratoriosDesarrollo.php">Laboratorio de desarrollo</a></li>
+            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratoriosSoporte.php">Laboratorio de soporte</a></li>
         </ul>
         <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
     </div>
@@ -30,22 +30,22 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 <br>
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosS.php" for="btnradio1">Horarios</a>
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosSoporte.php" for="btnradio1">Horarios</a>
 
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposS.php" for="btnradio3">Equipos</a>
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposSoporte.php" for="btnradio3">Equipos</a>
 
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosS.php" for="btnradio5">Periféricos</a>
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosMonitorSoporte.php" for="btnradio5">Periféricos</a>
 
 	<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioS.php" for="btnradio4">Mobiliario</a>
+	<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php" for="btnradio4">Mobiliario</a>
 </div>
 
 <br>
 <br />
 <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#archivos">Subir horario</button>
-<abbr title="Detalles"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_horariosS.php"><i class="fa-solid fa-list"></i></a></abbr>
+<abbr title="Detalles"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_horariosSoporte.php"><i class="fa-solid fa-list"></i></a></abbr>
 <br>
 
 <div class="container">

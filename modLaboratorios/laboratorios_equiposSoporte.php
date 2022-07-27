@@ -26,40 +26,39 @@ $pagNom = 'LABORATORIO DE SOPORTE';
     $uname = "root";
     $password = "";
     $bd_name = "sigelab";
-    
+
     $conn = mysqli_connect($sname, $uname, $password, $bd_name);
-    if(!$conn){
-        echo "Error!";
-        exit();
+    if (!$conn) {
+      echo "Error!";
+      exit();
     }
 
-$validar="SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor'";
-$validando=$conn->query($validar);
-$validar2="SELECT* FROM equipo where numTeclado>1 and numTeclado='$numTeclado'";
-$validando2=$conn->query($validar2);
-$validar3="SELECT* FROM equipo where numMouse>1 and numMouse='$numMouse'";
-$validando3=$conn->query($validar3);
+    $validar = "SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor'";
+    $validando = $conn->query($validar);
+    $validar2 = "SELECT* FROM equipo where numTeclado>1 and numTeclado='$numTeclado'";
+    $validando2 = $conn->query($validar2);
+    $validar3 = "SELECT* FROM equipo where numMouse>1 and numMouse='$numMouse'";
+    $validando3 = $conn->query($validar3);
 
-if($validando->num_rows>0 || $validando2->num_rows>0 || $validando3->num_rows>0 ){
-  $message = "El periférico o periféricos ya fueron asignados";
-  $class = "alert alert-danger";
-}
-else{
-
-  $res = $equiposR->createEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numMonitor, $numTeclado, $numMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, 1);
-
-
-    if ($res === true) {
-      $message = "Datos insertados con éxito";
-      $class = "alert alert-success";
-    } else if ($res == "duplicado") {
-      $message = "Datos duplicados, no se pudo completar el registro...";
+    if ($validando->num_rows > 0 || $validando2->num_rows > 0 || $validando3->num_rows > 0) {
+      $message = "El periférico o periféricos ya fueron asignados";
       $class = "alert alert-danger";
     } else {
-      $message = "No se pudieron insertar los datos...";
-      $class = "alert alert-danger";
+
+      $res = $equiposR->createEquipo($nombreLaboratorio, $numInvEscolar, $numSerieEquipo, $numMonitor, $numTeclado, $numMouse, $ubicacionEnMesa, $procesador, $discoDuro, $ram, 1);
+
+
+      if ($res === true) {
+        $message = "Datos insertados con éxito";
+        $class = "alert alert-success";
+      } else if ($res == "duplicado") {
+        $message = "Datos duplicados, no se pudo completar el registro...";
+        $class = "alert alert-danger";
+      } else {
+        $message = "No se pudieron insertar los datos...";
+        $class = "alert alert-danger";
+      }
     }
-  }
   ?>
     <div class="<?php echo $class ?>">
       <?php echo $message; ?>
@@ -68,31 +67,31 @@ else{
   }
   ?>
 
-<div class="dropdown">
-        <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Laboratorio de soporte</button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_equipos.php">Laboratorio de IoT</a></li>
-            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_equiposD.php">Laboratorio de desarrollo</a></li>
-            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_equiposS.php">Laboratorio de soporte</a></li>
-        </ul>
-        <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
-    </div>
+  <div class="dropdown">
+    <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Laboratorio de soporte</button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_equiposIOT.php">Laboratorio de IoT</a></li>
+      <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_equiposDesarrollo.php">Laboratorio de desarrollo</a></li>
+      <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_equiposSoporte.php">Laboratorio de soporte</a></li>
+    </ul>
+    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
+  </div>
 
 
   <br>
   <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosS.php" for="btnradio1">Horarios</a>
+    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosSoporte.php" for="btnradio1">Horarios</a>
 
     <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
-    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposS.php" for="btnradio3">Equipos</a>
+    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposSoporte.php" for="btnradio3">Equipos</a>
 
     <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosS.php" for="btnradio5">Periféricos</a>
+    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosMonitorSoporte.php" for="btnradio5">Periféricos</a>
 
     <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioS.php" for="btnradio4">Mobiliario</a>
+    <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php" for="btnradio4">Mobiliario</a>
   </div>
   </br>
   <br>
@@ -270,16 +269,16 @@ else{
                       $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                       ?>
                       <select class="form-select" aria-label="Default select example" name="discoDuro" id="discoDuro" required>
-                      <option selected hidden value="<?php echo $datos_equipos->discoDuro; ?>"><?php echo $discoDuro; ?></option>
-                      <option value="64 GB">64 GB</option>
-                      <option value="90 GB">90 GB</option>
-                      <option value="128 GB">128 GB</option>
-                      <option value="256 GB">256 GB</option>
-                      <option value="512 GB">512 GB</option>
-                      <option value="1 TB">1 TB</option>
-                      <option value="2 TB">2 TB</option>
-                      <option value="3 TB">3 TB</option>
-                    </select>
+                        <option selected hidden value="<?php echo $datos_equipos->discoDuro; ?>"><?php echo $discoDuro; ?></option>
+                        <option value="64 GB">64 GB</option>
+                        <option value="90 GB">90 GB</option>
+                        <option value="128 GB">128 GB</option>
+                        <option value="256 GB">256 GB</option>
+                        <option value="512 GB">512 GB</option>
+                        <option value="1 TB">1 TB</option>
+                        <option value="2 TB">2 TB</option>
+                        <option value="3 TB">3 TB</option>
+                      </select>
                     </div>
 
                     <div class="form-group">
@@ -288,16 +287,16 @@ else{
                       $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                       ?>
                       <select class="form-select" aria-label="Default select example" name="ram" id="ram" required>
-                      <option selected hidden value="<?php echo $datos_equipos->ram; ?>"><?php echo $ram; ?></option>
-                      <option value="512 MB">512 MB</option>
-                      <option value="1 GB">1 GB</option>
-                      <option value="2 GB">2 GB</option>
-                      <option value="4 GB">4 GB</option>
-                      <option value="8 GB">8 GB</option>
-                      <option value="16 GB">16 GB</option>
-                      <option value="32 GB">32 GB</option>
-                      <option value="64 GB">64 GB</option>
-                    </select>
+                        <option selected hidden value="<?php echo $datos_equipos->ram; ?>"><?php echo $ram; ?></option>
+                        <option value="512 MB">512 MB</option>
+                        <option value="1 GB">1 GB</option>
+                        <option value="2 GB">2 GB</option>
+                        <option value="4 GB">4 GB</option>
+                        <option value="8 GB">8 GB</option>
+                        <option value="16 GB">16 GB</option>
+                        <option value="32 GB">32 GB</option>
+                        <option value="64 GB">64 GB</option>
+                      </select>
                     </div>
 
                   </div>
@@ -441,7 +440,7 @@ else{
                   <div class="col-sm-10">
                     <label>Disco duro</label>
                     <select class="form-select" aria-label="Default select example" name="discoDuro" id="discoDuro" required>
-                    <option selected disabled hidden value="">Selecciona la cantidad:</option>
+                      <option selected disabled hidden value="">Selecciona la cantidad:</option>
                       <option value="64 GB">64 GB</option>
                       <option value="90 GB">90 GB</option>
                       <option value="128 GB">128 GB</option>
@@ -455,7 +454,7 @@ else{
                   <div class="col-sm-10">
                     <label>RAM</label>
                     <select class="form-select" aria-label="Default select example" name="ram" id="ram" required>
-                    <option selected disabled hidden value="">Selecciona la cantidad:</option>
+                      <option selected disabled hidden value="">Selecciona la cantidad:</option>
                       <option value="512 MB">512 MB</option>
                       <option value="1 GB">1 GB</option>
                       <option value="2 GB">2 GB</option>

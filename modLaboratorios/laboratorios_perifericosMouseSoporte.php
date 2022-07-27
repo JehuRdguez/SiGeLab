@@ -1,5 +1,5 @@
 <?php 
-$pagNom = 'LABORATORIO DE DESARROLLO';
+$pagNom = 'LABORATORIO DE SOPORTE';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -21,7 +21,7 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 				$idTipoPerifericos = $perifericoMo->sanitize($_POST['perifmouse']);
 
 
-				$res = $perifericoMo->createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, 1, 3, 2);
+				$res = $perifericoMo->createPeriferico($numInvEscolar, $numSerie, $marca, $modelo, 1, 3, 3);
 
 				if ($res === true) {
 					$message = "Datos insertados con éxito";
@@ -42,51 +42,45 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 			?>
 		</div>
 
-		<div class="container-fluid">
 			<div class="dropdown">
 				<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-					Laboratorio de desarrollo</button>
+					Laboratorio de soporte</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-					<li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_perifericosM.php">Laboratorio de IoT</a></li>
-					<li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_perifericosMD.php">Laboratorio de desarrollo</a></li>
-					<li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_perifericosMS.php">Laboratorio de soporte</a></li>
+					<li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_perifericosMouseIOT.php">Laboratorio de IoT</a></li>
+					<li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_perifericosMouseDesarrolo.php">Laboratorio de desarrollo</a></li>
+					<li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_perifericosMouseSoporte.php">Laboratorio de soporte</a></li>
 				</ul>
 				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
 			</div>
-		</div>
 
 		<!--BOTONES DE SECCIONES-->
 		<br>
-		<div class="container-fluid">
 			<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosD.php" for="btnradio1">Horarios</a>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosSoporte.php" for="btnradio1">Horarios</a>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposD.php" for="btnradio3">Equipos</a>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposSoporte.php" for="btnradio3">Equipos</a>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked>
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosD.php" for="btnradio5">Periféricos</a>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosMonitorSoporte.php" for="btnradio5">Periféricos</a>
 
 				<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioD.php" for="btnradio4">Mobiliario</a>
+				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php" for="btnradio4">Mobiliario</a>
 			</div>
-		</div>
 
 
 		<!--LISTA DE MOUSE-->
-		<div id="vistamouse" class="container-fluid">
-			<br>
+			<br></br>
 			<div class="dropdown">
 				<button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					Mouse</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosD.php">Monitor</a></li>
-					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosTD.php">Teclado</a></li>
-					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMD.php">Mouse</a></li>
+					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMonitorSoporte.php">Monitor</a></li>
+					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosTecladoSoporte.php">Teclado</a></li>
+					<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMouseSoporte.php">Mouse</a></li>
 				</ul>
 				<a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#perifericomouse">Registrar</a>
-			</div>
 
 			<div class="container">
 				<br>
@@ -104,7 +98,7 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 					<tbody>
 						<?php
 						$perifericoMo = new Database(); //
-						$listaMouse = $perifericoMo->readMouseDesarrollo(); //se crea la variable listaAdministradores
+						$listaMouse = $perifericoMo->readMouseSoporte(); //se crea la variable listaAdministradores
 						?>
 
 						<?php

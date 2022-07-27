@@ -4,7 +4,7 @@ if (!isset($_SESSION['correo'])) {
     header('location: login.php');
 }
 else{
-    header("Location: modLaboratorios/laboratorios.php"); 
+    header("Location: modLaboratorios/laboratoriosIOT.php"); 
 }
 ?>
 
