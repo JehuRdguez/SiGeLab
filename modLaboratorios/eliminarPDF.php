@@ -6,7 +6,7 @@ if(isset($_GET['idHorariospdf'])) {
     $res=$horariopdf->deletePDF($idHorariospdf);
 
     if ($res){
-        header("location: ../modLaboratorios/laboratorios.php");
+        header("location: ../modLaboratorios/laboratoriosIOT.php");
     }
     else{
         echo "Error al eliminar registro";

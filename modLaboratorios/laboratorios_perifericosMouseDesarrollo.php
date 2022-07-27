@@ -85,7 +85,7 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 
 			<div class="container">
 				<br>
-				<table class="table table-bordered " cellspacing="0" width="100%" id="laboratorios_perifericosmouse" style="background-color: #04aa89;  ">
+				<table class="table table-bordered " cellspacing="0" width="100%" id="laboratorios_perifericosMouseDesarrollo" style="background-color: #04aa89;  ">
 					<thead>
 						<tr>
 							<th>N.º de Inv. Escolar</th>

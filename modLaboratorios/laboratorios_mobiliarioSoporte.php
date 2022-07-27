@@ -68,7 +68,7 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 
 	<div class="container">
 		<br>
-		<table class="table table-bordered " cellspacing="0" width="100%" id="laboratorios_mobiliarioTable" style="background-color: #04aa89;  ">
+		<table class="table table-bordered " cellspacing="0" width="100%" id="laboratorios_mobiliarioTableSoporte" style="background-color: #04aa89;  ">
 			<thead>
 				<tr>
 					<th>N.º de Inv. Escolar</th>

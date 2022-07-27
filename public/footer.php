@@ -145,6 +145,237 @@ if(data[3]=='Inactivo'){
  });
  });
 
+  //Jehu////////
+
+  $(document).ready(function() {
+        $('#laboratorios_TableIOT').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_TableIOTUsuarios').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_TableDesarrollo').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_TableDesarrolloUsuarios').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_TableSoporte').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_TableSoporteUsuario').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_horariosTableIOT').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_horariosTableDesarrollo').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_horariosTableSoporte').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+
+ $(document).ready(function() {
+        $('#laboratorios_equiposTableIOT').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_equiposTableDesarrollo').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_equiposTableSoporte').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_laboratoriosTable').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_mobiliarioTableIOT').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_mobiliarioTableDesarrollo').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_mobiliarioTableSoporte').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosMonitorIOT').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosMonitorDesarrollo').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosMonitorSoporte').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosTecladoIOT').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosTecladoDesarrollo').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosTecladoSoporte').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosMouseIOT').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosMouseDesarrollo').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#laboratorios_perifericosMouseSoporte').DataTable({
+            responsive: true,
+            language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+        }
+        });
+    });
+
+ /////////////////////
+
     $(document).ready(function() {
         $('#laboratorios_equiposTable').DataTable({
             responsive: true,

@@ -50,7 +50,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 
 <div class="container">
 	<br>
-	<table  class="table table-bordered " cellspacing="0" width="100%"  id="tabla1" style="background-color: #04aa89;">
+	<table  class="table table-bordered " cellspacing="0" width="100%"  id="laboratorios_TableDesarrollo" style="background-color: #04aa89;">
 		<thead>
 			<tr>
 				<th><center>Horario</center></th>
@@ -86,9 +86,19 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 <?php } else if ($idTipoUsuario == 2 || $idTipoUsuario == 3) { ?>
 
 
+    <div class="dropdown">
+        <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Laboratorio de desarrollo</button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratoriosIOT.php">Laboratorio de IoT</a></li>
+            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratoriosDesarrollo.php">Laboratorio de desarrollo</a></li>
+            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratoriosSoporte.php">Laboratorio de soporte</a></li>
+        </ul>
+    </div>
+
 	<div class="container">
 	<br>
-	<table class="table table-bordered" id="tabla1" style="background-color: #04aa89;">
+	<table class="table table-bordered" id="laboratorios_TableDesarrolloUsuarios" style="background-color: #04aa89;">
 		<thead>
 			<tr>
 				<th>Horario</th>
