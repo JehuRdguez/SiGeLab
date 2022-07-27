@@ -261,7 +261,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                   <div class="col-sm-10">
                     <label> Elige el laboratorio </label>
                     <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
-                      <option selected disabled>Selecciona una Laboratorio</option>
+                      <option selected disabled>Selecciona un Laboratorio</option>
                       <?php
                       $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
                       while ($row = mysqli_fetch_object($listaSolicitudes)) {
@@ -529,7 +529,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                     <div class="col-sm-10">
                       <label> Elige el laboratorio </label>
                       <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio">
-                        <option selected disabled>Selecciona una Laboratorio</option>
+                        <option selected disabled>Selecciona un Laboratorio</option>
                         <?php
                         $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
                         while ($row = mysqli_fetch_object($listaSolicitudes)) {
