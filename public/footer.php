@@ -627,30 +627,7 @@ if(data[3]=='Inactivo'){
         }
     }
 </script>
-<!-- Validacion de dias de semana  -->
-<!-- <script>
-    var elDate = document.getElementById('fecha');
-    var elForm = document.getElementById('RegistroSolicitud');
-    var elSubmit = document.getElementById('registrarS');
-
-    function sinDomingos() {
-        var day = new Date(elDate.value).getUTCDay();
-        // Días 0-6, 0 es Domingo 6 es Sábado
-        elDate.setCustomValidity(''); // limpiarlo para evitar pisar el fecha inválida
-        if (day == 0 && day == 6 ) {
-            elDate.setCustomValidity('Domingos y sabados no disponible, por favor seleccione otro día');
-        } else {
-            elDate.setCustomValidity('');
-        }
-        if (!elForm.checkValidity()) {
-            elSubmit.click()
-        };
-    }
-
-    function obtenerfechafinf1() {
-        sinDomingos();
-    }
-</script> -->
+<!-- Validacion de fines de semana  -->
 <script>
      function noExcursion(date) {
         
