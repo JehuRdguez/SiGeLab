@@ -895,7 +895,7 @@
             return false;
         } else if (opcion == true && horaSalida.style.border != "1px solid red") {
             if (document.getElementById("fecha").value > document.getElementById("fechaSalida").value) {
-                alert("La fecha de inicio es menor que la final.");
+                alert("La fecha final es menor que la inicial.");
                 return false;
             }
             return true;
@@ -933,7 +933,7 @@
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fecha").datepicker({
-            dateFormat: "dd-mm-yy",
+            dateFormat: "mm-dd-yy",
             minDate: 0,
             beforeShowDay: noExcursion,
             firstDay: 0,
@@ -946,7 +946,7 @@
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fechaSalida").datepicker({
-            dateFormat: "dd-mm-yy",
+            dateFormat: "mm-dd-yy",
             minDate: 0,
             beforeShowDay: noExcursion,
             firstDay: 0,
