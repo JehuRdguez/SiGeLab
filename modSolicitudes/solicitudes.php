@@ -484,7 +484,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
 
                     <label>Fecha de Término</label>
                     <input type="text" name="fechaSalida" id="fechaSalida" class="form-control" required>
-                   
+                    <h6 style="color:red ;"></h6>
 
                     <label>Hora entrada</label>
                     <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
