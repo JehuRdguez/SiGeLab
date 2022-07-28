@@ -1,12 +1,12 @@
 
 <?php
 if(isset($_GET['idEquipo'])){ 
-include ("../database.php");
+include ("../../database.php");
 $equipo= new Database();
 $idEquipo=intval($_GET['idEquipo']);
 $res= $equipo->updateEstadoEquipo($idEquipo);
 if($res){
-    header("location: ../modLaboratorios/laboratorios_equipos.php");
+    header("location: ../../modLaboratorios/laboratorios_equiposIOT.php");
 }
 else{
     echo "Error al actualizar registro";

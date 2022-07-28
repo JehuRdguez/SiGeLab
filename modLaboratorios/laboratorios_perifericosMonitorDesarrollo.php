@@ -126,10 +126,10 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 								<td>
 									<?php
 									if ($estado == 1) { ?>
-										<a type="button" class="btn btn-outline-dark" href="updateMonitor.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye-slash"></i></a>
+										<a type="button" class="btn btn-outline-dark" href="herramientas_laboratorioDesarrollo/updateMonitorDesarrollo.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye-slash"></i></a>
 
 									<?php } else { ?>
-										<a type="button" class="btn btn-outline-dark" href="updateMonitor.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye"></i></a>
+										<a type="button" class="btn btn-outline-dark" href="herramientas_laboratorioDesarrollo/updateMonitorDesarrollo.php?idPerifericos=<?php echo $idPerifericos; ?>"><i class="fa fa-eye"></i></a>
 									<?php } ?>
 									<abbr title="Editar"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarMonitor<?php echo $idPerifericos; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
 
@@ -145,7 +145,7 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 
-										<form method="POST" action="editarMonitor.php">
+										<form method="POST" action="herramientas_laboratorioDesarrollo/editarMonitorDesarrollo.php">
 											<input type="hidden" name="idPerifericos" value="<?php echo $idPerifericos; ?>">
 
 											<div class="modal-body">

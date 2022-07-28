@@ -2,12 +2,12 @@
 if (isset($_GET['idMobiliario'])) {
     $idMobiliario = intval($_GET['idMobiliario']);
 } else {
-    header("location: ../modLaboratorios/laboratorios_mobiliario.php");
+    header("location: ../../modLaboratorios/laboratorios_mobiliarioSoporte.php");
 }
 ?>
 
 <?php
-include("../database.php");
+include("../../database.php");
 $mobiliarioR = new Database(); //Instanciar el objeto
 
 if (isset($_POST) && !empty($_POST)) {

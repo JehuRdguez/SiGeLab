@@ -2,12 +2,12 @@
 if (isset($_GET['idEquipo'])) {
   $idEquipo = intval($_GET['idEquipo']);
 } else {
-  header("location: ../modLaboratorios/laboratorios_equipos.php");
+  header("location: ../../modLaboratorios/laboratorios_equiposSoporte.php");
 }
 ?>
 
 <?php
-include("../database.php");  //se incluye el otro archivo
+include("../../database.php");  //se incluye el otro archivo
 $equiposR = new Database();  //generamos la variable cliente pq eso es lo que vamos a generar, con esto instanciamos
 
 if (isset($_POST) && !empty($_POST)) {

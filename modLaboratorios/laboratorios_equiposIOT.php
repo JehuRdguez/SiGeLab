@@ -147,9 +147,9 @@ $pagNom = 'LABORATORIO DE IOT';
               <center>
                 <?php
                 if ($estado == 1) { ?>
-                  <abbr title="Deshabilitar"><a type="button" class="btn btn-outline-dark" href="updateEquipo.php?idEquipo=<?php echo $idEquipo; ?>"><i class="fa fa-eye-slash"></i></a></abbr>
+                  <abbr title="Deshabilitar"><a type="button" class="btn btn-outline-dark" href="herramientas_laboratorioIOT/updateEquipoIOT.php?idEquipo=<?php echo $idEquipo; ?>"><i class="fa fa-eye-slash"></i></a></abbr>
                 <?php } else { ?>
-                  <abbr title="Habilitar"><a type="button" class="btn btn-outline-dark" href="updateEquipo.php?idEquipo=<?php echo $idEquipo; ?>"><i class="fa fa-eye"></i></a></abbr>
+                  <abbr title="Habilitar"><a type="button" class="btn btn-outline-dark" href="herramientas_laboratorioIOT/updateEquipoIOT.php?idEquipo=<?php echo $idEquipo; ?>"><i class="fa fa-eye"></i></a></abbr>
                 <?php } ?>
                 <abbr title="Editar"><button type="button" style="border-color:#0c1a30;" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarEquipos<?php echo $idEquipo; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
                 <!--Botón para detalles-->
@@ -167,7 +167,7 @@ $pagNom = 'LABORATORIO DE IOT';
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form method="POST" action="editarEquipo.php">
+                <form method="POST" action="herramientas_laboratorioIOT/editarEquipoIOT.php">
                   <input type="hidden" name="idEquipo" value="<?php echo $idEquipo; ?>">
 
                   <div class="modal-body">

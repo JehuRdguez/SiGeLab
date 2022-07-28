@@ -31,24 +31,24 @@
 <script>
     $(document).ready(function() {
         $('#maestroTable').DataTable({
-         
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        ,"createdRow":function(row,data,index){
-if(data[3]=='Inactivo'){
-    $('td',row).css({
-    'background-color':'#ffb6af',
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[3] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
 
-    'color':'black'
+                        'color': 'black'
+
+                    });
+                }
+
+            }
 
         });
-        }
-
-        }
-        
-    });
     });
 
 
@@ -56,103 +56,133 @@ if(data[3]=='Inactivo'){
         $('#miEquipoTable').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
     $(document).ready(function() {
         $('#administradorTable').DataTable({
-         
-         responsive: true,
-         language: {
-         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-     }
-     ,"createdRow":function(row,data,index){
-if(data[3]=='Inactivo'){
- $('td',row).css({
- 'background-color':'#ffb6af',
 
- 'color':'black'
+            responsive: true,
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[3] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
 
-     });
-     }
-    
-     }
-     
- });
- });
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
+        });
+    });
 
     $(document).ready(function() {
         $('#alumnoTable').DataTable({
-         
-         responsive: true,
-         language: {
-         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-     }
-     ,"createdRow":function(row,data,index){
-if(data[4]=='Inactivo'){
- $('td',row).css({
- 'background-color':'#ffb6af',
 
- 'color':'black'
+            responsive: true,
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
 
-     });
-     }
-     if(data[3]=='Pendiente'){
- $('td',row).eq(3).css({
- 'background-color':'#ffb6af',
+                        'color': 'black'
 
- 'color':'black'
+                    });
+                }
+                if (data[3] == 'Pendiente') {
+                    $('td', row).eq(3).css({
+                        'background-color': '#ffb6af',
 
-     });
-     }
-     }
-     
- });
- });
+                        'color': 'black'
+
+                    });
+                }
+            }
+
+        });
+    });
 
     $(document).ready(function() {
         $('#gruposTable').DataTable({
-         
-         responsive: true,
-         language: {
-         url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-     }
-     ,"createdRow":function(row,data,index){
-if(data[3]=='Inactivo'){
- $('td',row).css({
- 'background-color':'#ffb6af',
 
- 'color':'black'
+            responsive: true,
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[3] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
 
-     });
-     }
-     if(data[2]=='Pendiente'){
- $('td',row).eq(2).css({
- 'background-color':'#ffb6af',
+                        'color': 'black'
 
- 'color':'black'
+                    });
+                }
+                if (data[2] == 'Pendiente') {
+                    $('td', row).eq(2).css({
+                        'background-color': '#ffb6af',
 
-     });
-     }
+                        'color': 'black'
+
+                    });
+                }
 
 
 
-    
-     }
-     
- });
- });
 
-  //Jehu////////
+            }
 
-  $(document).ready(function() {
+        });
+    });
+
+    //Jehu////////
+
+    $(document).ready(function() {
+        $('#laboratorios_laboratoriosTable').DataTable({
+
+            responsive: true,
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[3] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+                if (data[1] == 'Pendiente') {
+                    $('td', row).eq(1).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
+        });
+    });
+
+    $(document).ready(function() {
         $('#laboratorios_TableIOT').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
@@ -160,8 +190,8 @@ if(data[3]=='Inactivo'){
         $('#laboratorios_TableIOTUsuarios').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
@@ -169,8 +199,8 @@ if(data[3]=='Inactivo'){
         $('#laboratorios_TableDesarrollo').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
@@ -178,8 +208,8 @@ if(data[3]=='Inactivo'){
         $('#laboratorios_TableDesarrolloUsuarios').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
@@ -187,8 +217,8 @@ if(data[3]=='Inactivo'){
         $('#laboratorios_TableSoporte').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
@@ -196,8 +226,8 @@ if(data[3]=='Inactivo'){
         $('#laboratorios_TableSoporteUsuario').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
@@ -205,8 +235,8 @@ if(data[3]=='Inactivo'){
         $('#laboratorios_horariosTableIOT').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
@@ -214,8 +244,8 @@ if(data[3]=='Inactivo'){
         $('#laboratorios_horariosTableDesarrollo').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
@@ -223,246 +253,351 @@ if(data[3]=='Inactivo'){
         $('#laboratorios_horariosTableSoporte').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 
 
- $(document).ready(function() {
+    $(document).ready(function() {
         $('#laboratorios_equiposTableIOT').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[2] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_equiposTableDesarrollo').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[2] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_equiposTableSoporte').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
 
-    $(document).ready(function() {
-        $('#laboratorios_laboratoriosTable').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[2] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_mobiliarioTableIOT').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[3] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_mobiliarioTableDesarrollo').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[3] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_mobiliarioTableSoporte').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[3] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosMonitorIOT').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosMonitorDesarrollo').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosMonitorSoporte').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosTecladoIOT').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosTecladoDesarrollo').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosTecladoSoporte').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
-
     $(document).ready(function() {
         $('#laboratorios_perifericosMouseIOT').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosMouseDesarrollo').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
     $(document).ready(function() {
         $('#laboratorios_perifericosMouseSoporte').DataTable({
+
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            "createdRow": function(row, data, index) {
+                if (data[4] == 'Inactivo') {
+                    $('td', row).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+
+            }
+
         });
     });
 
- /////////////////////
+    /////////////////////
 
-    $(document).ready(function() {
-        $('#laboratorios_equiposTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_horariosTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_laboratoriosTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_mobiliarioTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_perifericosmonitor').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_perifericosteclado').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_perifericosgabinete').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratorios_perifericosmouse').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
-
-    $(document).ready(function() {
-        $('#laboratoriosTable').DataTable({
-            responsive: true,
-            language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
-        });
-    });
 
     $(document).ready(function() {
         $('#incidenciasTable').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
     $(document).ready(function() {
@@ -475,8 +610,8 @@ if(data[3]=='Inactivo'){
         $('#solicitudesTable').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
     $(document).ready(function() {
@@ -489,8 +624,8 @@ if(data[3]=='Inactivo'){
         $('#equiposAsignadosTable').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 </script>
@@ -501,8 +636,8 @@ if(data[3]=='Inactivo'){
         $('#tabla1').DataTable({
             responsive: true,
             language: {
-            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-        }
+                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            }
         });
     });
 </script>
@@ -626,77 +761,6 @@ if(data[3]=='Inactivo'){
 
 
 
-
-<!--REVISAR-->
-<script type="text/javascript">
-    function funcionMonitor() {
-        var x = document.getElementById("vistamonitor");
-        var y = document.getElementById("vistateclado");
-        var z = document.getElementById("vistagabinete");
-        var m = document.getElementById("vistamouse");
-
-
-        if (x.style.display == "none" || y.style.display == "block" || z.style.display == "none" || m.style.display == "none") {
-            y.style.display = "none";
-            x.style.display = "block";
-            z.style.display = "none";
-            m.style.display = "none";
-        }
-    }
-
-    function funcionTeclado() {
-        var x = document.getElementById("vistamonitor");
-        var y = document.getElementById("vistateclado");
-        var z = document.getElementById("vistagabinete");
-        var m = document.getElementById("vistamouse");
-
-        if (x.style.display == "block" || y.style.display == "none" || z.style.display == "none" || m.style.display == "none") {
-            y.style.display = "block";
-            x.style.display = "none";
-            z.style.display = "none";
-            m.style.display = "none";
-        }
-    }
-
-    function funcionGabinete() {
-        var x = document.getElementById("vistamonitor");
-        var y = document.getElementById("vistateclado");
-        var z = document.getElementById("vistagabinete");
-        var m = document.getElementById("vistamouse");
-
-        if (x.style.display == "none" || y.style.display == "none" || z.style.display == "block" || m.style.display == "none") {
-            y.style.display = "none";
-            x.style.display = "none";
-            z.style.display = "block";
-            m.style.display = "none";
-        }
-    }
-
-    function funcionMouse() {
-        var x = document.getElementById("vistamonitor");
-        var y = document.getElementById("vistateclado");
-        var z = document.getElementById("vistagabinete");
-        var m = document.getElementById("vistamouse");
-
-        if (x.style.display == "none" || y.style.display == "none" || z.style.display == "none" || m.style.display == "block") {
-            y.style.display = "none";
-            x.style.display = "none";
-            z.style.display = "none";
-            m.style.display = "block";
-        }
-    }
-
-
-    element = document.getElementById("vistamonitor");
-    element2 = document.getElementById("vistateclado");
-    element3 = document.getElementById("vistagabinete");
-    element4 = document.getElementById("vistamouse");
-
-    element.style.display = 'block';
-    element2.style.display = 'none';
-    element3.style.display = 'none';
-    element4.style.display = 'none';
-</script>
 
 <script>
     if (window.history.replaceState) {
@@ -860,8 +924,8 @@ if(data[3]=='Inactivo'){
 </script>
 <!-- Validacion de fines de semana  -->
 <script>
-     function noExcursion(date) {
-        
+    function noExcursion(date) {
+
         var day = date.getDay();
         // aqui indicamos el numero correspondiente a los dias que ha de bloquearse (el 0 es Domingo, 1 Lunes, etc...) en el ejemplo bloqueo todos menos los lunes y jueves.
         return [(day != 0 && day != 6), ''];
@@ -879,7 +943,6 @@ if(data[3]=='Inactivo'){
     });
 </script>
 <script>
-     
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fechaSalida").datepicker({
