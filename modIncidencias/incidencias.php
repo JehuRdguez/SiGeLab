@@ -87,7 +87,9 @@ $reportes = new Database();   //instanciar el objeto
             <td><?php echo $usuarioRegistra; ?></td>
             <td><?php echo $nombreLaboratorio; ?></td>
             <td><?php echo $tipoIncidencia; ?></td>
-            <td><?php echo $numInvEscolar; ?></td>
+            <td><?php if($numInvEscolar== 0){
+                echo "Todos los equipos";
+              } else {echo $numInvEscolar; }?></td>
             <td><?php echo date($fecha); ?></td>
             <td><?php echo $descripcion; ?></td>
             <td><?php if (is_null($nombreC)) {
