@@ -44,8 +44,8 @@ $pagNom = 'SOLICITUDES DE ACCESO';
       <li><a class="dropdown-item" href="../modSolicitudes/solicitudEquipo.php">Cambio de equipo</a></li>
 
     </ul>
-   
-    <a  type="button" href="reporteSolicitudes.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
+
+    <a type="button" href="reporteSolicitudes.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
 
   </div>
   </br>
@@ -119,8 +119,8 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                 <abbr title="ACEPTAR"><a type="button" class="btn btn-outline-dark" href="updateS.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-check"></i></a></abbr>
                 <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modRazon<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-xmark"></i></a></abbr>
               <?php  } ?>
-              <abbr title="Borrar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="deleteS.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
               <abbr title="Ver mas"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
+              <abbr title="Borrar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="deleteS.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
 
             </td>
           </tr>
@@ -233,10 +233,10 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
 
 
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
+  </div>
+  </div>
+  </div>
   </div>
 
 
@@ -426,7 +426,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
 
   <!--Modal-Hoja de registro de solicitudes-->
 
-  
+
 
   <!--Modal-Hoja de registro de solicitudes-->
 
@@ -480,7 +480,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                     <input type="text" name="materia" id="materia" class="form-control" required>
 
                     <label>Fecha</label>
-                    <input type="text" name="fecha" id="fecha" class="form-control"  required>
+                    <input type="text" name="fecha" id="fecha" class="form-control" required>
 
                     <label>Fecha de Termino</label>
                     <input type="text" name="fechaSalida" id="fechaSalida" class="form-control">
