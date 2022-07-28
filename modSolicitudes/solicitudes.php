@@ -44,8 +44,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
       <li><a class="dropdown-item" href="../modSolicitudes/solicitudEquipo.php">Cambio de equipo</a></li>
 
     </ul>
-    <!--Botón de registro -->
-    <a type="button" class="btn btn-outline-dark" href="#RegistroSolicitud" data-bs-toggle="modal">Registrar Solicitud</a> 
+   
     <a  type="button" href="reporteSolicitudes.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
 
   </div>
@@ -234,84 +233,6 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
 
 
-
-  <!--Modal-Hoja de registro de solicitudes-->
-
-  <div class="modal fade" id="RegistroSolicitud" tabindex="-1" aria-labelledby="RegistroSolicitudAlLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-
-
-          <center>
-            <h5 class="modal-title" id="RegistroSolicitud">Hoja de registro de solicitud</h5>
-          </center>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="container-fluid">
-            <form method="post">
-              <div class="row">
-                <center>
-
-                  <div class="col-sm-10">
-                    <input type="hidden" name="maestro" id="maestro" class="form-control" required value="<?php echo  $_SESSION['nombreC']; ?>">
-
-                  </div>
-                  <div class="col-sm-10">
-                    <label> Elige el laboratorio </label>
-                    <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
-                      <option selected disabled>Selecciona un Laboratorio</option>
-                      <?php
-                      $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
-                      while ($row = mysqli_fetch_object($listaSolicitudes)) {
-                        $idLaboratorio = $row->idLaboratorio;
-                        $nombreLaboratorio = $row->nombreLaboratorio; ?>
-                        <option value="<?php echo $idLaboratorio ?>"><?php echo $nombreLaboratorio ?></option>
-                      <?php } ?>
-                    </select>
-
-                    <label for="">Grupo</label>
-                    <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
-                      <option selected disabled>Selecciona un Grupo</option>
-                      <?php
-                      $listaGrupos = $solicitud->readGrupos('nombreGrupo');
-                      while ($row = mysqli_fetch_object($listaGrupos)) {
-                        $idGrupo = $row->idGrupo;
-                        $nombreGrupo = $row->nombreGrupo; ?>
-                        <option value="<?php echo $idGrupo ?>"><?php echo $nombreGrupo ?></option>
-                      <?php } ?>
-                    </select>
-
-                    <label>Materia</label>
-                    <input type="text" name="materia" id="materia" class="form-control" required>
-
-                    <label>Fecha</label>
-                    <input type="text" name="fecha" id="fecha" class="form-control" min=<?php $hoy = date("Y-m-d");
-                                                                                        echo $hoy; ?> required>
-
-                    <label>Fecha de Termino</label>
-                    <input type="text" name="fechaSalida" id="fechaSalida" class="form-control" min=<?php $hoy = date("Y-m-d");
-                                                                                                    echo $hoy; ?>>
-                    <h6 style="color:red ;">*Solo llene este si lo utilizara mas de un dia</h6>
-
-                    <label>Hora entrada</label>
-                    <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
-
-                    <label>Hora salida</label>
-                    <input type="time" name="horaSalida" id="horaSalida" class="form-control" min="07:30" max="19:00" required>
-
-
-                </center>
-              </div>
-
-
-              <!-- Botón para enviar datos-->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" id="registrarS" class="btn btn-dark" onclick="return alertaRegistrarS()">Registrar</button>
-              </div>
-            </form>
           </div>
         </div>
       </div>
@@ -505,6 +426,10 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
 
   <!--Modal-Hoja de registro de solicitudes-->
 
+  
+
+  <!--Modal-Hoja de registro de solicitudes-->
+
   <div class="modal fade" id="RegistroSolicitud" tabindex="-1" aria-labelledby="RegistroSolicitudAlLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -523,50 +448,50 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                 <center>
 
                   <div class="col-sm-10">
-                    <div class="col-sm-10">
-                      <input type="hidden" name="maestro" id="maestro" class="form-control" required value="<?php echo  $_SESSION['nombreC']; ?>">
-                    </div>
-                    <div class="col-sm-10">
-                      <label> Elige el laboratorio </label>
-                      <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio">
-                        <option selected disabled>Selecciona un Laboratorio</option>
-                        <?php
-                        $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
-                        while ($row = mysqli_fetch_object($listaSolicitudes)) {
-                          $idLaboratorio = $row->idLaboratorio;
-                          $nombreLaboratorio = $row->nombreLaboratorio; ?>
-                          <option value="<?php echo $idLaboratorio ?>"><?php echo $nombreLaboratorio ?></option>
-                        <?php } ?>
-                      </select>
+                    <input type="hidden" name="maestro" id="maestro" class="form-control" required value="<?php echo  $_SESSION['nombreC']; ?>">
 
-                      <label for="">Grupo</label>
-                      <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo">
-                        <option selected disabled>Selecciona un Grupo</option>
-                        <?php
-                        $listaGrupos = $solicitud->readGrupos('nombreGrupo');
-                        while ($row = mysqli_fetch_object($listaGrupos)) {
-                          $idGrupo = $row->idGrupo;
-                          $nombreGrupo = $row->nombreGrupo; ?>
-                          <option value="<?php echo $idGrupo ?>"><?php echo $nombreGrupo ?></option>
-                        <?php } ?>
-                      </select>
+                  </div>
+                  <div class="col-sm-10">
+                    <label> Elige el laboratorio </label>
+                    <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
+                      <option selected disabled>Selecciona un Laboratorio</option>
+                      <?php
+                      $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
+                      while ($row = mysqli_fetch_object($listaSolicitudes)) {
+                        $idLaboratorio = $row->idLaboratorio;
+                        $nombreLaboratorio = $row->nombreLaboratorio; ?>
+                        <option value="<?php echo $idLaboratorio ?>"><?php echo $nombreLaboratorio ?></option>
+                      <?php } ?>
+                    </select>
 
-                      <label>Materia</label>
-                      <input type="text" name="materia" id="materia" class="form-control" required>
+                    <label for="">Grupo</label>
+                    <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
+                      <option selected disabled>Selecciona un Grupo</option>
+                      <?php
+                      $listaGrupos = $solicitud->readGrupos('nombreGrupo');
+                      while ($row = mysqli_fetch_object($listaGrupos)) {
+                        $idGrupo = $row->idGrupo;
+                        $nombreGrupo = $row->nombreGrupo; ?>
+                        <option value="<?php echo $idGrupo ?>"><?php echo $nombreGrupo ?></option>
+                      <?php } ?>
+                    </select required>
 
-                
-                      <label>Fecha</label>
-                    <input type="date" name="fecha" id="fecha" class="form-control" min=<?php $hoy = date("Y-m-d"); echo $hoy; ?> onblur="obtenerfechafinf1();" required>
+                    <label>Materia</label>
+                    <input type="text" name="materia" id="materia" class="form-control" required>
+
+                    <label>Fecha</label>
+                    <input type="text" name="fecha" id="fecha" class="form-control"  required>
 
                     <label>Fecha de Termino</label>
-                    <input type="date" name="fechaSalida" id="fechaSalida" class="form-control" min=<?php $hoy = date("Y-m-d"); echo $hoy; ?> onblur="obtenerfechafinf1();">
+                    <input type="text" name="fechaSalida" id="fechaSalida" class="form-control">
                     <h6 style="color:red ;">*Solo llene este si lo utilizara mas de un dia</h6>
 
-                      <label>Hora entrada</label>
-                      <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
+                    <label>Hora entrada</label>
+                    <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
 
-                      <label>Hora salida</label>
-                      <input type="time" name="horaSalida" id="horaSalida" class="form-control" min="07:30" max="19:00" required>
+                    <label>Hora salida</label>
+                    <input type="time" name="horaSalida" id="horaSalida" class="form-control" min="07:30" max="19:00" required>
+
 
                 </center>
               </div>
@@ -577,8 +502,6 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="submit" id="registrarS" class="btn btn-dark" onclick="return alertaRegistrarS()">Registrar</button>
               </div>
-
-
             </form>
           </div>
         </div>

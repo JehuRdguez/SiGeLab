@@ -933,9 +933,12 @@
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fecha").datepicker({
+            dateFormat: "dd-mm-yy",
             minDate: 0,
             beforeShowDay: noExcursion,
-            firstDay: 0
+            firstDay: 0,
+            dayNamesMin: [ "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb" ],
+            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
         });
     });
 </script>
@@ -943,9 +946,12 @@
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fechaSalida").datepicker({
+            dateFormat: "dd-mm-yy",
             minDate: 0,
             beforeShowDay: noExcursion,
-            firstDay: 0
+            firstDay: 0,
+            dayNamesMin: [ "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb" ],
+            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
         });
     });
 </script>
