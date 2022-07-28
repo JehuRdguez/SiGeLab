@@ -281,18 +281,16 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                         $nombreGrupo = $row->nombreGrupo; ?>
                         <option value="<?php echo $idGrupo ?>"><?php echo $nombreGrupo ?></option>
                       <?php } ?>
-                    </select>
+                    </select required>
 
                     <label>Materia</label>
                     <input type="text" name="materia" id="materia" class="form-control" required>
 
                     <label>Fecha</label>
-                    <input type="text" name="fecha" id="fecha" class="form-control" min=<?php $hoy = date("Y-m-d");
-                                                                                        echo $hoy; ?> required>
+                    <input type="text" name="fecha" id="fecha" class="form-control"  required>
 
                     <label>Fecha de Termino</label>
-                    <input type="text" name="fechaSalida" id="fechaSalida" class="form-control" min=<?php $hoy = date("Y-m-d");
-                                                                                                    echo $hoy; ?>>
+                    <input type="text" name="fechaSalida" id="fechaSalida" class="form-control">
                     <h6 style="color:red ;">*Solo llene este si lo utilizara mas de un dia</h6>
 
                     <label>Hora entrada</label>
