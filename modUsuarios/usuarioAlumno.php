@@ -184,7 +184,7 @@ else{
 
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Dirección de correo electrónico:</label>
-                        <input type="email" name="correoAl" id="correoAl" class="form-control" minlength="20" value="<?php echo $correo; ?>" required="true">
+                        <input type="email" name="correoAl" id="correoAl" class="form-control" minlength="20"  maxlength="20" value="<?php echo $correo; ?>" required="true">
                       </div>
 
                       <div class="form-group">
@@ -197,7 +197,7 @@ else{
                         $datos_alumno = $alumnos->single_recordusuarioContraAl($idUsuario);
                         ?>
                         <label for="recipient-name" class="col-form-label">Contraseña:</label>
-                        <input type="text" name="contrasenaAl" id="contrasenaAl" class="form-control" minlength="8" onkeypress="return ValidarContrasena(event)" value="<?php echo $datos_alumno->contrasena; ?>" required="true">
+                        <input type="text" name="contrasenaAl" id="contrasenaAl" class="form-control" minlength="8" maxlength="20" onkeypress="return ValidarContrasena(event)" value="<?php echo $datos_alumno->contrasena; ?>" required="true">
                       </div>
 
                       <div class="form-group">
@@ -378,7 +378,7 @@ else{
                   <input type="text" name="nombreCAl" id="nombreCAl" class="form-control" minlength="15" onkeypress="return ValidarLestrasC(event)" required>
 
                   <label> Dirección de correo electrónico:</label>
-                  <input type="email" name="correoAl" id="correoAl" class="form-control" minlength="20" required>
+                  <input type="email" name="correoAl" id="correoAl" class="form-control" minlength="20" maxlength="20" required>
 
                   <label> Teléfono:</label>
                   <input type="number" name="telefonoAl" id="telefonoAl" class="form-control" min="1111111111" onkeypress="return verificaNumeros(event);" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
@@ -435,7 +435,7 @@ else{
                   </select>
 
                   <label> Contraseña:</label>
-                  <input type="text" name="contrasenaAl" id="contrasenaAl" class="form-control" minlength="8" onkeypress="return ValidarContrasena(event)" required>
+                  <input type="text" name="contrasenaAl" id="contrasenaAl" class="form-control" minlength="8" maxlength="20" onkeypress="return ValidarContrasena(event)" required>
 
                 </center>
               </div>

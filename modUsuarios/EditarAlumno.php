@@ -23,6 +23,7 @@ $idEquipoIOT= $alumnos->sanitize($_POST['idEquipoIOT']);
 $idEquipoDesarrollo= $alumnos->sanitize($_POST['idEquipoDesarrollo']);
 $idEquipoSoporte= $alumnos->sanitize($_POST['idEquipoSoporte']);
 $idUsuario=intval($_POST['idUsuario']); //Se agrega la variable para recibir el id
+
 $sname = "localhost";
 $uname = "root";
 $password = "";
@@ -64,4 +65,9 @@ $res = $alumnos->editarUAlumno($nombreC,$correo,$telefono,$contrasena,$numConAlu
 	  <?php
 	  }
 	
+	  $datos_alumnos = $alumnos->single_recordusuarioContraAl($idUsuario);
+	  
+	  $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
+	 
+
  ?>
