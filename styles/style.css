@@ -109,8 +109,6 @@ body {
     color:#dfdfdf;
     position: sticky;
     text-decoration: none;
-
-
 }
 
 .nav-links{
@@ -230,6 +228,15 @@ body {
         padding:170px 0px;
     }
 
+    body {
+        overflow: auto;
+        position: static;
+        padding-top: 6%;
+        padding-left: 16%;
+        padding-right: 5.3%;
+        padding-bottom: 4.7%;
+     }
+
     .nav-links li a p{
         display: none;
     }
@@ -284,6 +291,9 @@ body {
     #bienvenidaalum{
         display: none;
     }
-    
+
+    .tituloP{
+        font-size: x-large;
+    }
 
 }

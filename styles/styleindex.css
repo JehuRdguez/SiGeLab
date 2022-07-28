@@ -27,7 +27,7 @@ body {
 }
 
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 992px){
 
     #nombres{
         display: none;
@@ -41,7 +41,7 @@ body {
         display: none;
     }
 
-    #cosablanca{
+    #fondoblanco{
         margin-left: 10%;
         margin-top: -10%;
 
@@ -49,10 +49,59 @@ body {
 
     #imglogin{
         margin-top: -15%;
+        margin-right: 23%;
     }
 
+}
 
+@media only screen and (max-width: 770px){
 
+    #nombres{
+        display: none;
+    }
 
+    #logoutem1{
+        display: none;
+    }
 
+    #titsigelab{
+        display: none;
+    }
+
+    #fondoblanco{
+        margin-left: 10%;
+        margin-top: -10%;
+
+    }
+
+    #imglogin{
+        margin-top: -15%;
+        margin-right: 7%;
+    }
+}
+
+@media only screen and (max-width: 500px){
+
+    #nombres{
+        display: none;
+    }
+
+    #logoutem1{
+        display: none;
+    }
+
+    #titsigelab{
+        display: none;
+    }
+
+    #fondoblanco{
+        margin-left: -9%;
+        margin-top: -10%;
+
+    }
+
+    #imglogin{
+        margin-top: -15%;
+        margin-right: 7%;
+    }
 }
