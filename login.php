@@ -84,7 +84,7 @@ if ($_POST) { //va a guardar lo que lleve el método post
                                     <br><label>Correo institucional:</label><br>
                                     <input style="background-color:#ECE9F1;" type="email" name="correo" id="correo" class="form-control" required><br>
                                     <label>Contraseña:</label><br>
-                                    <input style="background-color:#ECE9F1;" type="password" name="contrasena" id="contrasena" class="form-control" required> <br>
+                                    <input style="background-color:#ECE9F1;" type="password" name="contrasena" id="contrasena" class="form-control" minlength="8" onkeypress="return ValidarContrasena(event)" maxlength="15" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <br>
                                     <button type="submit" class="btn btn-primary">ENTRAR</button>
                                     </br>
                                     </br>
