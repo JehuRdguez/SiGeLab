@@ -895,9 +895,10 @@
             return false;
         } else if (opcion == true && horaSalida.style.border != "1px solid red") {
             if (document.getElementById("fecha").value > document.getElementById("fechaSalida").value) {
-                alert("La fecha final es menor que la inicial.");
+                alert("Rango de fechas inválido");
                 return false;
             }
+            
             return true;
         } else {
             return false;

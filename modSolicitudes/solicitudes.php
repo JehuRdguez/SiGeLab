@@ -479,12 +479,12 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                     <label>Materia</label>
                     <input type="text" name="materia" id="materia" class="form-control" required>
 
-                    <label>Fecha</label>
+                    <label>Fecha de inicio</label>
                     <input type="text" name="fecha" id="fecha" class="form-control" required>
 
-                    <label>Fecha de Termino</label>
-                    <input type="text" name="fechaSalida" id="fechaSalida" class="form-control">
-                    <h6 style="color:red ;">*Solo llene este si lo utilizara mas de un dia</h6>
+                    <label>Fecha de Término</label>
+                    <input type="text" name="fechaSalida" id="fechaSalida" class="form-control" required>
+                   
 
                     <label>Hora entrada</label>
                     <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
