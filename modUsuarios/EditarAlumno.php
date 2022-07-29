@@ -37,11 +37,11 @@ if(!$conn){
 
 
 
-$validar="SELECT* FROM vwValidaEquipos where idEquipoIOT>1 and idEquipoIOT='$idEquipoIOT' and idGrupo='$idGrupo'";
+$validar="SELECT* FROM vwValidaEquipos where idEquipoIOT>1 and idEquipoIOT='$idEquipoIOT' and idGrupo='$idGrupo' and idUsuario!='$idUsuario'";
 $validando=$conn->query($validar);
-$validar2="SELECT* FROM vwValidaEquipos where idEquipoDesarrollo>1 and idEquipoDesarrollo='$idEquipoDesarrollo' and idGrupo='$idGrupo'";
+$validar2="SELECT* FROM vwValidaEquipos where idEquipoDesarrollo>1 and idEquipoDesarrollo='$idEquipoDesarrollo' and idGrupo='$idGrupo' and idUsuario!='$idUsuario'";
 $validando2=$conn->query($validar2);
-$validar3="SELECT* FROM vwValidaEquipos where idEquipoSoporte>1 and idEquipoSoporte='$idEquipoSoporte' and idGrupo='$idGrupo'";
+$validar3="SELECT* FROM vwValidaEquipos where idEquipoSoporte>1 and idEquipoSoporte='$idEquipoSoporte' and idGrupo='$idGrupo' and idUsuario!='$idUsuario'";
 $validando3=$conn->query($validar3);
 
 if($validando->num_rows>0 || $validando2->num_rows>0 || $validando3->num_rows>0 ){

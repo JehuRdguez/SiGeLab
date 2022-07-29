@@ -1,5 +1,5 @@
 <?php
-$pagNom = 'CAMBIO EQUIPO';
+$pagNom = 'EQUIPOS ASIGNADOS';
 ?>
 
 <?php include("../public/header.php"); ?>
@@ -45,7 +45,6 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
     <!-- Secciones o cabeceros -->
     <tr >
       <!-- filas -->
-      <?php echo "Equipos asignados por laboratorio: " ?> <br>
       <th>Equipo lab IoT</th>
       <th>Equipo lab desarrollo</th>
       <th>Equipo lab Soporte</th>
@@ -151,7 +150,7 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
     <?php
     include("../database.php"); ?>
     <div class="container">
-      <table class="table table-bordered" id="solicitudesTable" style="background-color: #04aa89;  ">
+      <table class="table table-bordered" id="solicitudesTableCEquipo" style="background-color: #04aa89;  ">
         <thead>
           <!-- Secciones o cabeceros -->
           <tr>
