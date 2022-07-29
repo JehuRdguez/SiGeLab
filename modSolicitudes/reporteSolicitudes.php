@@ -27,10 +27,7 @@ function Header()
     $this->setXY(181,32);
     $this->cell(10, 2,utf8_decode(' 01 (314) 33 14450 '), 4, 3, 'c', 0);
     $this->Image('../styles/logoUTEM1.png',1,13,80); //imagen(archivo, png/jpg || x,y,tamaño)
-    $this->Image('../styles/12.png',5,40,200); //imagen(archivo, png/jpg || x,y,tamaño)
-    $this->Image('../styles/12.png',55,275,100); //imagen(archivo, png/jpg || x,y,tamaño)
-    $this->setXY(100,280);
-    $this->cell(10, 2,'Firma', 4, 3, 'c', 0);
+
 
 
     // Movernos a la derecha
@@ -43,13 +40,12 @@ function Header()
     $this->Ln(20);
 
     $this->SetFont('Times','',10);
-    $this->setX(23);
-    $this->cell(40, 10, utf8_decode('Nombre del solicitante'), 1, 0, 'c', 0);
-    $this->cell(28, 10, utf8_decode('Laboratorio'), 1, 0, 'c', 0);
+    $this->setX(20);
+    $this->cell(60, 10, utf8_decode('Nombre del solicitante'), 1, 0, 'c', 0);
+    $this->cell(42, 10, utf8_decode('Laboratorio'), 1, 0, 'c', 0);
     $this->cell(17, 10, utf8_decode('Grupo'), 1, 0, 'c', 0);
     $this->cell(25, 10, utf8_decode('Fecha'), 1, 0, 'c', 0);
-    $this->cell(28, 10, utf8_decode('Horario'), 1, 0, 'c', 0);
-    $this->cell(28, 10, utf8_decode('Estado'), 1, 1, 'c', 0);
+    $this->cell(28, 10, utf8_decode('Horario'), 1, 1, 'c', 0);
 
   
    
@@ -59,12 +55,18 @@ function Header()
 // Pie de página
 function Footer()
 {
-    // Posición: a 1,5 cm del final
-    $this->SetY(-15);
+    // Posición: a 2,0 cm del final
+    $this->SetY(-20);
     // Arial italic 8
     $this->SetFont('Arial','I',8);
     // Número de página
-    $this->Cell(0,10,utf8_decode('Pagina ').$this->PageNo().'/{nb}',0,0,'C');
+    $this->Cell(0,20,utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
+    if($this->isFinished==true){
+    $this->Image('../styles/12.png',55,265,100); //imagen(archivo, png/jpg || x,y,tamaño)
+    $this->setXY(100,270);
+    $this->cell(10, 2,'Firma', 4, 3, 'C', 0);
+    $this->Cell(10,5,utf8_decode($_SESSION['nombreC']) ,0,0,'C');
+    }
 }
 }
 
@@ -77,6 +79,8 @@ $resultado = $mysqli->query($consulta);
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
+$pdf->isFinished = false;
+$pdf->SetAutoPageBreak(true, 40);
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
 
@@ -87,18 +91,17 @@ $pdf->SetFont('Arial','B',16);
 while($row = $resultado->fetch_assoc()){
 
     $pdf->SetFont('Times','',10);
-    $pdf->setX(23);
-    $pdf->cell(40, 10, $row['maestro'], 1, 0, 'c', 0);
-    $pdf->cell(28, 10, $row['nombreLaboratorio'], 1, 0, 'c', 0);
+    $pdf->setX(20);
+    $pdf->cell(60, 10, $row['maestro'], 1, 0, 'c', 0);
+    $pdf->cell(42, 10, $row['nombreLaboratorio'], 1, 0, 'c', 0);
     $pdf->cell(17, 10, $row['nombreGrupo'], 1, 0, 'c', 0);
     $pdf->cell(25, 10, $row['fecha'], 1, 0, 'c', 0);
-    $pdf->cell(28, 10, $row['horario'], 1, 0, 'c', 0);
-    $pdf->cell(28, 10, $row['estado'], 1, 1, 'c', 0);   
+    $pdf->cell(28, 10, $row['horario'], 1, 1, 'c', 0);
 
     //$pdf->cell(80, 10,utf8_decode($row['numInvEscolar']), 1, 0, 'c', 0);
 
 }
-
+$pdf->isFinished = true;
 
 
 

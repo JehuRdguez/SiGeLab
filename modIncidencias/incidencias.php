@@ -38,10 +38,8 @@ $reportes = new Database();   //instanciar el objeto
   <!-- Botón de registro-->
   <div class="dropdown">
     <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a>
-    <br><br>
-
     <a href="reportesInc.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
-
+<br></br>
   </div>
   <!-- Mostrar tabla-->
   <div class="container">
