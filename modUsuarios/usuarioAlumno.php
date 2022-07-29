@@ -179,7 +179,7 @@ else{
 
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Nombre completo:</label>
-                        <input type="text" name="nombreCAl" id="nombreCAl" class="form-control" minlength="15" onkeypress="return ValidarLestrasC(event)" value="<?php echo $nombreC; ?>" required="true">
+                        <input type="text" name="nombreCAl" id="nombreCAl" class="form-control" minlength="12" onkeypress="return ValidarLestrasC(event)" value="<?php echo $nombreC; ?>" required="true">
                       </div>
 
                       <div class="form-group">
@@ -375,7 +375,7 @@ else{
                   <input type="number" name="numConAlum" id="numConAlum" class="form-control" min="11111111" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
 
                   <label> Nombre completo:</label>
-                  <input type="text" name="nombreCAl" id="nombreCAl" class="form-control" minlength="15" onkeypress="return ValidarLestrasC(event)" required>
+                  <input type="text" name="nombreCAl" id="nombreCAl" class="form-control" minlength="12" onkeypress="return ValidarLestrasC(event)" maxlength="70" required> 
 
                   <label> Dirección de correo electrónico:</label>
                   <input type="email" name="correoAl" id="correoAl" class="form-control" minlength="20" maxlength="20" required>
