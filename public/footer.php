@@ -591,7 +591,6 @@
 
    ////////
 
-
     $(document).ready(function() {
         $('#incidenciasTable').DataTable({
             responsive: true,
@@ -639,7 +638,7 @@
             "createdRow": function(row, data, index) {
                 if (data[4] == 'Pendiente') {
                     $('td', row).eq(4).css({
-                        'background-color': '#ffb6af',
+                        'background-color': '#fdfd96',
 
                         'color': 'black'
 
@@ -658,7 +657,7 @@
             "createdRow": function(row, data, index) {
                 if (data[5] == 'Pendiente') {
                     $('td', row).eq(5).css({
-                        'background-color': '#ffb6af',
+                        'background-color': '#fdfd96',
 
                         'color': 'black'
 
