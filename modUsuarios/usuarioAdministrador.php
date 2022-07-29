@@ -120,24 +120,24 @@ $pagNom = 'USUARIOS';
 
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Número de trabajador:</label>
-                        <input type="number" name="numConAdmin" id="numConAdmin"  class="form-control" min="1" value="<?php echo $numConAdmin; ?>" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
+                        <input type="number" name="numConAdmin" id="numConAdmin"  class="form-control" min="1" value="<?php echo $numConAdmin; ?>"  onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
                       </div>
 
 
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Nombre completo:</label>
-                        <input type="text" name="nombreC" id="nombreC" class="form-control" minlength="15" onkeypress="return ValidarLestrasC(event)" value="<?php echo $nombreC; ?>" required="true">
+                        <input type="text" name="nombreC" id="nombreC" class="form-control" minlength="12" onkeypress="return ValidarLestrasC(event)" value="<?php echo $nombreC; ?>" maxlength="70" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
                       </div>
 
 
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Dirección de correo electrónico:</label>
-                        <input type="email" name="correo" id="correo" class="form-control" minlength="15" value="<?php echo $correo; ?>" required="true">
+                        <input type="email" name="correo" id="correo" class="form-control" minlength="15"  value="<?php echo $correo; ?>" maxlength="50" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
                       </div>
 
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Teléfono: </label>
-                        <input type="number" name="telefono" id="telefono" class="form-control" min="1111111111" value="<?php echo $telefono; ?>" min="1111111111" onkeypress="return verificaNumeros(event);" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
+                        <input type="number" name="telefono" id="telefono" class="form-control" min="1111111111" value="<?php echo $telefono; ?>"  onkeypress="return verificaNumeros(event);" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
                       </div>
 
 
@@ -146,7 +146,7 @@ $pagNom = 'USUARIOS';
                     $datos_admin = $administradoresR->single_recordadministrador($idUsuario);
                     ?>
                         <label for="recipient-name" class="col-form-label">Contraseña:</label>
-                        <input type="text" name="contrasena" id="contrasena" class="form-control" minlength="8" onkeypress="return ValidarContrasena(event)" value="<?php echo $datos_admin->contrasena; ?>" required="true">
+                        <input type="text" name="contrasena" id="contrasena" class="form-control" minlength="8" onkeypress="return ValidarContrasena(event)" value="<?php echo $datos_admin->contrasena; ?>" maxlength="20" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
                       </div>
 
                     </div>
@@ -213,16 +213,16 @@ $pagNom = 'USUARIOS';
                     <input type="number" name="numConAdmin" id="numConAdmin" class="form-control"  min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
 
                     <label> Nombre completo:</label>
-                    <input type="text" name="nombreC" id="nombreC" class="form-control" minlength="15" onkeypress="return ValidarLestrasC(event)" required>
+                    <input type="text" name="nombreC" id="nombreC" class="form-control" minlength="12" onkeypress="return ValidarLestrasC(event)"  maxlength="70"   oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  required>
 
                     <label> Dirección de correo electrónico:</label>
-                    <input type="email" name="correo" id="correo" class="form-control" minlength="15" required>
+                    <input type="email" name="correo" id="correo" class="form-control" minlength="15" maxlength="50"   oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  required>
 
                     <label> Teléfono:</label>
                     <input type="number" name="telefono" id="telefono" class="form-control" min="1111111111" onkeypress="return verificaNumeros(event);" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
 
                     <label> Contraseña:</label>
-                    <input type="text" name="contrasena" id="contrasena" class="form-control" minlength="8" onkeypress="return ValidarContrasena(event)" maxlength="15" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
+                    <input type="text" name="contrasena" id="contrasena" class="form-control" minlength="8"  maxlength="20" onkeypress="return ValidarContrasena(event)"  oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
                   </center>
                 </div>
 
