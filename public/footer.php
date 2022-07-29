@@ -677,7 +677,24 @@
                         'color': 'black'
 
                     });
-                }}
+                } else if(data[4] == 'Aceptada') {
+                    $('td', row).eq(4).css({
+                        'background-color': '#bdecb6',
+
+                        'color': 'black'
+
+                    });
+            }else {
+                    $('td', row).eq(4).css({
+                        'background-color': '#ffb6af',
+
+                        'color': 'black'
+
+                    });
+                }
+            
+            }
+
         });
     });
 
