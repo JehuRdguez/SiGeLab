@@ -17,15 +17,15 @@ function Header()
     // Arial bold 15
     $this->SetFont('Arial','B',8);
     $this->setXY(140,20);
-    $this->cell(10, 2,'Universidad Teconologica de Manzanillo', 4, 3, 'c', 0);
+    $this->cell(10, 2,'Universidad Teconologica de Manzanillo', 4, 3, '', 0);
     $this->setXY(146,23);
-    $this->cell(10, 2,utf8_decode(' Camino hacías las humedades S/N, '), 4, 3, 'c', 0);
+    $this->cell(10, 2,utf8_decode(' Camino hacías las humedades S/N, '), 4, 3, '', 0);
     $this->setXY(145,26);
-    $this->cell(10, 2,utf8_decode(' Salagua, Manzanillo, Colima, México'), 4, 3, 'c', 0);
+    $this->cell(10, 2,utf8_decode(' Salagua, Manzanillo, Colima, México'), 4, 3, '', 0);
     $this->setXY(167,29);
     $this->cell(10, 2,' utem@utem.edu.mx  ', 4, 3, 'c', 0);
     $this->setXY(171,32);
-    $this->cell(10, 2,utf8_decode(' 01 (314) 33 14450 '), 4, 3, 'c', 0);
+    $this->cell(10, 2,utf8_decode(' 01 (314) 33 14450 '), 4, 3, '', 0);
     $this->Image('../../styles/logoUTEM1.png',1,13,80); //imagen(archivo, png/jpg || x,y,tamaño)
     $this->Image('../../styles/12.png',5,40,200); //imagen(archivo, png/jpg || x,y,tamaño)
     $this->setXY(100,280);
@@ -48,10 +48,10 @@ function Header()
 
     $this->SetFont('Times','',10);
     $this->setX(40);
-    $this->cell(33, 10, utf8_decode('N.º Inv. Esc. Equipo'), 1, 0, 'c', 0);
-    $this->cell(34, 10, utf8_decode('N.º Inv. Esc. Monitor'), 1, 0, 'c', 0);
-    $this->cell(34, 10, utf8_decode('N.º Inv. Esc. Teclado'), 1, 0, 'c', 0);
-    $this->cell(34, 10, utf8_decode('N.º Inv. Esc. Mouse'), 1, 1, 'c', 0);
+    $this->cell(33, 10, utf8_decode('N.º Inv. Esc. Equipo'), 1, 0, 'C', 0);
+    $this->cell(34, 10, utf8_decode('N.º Inv. Esc. Monitor'), 1, 0, 'C', 0);
+    $this->cell(34, 10, utf8_decode('N.º Inv. Esc. Teclado'), 1, 0, 'C', 0);
+    $this->cell(34, 10, utf8_decode('N.º Inv. Esc. Mouse'), 1, 1, 'C', 0);
 }
 
 
@@ -67,7 +67,7 @@ function Footer()
     if($this->isFinished==true){
     $this->Image('../../styles/12.png',55,265,100); //imagen(archivo, png/jpg || x,y,tamaño)
     $this->setXY(100,270);
-    $this->cell(10, 2,'Firma', 4, 3, 'c', 0);
+    $this->cell(10, 2,'Firma', 4, 3, 'C', 0);
     $this->Cell(10,5,utf8_decode($_SESSION['nombreC']) ,0,0,'C');
     }
 }
@@ -93,10 +93,10 @@ while($row = $resultado->fetch_assoc()){
 
     $pdf->SetFont('Times','',10);
     $pdf->setX(40);
-    $pdf->cell(33, 10, $row['numInvEscolar'], 1, 0, 'c', 0);
-    $pdf->cell(34, 10, $row['numInvEscMon'], 1, 0, 'c', 0);
-    $pdf->cell(34, 10, $row['numInvEscTec'], 1, 0, 'c', 0);
-    $pdf->cell(34, 10, $row['numInvEscMou'], 1, 1, 'c', 0);
+    $pdf->cell(33, 10, $row['numInvEscolar'], 1, 0, '', 0);
+    $pdf->cell(34, 10, $row['numInvEscMon'], 1, 0, '', 0);
+    $pdf->cell(34, 10, $row['numInvEscTec'], 1, 0, '', 0);
+    $pdf->cell(34, 10, $row['numInvEscMou'], 1, 1, '', 0);
     $pdf->isFinished = false;
 }
 $pdf->isFinished = true;
