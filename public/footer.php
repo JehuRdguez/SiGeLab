@@ -643,8 +643,23 @@
                         'color': 'black'
 
                     });
-                }}
-        });
+                } else if(data[4] == 'Aceptada') {
+                    $('td', row).eq(4).css({
+                        'background-color': '#bdecb6',
+
+                        'color': 'black'
+
+                    });
+            }else if(data[4] == 'Rechazada') {
+                    $('td', row).eq(4).css({
+                        'background-color': '#fdfd96',
+
+                        'color': 'black'
+
+                    });
+            }
+        }
+    });
     });
 
     $(document).ready(function() {
@@ -922,7 +937,7 @@
 
         if (tFin.getTime() < tIni.getTime()) {
 
-            alert("Salida menor a entrada");
+            alert("Hpra de salida menor a la de entrada");
 
             horaSalida.style.border = "1px solid red"
 
@@ -930,7 +945,7 @@
 
         if (tFin.getTime() === tIni.getTime()) {
 
-            alert("Las fechas son iguales");
+            alert("Las horas son iguales");
 
             horaSalida.style.border = "1px solid red"
 
@@ -974,6 +989,7 @@
         if (!opcion) {
             return false;
         } else {
+            
             
             return true;
         }

@@ -1248,21 +1248,11 @@ VALUES('$maestro','$idLaboratorio','$idGrupo','$materia','$fecha','$fechaSalida'
     }
 
     //EDITAR Solicitud
-    public function editarSolicitud($razon, $idSolicitudAcceso)
-    {
-        $sql = "UPDATE solicitudAcceso SET razon='$razon' WHERE idSolicitudAcceso='$idSolicitudAcceso'";
-        $res = mysqli_query($this->con, $sql);
-
-        if ($res) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+   
 
     public function editarRazon($razon, $idSolicitudAcceso)
     {
-        $sql = "UPDATE solicitudacceso SET  razon='$razon' WHERE idSolicitudAcceso='$idSolicitudAcceso'";
+        $sql = "UPDATE solicitudacceso SET `razon`='$razon',`estado` = '0' WHERE idSolicitudAcceso='$idSolicitudAcceso';";
         $res = mysqli_query($this->con, $sql);
 
         if ($res) {
