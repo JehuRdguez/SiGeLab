@@ -923,8 +923,7 @@
         if (!opcion) {
             return false;
         } else {
-            <?php header("Location: 'updateSE2.php?idsolicitudCambioE= <?php echo $idsolicitudCambioE; ?>'"); ?>
-            // window.location.href = ""
+            
             return true;
         }
     }
@@ -940,7 +939,7 @@
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fecha").datepicker({
-            dateFormat: "mm-dd-yy",
+            dateFormat: "mm/dd/yy",
             minDate: 0,
             beforeShowDay: noExcursion,
             firstDay: 0,
@@ -953,7 +952,7 @@
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fechaSalida").datepicker({
-            dateFormat: "mm-dd-yy",
+            dateFormat: "mm/dd/yy",
             minDate: 0,
             beforeShowDay: noExcursion,
             firstDay: 0,
@@ -962,6 +961,7 @@
         });
     });
 </script>
+
 
 
 
