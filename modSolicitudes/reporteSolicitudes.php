@@ -40,12 +40,13 @@ function Header()
     $this->Ln(20);
 
     $this->SetFont('Times','',10);
-    $this->setX(20);
+    $this->setX(10);
     $this->cell(60, 10, utf8_decode('Nombre del solicitante'), 1, 0, 'c', 0);
     $this->cell(42, 10, utf8_decode('Laboratorio'), 1, 0, 'c', 0);
     $this->cell(17, 10, utf8_decode('Grupo'), 1, 0, 'c', 0);
     $this->cell(25, 10, utf8_decode('Fecha'), 1, 0, 'c', 0);
-    $this->cell(28, 10, utf8_decode('Horario'), 1, 1, 'c', 0);
+    $this->cell(28, 10, utf8_decode('Horario'), 1, 0, 'c', 0);
+    $this->cell(20, 10, utf8_decode('Estado'), 1, 1, 'c', 0);
 
   
    
@@ -91,12 +92,19 @@ $pdf->SetFont('Arial','B',16);
 while($row = $resultado->fetch_assoc()){
 
     $pdf->SetFont('Times','',10);
-    $pdf->setX(20);
+    $pdf->setX(10);
     $pdf->cell(60, 10, $row['maestro'], 1, 0, 'c', 0);
     $pdf->cell(42, 10, $row['nombreLaboratorio'], 1, 0, 'c', 0);
     $pdf->cell(17, 10, $row['nombreGrupo'], 1, 0, 'c', 0);
     $pdf->cell(25, 10, $row['fecha'], 1, 0, 'c', 0);
-    $pdf->cell(28, 10, $row['horario'], 1, 1, 'c', 0);
+    $pdf->cell(28, 10, $row['horario'], 1, 0, 'c', 0);
+    if ($row['estado'] == 2) {
+        $pdf->cell(20, 10, utf8_decode('Pendiente'), 1, 1, 'c', 0);
+    } else if ($row['estado'] == 1) {
+        $pdf->cell(20, 10, utf8_decode('Aceptada'), 1, 1, 'c', 0);
+    } else {
+        $pdf->cell(20, 10, utf8_decode('Rechazada'), 1, 1, 'c', 0);
+    }
 
     //$pdf->cell(80, 10,utf8_decode($row['numInvEscolar']), 1, 0, 'c', 0);
 
