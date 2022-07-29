@@ -650,9 +650,9 @@
                         'color': 'black'
 
                     });
-            }else if(data[4] == 'Rechazada') {
+            }else {
                     $('td', row).eq(4).css({
-                        'background-color': '#fdfd96',
+                        'background-color': '#ffb6af',
 
                         'color': 'black'
 
