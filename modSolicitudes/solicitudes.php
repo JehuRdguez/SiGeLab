@@ -104,9 +104,10 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                   echo 'No aplica';
                 } else if ($estadoLaboratorio == 1) {
                   echo 'Liberado';
-                } else {
+                } else if($estado == 1) {
                   echo 'Ocupado';
-                } ?></td>
+                } else if($estado == 2) {
+                  echo '---------'; } ?> </td>
             <td>
               <?php if ($estado == 1) { ?>
                 <abbr title="ACEPTAR"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
@@ -205,14 +206,12 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                   ?>
                   <br><label>Materia: <strong><?php echo $datos_Solicitud->materia; ?></strong></label><br><br>
                   <label for=""><strong> USO DE LABORATORIO</strong></label><br>
+                  <?php  if($datos_Solicitud->fecha ==  $datos_Solicitud->fechaSalida ){ ?>
+                     <br><label>Único dia de uso:<strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                <?php  } else { ?>
                   <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
-                  <br><label>Fecha de termino: <strong><?php if ($datos_Solicitud->fechaSalida == '') {
-                                                          echo 'No aplica';
-                                                        } else if ($datos_Solicitud->fecha == $datos_Solicitud->fechaSalida) {
-                                                          echo 'No aplica';
-                                                        } else {
-                                                          echo $datos_Solicitud->fechaSalida;
-                                                        } ?></strong></label></br>
+                  <br><label>Fecha de termino: <strong><?php echo $datos_Solicitud->fechaSalida; ?>  </strong></label></br>
+              <?php  } ?>
                   <br><label>Hora de entrada: <strong><?php echo $datos_Solicitud->horaEntrada; ?></strong></label></br>
                   <br><label>Hora de salida: <strong><?php echo $datos_Solicitud->horaSalida; ?></strong></label></br>
                 </div>
@@ -338,12 +337,13 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   } else echo 'Pendiente';
                 ?></td>
               <td><?php if ($estado == 0) {
-                    echo 'No aplica';
-                  } else if ($estadoLaboratorio == 0) {
-                    echo 'Pendiente';
-                  } else if ($estadoLaboratorio == 1) {
-                    echo 'Liberado';
-                  } else echo 'Error';  ?></td>
+                  echo 'No aplica';
+                } else if ($estadoLaboratorio == 1) {
+                  echo 'Liberado';
+                } else if($estado == 1) {
+                  echo 'Ocupado';
+                } else if($estado == 2) {
+                  echo '---------'; } ?></td>
               <td> <abbr title="Ver mas"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr></td>
 
               <td>
@@ -354,8 +354,8 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                 } else if ($estadoLaboratorio == 1) { ?>
                   <abbr title="Laboratorio Liberado"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
 
-                <?php } else if ($estadoLaboratorio == 0) { ?>
-                  <abbr title="Liberar Laboratorio"><a type="button" class="btn btn-outline-dark" href="updateS.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
+                <?php } else if ($estado == 1) { ?>
+                  <abbr title="Liberar Laboratorio"><a type="button" class="btn btn-outline-dark" href="updateSL.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
                 <?php } ?>
 
 
@@ -402,7 +402,12 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   ?>
                   <br><label>Materia: <strong><?php echo $datos_Solicitud->materia; ?></strong></label><br><br>
                   <label for=""><strong> USO DE LABORATORIO</strong></label><br>
-                  <br><label>Dias de uso: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                  <?php  if($datos_Solicitud->fecha ==  $datos_Solicitud->fechaSalida ){ ?>
+                     <br><label>Único dia de uso:<strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                <?php  } else { ?>
+                  <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                  <br><label>Fecha de termino: <strong><?php echo $datos_Solicitud->fechaSalida; ?>  </strong></label></br>
+              <?php  } ?>
                   <br><label>Hora de entrada: <strong><?php echo $datos_Solicitud->horaEntrada; ?></strong></label></br>
                   <br><label>Hora de salida: <strong><?php echo $datos_Solicitud->horaSalida; ?></strong></label></br>
                 </div>

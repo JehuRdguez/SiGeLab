@@ -1234,6 +1234,18 @@ VALUES('$maestro','$idLaboratorio','$idGrupo','$materia','$fecha','$fechaSalida'
             return false;
         }
     }
+    public function updateSL($idSolicitudAcceso)
+    {
+        $sql = "UPDATE `solicitudacceso` SET `estadoLaboratorio` = '1' WHERE `idSolicitudAcceso` = $idSolicitudAcceso";
+
+        $res = mysqli_query($this->con, $sql);
+
+        if ($res) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     //EDITAR Solicitud
     public function editarSolicitud($razon, $idSolicitudAcceso)
