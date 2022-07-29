@@ -87,7 +87,9 @@ $reportes = new Database();   //instanciar el objeto
             <td><?php echo $usuarioRegistra; ?></td>
             <td><?php echo $nombreLaboratorio; ?></td>
             <td><?php echo $tipoIncidencia; ?></td>
-            <td><?php echo $numInvEscolar; ?></td>
+            <td><?php if($numInvEscolar== 0){
+                echo "Todos los equipos";
+              } else {echo $numInvEscolar; }?></td>
             <td><?php echo date($fecha); ?></td>
             <td><?php echo $descripcion; ?></td>
             <td><?php if (is_null($nombreC)) {
@@ -369,7 +371,9 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
               <td><?php echo $usuarioRegistra; ?></td>
               <td><?php echo $nombreLaboratorio; ?></td>
               <td><?php echo $tipoIncidencia; ?></td>
-              <td><?php echo $numInvEscolar; ?></td>
+              <td><?php if($numInvEscolar== 0){
+                echo "Todos los equipos";
+              } else {echo $numInvEscolar; }?></td>
               <td><?php echo date($fecha); ?></td>
               <td><?php echo $descripcion; ?></td>
               <td><?php if (is_null($nombreC)) {
@@ -478,6 +482,8 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                       $numInvEscolar = $row->numInvEscolar; ?>
                       <option value="<?php echo $idEquipo ?>"><?php echo $numInvEscolar ?></option>
                     <?php } ?>
+                    
+                    <option value="1"> Todos los equipos</option>
                   </select>
 
                   <label>Descripcion</label>
