@@ -56,7 +56,9 @@ $pagNom = 'LABORATORIOS';
 			<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMonitorIOT.php">Periféricos</a></li>
 			<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioIOT.php">Mobiliario</a></li>
 		</ul>
-		<a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mobiliario">Realizar registro</a><br>
+		<a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mobiliario">Realizar registro</a>
+		<a href="herramientas_laboratorioIOT/ReporteMobiliario_IOT.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
+
 	</div>
 
 	<div class="container">

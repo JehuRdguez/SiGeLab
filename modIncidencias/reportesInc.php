@@ -1,4 +1,13 @@
 <?php
+session_start();
+$correo = $_SESSION['correo'];
+$nombreC = $_SESSION['nombreC'];
+$idTipoUsuario = $_SESSION['idTipoUsuario'];
+$idUsuario = $_SESSION['idUsuario'];
+?>
+
+
+<?php
 
 require 'fpdf/fpdf.php';
 class PDF extends FPDF {
@@ -22,7 +31,6 @@ function Header()
     $this->Image('../styles/logoUTEM1.png',1,13,80); //imagen(archivo, png/jpg || x,y,tamaño)
     $this->Line(5, 50, 290, 50); //x,y,x,y
     $this->setXY(144,200);
-    $this->cell(10, 2,'Firma', 4, 3, 'c', 0);
     $this->Line(200, 195, 100, 195); //x,y,x,y
 	
 
@@ -50,6 +58,12 @@ function Header()
 		$this->SetFont('Arial', 'B', 10);
 		// Número de página
 		$this->Cell(500, 10, utf8_decode('Página ') . $this->PageNo() . '/{nb}', 0, 0, 'C');
+		if($this->isFinished==true){
+			$this->Image('../styles/12.png',55,265,100); //imagen(archivo, png/jpg || x,y,tamaño)
+			$this->setXY(145,198);
+			$this->cell(10, 2,'Firma', 4, 3, 'C', 0);
+			$this->Cell(10,5,utf8_decode($_SESSION['nombreC']) ,0,0,'C');
+			}
 	}
 
 // --------------------METODO PARA ADAPTAR LAS CELDAS------------------------------
@@ -215,11 +229,10 @@ $result = $conexion->prepare($strquery);
 $result->execute();
 $data = $result->fetchall(PDO::FETCH_ASSOC);
 
-
-
 // Creación del objeto de la clase heredada
 $pdf = new PDF(); //hacemos una instancia de la clase
 $pdf->AliasNbPages();
+$pdf->isFinished = false;
 $pdf->AddPage('landscape'); //orientacion de la pagina
 $pdf->SetMargins(10, 10, 10); //MARGENES
 $pdf->SetAutoPageBreak(true, 20); //salto de pagina automatico
@@ -252,11 +265,19 @@ $pdf->SetAligns(array('C','C','C','C'));
 
 for ($i = 0; $i < count($data); $i++) {
 
-	$pdf->Row(array($i, $data[$i]['usuarioRegistra'],utf8_decode($data[$i]['nombreLaboratorio']),utf8_decode($data[$i]['tipoIncidencia']),utf8_decode($data[$i]['numInvEscolar']),utf8_decode($data[$i]['fecha']),utf8_decode($data[$i]['descripcion']),utf8_decode($data[$i]['nombreC'])), 15);
+	if ($data[$i]['nombreC'] == "" && $data[$i]['numInvEscolar'] == 0){
+		$pdf->Row(array($i, utf8_decode($data[$i]['usuarioRegistra']),utf8_decode($data[$i]['nombreLaboratorio']),utf8_decode($data[$i]['tipoIncidencia']),utf8_decode('Todos los equipos'),utf8_decode($data[$i]['fecha']),utf8_decode($data[$i]['descripcion']),utf8_decode('Pendiente')), 15);
+	} else if ($data[$i]['numInvEscolar'] == 0 && $data[$i]['nombreC'] != ""){
+		$pdf->Row(array($i, utf8_decode($data[$i]['usuarioRegistra']),utf8_decode($data[$i]['nombreLaboratorio']),utf8_decode($data[$i]['tipoIncidencia']),utf8_decode('Todos los equipos'),utf8_decode($data[$i]['fecha']),utf8_decode($data[$i]['descripcion']),utf8_decode($data[$i]['nombreC'])), 15);
+		} else if ($data[$i]['numInvEscolar'] != 0 && $data[$i]['nombreC'] == "") {
+			$pdf->Row(array($i, utf8_decode($data[$i]['usuarioRegistra']),utf8_decode($data[$i]['nombreLaboratorio']),utf8_decode($data[$i]['tipoIncidencia']),utf8_decode($data[$i]['numInvEscolar']),utf8_decode($data[$i]['fecha']),utf8_decode($data[$i]['descripcion']),utf8_decode('Pendiente')), 15);
+		}else {
+			$pdf->Row(array($i, utf8_decode($data[$i]['usuarioRegistra']),utf8_decode($data[$i]['nombreLaboratorio']),utf8_decode($data[$i]['tipoIncidencia']),utf8_decode($data[$i]['numInvEscolar']),utf8_decode($data[$i]['fecha']),utf8_decode($data[$i]['descripcion']),utf8_decode($data[$i]['nombreC'])), 15);
+		}
+	}
+	$pdf->isFinished = true;
 
-}
 
 // cell(ancho, largo, contenido,borde?, salto de linea?)
 
 $pdf->Output();
-?>
