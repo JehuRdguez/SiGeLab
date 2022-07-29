@@ -55,7 +55,7 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 		<br>
 		<div class="dropdown" id="div-inline">
 			<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-				Horarios</button>
+				Periféricos</button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 				<li><a class="dropdown-item" href="../modLaboratorios/laboratoriosSoporte.php">Horarios</a></li>
 				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_equiposSoporte.php">Equipos</a></li>
