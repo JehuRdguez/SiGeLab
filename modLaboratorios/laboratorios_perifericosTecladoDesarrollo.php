@@ -50,7 +50,7 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 					<li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_perifericosTecladoDesarrollo.php">Laboratorio de desarrollo</a></li>
 					<li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_perifericosTecladoSoporte.php">Laboratorio de soporte</a></li>
 				</ul>
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
+				<abbr title="Detalles de laboratorios"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a></abbr>
 			</div>
 
 			<br>

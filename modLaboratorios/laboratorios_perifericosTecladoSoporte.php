@@ -69,7 +69,7 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 			<button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 				Teclado</button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosSoporte.php">Monitor</a></li>
+				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMonitorSoporte.php">Monitor</a></li>
 				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosTecladoSoporte.php">Teclado</a></li>
 				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMouseSoporte.php">Mouse</a></li>
 			</ul>

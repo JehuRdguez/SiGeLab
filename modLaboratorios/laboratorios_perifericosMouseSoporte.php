@@ -46,11 +46,11 @@ $pagNom = 'LABORATORIO DE SOPORTE';
 			<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 				Laboratorio de soporte</button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_perifericosMouseIOT.php">Laboratorio de IoT</a></li>
-				<li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_perifericosMouseDesarrollo.php">Laboratorio de desarrollo</a></li>
-				<li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_perifericosMouseSoporte.php">Laboratorio de soporte</a></li>
+				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMouseIOT.php">Laboratorio de IoT</a></li>
+				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMouseDesarrollo.php">Laboratorio de desarrollo</a></li>
+				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMouseSoporte.php">Laboratorio de soporte</a></li>
 			</ul>
-			<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
+			<abbr title="Detalles de laboratorios"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a></abbr>
 		</div>
 
 		<br>
