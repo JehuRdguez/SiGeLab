@@ -53,26 +53,19 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
 			</div>
 
-		<!--BOTONES DE SECCIONES-->
-		<br>
-			<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosDesarrollo.php" for="btnradio1">Horarios</a>
+			<br>
+		<div class="dropdown" id="div-inline">
+			<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+				Periféricos</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<li><a class="dropdown-item" href="../modLaboratorios/laboratoriosDesarrollo.php">Horarios</a></li>
+				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_equiposDesarrollo.php">Equipos</a></li>
+				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosTecladoDesarrollo.php">Periféricos</a></li>
+				<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioDesarrollo.php">Mobiliario</a></li>
+			</ul>
+		</div>
 
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposDesarrollo.php" for="btnradio3">Equipos</a>
-
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked>
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosMonitorDesarrollo.php" for="btnradio5">Periféricos</a>
-
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-				<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioDesarrollo.php" for="btnradio4">Mobiliario</a>
-			</div>
-
-
-		<!--LISTA DE TECLADO-->
-			<br></br>
-			<div class="dropdown">
+			<div class="dropdown" id="div-inline">
 				<button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					Teclado</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
