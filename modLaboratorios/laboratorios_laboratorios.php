@@ -39,9 +39,9 @@ $pagNom = 'LABORATORIOS';
         <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Laboratorios</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratoriosIOT.php">Laboratorio de IoT</a></li>
-            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratoriosDesarrollo.php">Laboratorio de desarrollo</a></li>
-            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratoriosSoporte.php">Laboratorio de soporte</a></li>
+            <li><a class="dropdown-item" href="../modLaboratorios/laboratoriosIOT.php">Laboratorio de IoT</a></li>
+            <li><a class="dropdown-item" href="../modLaboratorios/laboratoriosDesarrollo.php">Laboratorio de desarrollo</a></li>
+            <li><a class="dropdown-item" href="../modLaboratorios/laboratoriosSoporte.php">Laboratorio de soporte</a></li>
         </ul>
     </div>
 

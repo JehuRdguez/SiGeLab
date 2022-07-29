@@ -104,6 +104,9 @@ body {
     padding-right: 10%;
 }
 
+#div-inline{
+    display:inline-block;
+}
 
 .tituloP{
     color:#dfdfdf;

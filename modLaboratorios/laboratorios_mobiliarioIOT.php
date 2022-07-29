@@ -39,32 +39,25 @@ $pagNom = 'LABORATORIOS';
         <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Laboratorio de IoT</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" value="1" href="../modLaboratorios/laboratorios_mobiliarioIOT.php">Laboratorio de IoT</a></li>
-            <li><a class="dropdown-item" value="2" href="../modLaboratorios/laboratorios_mobiliarioDesarrollo.php">Laboratorio de desarrollo</a></li>
-            <li><a class="dropdown-item" value="3" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php">Laboratorio de soporte</a></li>
+            <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioIOT.php">Laboratorio de IoT</a></li>
+            <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioDesarrollo.php">Laboratorio de desarrollo</a></li>
+            <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php">Laboratorio de soporte</a></li>
         </ul>
-        <a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a>
+        <abbr title="Detalles de laboratorios"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a></abbr>
     </div>
 
-
 	<br>
-	<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-		<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosIOT.php" for="btnradio1">Horarios</a>
-
-		<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_equiposIOT.php" for="btnradio3">Equipos</a>
-
-		<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_perifericosMonitorIOT.php" for="btnradio5">Periféricos</a>
-
-		<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" checked>
-		<a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_mobiliarioIOT.php" for="btnradio4">Mobiliario</a>
+	<div class="dropdown">
+		<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			Mobiliario</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			<li><a class="dropdown-item" href="../modLaboratorios/laboratoriosIOT.php">Horarios</a></li>
+			<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_equiposIOT.php">Equipos</a></li>
+			<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_perifericosMonitorIOT.php">Periféricos</a></li>
+			<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioIOT.php">Mobiliario</a></li>
+		</ul>
+		<a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mobiliario">Realizar registro</a><br>
 	</div>
-	<!-- Botón de registro-->
-	<br />
-	<br /> <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#mobiliario">Realizar registro</a><br>
-
 
 	<div class="container">
 		<br>

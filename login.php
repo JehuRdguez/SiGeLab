@@ -84,7 +84,7 @@ if ($_POST) { //va a guardar lo que lleve el método post
                                     <br><label>Correo institucional:</label><br>
                                     <input style="background-color:#ECE9F1;" type="email" name="correo" id="correo" class="form-control" minlength="15" maxlength="50" required><br>
                                     <label>Contraseña:</label><br>
-                                    <input style="background-color:#ECE9F1;" type="password" name="contrasena" id="contrasena" class="form-control" minlength="8" maxlength="20" required> <br>
+                                    <input style="background-color:#ECE9F1;" type="password" name="contrasena" id="contrasena" class="form-control" maxlength="20" required> <br>
                                     <button type="submit" class="btn btn-primary">ENTRAR</button>
                                     </br>
                                     </br>
