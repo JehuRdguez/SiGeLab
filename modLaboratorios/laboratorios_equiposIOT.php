@@ -33,11 +33,11 @@ $pagNom = 'LABORATORIO DE IOT';
       exit();
     }
 
-    $validar = "SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor'";
+    $validar = "SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor' and estado=1 and idEquipo!='$idEquipo'";
     $validando = $conn->query($validar);
-    $validar2 = "SELECT* FROM equipo where numTeclado>1 and numTeclado='$numTeclado'";
+    $validar2 = "SELECT* FROM equipo where numTeclado>1 and numTeclado='$numTeclado' and estado=1 and idEquipo!='$idEquipo'";
     $validando2 = $conn->query($validar2);
-    $validar3 = "SELECT* FROM equipo where numMouse>1 and numMouse='$numMouse'";
+    $validar3 = "SELECT* FROM equipo where numMouse>1 and numMouse='$numMouse' and estado=1 and idEquipo!='$idEquipo'";
     $validando3 = $conn->query($validar3);
 
     if ($validando->num_rows > 0 || $validando2->num_rows > 0 || $validando3->num_rows > 0) {
@@ -97,7 +97,7 @@ $pagNom = 'LABORATORIO DE IOT';
   <br>
   <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#equipo">Realizar registro</a>
 
-  <a href="reportesLab.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
+  <a href="herramientas_laboratorioIOT/ReporteEquipos_IoT.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
 
 
 

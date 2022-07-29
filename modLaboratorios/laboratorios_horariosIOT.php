@@ -62,6 +62,20 @@ $pagNom = 'LABORATORIO DE IOT';
     </div>
 
 	<br>
+	<div class="dropdown">
+		<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			Horarios</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			<li><a class="dropdown-item" href="laboratoriosIOT.php">Horarios</a></li>
+			<li><a class="dropdown-item" href="laboratorios_equiposIOT.php">Equipos</a></li>
+			<li><a class="dropdown-item" href="laboratorios_perifericosMonitorIOT.php">Periféricos</a></li>
+			<li><a class="dropdown-item" href="laboratorios_mobiliarioIOT.php">Mobiliario</a></li>
+		</ul>
+		<a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#horario">Registrar</a>
+	<abbr title="Regresar"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosIOT.php"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></a></abbr>
+	</div>
+
+	<br>
 	<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 		<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
 		<a class="btn btn-outline-dark" href="laboratoriosIOT.php" for="btnradio1">Horarios</a>
@@ -78,7 +92,8 @@ $pagNom = 'LABORATORIO DE IOT';
 
 
 	<br>
-	<br /> <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#horario">Registrar</a>
+	<br /> 
+	<a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#horario">Registrar</a>
 	<abbr title="Regresar"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratoriosIOT.php"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></a></abbr>
 	<br>
 

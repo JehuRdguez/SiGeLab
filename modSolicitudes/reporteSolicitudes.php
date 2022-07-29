@@ -1,4 +1,12 @@
 <?php
+session_start();
+$correo = $_SESSION['correo'];
+$nombreC = $_SESSION['nombreC'];
+$idTipoUsuario = $_SESSION['idTipoUsuario'];
+$idUsuario = $_SESSION['idUsuario'];
+?>
+
+<?php
 require('../modLaboratorios/fpdf/fpdf.php');
 
 class PDF extends FPDF
@@ -85,8 +93,7 @@ while($row = $resultado->fetch_assoc()){
     $pdf->cell(17, 10, $row['nombreGrupo'], 1, 0, 'c', 0);
     $pdf->cell(25, 10, $row['fecha'], 1, 0, 'c', 0);
     $pdf->cell(28, 10, $row['horario'], 1, 0, 'c', 0);
-    $pdf->cell(28, 10, $row['estado'], 1, 1, 'c', 0);
-   
+    $pdf->cell(28, 10, $row['estado'], 1, 1, 'c', 0);   
 
     //$pdf->cell(80, 10,utf8_decode($row['numInvEscolar']), 1, 0, 'c', 0);
 
