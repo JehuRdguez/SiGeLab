@@ -1222,18 +1222,7 @@ VALUES('$maestro','$idLaboratorio','$idGrupo','$materia','$fecha','$fechaSalida'
             return false;
         }
     }
-
-    public function updateS2($idSolicitudAcceso)
-    {
-        $sql = "UPDATE `solicitudacceso` SET `estado` = '0' WHERE `idSolicitudAcceso` = $idSolicitudAcceso";
-        $res = mysqli_query($this->con, $sql);
-
-        if ($res) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    
     public function updateSL($idSolicitudAcceso)
     {
         $sql = "UPDATE `solicitudacceso` SET `estadoLaboratorio` = '1' WHERE `idSolicitudAcceso` = $idSolicitudAcceso";
@@ -1342,21 +1331,11 @@ VALUES('$maestro','$idLaboratorio','$idGrupo','$materia','$fecha','$fechaSalida'
             return false;
         }
     }
-    public function updateSE2($idsolicitudCambioE)
-    {
-        $sql = "UPDATE `solicitudcambioe` SET `estado` = '0' WHERE `idsolicitudCambioE` = $idsolicitudCambioE";
-        $res = mysqli_query($this->con, $sql);
 
-        if ($res) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function editarRazonE($respuesta, $idsolicitudCambioE)
     {
-        $sql = "UPDATE solicitudcambioe SET  respuesta='$respuesta' WHERE idsolicitudCambioE='$idsolicitudCambioE'";
+        $sql = "UPDATE solicitudcambioe SET  respuesta='$respuesta',`estado` = '0' WHERE idsolicitudCambioE='$idsolicitudCambioE'";
         $res = mysqli_query($this->con, $sql);
 
         if ($res) {

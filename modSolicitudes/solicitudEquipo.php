@@ -254,7 +254,7 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
                 </center>
   
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button  type="submit"  class="btn btn-warning" onclick="return alertaRechazar()"><a id="botonRechazar" style="text-decoration: none;" type="submit"  href="updateSE2.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE; ?>">Rechazar</a></button>
+                        <button  type="submit"  class="btn btn-warning" onclick="return alertaRechazar()">Rechazar</button>
                       
   
 

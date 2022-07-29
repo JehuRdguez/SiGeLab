@@ -44,7 +44,9 @@ $pagNom = 'SOLICITUDES DE ACCESO';
       <li><a class="dropdown-item" href="../modSolicitudes/solicitudEquipo.php">Cambio de equipo</a></li>
 
     </ul>
-
+    <!--Botón de registro -->
+    <a type="button" class="btn btn-outline-dark" href="#RegistroSolicitud" data-bs-toggle="modal">Registrar Solicitud</a> <br />
+    <br>
     <a type="button" href="reporteSolicitudes.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
 
   </div>
@@ -104,10 +106,11 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                   echo 'No aplica';
                 } else if ($estadoLaboratorio == 1) {
                   echo 'Liberado';
-                } else if($estado == 1) {
+                } else if ($estado == 1) {
                   echo 'Ocupado';
-                } else if($estado == 2) {
-                  echo '---------'; } ?> </td>
+                } else if ($estado == 2) {
+                  echo '---------';
+                } ?> </td>
             <td>
               <?php if ($estado == 1) { ?>
                 <abbr title="ACEPTAR"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
@@ -157,7 +160,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                     <!-- Botón para enviar datos-->
                     <center>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="submit" class="btn btn-warning"  onclick="return alertaRechazar()" >Rechazar</button>
+                      <button type="submit" class="btn btn-warning" onclick="return alertaRechazar()">Rechazar</button>
                     </center>
                     <br>
                     <!-- Botón -->
@@ -206,12 +209,12 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                   ?>
                   <br><label>Materia: <strong><?php echo $datos_Solicitud->materia; ?></strong></label><br><br>
                   <label for=""><strong> USO DE LABORATORIO</strong></label><br>
-                  <?php  if($datos_Solicitud->fecha ==  $datos_Solicitud->fechaSalida ){ ?>
-                     <br><label>Único dia de uso:<strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
-                <?php  } else { ?>
-                  <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
-                  <br><label>Fecha de termino: <strong><?php echo $datos_Solicitud->fechaSalida; ?>  </strong></label></br>
-              <?php  } ?>
+                  <?php if ($datos_Solicitud->fecha ==  $datos_Solicitud->fechaSalida) { ?>
+                    <br><label>Único dia de uso:<strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                  <?php  } else { ?>
+                    <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                    <br><label>Fecha de termino: <strong><?php echo $datos_Solicitud->fechaSalida; ?> </strong></label></br>
+                  <?php  } ?>
                   <br><label>Hora de entrada: <strong><?php echo $datos_Solicitud->horaEntrada; ?></strong></label></br>
                   <br><label>Hora de salida: <strong><?php echo $datos_Solicitud->horaSalida; ?></strong></label></br>
                 </div>
@@ -222,6 +225,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
             </div>
           </div>
           <!---fin modal detalles--->
+
         <?php
 
         }
@@ -230,12 +234,85 @@ $pagNom = 'SOLICITUDES DE ACCESO';
     </table>
   </div>
 
+  <!--Modal-Hoja de registro de solicitudes-->
+
+  <div class="modal fade" id="RegistroSolicitud" tabindex="-1" aria-labelledby="RegistroSolicitudAlLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
 
 
-  </div>
-  </div>
-  </div>
-  </div>
+          <center>
+            <h5 class="modal-title" id="RegistroSolicitud">Hoja de registro de solicitud</h5>
+          </center>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <form method="post">
+              <div class="row">
+                <center>
+
+                  <div class="col-sm-10">
+                    <input type="hidden" name="maestro" id="maestro" class="form-control" required value="<?php echo  $_SESSION['nombreC']; ?>">
+
+                  </div>
+                  <div class="col-sm-10">
+                    <label> Elige el laboratorio </label>
+                    <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
+                      <option selected disabled>Selecciona un Laboratorio</option>
+                      <?php
+                      $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
+                      while ($row = mysqli_fetch_object($listaSolicitudes)) {
+                        $idLaboratorio = $row->idLaboratorio;
+                        $nombreLaboratorio = $row->nombreLaboratorio; ?>
+                        <option value="<?php echo $idLaboratorio ?>"><?php echo $nombreLaboratorio ?></option>
+                      <?php } ?>
+                    </select>
+
+                    <label for="">Grupo</label>
+                    <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
+                      <option selected disabled>Selecciona un Grupo</option>
+                      <?php
+                      $listaGrupos = $solicitud->readGrupos('nombreGrupo');
+                      while ($row = mysqli_fetch_object($listaGrupos)) {
+                        $idGrupo = $row->idGrupo;
+                        $nombreGrupo = $row->nombreGrupo; ?>
+                        <option value="<?php echo $idGrupo ?>"><?php echo $nombreGrupo ?></option>
+                      <?php } ?>
+                    </select required>
+
+                    <label>Materia</label>
+                    <input type="text" name="materia" id="materia" class="form-control" required>
+
+                    <label>Fecha de inicio</label>
+                    <input type="text" name="fecha" id="fecha" class="form-control" required>
+
+                    <label>Fecha de Término</label>
+                    <input type="text" name="fechaSalida" id="fechaSalida" class="form-control" required>
+                    <h6 style="color:red ;"></h6>
+
+                    <label>Hora entrada</label>
+                    <input type="time" name="horaEntrada" id="horaEntrada" class="form-control" min="07:30" max="19:00" required>
+
+                    <label>Hora salida</label>
+                    <input type="time" name="horaSalida" id="horaSalida" class="form-control" min="07:30" max="19:00" required>
+
+
+                </center>
+              </div>
+
+
+              <!-- Botón para enviar datos-->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" id="registrarS" class="btn btn-dark" onclick="return alertaRegistrarS()">Registrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -337,13 +414,14 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   } else echo 'Pendiente';
                 ?></td>
               <td><?php if ($estado == 0) {
-                  echo 'No aplica';
-                } else if ($estadoLaboratorio == 1) {
-                  echo 'Liberado';
-                } else if($estado == 1) {
-                  echo 'Ocupado';
-                } else if($estado == 2) {
-                  echo '---------'; } ?></td>
+                    echo 'No aplica';
+                  } else if ($estadoLaboratorio == 1) {
+                    echo 'Liberado';
+                  } else if ($estado == 1) {
+                    echo 'Ocupado';
+                  } else if ($estado == 2) {
+                    echo '---------';
+                  } ?></td>
               <td> <abbr title="Ver mas"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr></td>
 
               <td>
@@ -402,12 +480,12 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   ?>
                   <br><label>Materia: <strong><?php echo $datos_Solicitud->materia; ?></strong></label><br><br>
                   <label for=""><strong> USO DE LABORATORIO</strong></label><br>
-                  <?php  if($datos_Solicitud->fecha ==  $datos_Solicitud->fechaSalida ){ ?>
-                     <br><label>Único dia de uso:<strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
-                <?php  } else { ?>
-                  <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
-                  <br><label>Fecha de termino: <strong><?php echo $datos_Solicitud->fechaSalida; ?>  </strong></label></br>
-              <?php  } ?>
+                  <?php if ($datos_Solicitud->fecha ==  $datos_Solicitud->fechaSalida) { ?>
+                    <br><label>Único dia de uso:<strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                  <?php  } else { ?>
+                    <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
+                    <br><label>Fecha de termino: <strong><?php echo $datos_Solicitud->fechaSalida; ?> </strong></label></br>
+                  <?php  } ?>
                   <br><label>Hora de entrada: <strong><?php echo $datos_Solicitud->horaEntrada; ?></strong></label></br>
                   <br><label>Hora de salida: <strong><?php echo $datos_Solicitud->horaSalida; ?></strong></label></br>
                 </div>
