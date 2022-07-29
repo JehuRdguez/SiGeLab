@@ -157,7 +157,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                     <!-- Botón para enviar datos-->
                     <center>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="submit" class="btn btn-warning" onclick="return alertaRechazar()"><a style="text-decoration: none;" href="updateS2.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>">Rechazar</a></button>
+                      <button type="submit" class="btn btn-warning"  onclick="return alertaRechazar()" >Rechazar</button>
                     </center>
                     <br>
                     <!-- Botón -->

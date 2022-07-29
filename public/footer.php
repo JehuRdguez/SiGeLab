@@ -599,24 +599,24 @@
                 url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
             },
             "createdRow": function(row, data, index) {
-                if (data[7] == 'Pendiente') {
-                    $('td', row).eq(7).css({
+                if (data[5] == 'Pendiente') {
+                    $('td', row).eq(5).css({
                         'background-color': '#ffb6af',
 
                         'color': 'black'
 
                     });
                 }
-                else if(data[7] == 'En proceso') {
-                    $('td', row).eq(7).css({
+                else if(data[5] == 'En proceso') {
+                    $('td', row).eq(5).css({
                         'background-color': '#fdfd96',
 
                         'color': 'black'
 
                     });
                 }
-               else if (data[7] == 'Concluida') {
-                    $('td', row).eq(7).css({
+               else if (data[5] == 'Concluida') {
+                    $('td', row).eq(5).css({
                         'background-color': '#bdecb6',
 
                         'color': 'black'
@@ -627,40 +627,6 @@
         });
     });
     
-    $(document).ready(function() {
-        $('#incidenciasTable2').DataTable({
-            responsive: true,
-            language: {
-                url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
-            },
-            "createdRow": function(row, data, index) {
-                if (data[7] == 'Pendiente') {
-                    $('td', row).eq(7).css({
-                        'background-color': '#ffb6af',
-
-                        'color': 'black'
-
-                    });
-                }
-                else if(data[7] == 'En proceso') {
-                    $('td', row).eq(7).css({
-                        'background-color': '#fdfd96',
-
-                        'color': 'black'
-
-                    });
-                }
-               else if (data[7] == 'Concluida') {
-                    $('td', row).eq(7).css({
-                        'background-color': '#bdecb6',
-
-                        'color': 'black'
-
-                    });
-                }
-            }
-        });
-    });
 
 
     $(document).ready(function() {
@@ -1009,8 +975,7 @@
         if (!opcion) {
             return false;
         } else {
-            <?php header("Location: 'updateSE2.php?idsolicitudCambioE= <?php echo $idsolicitudCambioE; ?>'"); ?>
-            // window.location.href = ""
+            
             return true;
         }
     }
@@ -1026,7 +991,7 @@
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fecha").datepicker({
-            dateFormat: "mm-dd-yy",
+            dateFormat: "mm/dd/yy",
             minDate: 0,
             beforeShowDay: noExcursion,
             firstDay: 0,
@@ -1039,7 +1004,7 @@
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional["es"]);
         $("#fechaSalida").datepicker({
-            dateFormat: "mm-dd-yy",
+            dateFormat: "mm/dd/yy",
             minDate: 0,
             beforeShowDay: noExcursion,
             firstDay: 0,
@@ -1048,6 +1013,7 @@
         });
     });
 </script>
+
 
 
 
