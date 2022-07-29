@@ -591,7 +591,6 @@
 
    ////////
 
-
     $(document).ready(function() {
         $('#incidenciasTable').DataTable({
             responsive: true,
@@ -639,13 +638,28 @@
             "createdRow": function(row, data, index) {
                 if (data[4] == 'Pendiente') {
                     $('td', row).eq(4).css({
+                        'background-color': '#fdfd96',
+
+                        'color': 'black'
+
+                    });
+                } else if(data[4] == 'Aceptada') {
+                    $('td', row).eq(4).css({
+                        'background-color': '#bdecb6',
+
+                        'color': 'black'
+
+                    });
+            }else {
+                    $('td', row).eq(4).css({
                         'background-color': '#ffb6af',
 
                         'color': 'black'
 
                     });
-                }}
-        });
+            }
+        }
+    });
     });
 
     $(document).ready(function() {
@@ -658,7 +672,7 @@
             "createdRow": function(row, data, index) {
                 if (data[5] == 'Pendiente') {
                     $('td', row).eq(5).css({
-                        'background-color': '#ffb6af',
+                        'background-color': '#fdfd96',
 
                         'color': 'black'
 
@@ -923,7 +937,7 @@
 
         if (tFin.getTime() < tIni.getTime()) {
 
-            alert("Salida menor a entrada");
+            alert("Hpra de salida menor a la de entrada");
 
             horaSalida.style.border = "1px solid red"
 
@@ -931,7 +945,7 @@
 
         if (tFin.getTime() === tIni.getTime()) {
 
-            alert("Las fechas son iguales");
+            alert("Las horas son iguales");
 
             horaSalida.style.border = "1px solid red"
 
@@ -975,6 +989,7 @@
         if (!opcion) {
             return false;
         } else {
+            
             
             return true;
         }

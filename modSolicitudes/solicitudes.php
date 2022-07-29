@@ -287,7 +287,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
   <br>
   <!-- Mostrar tabla-->
   <div class="container">
-    <table class="table table-bordered " cellspacing="0" width="100%" id="solicitudesTable2" style="background-color: #04aa89;  ">
+    <table class="table table-bordered " cellspacing="0" width="100%" id="solicitudesTable" style="background-color: #04aa89;  ">
       <thead>
         <!-- Secciones o cabeceros -->
         <tr>
