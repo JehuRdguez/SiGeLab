@@ -6,6 +6,8 @@ $idTipoUsuario = $_SESSION['idTipoUsuario'];
 $idUsuario = $_SESSION['idUsuario'];
 ?>
 
+<?php if ($idTipoUsuario == 1) { ?>
+
 
 <?php
 
@@ -281,3 +283,9 @@ for ($i = 0; $i < count($data); $i++) {
 // cell(ancho, largo, contenido,borde?, salto de linea?)
 
 $pdf->Output();
+
+?>
+
+<?php } else { ?>
+	<?php header("Location: ../index.php"); ?>
+  <?php } ?>

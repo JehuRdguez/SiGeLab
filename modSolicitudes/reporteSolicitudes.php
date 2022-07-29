@@ -6,6 +6,8 @@ $idTipoUsuario = $_SESSION['idTipoUsuario'];
 $idUsuario = $_SESSION['idUsuario'];
 ?>
 
+<?php if ($idTipoUsuario == 1) { ?>
+
 <?php
 require('../modLaboratorios/fpdf/fpdf.php');
 
@@ -114,3 +116,7 @@ $pdf->isFinished = true;
 
 
 $pdf->Output();
+
+?><?php } else { ?>
+    <?php header("Location: ../index.php"); ?>
+  <?php } ?>
