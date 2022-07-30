@@ -39,12 +39,12 @@ $reportes = new Database();   //instanciar el objeto
   <div class="dropdown">
     <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a>
     <a href="reportesInc.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
-<br></br>
+    <br></br>
   </div>
   <!-- Mostrar tabla-->
   <div class="container">
 
-    <table class="table table-bordered " cellspacing="0" width="100%" id="incidenciasTable" style="background-color: #04aa89;  ">
+    <table class="table table-bordered " cellspacing="0" width="100%" id="incidenciasTableAdmin" style="background-color: #04aa89;  ">
       <thead>
         <!-- Secciones o cabeceros -->
         <tr>
@@ -52,7 +52,7 @@ $reportes = new Database();   //instanciar el objeto
           <th>Nombre completo</th> <!-- Encabezados de las tablas-->
           <th>Laboratorio</th>
           <th>Tipo de incidencia</th>
-          <th>Numero de Inventario Escolar</th>
+          <th>N.º de Inv. Escolar del equipo</th>
           <th>Fecha</th>
           <th>Estado</th>
           <th>Acciones</th>
@@ -111,7 +111,7 @@ $reportes = new Database();   //instanciar el objeto
                 <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
               <?php }   ?>
               <abbr title="Borrar"><a type="button" class="btn btn-outline-dark" onclick="return eliminar()" href="deleteI.php?idIncidencia=<?php echo $idIncidencia ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
-              <abbr title="Ver mas"><a type="button" class="btn btn-outline-darsk" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
+              <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
 
             </td>
 
@@ -150,7 +150,7 @@ $reportes = new Database();   //instanciar el objeto
 
 
                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Descripcion de Incidencia</label>
+                      <label for="recipient-name" class="col-form-label">Descripción de Incidencia</label>
                       <textarea name="descripcionIncidencia" type="text" class="form-control" required><?php echo $datos_Incidencia->descripcionIncidencia; ?> </textarea>
 
                     </div>
@@ -183,13 +183,18 @@ $reportes = new Database();   //instanciar el objeto
                 <div class="modal-body">
                   <?php
                   $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
+                  $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
                   ?>
-                  <br><label for="">Descripcion de incidencia: </label>
-                  <?php echo $datos_Incidencia->descripcion; ?>
-                  <br><label for="">Encargado a resolver: </label>
-                  <?php 
-                    echo $datos_Incidencia->idUsuario;
-                   ?>
+                  <br><label for="">Descripción de incidencia: </label><strong>
+                    <?php echo $datos_Incidencia->descripcion; ?></strong>
+                  <br><label for="">Encargado a resolver: </label><strong>
+                    <?php if (is_null($datos_IncidenciaN->nombreC)) {
+                      echo "Pendiente";
+                    } else {
+                      echo $datos_IncidenciaN->nombreC;
+                    }
+
+                    ?></strong>
                   <br><label>Detalles que se resolvieron: <strong><?php
                                                                   if ($datos_Incidencia->descripcionIncidencia == '') {
                                                                     echo 'Sin respuesta';
@@ -277,9 +282,10 @@ $reportes = new Database();   //instanciar el objeto
                     <option value="3">Otro</option>
                   </select>
 
-                  <label>Numero de Inventario Escolar</label>
+                  <label>N.º de Inv. Escolar del equipo</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
-                    <option value="" selected disabled>Selecciona un el equipo:</option>
+                    <option value="" selected disabled>Selecciona el No. de inventario del equipo:</option>
+                    <option value="1"> Todos los equipos</option>
                     <?php
                     $listaEquipos = $reportes->readEquipos('numInvEscolar');
                     while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -287,10 +293,9 @@ $reportes = new Database();   //instanciar el objeto
                       $numInvEscolar = $row->numInvEscolar; ?>
                       <option value="<?php echo $idEquipo ?>"><?php echo $numInvEscolar ?></option>
                     <?php } ?>
-                    <option value="1"> Todos los equipos</option>
                   </select>
 
-                  <label>Descripcion</label>
+                  <label>Descripción</label>
                   <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
                 </center>
               </div>
@@ -352,7 +357,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
           <th>Nombre completo</th> <!-- Encabezados de las tablas-->
           <th>Laboratorio</th>
           <th>Tipo de incidencia</th>
-          <th>Numero de Inventario Escolar</th>
+          <th>N.º de Inv. Escolar del equipo</th>
           <th>Fecha</th>
           <th>Estado</th>
           <th>Acciones</th>
@@ -381,10 +386,10 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
 
 
         ?>
-          <tr>
-            <!-- Muestra-->
-            <?php
-            if ($_SESSION['nombreC'] == $usuarioRegistra) { ?>
+          <?php
+          if ($_SESSION['nombreC'] == $usuarioRegistra) { ?>
+            <tr>
+              <!-- Muestra-->
               <td><?php echo $usuarioRegistra; ?></td>
               <td><?php echo $nombreLaboratorio; ?></td>
               <td><?php echo $tipoIncidencia; ?></td>
@@ -402,52 +407,52 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                     echo 'En proceso';
                   } ?></td>
               <td>
-                <abbr title="Ver mas"><a type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
+                <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
               </td>
 
-          </tr>
+            </tr>
 
-          <!-- modal para detalles -->
-          <div class="modal fade" id="verMas<?php echo $idIncidencia; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
-                </div>
+            <!-- modal para detalles -->
+            <div class="modal fade" id="verMas<?php echo $idIncidencia; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                  </div>
 
-                <div class="modal-body">
-                  <?php
-                  $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
-                  ?>
-                   <br><label for="">Descripcion de incidencia: </label>
-                  <?php echo $datos_Incidencia->descripcion; ?>
-                  <br><label for="">Encargado a resolver: </label>
-                  <?php 
-                    echo $datos_Incidencia->idUsuario;
-                   ?>
-                  <br><label>Detalles que se resolvieron: <strong><?php
-                                                                  if ($datos_Incidencia->descripcionIncidencia == '') {
-                                                                    echo 'Sin respuesta';
-                                                                  } else {
-                                                                    echo $datos_Incidencia->descripcionIncidencia;
-                                                                  } ?></strong></label></br>
+                  <div class="modal-body">
+                    <?php
+                    $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
+                    $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
+                    ?>
+                    <br><label for="">Descripcion de incidencia: </label>
+                    <?php echo $datos_Incidencia->descripcion; ?>
+                    <br><label for="">Encargado a resolver: </label>
+                    <?php
+                    echo $datos_IncidenciaN->nombreC;
+                    ?>
+                    <br><label>Detalles que se resolvieron: <strong><?php
+                                                                    if ($datos_Incidencia->descripcionIncidencia == '') {
+                                                                      echo 'Sin respuesta';
+                                                                    } else {
+                                                                      echo $datos_Incidencia->descripcionIncidencia;
+                                                                    } ?></strong></label></br>
 
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!---fin modal detalles--->
+            <!---fin modal detalles--->
 
-      <?php
-            }
+        <?php
           }
-      ?>
+        }
+        ?>
       </tbody>
     </table>
-    <?php  ?>
   </div>
 
 
@@ -494,9 +499,10 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                     <option value="3">Otro</option>
                   </select>
 
-                  <label>Numero de Inventario Escolar</label>
+                  <label>Número de Inventario Escolar</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
-                    <option value="" selected disabled>Selecciona un numero de serie:</option>
+                    <option value="" selected disabled>Selecciona el No. de inventario del equipo:</option>
+                    <option value="1"> Todos los equipos</option>
                     <?php
                     $listaEquipos = $reportes->readEquipos('numInvEscolar');
                     while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -504,11 +510,9 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                       $numInvEscolar = $row->numInvEscolar; ?>
                       <option value="<?php echo $idEquipo ?>"><?php echo $numInvEscolar ?></option>
                     <?php } ?>
-
-                    <option value="1"> Todos los equipos</option>
                   </select>
 
-                  <label>Descripcion</label>
+                  <label>Descripción</label>
                   <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
                 </center>
               </div>

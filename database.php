@@ -422,11 +422,11 @@ class Database
     }
 
 //////REGISTRAR SOLICITUD CAMBIO EQUIPO ALUMNOS/////
-    public function createSolicitudAL($idGrupo, $estado, $alumnoN, $razon, $idLaboratorio, $respuesta)
+    public function createSolicitudAL($idGrupo, $idUsuario, $estado, $alumnoN, $razon, $idLaboratorio, $respuesta)
     {
 
-        $sql = "INSERT INTO `solicitudcambioe` ( `idGrupo`, `estado`, `alumno`, `razon`, `idLaboratorio`, `respuesta`)
-         VALUES ('$idGrupo', '$estado','$alumnoN', '$razon', '$idLaboratorio', '$respuesta'); ";
+        $sql = "INSERT INTO `solicitudcambioe` ( `idGrupo`,`idUsuario`, `estado`, `alumno`, `razon`, `idLaboratorio`, `respuesta`)
+         VALUES ('$idGrupo',`$idUsuario`, '$estado','$alumnoN', '$razon', '$idLaboratorio', '$respuesta'); ";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
@@ -1140,6 +1140,13 @@ class Database
     public function single_recordIncidencia($idIncidencia)
     {
         $sql = "SELECT * FROM incidencia WHERE idIncidencia='$idIncidencia'";
+        $res = mysqli_query($this->con, $sql);
+        $return = mysqli_fetch_object($res);
+        return $return;
+    }
+    public function single_recordIncidenciaN($idIncidencia)
+    {
+        $sql = "SELECT * FROM vwincidencia WHERE idIncidencia='$idIncidencia'";
         $res = mysqli_query($this->con, $sql);
         $return = mysqli_fetch_object($res);
         return $return;

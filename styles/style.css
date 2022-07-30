@@ -96,7 +96,7 @@ body {
 .logoUTEM-imgalum{
     width: 200px;
     padding-right: 20%;
-    padding-top: 37.8%;
+    padding-top: 50%;
 }
 
 .opciones{
@@ -297,6 +297,23 @@ body {
 
     .tituloP{
         font-size: x-large;
+    }
+
+}
+
+
+@media only screen and (max-width: 1500px){
+
+    .logoUTEM-img{
+        width: 200px;
+        padding-right: 20%;
+        padding-top: 25%;
+    }
+
+    .logoUTEM-imgalum{
+        width: 200px;
+        padding-right: 20%;
+        padding-top: 10%;
     }
 
 }
