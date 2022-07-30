@@ -426,7 +426,7 @@ class Database
     {
 
         $sql = "INSERT INTO `solicitudcambioe` ( `idGrupo`,`idUsuario`, `estado`, `alumno`, `razon`, `idLaboratorio`, `respuesta`)
-         VALUES ('$idGrupo',`$idUsuario`, '$estado','$alumnoN', '$razon', '$idLaboratorio', '$respuesta'); ";
+         VALUES ('$idGrupo','$idUsuario', '$estado','$alumnoN', '$razon', '$idLaboratorio', '$respuesta'); ";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
