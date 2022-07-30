@@ -386,10 +386,11 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
 
 
         ?>
+                    <?php
+            if ($_SESSION['nombreC'] == $usuarioRegistra) { ?>
           <tr>
             <!-- Muestra-->
-            <?php
-            if ($_SESSION['nombreC'] == $usuarioRegistra) { ?>
+
               <td><?php echo $usuarioRegistra; ?></td>
               <td><?php echo $nombreLaboratorio; ?></td>
               <td><?php echo $tipoIncidencia; ?></td>
