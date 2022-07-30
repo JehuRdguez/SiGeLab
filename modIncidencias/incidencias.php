@@ -386,11 +386,10 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
 
 
         ?>
-                    <?php
-            if ($_SESSION['nombreC'] == $usuarioRegistra) { ?>
-          <tr>
-            <!-- Muestra-->
-
+          <?php
+          if ($_SESSION['nombreC'] == $usuarioRegistra) { ?>
+            <tr>
+              <!-- Muestra-->
               <td><?php echo $usuarioRegistra; ?></td>
               <td><?php echo $nombreLaboratorio; ?></td>
               <td><?php echo $tipoIncidencia; ?></td>
@@ -411,46 +410,46 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                 <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
               </td>
 
-          </tr>
+            </tr>
 
-          <!-- modal para detalles -->
-          <div class="modal fade" id="verMas<?php echo $idIncidencia; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
-                </div>
+            <!-- modal para detalles -->
+            <div class="modal fade" id="verMas<?php echo $idIncidencia; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                  </div>
 
-                <div class="modal-body">
-                  <?php
-                  $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
-                  $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
-                  ?>
-                  <br><label for="">Descripcion de incidencia: </label>
-                  <?php echo $datos_Incidencia->descripcion; ?>
-                  <br><label for="">Encargado a resolver: </label>
-                  <?php
-                  echo $datos_IncidenciaN->nombreC;
-                  ?>
-                  <br><label>Detalles que se resolvieron: <strong><?php
-                                                                  if ($datos_Incidencia->descripcionIncidencia == '') {
-                                                                    echo 'Sin respuesta';
-                                                                  } else {
-                                                                    echo $datos_Incidencia->descripcionIncidencia;
-                                                                  } ?></strong></label></br>
+                  <div class="modal-body">
+                    <?php
+                    $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
+                    $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
+                    ?>
+                    <br><label for="">Descripcion de incidencia: </label>
+                    <?php echo $datos_Incidencia->descripcion; ?>
+                    <br><label for="">Encargado a resolver: </label>
+                    <?php
+                    echo $datos_IncidenciaN->nombreC;
+                    ?>
+                    <br><label>Detalles que se resolvieron: <strong><?php
+                                                                    if ($datos_Incidencia->descripcionIncidencia == '') {
+                                                                      echo 'Sin respuesta';
+                                                                    } else {
+                                                                      echo $datos_Incidencia->descripcionIncidencia;
+                                                                    } ?></strong></label></br>
 
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!---fin modal detalles--->
+            <!---fin modal detalles--->
 
         <?php
-            }
           }
+        }
         ?>
       </tbody>
     </table>
