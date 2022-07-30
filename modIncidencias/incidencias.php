@@ -150,7 +150,7 @@ $reportes = new Database();   //instanciar el objeto
 
 
                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Descripcion de Incidencia</label>
+                      <label for="recipient-name" class="col-form-label">Descripción de Incidencia</label>
                       <textarea name="descripcionIncidencia" type="text" class="form-control" required><?php echo $datos_Incidencia->descripcionIncidencia; ?> </textarea>
 
                     </div>
@@ -185,7 +185,7 @@ $reportes = new Database();   //instanciar el objeto
                   $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
                   $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
                   ?>
-                  <br><label for="">Descripcion de incidencia: </label><strong>
+                  <br><label for="">Descripción de incidencia: </label><strong>
                     <?php echo $datos_Incidencia->descripcion; ?></strong>
                   <br><label for="">Encargado a resolver: </label><strong>
                     <?php if (is_null($datos_IncidenciaN->nombreC)) {
@@ -284,7 +284,7 @@ $reportes = new Database();   //instanciar el objeto
 
                   <label>Numero de Inventario Escolar</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
-                    <option value="" selected disabled>Selecciona un el equipo:</option>
+                    <option value="" selected disabled>Selecciona el No. de inventario del equipo:</option>
                     <option value="1"> Todos los equipos</option>
                     <?php
                     $listaEquipos = $reportes->readEquipos('numInvEscolar');
@@ -295,7 +295,7 @@ $reportes = new Database();   //instanciar el objeto
                     <?php } ?>
                   </select>
 
-                  <label>Descripcion</label>
+                  <label>Descripción</label>
                   <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
                 </center>
               </div>
@@ -499,9 +499,9 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                     <option value="3">Otro</option>
                   </select>
 
-                  <label>Numero de Inventario Escolar</label>
+                  <label>Número de Inventario Escolar</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
-                    <option value="" selected disabled>Selecciona un numero de serie:</option>
+                    <option value="" selected disabled>Selecciona el No. de inventario del equipo:</option>
                     <option value="1"> Todos los equipos</option>
                     <?php
                     $listaEquipos = $reportes->readEquipos('numInvEscolar');
@@ -512,7 +512,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                     <?php } ?>
                   </select>
 
-                  <label>Descripcion</label>
+                  <label>Descripción</label>
                   <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
                 </center>
               </div>
