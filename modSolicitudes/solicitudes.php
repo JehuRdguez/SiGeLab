@@ -65,7 +65,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
           <th>Grupo</th>
           <th>Fecha</th>
           <th>Estado</th>
-          <th>Estado Laboratorio</th>
+          <th>Estado del laboratorio</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -100,7 +100,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                 } else if ($estado == 1) {
                   echo 'Aceptada';
                 } else {
-                  echo 'Rechazada'; ?> <abbr title="Razon de rechazo"><a type="button" data-bs-toggle="modal" data-bs-target="#razon<?php echo $idSolicitudAcceso; ?>" class="btn btn-outline-primary"><i class="fa-solid fa-question"></i></a></abbr>
+                  echo 'Rechazada'; ?> <abbr title="Razón de rechazo"><a type="button" data-bs-toggle="modal" data-bs-target="#razon<?php echo $idSolicitudAcceso; ?>" class="btn btn-outline-primary"><i class="fa-solid fa-question"></i></a></abbr>
               <?php } ?></td>
             <td><?php if ($estado == 0) {
                   echo 'No aplica';
@@ -113,17 +113,17 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                 } ?> </td>
             <td>
               <?php if ($estado == 1) { ?>
-                <abbr title="ACEPTAR"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
+                <abbr title="Aceptar"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
 
               <?php } else if ($estado == 0) { ?>
                 <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal"><i class="fa-solid fa-xmark"></i></a></abbr>
               <?php  } else { ?>
 
 
-                <abbr title="ACEPTAR"><a type="button" class="btn btn-outline-dark" href="updateS.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-check"></i></a></abbr>
+                <abbr title="Aceptar"><a type="button" class="btn btn-outline-dark" href="updateS.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-check"></i></a></abbr>
                 <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modRazon<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-xmark"></i></a></abbr>
               <?php  } ?>
-              <abbr title="Ver mas"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
+              <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
               <abbr title="Borrar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="deleteS.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
 
             </td>
@@ -213,7 +213,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                     <br><label>Único dia de uso:<strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
                   <?php  } else { ?>
                     <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
-                    <br><label>Fecha de termino: <strong><?php echo $datos_Solicitud->fechaSalida; ?> </strong></label></br>
+                    <br><label>Fecha de término: <strong><?php echo $datos_Solicitud->fechaSalida; ?> </strong></label></br>
                   <?php  } ?>
                   <br><label>Hora de entrada: <strong><?php echo $datos_Solicitud->horaEntrada; ?></strong></label></br>
                   <br><label>Hora de salida: <strong><?php echo $datos_Solicitud->horaSalida; ?></strong></label></br>
@@ -260,7 +260,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                   <div class="col-sm-10">
                     <label> Elige el laboratorio </label>
                     <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
-                      <option selected disabled>Selecciona un Laboratorio</option>
+                      <option selected disabled>Selecciona un laboratorio</option>
                       <?php
                       $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
                       while ($row = mysqli_fetch_object($listaSolicitudes)) {
@@ -272,7 +272,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
                     <label for="">Grupo</label>
                     <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
-                      <option selected disabled>Selecciona un Grupo</option>
+                      <option selected disabled>Selecciona un grupo</option>
                       <?php
                       $listaGrupos = $solicitud->readGrupos('nombreGrupo');
                       while ($row = mysqli_fetch_object($listaGrupos)) {
@@ -373,8 +373,8 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
           <th>Laboratorio</th>
           <th>Grupo</th>
           <th>Fecha</th>
-          <th>Estado de Solicitud</th>
-          <th>Estado de Laboratorio</th>
+          <th>Estado de solicitud</th>
+          <th>Estado de laboratorio</th>
           <th>Detalles</th>
           <th>¿Concluir estancia?</th>
 
@@ -408,7 +408,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
               <td><?php echo $nombreGrupo; ?></td>
               <td><?php echo $fecha; ?></td>
               <td><?php if ($estado == 0) {
-                    echo 'Rechazada' ?> <abbr title="Razon de rechazo"><a type="button" data-bs-toggle="modal" data-bs-target="#razon<?php echo $idSolicitudAcceso; ?>" class="btn btn-outline-primary"><i class="fa-solid fa-question"></i></a></abbr>
+                    echo 'Rechazada' ?> <abbr title="Razón de rechazo"><a type="button" data-bs-toggle="modal" data-bs-target="#razon<?php echo $idSolicitudAcceso; ?>" class="btn btn-outline-primary"><i class="fa-solid fa-question"></i></a></abbr>
                 <?php } else if ($estado == 1) {
                     echo 'Aceptada';
                   } else echo 'Pendiente';
@@ -422,7 +422,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   } else if ($estado == 2) {
                     echo '---------';
                   } ?></td>
-              <td> <abbr title="Ver mas"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr></td>
+              <td> <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr></td>
 
               <td>
 
@@ -430,10 +430,10 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                 if ($estado == 0) {
                   echo 'No aplica';
                 } else if ($estadoLaboratorio == 1) { ?>
-                  <abbr title="Laboratorio Liberado"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
+                  <abbr title="Laboratorio liberado"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
 
                 <?php } else if ($estado == 1) { ?>
-                  <abbr title="Liberar Laboratorio"><a type="button" class="btn btn-outline-dark" onclick="return alertaLiberar()" href="updateSL.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
+                  <abbr title="Liberar laboratorio"><a type="button" class="btn btn-outline-dark" onclick="return alertaLiberar()" href="updateSL.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
                 <?php } ?>
 
 
@@ -484,7 +484,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                     <br><label>Único dia de uso:<strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
                   <?php  } else { ?>
                     <br><label>Fecha de inicio: <strong><?php echo $datos_Solicitud->fecha; ?></strong></label></br>
-                    <br><label>Fecha de termino: <strong><?php echo $datos_Solicitud->fechaSalida; ?> </strong></label></br>
+                    <br><label>Fecha de término: <strong><?php echo $datos_Solicitud->fechaSalida; ?> </strong></label></br>
                   <?php  } ?>
                   <br><label>Hora de entrada: <strong><?php echo $datos_Solicitud->horaEntrada; ?></strong></label></br>
                   <br><label>Hora de salida: <strong><?php echo $datos_Solicitud->horaSalida; ?></strong></label></br>
@@ -537,7 +537,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   <div class="col-sm-10">
                     <label> Elige el laboratorio </label>
                     <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
-                      <option selected disabled>Selecciona un Laboratorio</option>
+                      <option selected disabled>Selecciona un laboratorio</option>
                       <?php
                       $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
                       while ($row = mysqli_fetch_object($listaSolicitudes)) {
@@ -549,7 +549,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
 
                     <label for="">Grupo</label>
                     <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
-                      <option selected disabled>Selecciona un Grupo</option>
+                      <option selected disabled>Selecciona un grupo</option>
                       <?php
                       $listaGrupos = $solicitud->readGrupos('nombreGrupo');
                       while ($row = mysqli_fetch_object($listaGrupos)) {
@@ -565,7 +565,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                     <label>Fecha de inicio</label>
                     <input type="text" name="fecha" id="fecha" class="form-control" required>
 
-                    <label>Fecha de Término</label>
+                    <label>Fecha de término</label>
                     <input type="text" name="fechaSalida" id="fechaSalida" class="form-control" required>
                     <h6 style="color:red ;"></h6>
 
@@ -574,8 +574,6 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
 
                     <label>Hora salida</label>
                     <input type="time" name="horaSalida" id="horaSalida" class="form-control" min="07:30" max="19:00" required>
-
-
                 </center>
               </div>
 
