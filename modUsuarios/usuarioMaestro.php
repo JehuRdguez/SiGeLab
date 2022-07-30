@@ -102,7 +102,7 @@ $pagNom = 'USUARIOS';
                       <?php } else { ?>
                         <abbr title="Habilitar"><a type="button" class="btn btn-outline-dark" href="updateUM.php?idUsuario=<?php echo $idUsuario; ?>"><i class="fa fa-eye"></i></a></abbr>
                       <?php } ?>
-                      <abbr title="Actualizar"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarMaestros<?php echo $idUsuario; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
+                      <abbr title="Editar"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarMaestros<?php echo $idUsuario; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
                       <!--Botón para detalles-->
                       <abbr title="Ver detalles"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#detallesMaestro<?php echo $idUsuario; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
                     </center>

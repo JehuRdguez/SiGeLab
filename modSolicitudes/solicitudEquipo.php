@@ -98,9 +98,9 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
               <center>
               <input type="hidden" name="alumnoN" id="alumnoN" class="form-control" required value="<?php echo  $_SESSION['nombreC']; ?>">
 
-                <label> Elige el laboratorio </label>
+                <label> Elige el laboratorio: </label>
                 <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
-                  <option value="">Selecciona una Laboratorio</option>
+                  <option value="">Selecciona una Laboratorio:</option>
                   <?php
                   $listaSolicitudesAL = $solicitudAL->readLaboratorioS('nombreLaboratorio');
                   while ($row = mysqli_fetch_object($listaSolicitudesAL)) {
@@ -202,17 +202,17 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
                 <?php } ?></td>
               <td>
                 <?php if ($estado == 1) { ?>
-                  <abbr title="ACEPTAR"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
+                  <abbr title="Aceptar"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
   
                 <?php } else if ($estado == 0) { ?>
                   <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#razonE<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-xmark"></i></a></abbr>
                 <?php  } else { ?>
   
   
-                  <abbr title="ACEPTAR"><a type="button" class="btn btn-outline-dark" href="updateSE.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-check"></i></a></abbr>
+                  <abbr title="Aceptar"><a type="button" class="btn btn-outline-dark" href="updateSE.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-check"></i></a></abbr>
                   <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modRazonE<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-xmark"></i></a></abbr>
                 <?php  } ?>
-                <abbr title="Borrar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="deleteSE.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
+                <abbr title="Eliminar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="deleteSE.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
   
               </td>
             </tr>
