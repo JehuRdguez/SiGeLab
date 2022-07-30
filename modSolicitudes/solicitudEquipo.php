@@ -208,8 +208,7 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
                   <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#razonE<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-xmark"></i></a></abbr>
                 <?php  } else { ?>
   
-  
-                  <abbr title="Aceptar"><a type="button" class="btn btn-outline-dark" href="updateSE.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-check"></i></a></abbr>
+                  <abbr title="Aceptar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#asignacionE<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-check"></i></a></abbr>
                   <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modRazonE<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-xmark"></i></a></abbr>
                 <?php  } ?>
                 <abbr title="Eliminar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="deleteSE.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
@@ -265,6 +264,54 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
               </div>
             </div>
             <!---fin modal editar-->
+
+             <!-- 
+  MODAL PARA ASIGNAR EQUIPO -->
+            
+  <div class="modal fade" id="asignacionE<?php echo $idsolicitudCambioE; ?>" tabindex="-1" aria-labelledby="modRazonEAlLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <center>
+                      <h5 class="modal-title" id="exampleModalLabel">Asignar nuevo equipo</h5>
+                    </center>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+  
+                  <form method="POST" action="asignacionE.php">
+                    <input type="hidden" name="idsolicitudCambioE" value="<?php echo $idsolicitudCambioE; ?>">
+  
+  
+                    <div class="modal-body" id="cont_modal">
+                      <?php
+                      $datos_SolicitudE = $solicitudAL->single_recordSolicitudE($idsolicitudCambioE);
+                      ?>
+  
+                      <div class="form-group">
+  
+                        <label for="post" class="col-form-label">Asigna un nuevo equipo: </label>
+                        <textarea name="respuesta" id="respuesta" name type="text" class="form-control" placeholder="Ayuda nose como hcaer para asignarle un nuevo equipo si el registro no tiene id usuario por que es varchar el nombre" required><?php echo $datos_SolicitudE->respuesta; ?></textarea>
+                        
+  
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+  
+                      <!-- Botón para enviar datos-->
+                </center>
+  
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button  type="submit"  class="btn btn-warning" onclick="return alertaRechazar()">Rechazar</button>
+                      
+  
+
+                    </div>
+  
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!---fin modal asignar-->
   
             <!-- modal para  ver rechazo -->
             <div class="modal fade" id="RazonE<?php echo $idsolicitudCambioE; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

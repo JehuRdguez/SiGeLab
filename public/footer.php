@@ -711,15 +711,15 @@
                         'color': 'black'
 
                     });
-                } else if(data[4] == 'Aceptada') {
-                    $('td', row).eq(4).css({
+                } else if(data[5] == 'Aceptada') {
+                    $('td', row).eq(5).css({
                         'background-color': '#bdecb6',
 
                         'color': 'black'
 
                     });
             }else {
-                    $('td', row).eq(4).css({
+                    $('td', row).eq(5).css({
                         'background-color': '#ffb6af',
 
                         'color': 'black'
