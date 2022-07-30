@@ -39,12 +39,12 @@ $reportes = new Database();   //instanciar el objeto
   <div class="dropdown">
     <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a>
     <a href="reportesInc.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
-<br></br>
+    <br></br>
   </div>
   <!-- Mostrar tabla-->
   <div class="container">
 
-    <table class="table table-bordered " cellspacing="0" width="100%" id="incidenciasTable" style="background-color: #04aa89;  ">
+    <table class="table table-bordered " cellspacing="0" width="100%" id="incidenciasTableAdmin" style="background-color: #04aa89;  ">
       <thead>
         <!-- Secciones o cabeceros -->
         <tr>
@@ -111,7 +111,7 @@ $reportes = new Database();   //instanciar el objeto
                 <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
               <?php }   ?>
               <abbr title="Borrar"><a type="button" class="btn btn-outline-dark" onclick="return eliminar()" href="deleteI.php?idIncidencia=<?php echo $idIncidencia ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
-              <abbr title="Ver mas"><a type="button" class="btn btn-outline-darsk" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
+              <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
 
             </td>
 
@@ -182,23 +182,25 @@ $reportes = new Database();   //instanciar el objeto
 
                 <div class="modal-body">
                   <?php
-                 $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
-                 $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
-                 ?>
+                  $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
+                  $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
+                  ?>
                   <br><label for="">Descripcion de incidencia: </label><strong>
-                 <?php echo $datos_Incidencia->descripcion; ?></strong>
-                 <br><label for="">Encargado a resolver: </label><strong>
-                 <?php if(is_null( $datos_IncidenciaN->nombreC)){
-                  echo "Pendiente";
-                 }else{echo $datos_IncidenciaN->nombreC;}
-                   
-                  ?></strong>
-                 <br><label>Detalles que se resolvieron: <strong><?php
-                                                                 if ($datos_Incidencia->descripcionIncidencia == '') {
-                                                                   echo 'Sin respuesta';
-                                                                 } else {
-                                                                   echo $datos_Incidencia->descripcionIncidencia;
-                                                                 } ?></strong></label></br>
+                    <?php echo $datos_Incidencia->descripcion; ?></strong>
+                  <br><label for="">Encargado a resolver: </label><strong>
+                    <?php if (is_null($datos_IncidenciaN->nombreC)) {
+                      echo "Pendiente";
+                    } else {
+                      echo $datos_IncidenciaN->nombreC;
+                    }
+
+                    ?></strong>
+                  <br><label>Detalles que se resolvieron: <strong><?php
+                                                                  if ($datos_Incidencia->descripcionIncidencia == '') {
+                                                                    echo 'Sin respuesta';
+                                                                  } else {
+                                                                    echo $datos_Incidencia->descripcionIncidencia;
+                                                                  } ?></strong></label></br>
 
                 </div>
                 <div class="modal-footer">
@@ -283,6 +285,7 @@ $reportes = new Database();   //instanciar el objeto
                   <label>Numero de Inventario Escolar</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
                     <option value="" selected disabled>Selecciona un el equipo:</option>
+                    <option value="1"> Todos los equipos</option>
                     <?php
                     $listaEquipos = $reportes->readEquipos('numInvEscolar');
                     while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -290,7 +293,6 @@ $reportes = new Database();   //instanciar el objeto
                       $numInvEscolar = $row->numInvEscolar; ?>
                       <option value="<?php echo $idEquipo ?>"><?php echo $numInvEscolar ?></option>
                     <?php } ?>
-                    <option value="1"> Todos los equipos</option>
                   </select>
 
                   <label>Descripcion</label>
@@ -405,7 +407,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                     echo 'En proceso';
                   } ?></td>
               <td>
-                <abbr title="Ver mas"><a type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
+                <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
               </td>
 
           </tr>
@@ -423,12 +425,12 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                   $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
                   $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
                   ?>
-                   <br><label for="">Descripcion de incidencia: </label>
+                  <br><label for="">Descripcion de incidencia: </label>
                   <?php echo $datos_Incidencia->descripcion; ?>
                   <br><label for="">Encargado a resolver: </label>
-                  <?php 
-                    echo $datos_IncidenciaN->nombreC;
-                   ?>
+                  <?php
+                  echo $datos_IncidenciaN->nombreC;
+                  ?>
                   <br><label>Detalles que se resolvieron: <strong><?php
                                                                   if ($datos_Incidencia->descripcionIncidencia == '') {
                                                                     echo 'Sin respuesta';
@@ -445,13 +447,12 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
           </div>
           <!---fin modal detalles--->
 
-      <?php
+        <?php
             }
           }
-      ?>
+        ?>
       </tbody>
     </table>
-    <?php  ?>
   </div>
 
 
@@ -501,6 +502,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                   <label>Numero de Inventario Escolar</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
                     <option value="" selected disabled>Selecciona un numero de serie:</option>
+                    <option value="1"> Todos los equipos</option>
                     <?php
                     $listaEquipos = $reportes->readEquipos('numInvEscolar');
                     while ($row = mysqli_fetch_object($listaEquipos)) {
@@ -508,8 +510,6 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                       $numInvEscolar = $row->numInvEscolar; ?>
                       <option value="<?php echo $idEquipo ?>"><?php echo $numInvEscolar ?></option>
                     <?php } ?>
-
-                    <option value="1"> Todos los equipos</option>
                   </select>
 
                   <label>Descripcion</label>
