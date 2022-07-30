@@ -52,7 +52,7 @@ $reportes = new Database();   //instanciar el objeto
           <th>Nombre completo</th> <!-- Encabezados de las tablas-->
           <th>Laboratorio</th>
           <th>Tipo de incidencia</th>
-          <th>Numero de Inventario Escolar</th>
+          <th>N.º de Inv. Escolar del equipo</th>
           <th>Fecha</th>
           <th>Estado</th>
           <th>Acciones</th>
@@ -282,7 +282,7 @@ $reportes = new Database();   //instanciar el objeto
                     <option value="3">Otro</option>
                   </select>
 
-                  <label>Numero de Inventario Escolar</label>
+                  <label>N.º de Inv. Escolar del equipo</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipo" name="idEquipo" required>
                     <option value="" selected disabled>Selecciona el No. de inventario del equipo:</option>
                     <option value="1"> Todos los equipos</option>
@@ -357,7 +357,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
           <th>Nombre completo</th> <!-- Encabezados de las tablas-->
           <th>Laboratorio</th>
           <th>Tipo de incidencia</th>
-          <th>Numero de Inventario Escolar</th>
+          <th>N.º de Inv. Escolar del equipo</th>
           <th>Fecha</th>
           <th>Estado</th>
           <th>Acciones</th>
