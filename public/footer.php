@@ -995,8 +995,16 @@
     }
 </script>
 
-
-
+<script type="text/javascript">
+    function alertaLiberar() {
+        var mensaje;
+        var opcion = confirm("¿Esta seguro de liberar el laboratorio? *Esta accion no se puede deshacer*");
+        if (!opcion) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 </script>
 
 <script type="text/javascript">
@@ -1006,8 +1014,6 @@
         if (!opcion) {
             return false;
         } else {
-            
-            
             return true;
         }
     }

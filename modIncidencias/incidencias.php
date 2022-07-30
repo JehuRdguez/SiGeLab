@@ -182,20 +182,23 @@ $reportes = new Database();   //instanciar el objeto
 
                 <div class="modal-body">
                   <?php
-                  $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
-                  ?>
-                  <br><label for="">Descripcion de incidencia: </label>
-                  <?php echo $datos_Incidencia->descripcion; ?>
-                  <br><label for="">Encargado a resolver: </label>
-                  <?php 
-                    echo $datos_Incidencia->idUsuario;
-                   ?>
-                  <br><label>Detalles que se resolvieron: <strong><?php
-                                                                  if ($datos_Incidencia->descripcionIncidencia == '') {
-                                                                    echo 'Sin respuesta';
-                                                                  } else {
-                                                                    echo $datos_Incidencia->descripcionIncidencia;
-                                                                  } ?></strong></label></br>
+                 $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
+                 $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
+                 ?>
+                  <br><label for="">Descripcion de incidencia: </label><strong>
+                 <?php echo $datos_Incidencia->descripcion; ?></strong>
+                 <br><label for="">Encargado a resolver: </label><strong>
+                 <?php if(is_null( $datos_IncidenciaN->nombreC)){
+                  echo "Pendiente";
+                 }else{echo $datos_IncidenciaN->nombreC;}
+                   
+                  ?></strong>
+                 <br><label>Detalles que se resolvieron: <strong><?php
+                                                                 if ($datos_Incidencia->descripcionIncidencia == '') {
+                                                                   echo 'Sin respuesta';
+                                                                 } else {
+                                                                   echo $datos_Incidencia->descripcionIncidencia;
+                                                                 } ?></strong></label></br>
 
                 </div>
                 <div class="modal-footer">
@@ -418,12 +421,13 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
                 <div class="modal-body">
                   <?php
                   $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
+                  $datos_IncidenciaN = $reportes->single_recordIncidenciaN($idIncidencia);
                   ?>
                    <br><label for="">Descripcion de incidencia: </label>
                   <?php echo $datos_Incidencia->descripcion; ?>
                   <br><label for="">Encargado a resolver: </label>
                   <?php 
-                    echo $datos_Incidencia->idUsuario;
+                    echo $datos_IncidenciaN->nombreC;
                    ?>
                   <br><label>Detalles que se resolvieron: <strong><?php
                                                                   if ($datos_Incidencia->descripcionIncidencia == '') {

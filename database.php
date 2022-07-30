@@ -1144,6 +1144,13 @@ class Database
         $return = mysqli_fetch_object($res);
         return $return;
     }
+    public function single_recordIncidenciaN($idIncidencia)
+    {
+        $sql = "SELECT * FROM vwincidencia WHERE idIncidencia='$idIncidencia'";
+        $res = mysqli_query($this->con, $sql);
+        $return = mysqli_fetch_object($res);
+        return $return;
+    }
     public function deleteI($idIncidencia)
     {
         $sql = "DELETE FROM incidencia WHERE idIncidencia = '$idIncidencia'";

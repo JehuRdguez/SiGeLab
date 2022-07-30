@@ -433,7 +433,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
                   <abbr title="Laboratorio Liberado"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
 
                 <?php } else if ($estado == 1) { ?>
-                  <abbr title="Liberar Laboratorio"><a type="button" class="btn btn-outline-dark" href="updateSL.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
+                  <abbr title="Liberar Laboratorio"><a type="button" class="btn btn-outline-dark" onclick="return alertaLiberar()" href="updateSL.php?idSolicitudAcceso=<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
                 <?php } ?>
 
 
