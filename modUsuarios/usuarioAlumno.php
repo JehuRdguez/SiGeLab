@@ -151,7 +151,7 @@ else{
                   <?php } else { ?>
                     <abbr title="Habilitar"><a type="button" class="btn btn-outline-dark" href="updateUAl.php?idUsuario=<?php echo $idUsuario; ?>"><i class="fa fa-eye"></i></a></abbr>
                   <?php } ?>
-                  <abbr title="Actualizar"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarAlumnos<?php echo $idUsuario; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
+                  <abbr title="Editar"><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editarAlumnos<?php echo $idUsuario; ?>"><i class="fa-solid fa-pen-to-square"></i></button></abbr>
                   <!--Botón para detalles-->
                   <abbr title="Ver detalles"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#detallesAlumno<?php echo $idUsuario; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
                 </center>
@@ -201,7 +201,7 @@ else{
                       </div>
 
                       <div class="form-group">
-                        <label for="" class="col-form-label">Grupo</label>
+                        <label for="" class="col-form-label">Grupo:</label>
                         <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo">
                           <?php
                           $datos_alumno = $alumnos->single_recordusuarioAl($idUsuario);
@@ -383,7 +383,7 @@ else{
                   <label> Teléfono:</label>
                   <input type="number" name="telefonoAl" id="telefonoAl" class="form-control" min="1111111111" onkeypress="return verificaNumeros(event);" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required> <!-- Devuelve una cadena vacia si no se cumple con ser mayor a 0-->
 
-                  <label for="">Equipo asignado IOT:</label>
+                  <label for="">Equipo asignado IoT:</label>
                   <select class="form-select" aria-label="Default select example" id="idEquipoIOT" name="idEquipoIOT" required>
                     <option value="" selected disabled>Selecciona un equipo</option>
                     <option value="1">No aplica</option>
@@ -422,7 +422,7 @@ else{
                     <?php } ?>
                   </select>
 
-                  <label for="" class="col-form-label">Grupo</label>
+                  <label for="" class="col-form-label">Grupo:</label>
                   <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
                     <option value="" selected disabled>Selecciona un grupo</option>
                     <?php

@@ -191,7 +191,7 @@ $pagNom = 'GRUPOS';
                     <div class="modal-body">
 
                       <div class="form-group">
-                        <label for="" class="col-form-label">Tutor</label>
+                        <label for="" class="col-form-label">Tutor:</label>
                         <select class="form-select" aria-label="Default select example" id="idUsuario" name="idUsuario">
                           <?php
                           $datos_grupo = $gruposR->single_recordgrupo($idGrupo);
@@ -240,7 +240,7 @@ $pagNom = 'GRUPOS';
                     <label> Nombre del grupo:</label>
                     <input type="text" name="nombreGrupo" id="nombreGrupo" class="form-control" required>
 
-                    <label for="">Tutor</label>
+                    <label for="">Tutor:</label>
                     <select class="form-select" aria-label="Default select example" id="idUsuario" name="idUsuario" required>
                       <option value="" selected disabled>Selecciona un tutor:</option>
                       <?php
