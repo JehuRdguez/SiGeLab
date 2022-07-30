@@ -38,7 +38,7 @@ class Database
 /////////////////////////////ADMINISTRADOR/////////////////////////////////////////////////
 
     //registro administrador
-    public function createAdministrador($nombreC, $correo, $telefono,  $contrasena, $uActivo, $idTipoUsuario, $numConAdmin,)
+    public function createAdministrador($nombreC, $correo, $telefono,  $contrasena, $uActivo, $idTipoUsuario, $numConAdmin)
     {
         $sql = "CALL proAddAdministrador('$nombreC','$correo','$telefono','$contrasena','$uActivo','$idTipoUsuario','$numConAdmin')  ";
         try {
@@ -103,9 +103,9 @@ class Database
 
 
     //Función para editar los datos de un administrador
-    public function editarAdministrador($numConAdmin, $nombreC, $correo, $telefono,  $contrasena, $idTipoUsuario)
+    public function editarAdministrador($numConAdmin, $nombreC, $correo, $telefono,  $contrasena, $idUsuario)
     {
-        $sql = "CALL proEditAdministrador('$numConAdmin','$nombreC','$correo','$telefono','$contrasena','$idTipoUsuario')  ";
+        $sql = "CALL proEditAdministrador('$numConAdmin','$nombreC','$correo','$telefono','$contrasena','$idUsuario')  ";
         $res = mysqli_query($this->con, $sql);
 
         if ($res) {

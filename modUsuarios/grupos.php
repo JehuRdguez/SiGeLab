@@ -109,7 +109,7 @@ $pagNom = 'GRUPOS';
 
                 ?>
               </td>
-              </td>
+             
               <td><?php if ($uActivo == 1) { //Condicionamos el tutor, si está incactivo se pondrá "pendiente", en caso contrario se muestra el nombre
                     echo $nombreM;
                   } else {
