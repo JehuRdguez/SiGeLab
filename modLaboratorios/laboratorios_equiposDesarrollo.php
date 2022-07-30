@@ -115,6 +115,7 @@ else{
         while ($row = mysqli_fetch_object($listaEquipos)) { //antes del = es la variable del form, después es la de BDD
 
           $idEquipo = $row->idEquipo;
+          $nombreLaboratorio = $row->nombreLaboratorio;
           $numInvEscolar = $row->numInvEscolar;
           $numSerieEquipo = $row->numSerieEquipo;
           $numInvEscMon = $row->numInvEscMon;
@@ -164,13 +165,20 @@ else{
 
                   <div class="modal-body">
 
-                    <div class="form-group">
-                      <label for="" class="col-form-label" hidden>Laboratorio: </label>
-                      <select hidden class="form-select" aria-label="Default select example" id="lab" name="lab">
+                  <div class="form-group">
+                      <label for="" class="col-form-label">Laboratorio: </label>
+                      <select class="form-select" aria-label="Default select example" id="lab" name="lab">
                         <?php
                         $datos_equipos = $equiposR->single_recordequipo($idEquipo);
                         ?>
-                        <option selected hidden value="<?php echo $datos_equipos->idLaboratorio; ?>"></option>
+                        <option selected hidden value="<?php echo $datos_equipos->idLaboratorio; ?>"><?php echo $nombreLaboratorio; ?></option>
+                        <?php
+                        $listaEquiposEdit = $equiposR->readLabAct('nombreLaboratorio');
+                        while ($row = mysqli_fetch_object($listaEquiposEdit)) {
+                          $idLaboratorio = $row->idLaboratorio;
+                          $nombreLaboratorio = $row->nombreLaboratorio; ?>
+                          <option value="<?php echo $idLaboratorio; ?>"><?php echo $nombreLaboratorio; ?></option>
+                        <?php } ?>
                       </select>
                     </div>
 
