@@ -435,6 +435,29 @@ class Database
         }
     }
 
+     //Función para editar equipo
+     public function editarUAlumnoE($idEquipoIOT, $idEquipoDesarrollo, $idEquipoSoporte, $idUsuario)
+     {
+         $sql = "UPDATE alumno SET idEquipoIOT='$idEquipoIOT', idEquipoDesarrollo='$idEquipoDesarrollo',
+         idEquipoSoporte='$idEquipoSoporte', WHERE idUsuario='$idUsuario'";
+ 
+ 
+         $res = mysqli_query($this->con, $sql);
+         if ($res) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+//////Funcion de singlerecor
+     public function single_recordusuarioAlE($idUsuario)
+    {
+        $sql = "SELECT * from vwEditAlumno WHERE idUsuario='$idUsuario'";
+        $res = mysqli_query($this->con, $sql);
+        $return = mysqli_fetch_object($res);
+        return $return;
+    }
+
 
 
     /////////////////////////////////////////////////////////////////JEHU/////////////////////////////////////////////////////////////////////     
