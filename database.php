@@ -449,14 +449,6 @@ class Database
              return false;
          }
      }
-//////Funcion de singlerecor
-     public function single_recordusuarioAlE($idUsuario)
-    {
-        $sql = "SELECT * from vwEditAlumno WHERE idUsuario='$idUsuario'";
-        $res = mysqli_query($this->con, $sql);
-        $return = mysqli_fetch_object($res);
-        return $return;
-    }
 
 
 

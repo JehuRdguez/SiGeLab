@@ -9,18 +9,15 @@ $pagNom = 'EQUIPOS ASIGNADOS';
   <?php
   include("../database.php");
 
-  $solicitudAL = new database();   //instanciar el objeto
+  $alumno = new database();   //instanciar el objeto
 
   if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la && (y) EMpty si se encuentra o no vacio
-    $idGrupo =  $solicitudAL->sanitize($_POST['idGrupo']);
-    $idUsuario =  $solicitudAL->sanitize($_POST['idUsuario']);
-    $alumnoN = $solicitudAL->sanitize($_POST['alumnoN']);
-    $razon =  $solicitudAL->sanitize($_POST['razon']);
-    $idLaboratorio = $solicitudAL->sanitize($_POST['idLaboratorio']);
-    $idEquipoIOT = $alumnos->sanitize($_POST['idEquipoIOT']);
-    $idEquipoDesarrollo = $alumnos->sanitize($_POST['idEquipoDesarrollo']);
-    $idEquipoSoporte = $alumnos->sanitize($_POST['idEquipoSoporte']);
-    $res = $solicitudAL->createSolicitudAL($idGrupo, $idUsuario, 2, $alumnoN, $razon, $idLaboratorio, "");
+    $idGrupo =  $alumno->sanitize($_POST['idGrupo']);
+    $idUsuario =  $alumno->sanitize($_POST['idUsuario']);
+    $alumnoN = $alumno->sanitize($_POST['alumnoN']);
+    $razon =  $alumno->sanitize($_POST['razon']);
+    $idLaboratorio = $alumno->sanitize($_POST['idLaboratorio']);
+    $res = $alumno->createSolicitudAL($idGrupo, $idUsuario, 2, $alumnoN, $razon, $idLaboratorio, "");
 
     if ($res) {
       $message = "Datos insertados con exito";
@@ -58,7 +55,7 @@ $pagNom = 'EQUIPOS ASIGNADOS';
       <tbody>
         <!-- Cuerpo de la tabla, se llena con la BDD-->
         <?php
-        $equiposAsignadosAl =  $solicitudAL->equiposA();
+        $equiposAsignadosAl =  $alumno->equiposA();
         ?>
 
         <?php
@@ -120,7 +117,7 @@ $pagNom = 'EQUIPOS ASIGNADOS';
                   <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
                     <option value="">Selecciona una Laboratorio:</option>
                     <?php
-                    $listaSolicitudesAL = $solicitudAL->readLaboratorioS('nombreLaboratorio');
+                    $listaSolicitudesAL = $alumno->readLaboratorioS('nombreLaboratorio');
                     while ($row = mysqli_fetch_object($listaSolicitudesAL)) {
                       $idLaboratorio = $row->idLaboratorio;
                       $nombreLaboratorio = $row->nombreLaboratorio; ?>
@@ -185,15 +182,15 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
       <tbody>
         <!-- Cuerpo de la tabla, se llena con la BDD-->
         <?php
-        $solicitudAL = new Database(); //
-        $listaSolicitudesE = $solicitudAL->readSolicitudEquipo();
-        $listaAlumnos = $solicitudAL->readAlumno(); //se crea la variable listasolicitudesE
+        $alumno = new Database(); //
+        $listaSolicitudesE = $alumno->readSolicitudEquipo();
+        $listaalumno = $alumno->readAlumno(); //se crea la variable listasolicitudesE
         ?>
 
         <?php
         while ($row = mysqli_fetch_object($listaSolicitudesE)) { //antes del = es la variable del form, después es la de BDD
           $idsolicitudCambioE = $row->idsolicitudCambioE;
-          $alumno = $row->alumno;
+          $alumnoN = $row->alumnoN;
           $nombreLaboratorio = $row->nombreLaboratorio;
           $idGrupo = $row->idGrupo;
           $razon = $row->razon;
@@ -207,7 +204,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
           <tr>
             <!-- Muestra-->
 
-            <td><?php echo $alumno; ?></td> <!-- Muestra-->
+            <td><?php echo $alumnoN; ?></td> <!-- Muestra-->
             <td><?php echo $nombreLaboratorio; ?></td>
             <td><?php echo $idGrupo; ?></td>
             <td><?php echo $razon; ?></td>
@@ -227,7 +224,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
                 <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#razonE<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-xmark"></i></a></abbr>
               <?php  } else { ?>
 
-                <abbr title="Aceptar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#asignacionE<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-check"></i></a></abbr>
+                <abbr title="Aceptar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#asignacionE<?php echo $idUsuario; ?>"><i class="fa-solid fa-check"></i></a></abbr>
                 <abbr title="Rechazar"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modRazonE<?php echo $idsolicitudCambioE; ?>"><i class="fa-solid fa-xmark"></i></a></abbr>
               <?php  } ?>
               <abbr title="Eliminar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="deleteSE.php?idsolicitudCambioE=<?php echo $idsolicitudCambioE ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
@@ -255,7 +252,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
 
                   <div class="modal-body" id="cont_modal">
                     <?php
-                    $datos_SolicitudE = $solicitudAL->single_recordSolicitudE($idsolicitudCambioE);
+                    $datos_SolicitudE = $alumno->single_recordSolicitudE($idsolicitudCambioE);
                     ?>
 
                     <div class="form-group">
@@ -285,25 +282,20 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
           <!---fin modal editar-->
 
           <!--  MODAL PARA ASIGNAR EQUIPO -->
-          <div class="modal fade" id="asignacionE<?php echo $idsolicitudCambioE; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal fade" id="asignacionE<?php echo $idUsuario; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Editar usuario alumno</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Editar equipos asignados del alumno</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <?php
-                $datos_SolicitudE = $solicitudAL->readAlumno(); //se crea la variable listasolicitudesE
+                $datos_SolicitudE = $alumno->readAlumno(); //se crea la variable listasolicitudesE
                 ?>
-                <?php
-                while ($row = mysqli_fetch_object($datos_SolicitudE)) {
-                  $idEquipoIOT = $row->equipoIOT;
-                  $idEquipoDesarrollo = $row->equipoDesarrollo;
-                  $idEquipoSoporte = $row->equipoSoporte;
-                } ?>
+               
 
-                <form method="POST" action="asignacionE.php">
-                  <input type="hidden" name="idsolicitudCambioE" value="<?php echo $idsolicitudCambioE; ?>">
+                <form method="POST" action="../modUsuarios/EditarAlumno.php">
+                  <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
 
                   <div class="modal-body">
 
@@ -311,7 +303,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
                       <label for="" class="col-form-label">Equipo lab IoT: </label>
                       <select class="form-select" aria-label="Default select example" id="idEquipoIOT" name="idEquipoIOT">
                         <?php
-                        $datos_SolicitudE = $solicitudAL->single_recordusuarioAlE($idUsuario);
+                        $datos_SolicitudE = $alumno->single_recordusuarioAl($idUsuario);
                         ?>
                         <option selected hidden value="<?php echo $datos_SolicitudE->idEquipoIOT; ?>"><?php if ($idEquipoIOT == 0) {
                                                                                                         echo 'No aplica';
@@ -320,7 +312,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
                                                                                                       } ?></option>
                         <option value="1">No aplica</option>
                         <?php
-                        $listaEIOTEdit = $solicitudAL->equiposIOT('numSerieEquipo');
+                        $listaEIOTEdit = $alumno->equiposIOT('numSerieEquipo');
                         while ($row = mysqli_fetch_object($listaEIOTEdit)) {
                           $idEquipo = $row->idEquipo;
                           $numInvEscolar = $row->numInvEscolar; ?>
@@ -333,7 +325,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
                       <label for="" class="col-form-label">Equipo lab desarrollo: </label>
                       <select class="form-select" aria-label="Default select example" id="idEquipoDesarrollo" name="idEquipoDesarrollo">
                         <?php
-                        $datos_SolicitudE = $solicitudAL->single_recordusuarioAlE($idUsuario);
+                        $datos_SolicitudE = $alumno->single_recordusuarioAl($idUsuario);
                         ?>
                         <option selected hidden value="<?php echo $datos_SolicitudE->idEquipoDesarrollo; ?>"><?php if ($idEquipoDesarrollo == 0) {
                                                                                                                 echo 'No aplica';
@@ -342,7 +334,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
                                                                                                               } ?></option>
                         <option value="1">No aplica</option>
                         <?php
-                        $listaEDitarED = $solicitudAL->equiposDESARROLLO('numSerieEquipo');
+                        $listaEDitarED = $alumno->equiposDESARROLLO('numSerieEquipo');
                         while ($row = mysqli_fetch_object($listaEDitarED)) {
                           $idEquipo = $row->idEquipo;
                           $numInvEscolar = $row->numInvEscolar; ?>
@@ -355,7 +347,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
                       <label for="" class="col-form-label">Equipo lab soporte: </label>
                       <select class="form-select" aria-label="Default select example" id="idEquipoSoporte" name="idEquipoSoporte">
                         <?php
-                        $datos_SolicitudE = $solicitudAL->single_recordusuarioAlE($idUsuario);
+                        $datos_SolicitudE = $alumno->single_recordusuarioAl($idUsuario);
                         ?>
                         <option selected hidden value="<?php echo $datos_SolicitudE->idEquipoSoporte; ?>"><?php if ($idEquipoSoporte == 0) {
                                                                                                             echo 'No aplica';
@@ -364,7 +356,7 @@ if ($_SESSION['idTipoUsuario'] == 1) { ?>
                                                                                                           } ?></option>
                         <option value="1">No aplica</option>
                         <?php
-                        $listaESEdit = $solicitudAL->equiposSOPORTE('numSerieEquipo');
+                        $listaESEdit = $alumno->equiposSOPORTE('numSerieEquipo');
                         while ($row = mysqli_fetch_object($listaESEdit)) {
                           $idEquipo = $row->idEquipo;
                           $numInvEscolar = $row->numInvEscolar; ?>
