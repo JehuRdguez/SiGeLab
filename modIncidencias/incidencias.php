@@ -104,11 +104,16 @@ $reportes = new Database();   //instanciar el objeto
               if ($estado == 1) { ?>
                 <a type="button" class="btn btn-outline-dark" href="updateI.php?idIncidencia=<?php echo $idIncidencia; ?>"><i class="fa-solid fa-check"></i></a>
 
-              <?php } else if ($estado == 0) { ?>
+              <?php } else if (is_null($nombreC)) { ?>
                 <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
-                <abbr title="Concluir incidencia"><a type="button" class="btn btn-outline-dark" href="updateI.php?idIncidencia=<?php echo $idIncidencia; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
+
+              <?php } else if ($estado == 0 && is_null($nombreC)) { ?>
+                <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
+
               <?php } else { ?>
                 <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
+
+                <abbr title="Concluir incidencia"><a type="button" class="btn btn-outline-dark" href="updateI.php?idIncidencia=<?php echo $idIncidencia; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
               <?php }   ?>
               <abbr title="Borrar"><a type="button" class="btn btn-outline-dark" onclick="return eliminar()" href="deleteI.php?idIncidencia=<?php echo $idIncidencia ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
               <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
@@ -256,7 +261,7 @@ $reportes = new Database();   //instanciar el objeto
                     <?php } ?>
                   </select>
                   <!-- Para traer equipos de un laboratorio -->
-                  <script>
+                  <!-- <script>
                     const selectElement = document.querySelector('#idLaboratorio');
 
                     selectElement.addEventListener('change', (event) => {
@@ -270,7 +275,7 @@ $reportes = new Database();   //instanciar el objeto
                         console.log('Se ha elegido nada');
                       }
                     });
-                  </script>
+                  </script> -->
 
 
                   <label>Tipo de incidencia</label>
@@ -342,7 +347,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
   ?>
 
   <!-- Botón de registro-->
-  <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a> 
+  <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a>
   <br>
   <!-- Mostrar tabla-->
   <div class="container">
