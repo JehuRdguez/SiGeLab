@@ -426,7 +426,7 @@ class Database
     {
 
         $sql = "INSERT INTO `solicitudcambioe` ( `idGrupo`,`idUsuario`, `estado`, `alumno`, `razon`, `idLaboratorio`, `respuesta`)
-         VALUES ('$idGrupo',`$idUsuario`, '$estado','$alumnoN', '$razon', '$idLaboratorio', '$respuesta'); ";
+         VALUES ('$idGrupo','$idUsuario', '$estado','$alumnoN', '$razon', '$idLaboratorio', '$respuesta'); ";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
@@ -434,6 +434,21 @@ class Database
             return false;
         }
     }
+
+     //Función para editar equipo
+     public function editarUAlumnoE($idEquipoIOT, $idEquipoDesarrollo, $idEquipoSoporte, $idUsuario)
+     {
+         $sql = "UPDATE alumno SET idEquipoIOT='$idEquipoIOT', idEquipoDesarrollo='$idEquipoDesarrollo',
+         idEquipoSoporte='$idEquipoSoporte', WHERE idUsuario='$idUsuario'";
+ 
+ 
+         $res = mysqli_query($this->con, $sql);
+         if ($res) {
+             return true;
+         } else {
+             return false;
+         }
+     }
 
 
 

@@ -589,7 +589,7 @@
         });
     });
 
-   ////////
+    ////////
 
     $(document).ready(function() {
         $('#incidenciasTableAdmin').DataTable({
@@ -605,16 +605,14 @@
                         'color': 'black'
 
                     });
-                }
-                else if(data[5] == 'En proceso') {
+                } else if (data[5] == 'En proceso') {
                     $('td', row).eq(5).css({
                         'background-color': '#fdfd96',
 
                         'color': 'black'
 
                     });
-                }
-               else if (data[5] == 'Concluida') {
+                } else if (data[5] == 'Concluida') {
                     $('td', row).eq(5).css({
                         'background-color': '#bdecb6',
 
@@ -625,7 +623,7 @@
             }
         });
     });
-    
+
     $(document).ready(function() {
         $('#incidenciasTable').DataTable({
             responsive: true,
@@ -640,16 +638,14 @@
                         'color': 'black'
 
                     });
-                }
-                else if(data[5] == 'En proceso') {
+                } else if (data[5] == 'En proceso') {
                     $('td', row).eq(5).css({
                         'background-color': '#fdfd96',
 
                         'color': 'black'
 
                     });
-                }
-               else if (data[5] == 'Concluida') {
+                } else if (data[5] == 'Concluida') {
                     $('td', row).eq(5).css({
                         'background-color': '#bdecb6',
 
@@ -668,7 +664,7 @@
             language: {
                 url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
             },
-            
+
             "createdRow": function(row, data, index) {
                 if (data[4] == 'Pendiente') {
                     $('td', row).eq(4).css({
@@ -677,23 +673,24 @@
                         'color': 'black'
 
                     });
-                } else if(data[5] == 'Aceptada') {
-                    $('td', row).eq(5).css({
+
+
+                } else if (data[4] == 'Aceptada') {
+                    $('td', row).eq(4).css({
                         'background-color': '#bdecb6',
 
                         'color': 'black'
 
                     });
-            }else {
-                    $('td', row).eq(5).css({
+                } else {
+                    $('td', row).eq(4).css({
                         'background-color': '#ffb6af',
-
                         'color': 'black'
 
                     });
+                }
             }
-        }
-    });
+        });
     });
 
     $(document).ready(function() {
@@ -702,7 +699,7 @@
             language: {
                 url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
             },
-            
+
             "createdRow": function(row, data, index) {
                 if (data[5] == 'Pendiente') {
                     $('td', row).eq(5).css({
@@ -711,14 +708,14 @@
                         'color': 'black'
 
                     });
-                } else if(data[5] == 'Aceptada') {
+                } else if (data[5] == 'Aceptada') {
                     $('td', row).eq(5).css({
                         'background-color': '#bdecb6',
 
                         'color': 'black'
 
                     });
-            }else {
+                } else {
                     $('td', row).eq(5).css({
                         'background-color': '#ffb6af',
 
@@ -726,7 +723,7 @@
 
                     });
                 }
-            
+
             }
 
         });
@@ -1021,7 +1018,7 @@
                 alert("Rango de fechas inválido");
                 return false;
             }
-            
+
             return true;
         } else {
             return false;
@@ -1067,8 +1064,8 @@
             minDate: 0,
             beforeShowDay: noExcursion,
             firstDay: 0,
-            dayNamesMin: [ "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb" ],
-            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+            dayNamesMin: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+            monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
         });
     });
 </script>
@@ -1080,8 +1077,8 @@
             minDate: 0,
             beforeShowDay: noExcursion,
             firstDay: 0,
-            dayNamesMin: [ "Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb" ],
-            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+            dayNamesMin: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+            monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
         });
     });
 </script>

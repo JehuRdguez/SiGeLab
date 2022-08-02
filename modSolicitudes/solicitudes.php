@@ -105,10 +105,10 @@ $pagNom = 'SOLICITUDES DE ACCESO';
             <td><?php if ($estado == 0) {
                   echo 'No aplica';
                 } else if ($estadoLaboratorio == 1) {
-                  echo 'Liberado';
-                } else if ($estado == 1) {
-                  echo 'Ocupado';
-                } else if ($estado == 2) {
+                  echo 'Liberado';?> <abbr title="Laboratorio ocupado"><i style="color: #32d500 ;" class="fa-solid fa-check-double"></i></abbr> 
+                  <?php } else if ($estado == 1) {
+                  echo 'Ocupado';?> <abbr title="Laboratorio ocupado"><i style="color:red;" class="fa-solid fa-ban"></i></abbr> 
+                  <?php } else if ($estado == 2) {
                   echo '---------';
                 } ?> </td>
             <td>
@@ -408,18 +408,18 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
               <td><?php echo $nombreGrupo; ?></td>
               <td><?php echo $fecha; ?></td>
               <td><?php if ($estado == 0) {
-                    echo 'Rechazada' ?> <abbr title="Razón de rechazo"><a type="button" data-bs-toggle="modal" data-bs-target="#razon<?php echo $idSolicitudAcceso; ?>" class="btn btn-outline-primary"><i class="fa-solid fa-question"></i></a></abbr>
+                    echo 'Rechazada'; ?> <abbr title="Razón de rechazo"><a type="button" data-bs-toggle="modal" data-bs-target="#razon<?php echo $idSolicitudAcceso; ?>" class="btn btn-outline-primary"><i class="fa-solid fa-question"></i></a></abbr>
                 <?php } else if ($estado == 1) {
                     echo 'Aceptada';
                   } else echo 'Pendiente';
                 ?></td>
               <td><?php if ($estado == 0) {
                     echo 'No aplica';
-                  } else if ($estadoLaboratorio == 1) {
-                    echo 'Liberado';
-                  } else if ($estado == 1) {
-                    echo 'Ocupado';
-                  } else if ($estado == 2) {
+                  }  else if ($estadoLaboratorio == 1) {
+                    echo 'Liberado';?> <abbr title="Laboratorio ocupado"><i style="color: #32d500 ;" class="fa-solid fa-check-double"></i></abbr> 
+                    <?php } else if ($estado == 1) {
+                    echo 'Ocupado';?> <abbr title="Laboratorio ocupado"><i style="color:red;" class="fa-solid fa-ban"></i></abbr> 
+                    <?php } else if ($estado == 2) {
                     echo '---------';
                   } ?></td>
               <td> <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idSolicitudAcceso; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr></td>
@@ -427,9 +427,7 @@ if ($_SESSION['idTipoUsuario'] == 2) { ?>
               <td>
 
                 <?php
-                if ($estado == 0) {
-                  echo 'No aplica';
-                } else if ($estadoLaboratorio == 1) { ?>
+                if ($estadoLaboratorio == 1) { ?>
                   <abbr title="Laboratorio liberado"><a type="button" class="btn btn-outline-dark"><i class="fa-solid fa-check"></i></a></abbr>
 
                 <?php } else if ($estado == 1) { ?>
