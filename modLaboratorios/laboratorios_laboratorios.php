@@ -43,9 +43,8 @@ $pagNom = 'LABORATORIOS';
             <li><a class="dropdown-item" href="../modLaboratorios/laboratoriosDesarrollo.php">Laboratorio de desarrollo</a></li>
             <li><a class="dropdown-item" href="../modLaboratorios/laboratoriosSoporte.php">Laboratorio de soporte</a></li>
         </ul>
+		<a class="btn btn-outline-dark" href="laboratoriosIOT.php" type="button"><i class="fa-solid fa-person-walking-arrow-loop-left"></i></a>
     </div>
-
-	<br /> <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#laboratorio">Realizar registro</a>
 	<br>
 
 	<br />

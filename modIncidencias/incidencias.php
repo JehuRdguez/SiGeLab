@@ -39,7 +39,7 @@ $reportes = new Database();   //instanciar el objeto
   <div class="dropdown">
     <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a>
     <a href="reportesInc.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
-    <br>
+    <br></br>
   </div>
   <!-- Mostrar tabla-->
   <div class="container">
@@ -348,7 +348,7 @@ if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
 
   <!-- Botón de registro-->
   <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a>
-  <br>
+  <br></br>
   <!-- Mostrar tabla-->
   <div class="container">
 

@@ -26,6 +26,8 @@ $pagNom = 'LABORATORIO DE IOT';
     $uname = "root";
     $password = "";
     $bd_name = "sigelab";
+    
+
 
     $conn = mysqli_connect($sname, $uname, $password, $bd_name);
     if (!$conn) {
