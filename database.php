@@ -422,11 +422,11 @@ class Database
     }
 
 //////REGISTRAR SOLICITUD CAMBIO EQUIPO ALUMNOS/////
-    public function createSolicitudAL($idGrupo, $idUsuario, $estado, $alumnoN, $razon, $idLaboratorio, $respuesta)
+    public function createSolicitudAL($idGrupo,$estado, $alumnoN, $razon, $idLaboratorio, $respuesta)
     {
 
-        $sql = "INSERT INTO `solicitudcambioe` ( `idGrupo`,`idUsuario`, `estado`, `alumno`, `razon`, `idLaboratorio`, `respuesta`)
-         VALUES ('$idGrupo','$idUsuario', '$estado','$alumnoN', '$razon', '$idLaboratorio', '$respuesta'); ";
+        $sql = "INSERT INTO `solicitudcambioe` ( `idGrupo`, `estado`, `alumno`, `razon`, `idLaboratorio`, `respuesta`)
+         VALUES ('$idGrupo','$estado','$alumnoN', '$razon', '$idLaboratorio', '$respuesta'); ";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
