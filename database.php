@@ -188,12 +188,12 @@ class Database
     //Función para editar
     public function editarUAlumno($nombreC, $correo, $telefono, $contrasena, $numConAlum, $idGrupo, $idEquipoIOT, $idEquipoDesarrollo, $idEquipoSoporte, $idUsuario)
     {
-        $sql = "    UPDATE  usuario,alumno,contrasenadescifrada SET usuario.nombreC='$nombreC', usuario.correo='$correo', usuario.telefono='$telefono', usuario.contrasena=md5('$contrasena'),  alumno.numConAlum='$numConAlum',alumno.idGrupo='$idGrupo',
+        $sql = "    UPDATE  usuario,alumno,contrasenaDescifrada SET usuario.nombreC='$nombreC', usuario.correo='$correo', usuario.telefono='$telefono', usuario.contrasena=md5('$contrasena'),  alumno.numConAlum='$numConAlum',alumno.idGrupo='$idGrupo',
     alumno.idEquipoIOT='$idEquipoIOT',
     alumno.idEquipoDesarrollo='$idEquipoDesarrollo',
     alumno.idEquipoSoporte='$idEquipoSoporte',
-    contrasenadescifrada.contrasena='$contrasena'
-     WHERE usuario.idUsuario='$idUsuario' and alumno.idUsuario='$idUsuario' and contrasenadescifrada.idUsuario='$idUsuario' ";
+    contrasenaDescifrada.contrasena='$contrasena'
+     WHERE usuario.idUsuario='$idUsuario' and alumno.idUsuario='$idUsuario' and contrasenaDescifrada.idUsuario='$idUsuario' ";
 
 
         $res = mysqli_query($this->con, $sql);

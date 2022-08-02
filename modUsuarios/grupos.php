@@ -104,9 +104,12 @@ $pagNom = 'GRUPOS';
               <td><?php echo $nombreGrupo; ?></td> <!-- Muestra los datos-->
               <td>
                 <?php
-                $contar = ($conn->query("SELECT COUNT(*)  FROM cantidadAlumnos where idGrupo='$idGrupo'")); //Contar la cantidad de alumnos registrados con ese grupo
-                echo $contar->fetch_column();
+                $contar = "SELECT COUNT(*) as cantidadA FROM cantidadAlumnos where idGrupo='$idGrupo'"; //Contar la cantidad de alumnos registrados con ese grupo
+              
+                foreach ($conn->query($contar) as $row) {
+                echo $row['cantidadA'] ;
 
+              }
                 ?>
               </td>
              
