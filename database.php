@@ -1101,25 +1101,7 @@ class Database
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
-    //funcion para actualizar INCIDENCIA
-    public function updateI($idIncidencia)
-    {
-        $sql = "SELECT * FROM incidencia WHERE idIncidencia='$idIncidencia'";
-        $res = mysqli_query($this->con, $sql);
-        $return = mysqli_fetch_object($res);
-        if ($return->estado) {
-            $sql = "UPDATE incidencia SET estado=1 WHERE idIncidencia='$idIncidencia'";
-        } else {
-            $sql = "UPDATE incidencia SET estado=1 WHERE idIncidencia='$idIncidencia'";
-        }
-        $res = mysqli_query($this->con, $sql);
-
-        if ($res) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+   
     //EDITAR INCIDENCIA encargado a resolver
     public function editarIncidencia($idUsuario, $idIncidencia)
     {
