@@ -11,12 +11,12 @@ $reportes = new Database();
 //se incluye el otro archivo
 //generamos la variable cliente pq eso es lo que vamos a generar, con esto instanciamos
 if (isset($_POST) && !empty($_POST)) { //con esto valido dos cosas isset es para verificar si la acción post está declarado y para saber si se encuentra vacio
-  $nombreC = $reportes->sanitize($_POST['nombreC']);  //se va a limpiar y recibir lo del formulario
-   //Se agrega la variable para recibir el id
+ 
+  $descripcionIncidencia = $reportes->sanitize($_POST['descripcionIncidencia']);  //se va a limpiar y recibir lo del formulario
 
-  $idIncidencia = intval($_POST['idIncidencia']);
+  $idIncidencia = intval($_POST['idIncidencia']);//Se agrega la variable para recibir el id
 
-  $res = $reportes->editarIncidencia($nombreC, $idIncidencia); //se cambia la función y se agrega la variable creada arriba
+  $res = $reportes->editarIncidencia2($descripcionIncidencia, $idIncidencia); //se cambia la función y se agrega la variable creada arriba
 
   if ($res) {
     $message = "Datos actualizados con éxito";

@@ -113,7 +113,7 @@ $reportes = new Database();   //instanciar el objeto
               <?php } else { ?>
                 <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modEditIncidencia<?php echo $idIncidencia; ?>"><i class="fa-regular fa-pen-to-square"></i></a>
 
-                <abbr title="Concluir incidencia"><a type="button" class="btn btn-outline-dark" href="updateI.php?idIncidencia=<?php echo $idIncidencia; ?>"><i class="fa-solid fa-clock"></i></a></abbr>
+                <abbr title="Concluir incidencia"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modResIncidencia<?php echo $idIncidencia; ?>" ><i class="fa-solid fa-clock"></i></a></abbr>
               <?php }   ?>
               <abbr title="Borrar"><a type="button" class="btn btn-outline-dark" onclick="return eliminar()" href="deleteI.php?idIncidencia=<?php echo $idIncidencia ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
               <abbr title="Ver más"><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMas<?php echo $idIncidencia; ?>"><i class="fa-solid fa-ellipsis"></i></a></abbr>
@@ -154,6 +154,43 @@ $reportes = new Database();   //instanciar el objeto
                     </div>
 
 
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <!-- Botón para enviar datos-->
+                    <center>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-primary" onclick="alertaEditar();">Guardar cambios</button>
+                    </center>
+                    <!-- Botón -->
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- FINN MODAL EDITAR  -->
+
+           <!-- MODAL DE EDICION DE DETALLES -->
+           <div class="modal fade" id="modResIncidencia<?php echo $idIncidencia; ?>" tabindex="-1" aria-labelledby="modResIncidenciaAlLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <center>
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                  </center>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form method="POST" action="editarIncidencia2.php">
+                  <input type="hidden" name="idIncidencia" value="<?php echo $idIncidencia; ?>">
+
+                  <div class="modal-body" id="cont_modal">
+                  <?php
+                        $datos_Incidencia = $reportes->single_recordIncidencia($idIncidencia);
+                        ?>
+                  
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Descripción de Incidencia</label>
                       <textarea name="descripcionIncidencia" type="text" class="form-control" required><?php echo $datos_Incidencia->descripcionIncidencia; ?> </textarea>
@@ -260,24 +297,6 @@ $reportes = new Database();   //instanciar el objeto
                       <option value="<?php echo $idLaboratorio ?>"><?php echo $nombreLaboratorio ?></option>
                     <?php } ?>
                   </select>
-                  <!-- Para traer equipos de un laboratorio -->
-                  <!-- <script>
-                    const selectElement = document.querySelector('#idLaboratorio');
-
-                    selectElement.addEventListener('change', (event) => {
-                      const seleccionado = event.target.value;
-
-                      if (seleccionado === 1) {
-                        console.log('Se ha elegido alta');
-                      } else if (seleccionado === 2) {
-                        console.log('Se ha elegido baja');
-                      } else if (seleccionado === 3) {
-                        console.log('Se ha elegido nada');
-                      }
-                    });
-                  </script> -->
-
-
                   <label>Tipo de incidencia</label>
                   <select class="form-select" aria-label="Default select example" id="idTipoIncidencia" name="idTipoIncidencia" required>
                     <option value="" selected disabled>Selecciona el tipo de incidencia</option>

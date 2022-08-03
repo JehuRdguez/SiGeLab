@@ -1120,10 +1120,21 @@ class Database
             return false;
         }
     }
-    //EDITAR INCIDENCIA
-    public function editarIncidencia($idUsuario, $descripcionIncidencia, $idIncidencia)
+    //EDITAR INCIDENCIA encargado a resolver
+    public function editarIncidencia($idUsuario, $idIncidencia)
     {
-        $sql = "UPDATE incidencia SET  idUsuario='$idUsuario', descripcionIncidencia='$descripcionIncidencia' WHERE idIncidencia='$idIncidencia'";
+        $sql = "UPDATE incidencia SET  idUsuario='$idUsuario' WHERE idIncidencia='$idIncidencia'";
+        $res = mysqli_query($this->con, $sql);
+
+        if ($res) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function editarIncidencia2( $descripcionIncidencia, $idIncidencia)
+    {
+        $sql = "UPDATE incidencia SET  descripcionIncidencia= '$descripcionIncidencia', estado='1'  WHERE idIncidencia='$idIncidencia'";
         $res = mysqli_query($this->con, $sql);
 
         if ($res) {

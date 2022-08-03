@@ -128,6 +128,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
             </td>
           </tr>
+          <!-- Modal para rechazar  -->
           <div class="modal fade" id="modRazon<?php echo $idSolicitudAcceso; ?>" tabindex="-1" aria-labelledby="modRazonAlLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -260,7 +261,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
                   <div class="col-sm-10">
                     <label> Elige el laboratorio </label>
                     <select class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio" required>
-                      <option selected disabled>Selecciona un laboratorio</option>
+                      <option value="" selected disabled>Selecciona un laboratorio</option>
                       <?php
                       $listaSolicitudes = $solicitud->readLaboratorioS('nombreLaboratorio');
                       while ($row = mysqli_fetch_object($listaSolicitudes)) {
@@ -272,7 +273,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
 
                     <label for="">Grupo</label>
                     <select class="form-select" aria-label="Default select example" id="idGrupo" name="idGrupo" required>
-                      <option selected disabled>Selecciona un grupo</option>
+                      <option value="" selected disabled>Selecciona un grupo</option>
                       <?php
                       $listaGrupos = $solicitud->readGrupos('nombreGrupo');
                       while ($row = mysqli_fetch_object($listaGrupos)) {
