@@ -39,7 +39,7 @@ $reportes = new Database();   //instanciar el objeto
   <div class="dropdown">
     <a type="button" class="btn btn-outline-dark" href="#RegistroReporte" data-bs-toggle="modal">Registrar incidencia</a>
     <a href="reportesInc.php" target="_blank" class="btn btn-outline-dark">Reporte PDF</a>
-    <br></br>
+    <br>
   </div>
   <!-- Mostrar tabla-->
   <div class="container">
@@ -193,7 +193,7 @@ $reportes = new Database();   //instanciar el objeto
                   
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">¿Qué se resolvió?</label>
-                      <textarea name="descripcionIncidencia" type="text" class="form-control" required><?php echo $datos_Incidencia->descripcionIncidencia; ?> </textarea>
+                      <textarea name="descripcionIncidencia" type="text" class="form-control" required><?php echo $datos_Incidencia->descripcionIncidencia; ?></textarea>
 
                     </div>
                   </div>
