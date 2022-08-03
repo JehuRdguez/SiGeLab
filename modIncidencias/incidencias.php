@@ -192,7 +192,7 @@ $reportes = new Database();   //instanciar el objeto
                         ?>
                   
                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Descripción de Incidencia</label>
+                      <label for="recipient-name" class="col-form-label">¿Qué se resolvió?</label>
                       <textarea name="descripcionIncidencia" type="text" class="form-control" required><?php echo $datos_Incidencia->descripcionIncidencia; ?> </textarea>
 
                     </div>
