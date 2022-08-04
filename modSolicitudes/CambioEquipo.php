@@ -26,7 +26,9 @@ $pagNom = 'EQUIPOS';
       $class = "alert alert-danger";
     }
   ?>
-    
+    	<div class="<?php echo $class ?>">
+		<?php echo $message; ?>
+	</div>
   <?php
   }
 

@@ -26,7 +26,9 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
     $class = "alert alert-danger";
   }
 ?>
-  
+      	<div class="<?php echo $class ?>">
+		<?php echo $message; ?>
+	</div>
 <?php
 }
 
@@ -174,7 +176,7 @@ if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la 
           <?php
           while ($row = mysqli_fetch_object($listaSolicitudesE)) { //antes del = es la variable del form, después es la de BDD
             $idsolicitudCambioE = $row->idsolicitudCambioE;
-            $alumnoN = $row->alumnoN;
+            $alumnoN = $row->alumno;
             $nombreLaboratorio = $row->nombreLaboratorio;
             $idGrupo = $row->idGrupo;
             $razon = $row->razon;
