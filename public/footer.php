@@ -838,7 +838,7 @@
     function ValidarLestrasC(e) {
         var key = e.keyCode || e.which,
             tecla = String.fromCharCode(key).toLowerCase(),
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz-",
             especiales = [8],
             tecla_especial = false;
 
