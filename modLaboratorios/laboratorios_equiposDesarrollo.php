@@ -33,11 +33,11 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
         exit();
     }
 
-$validar="SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor' and estado=1 and idEquipo!='$idEquipo'";
+$validar="SELECT* FROM equipo where numMonitor>1 and numMonitor='$numMonitor' and estado=1 and numInvEscolar!='$numInvEscolar'";
 $validando=$conn->query($validar);
-$validar2="SELECT* FROM equipo where numTeclado>1 and numTeclado='$numTeclado' and estado=1 and idEquipo!='$idEquipo'";
+$validar2="SELECT* FROM equipo where numTeclado>1 and numTeclado='$numTeclado' and estado=1 and numInvEscolar!='$numInvEscolar'";
 $validando2=$conn->query($validar2);
-$validar3="SELECT* FROM equipo where numMouse>1 and numMouse='$numMouse' and estado=1 and idEquipo!='$idEquipo'";
+$validar3="SELECT* FROM equipo where numMouse>1 and numMouse='$numMouse' and estado=1 and numInvEscolar!='$numInvEscolar'";
 $validando3=$conn->query($validar3);
 
 if($validando->num_rows>0 || $validando2->num_rows>0 || $validando3->num_rows>0 ){
