@@ -141,7 +141,12 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 
 										<div class="form-group">
 											<label>N.º de secciones</label>
-											<input type="number" name="seccionesDeMesa" id="seccionesDeMesa" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $seccionesDeMesa; ?>">
+											<select class="form-select" aria-label="Default select example" name="seccionesDeMesa" id="seccionesDeMesa" required>
+												<option selected hidden value="<?php echo $seccionesDeMesa; ?>"><?php echo $seccionesDeMesa; ?></option>
+												<option value="Una sección">Una sección</option>
+												<option value="Dos secciones">Dos secciones</option>
+												<option value="Tres secciones">Tres secciones</option>
+											</select>
 										</div>
 
 										<div class="form-group">
@@ -204,11 +209,16 @@ $pagNom = 'LABORATORIO DE DESARROLLO';
 										</select>
 									</div>
 									<div class="col-sm-10">
-										<label>Secciones</label>
-										<input type="number" name="seccionesDeMesa" id="seccionesDeMesa" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-									</div>
+											<label>N.º de secciones</label>
+											<select class="form-select" aria-label="Default select example" name="seccionesDeMesa" id="seccionesDeMesa" required>
+												<option selected hidden value="">Selecciona el N.º de secciones</option>
+												<option value="Una sección">Una sección</option>
+												<option value="Dos secciones">Dos secciones</option>
+												<option value="Tres secciones">Tres secciones</option>
+											</select>
+										</div>
 									<div class="col-sm-10">
-										<label>Descripcion</label>
+										<label>Descripción</label>
 										<textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
 									</div>
 								</center>

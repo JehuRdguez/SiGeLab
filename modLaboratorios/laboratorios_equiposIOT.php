@@ -185,12 +185,12 @@ $pagNom = 'LABORATORIO DE IOT';
 
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">N.º de Inv. Escolar: </label>
-                      <input type="number" name="numInvEscolar" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
+                      <input type="number" name="numInvEscolar" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="20" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvEscolar; ?>" required="true">
                     </div>
 
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">N.º de serie equipo: </label>
-                      <input type="number" name="numSerieEquipo" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerieEquipo; ?>" required="true">
+                      <input type="number" name="numSerieEquipo" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="30" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numSerieEquipo; ?>" required="true">
                     </div>
 
                     <div class="form-group">
@@ -249,7 +249,7 @@ $pagNom = 'LABORATORIO DE IOT';
 
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Procesador: </label>
-                      <input type="text" name="procesador" class="form-control" value="<?php echo $procesador; ?>" required="true">
+                      <input type="text" name="procesador" class="form-control" value="<?php echo $procesador; ?>" min="1" maxlength="25" required="true">
                     </div>
 
                     <div class="form-group">
@@ -260,6 +260,7 @@ $pagNom = 'LABORATORIO DE IOT';
                       <select class="form-select" aria-label="Default select example" name="ubiMesa" value="<?php echo $ubicacionEnMesa; ?>" required>
                         <option selected hidden value="<?php echo $datos_equipos->ubicacionEnMesa; ?>"><?php echo $ubicacionEnMesa; ?></option>
                         <option value="Sección derecha">Sección derecha</option>
+                        <option value="Sección central">Sección central</option>
                         <option value="Sección izquierda">Sección izquierda</option>
                       </select>
                     </div>
@@ -378,11 +379,11 @@ $pagNom = 'LABORATORIO DE IOT';
                   </div>
                   <div class="col-sm-10">
                     <label>N.º de Inv. Escolar</label>
-                    <input type="text" name="numInvEscolar" id="numInvEscolar" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                    <input type="text" name="numInvEscolar" id="numInvEscolar" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="20" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                   </div>
                   <div class="col-sm-10">
                     <label>N.º de serie equipo</label>
-                    <input type="text" name="numSerieEquipo" id="numSerieEquipo" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="14" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                    <input type="text" name="numSerieEquipo" id="numSerieEquipo" class="form-control" min="1" onkeypress="return verificaNumInv(event);" maxlength="30" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                   </div>
                   <div class="col-sm-10">
                     <label for="">N.º de serie monitor</label>
@@ -428,13 +429,14 @@ $pagNom = 'LABORATORIO DE IOT';
                   </div>
                   <div class="col-sm-10">
                     <label>Procesador</label>
-                    <input type="text" name="procesador" id="procesador" class="form-control" required>
+                    <input type="text" name="procesador" id="procesador" class="form-control" min="1" maxlength="25" required>
                   </div>
                   <div class="col-sm-10">
                     <label>Ubicación en mesa</label>
                     <select class="form-select" aria-label="Default select example" name="ubiMesa" id="ubiMesa" required>
                       <option selected disabled hidden value="">Selecciona la ubicación:</option>
                       <option value="Sección derecha">Sección derecha</option>
+                      <option value="Sección central">Sección central</option>
                       <option value="Sección izquierda">Sección izquierda</option>
                     </select>
                   </div>

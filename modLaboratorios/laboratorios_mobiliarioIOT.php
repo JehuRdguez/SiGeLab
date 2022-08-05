@@ -35,16 +35,16 @@ $pagNom = 'LABORATORIOS';
 	}
 	?>
 
-<div class="dropdown">
-        <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Laboratorio de IoT</button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioIOT.php">Laboratorio de IoT</a></li>
-            <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioDesarrollo.php">Laboratorio de desarrollo</a></li>
-            <li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php">Laboratorio de soporte</a></li>
-        </ul>
-        <abbr title="Detalles de laboratorios"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a></abbr>
-    </div>
+	<div class="dropdown">
+		<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			Laboratorio de IoT</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioIOT.php">Laboratorio de IoT</a></li>
+			<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioDesarrollo.php">Laboratorio de desarrollo</a></li>
+			<li><a class="dropdown-item" href="../modLaboratorios/laboratorios_mobiliarioSoporte.php">Laboratorio de soporte</a></li>
+		</ul>
+		<abbr title="Detalles de laboratorios"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_laboratorios.php"><i class="fa-solid fa-list"></i></a></abbr>
+	</div>
 
 	<br>
 	<div class="dropdown">
@@ -127,7 +127,7 @@ $pagNom = 'LABORATORIOS';
 
 										<div class="form-group">
 											<label for="recipient-name" class="col-form-label">N.º de Inv. Escolar </label>
-											<input type="text" name="numInvMobiliario" id="numInvMobiliario" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvMobiliario; ?>" required="true">
+											<input type="text" name="numInvMobiliario" id="numInvMobiliario" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="20" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $numInvMobiliario; ?>" required="true">
 										</div>
 
 										<div class="form-group">
@@ -142,11 +142,16 @@ $pagNom = 'LABORATORIOS';
 
 										<div class="form-group">
 											<label>N.º de secciones</label>
-											<input type="number" name="seccionesDeMesa" id="seccionesDeMesa" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $seccionesDeMesa; ?>">
+											<select class="form-select" aria-label="Default select example" name="seccionesDeMesa" id="seccionesDeMesa" required>
+												<option selected hidden value="<?php echo $seccionesDeMesa; ?>"><?php echo $seccionesDeMesa; ?></option>
+												<option value="Una sección">Una sección</option>
+												<option value="Dos secciones">Dos secciones</option>
+												<option value="Tres secciones">Tres secciones</option>
+											</select>
 										</div>
 
 										<div class="form-group">
-											<label>Descripcion</label>
+											<label>Descripción</label>
 											<textarea class="form-control" name="descripcion" id="descripcion"><?php echo $descripcion; ?></textarea>
 										</div>
 
@@ -199,15 +204,20 @@ $pagNom = 'LABORATORIOS';
 										<input type="number" name="numInvMobiliario" id="numInvMobiliario" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
 									</div>
 									<div class="col-sm-10">
-										<label for="" hidden >Laboratorio</label>
+										<label for="" hidden>Laboratorio</label>
 										<select hidden class="form-select" aria-label="Default select example" id="idLaboratorio" name="idLaboratorio">
 											<option selected value="1"></option>
 										</select>
 									</div>
 									<div class="col-sm-10">
-										<label>Secciones</label>
-										<input type="number" name="seccionesDeMesa" id="seccionesDeMesa" class="form-control" min="1" onkeypress="return verificaNumeros(event);" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-									</div>
+											<label>N.º de secciones</label>
+											<select class="form-select" aria-label="Default select example" name="seccionesDeMesa" id="seccionesDeMesa" required>
+												<option selected hidden value="">Selecciona el N.º de secciones</option>
+												<option value="Una sección">Una sección</option>
+												<option value="Dos secciones">Dos secciones</option>
+												<option value="Tres secciones">Tres secciones</option>
+											</select>
+										</div>
 									<div class="col-sm-10">
 										<label>Descripcion</label>
 										<textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
