@@ -1,20 +1,24 @@
+
+
 <?php
 $pagNom = 'LABORATORIO DE IOT';
 ?>
 
-<?php include("../public/header.php"); ?>
-
-<?php
-include "conn.php";
-include "../database.php";
+<?php 
+include("../public/header.php"); 
 ?>
 
 <?php
 $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 ?>
 
+<?php
+include "conn.php";
+include "../database.php";
 
-<?php if ($idTipoUsuario == 1) { ?>
+?>
+
+<?php if ($_SESSION['idTipoUsuario'] == 1) { ?>
 
 	<div class="dropdown">
 		<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,27 +44,24 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 		<button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#archivos">Subir horario</button>
 		<abbr title="Detalles de horarios"><a class="btn btn-outline-dark" href="../modLaboratorios/laboratorios_horariosIOT.php"><i class="fa-solid fa-list"></i></a></abbr>
 	</div>
-
+	
 	<div class="container">
 		<br>
 		<table class="table table-bordered " cellspacing="0" width="100%" id="laboratorios_TableIOT" style="background-color: #04aa89;">
 			<thead>
 				<tr>
-					<th>
-						<center>Horario</center>
-					</th>
+					<th><center>Horarios</center></th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
-				<!-- Cuerpo de la tabla, se llena con la BDD-->
 				<?php
 				$horariospdf = new Database(); //
-				$listaHorariospdf = $horariospdf->PDFReadIOT(); //se crea la variable listaAdministradores
+				$listaHorariospdf = $horariospdf->PDFReadIOT(); 
 				?>
 
 				<?php
-				while ($row = mysqli_fetch_object($listaHorariospdf)) { //antes del = es la variable del form, después es la de BDD
+				while ($row = mysqli_fetch_object($listaHorariospdf)) { 
 
 					$idHorariospdf = $row->idHorariospdf;
 					$url = $row->url;
@@ -70,7 +71,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 							<center><iframe src="<?php echo $url ?>" height="400px" width="950px"></iframe></center>
 						</td>
 						<td>
-							<center><a onclick="openModelPDF('<?php echo $url ?>')" type="button" class="btn btn-outline-dark" title="Ver PDF"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+							<center>
 								<abbr title="Borrar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="herramientas_laboratorioIOT/eliminarPDFIOT.php?idHorariospdf=<?php echo $idHorariospdf ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
 							</center>
 						</td>
@@ -82,7 +83,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 			</tbody>
 		</table>
 	</div>
-<?php } else if ($idTipoUsuario == 2 || $idTipoUsuario == 3) { ?>
+	
+<?php } else if ($_SESSION['idTipoUsuario'] == 2 || $_SESSION['idTipoUsuario'] == 3) { ?>
 
 	<div class="dropdown">
 		<button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,12 +99,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 
 	<div class="container">
 		<br>
-		<table class="table table-bordered" id="laboratorios_TableIOTUsuarios" style="background-color: #04aa89;">
+		<table class="table table-bordered" id="laboratorios_TableIOTUsuario" style="background-color: #04aa89;">
 			<thead>
 				<tr>
-					<th>Horario</th>
-					<th>Acciones</th>
-				</tr>
+					<th></th>
 			</thead>
 			<tbody>
 				<!-- Cuerpo de la tabla, se llena con la BDD-->
@@ -118,10 +118,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 					$url = $row->url;
 				?>
 					<tr>
-						<td><iframe src="<?php echo $url ?>" height="400px" width="800px"></iframe></td>
-						<td><a onclick="openModelPDF('<?php echo $url ?>')" type="button" class="btn btn-outline-dark" title="Ver PDF"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
-						</td>
-						</td>
+						<td><center><iframe src="<?php echo $url ?>" height="500px" width="1100px"></iframe></center></td>
 					</tr>
 				<?php
 				}

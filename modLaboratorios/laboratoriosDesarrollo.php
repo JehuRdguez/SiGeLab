@@ -47,8 +47,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 			<thead>
 				<tr>
 					<th>
-						<center>Horario</center>
-					</th>
+					<center>Horario</center></th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -70,7 +69,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 							<center><iframe src="<?php echo $url ?>" height="400px" width="950px"></iframe></center>
 						</td>
 						<td>
-							<center><a onclick="openModelPDF('<?php echo $url ?>')" type="button" class="btn btn-outline-dark" title="Ver PDF"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+							<center>
 								<abbr title="Borrar"><a class="btn btn-outline-dark" onclick="return eliminar()" href="herramientas_laboratorioDesarrollo/eliminarPDFDesarrollo.php?idHorariospdf=<?php echo $idHorariospdf ?>"><i class="fa-solid fa-trash-can"></i></a></abbr>
 							</center>
 						</td>
@@ -97,11 +96,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 
 	<div class="container">
 		<br>
-		<table class="table table-bordered" id="laboratorios_TableDesarrolloUsuarios" style="background-color: #04aa89;">
+		<table class="table table-bordered" id="laboratorios_TableDesarrolloUsuario" style="background-color: #04aa89;">
 			<thead>
 				<tr>
-					<th>Horario</th>
-					<th>Acciones</th>
+					<th><center>Horario</center></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -118,10 +116,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'sigelab');
 					$url = $row->url;
 				?>
 					<tr>
-						<td><iframe src="<?php echo $url ?>" height="400px" width="800px"></iframe></td>
-						<td><a onclick="openModelPDF('<?php echo $url ?>')" type="button" class="btn btn-outline-dark" title="Ver PDF"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
-						</td>
-						</td>
+						<td><center><iframe src="<?php echo $url ?>" height="500px" width="1100px"></iframe></center></td>
+						
 					</tr>
 				<?php
 				}
