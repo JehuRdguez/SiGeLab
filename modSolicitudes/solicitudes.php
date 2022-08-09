@@ -9,7 +9,7 @@ $pagNom = 'SOLICITUDES DE ACCESO';
   include("../database.php");
 
 
-  $solicitud = new database();   //instanciar el objeto
+  $solicitud = new Database();   //instanciar el objeto
 
   if (isset($_POST) && !empty($_POST)) { //verifica si esta declarado el campo la && (y) EMpty si se encuentra o no vacio
     $maestro = $solicitud->sanitize($_POST['maestro']);
